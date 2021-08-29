@@ -17,7 +17,9 @@ Route::get('/', function () {
     return redirect(Route('AuthPage'));
 });
 Route::get('/client', 'PageController@Auth')->middleware('CheckMyAuth')->name('AuthPage');
+Route::get('/client/Recovery', 'PageController@Recovery')->middleware('CheckMyAuth')->name('RecoveryPage');
 Route::get('/client/{page}', 'PageController@page')->middleware('MyAuth')->name('page');
 Route::post('/api/auth', 'UserController@Auth')->name('Auth');
 Route::post('/api/register', 'UserController@Register')->name('Register');
 Route::post('/api/code', 'UserController@CheckCode')->name('CheckCode'); 
+Route::post('/api/recovert', 'UserController@Recovery')->name('Recovery');

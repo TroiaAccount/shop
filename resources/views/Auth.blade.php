@@ -30,13 +30,14 @@
                <div class="button login">
                   <button type="submit"><span>Войти</span> <i class="fa fa-check"></i></button>
                </div>
-               <!--<a href="" class="pass-forgot">Forgot your password?</a> -->
+               <a href="{{Route('RecoveryPage')}}" class="pass-forgot">Forgot your password?</a>
             </div>
          </form>
-         <form id="Register">
-            <div class="overbox">
+         <div class="overbox">
+            <div class="material-button alt-2"><span class="shape"></span></div>
+            <form id="Register">
                @csrf
-               <div class="material-button alt-2"><span class="shape"></span></div>
+              
                <div class="title">REGISTER</div>
                <div class="input">
                   <label for="regname">Телефон</label>
@@ -56,12 +57,9 @@
                <div class="button">
                   <button><span>Зарегистрироваться</span></button>
                </div>
-            </div>
-         </form>
-         <form id="code" style="display: none">
-            <div class="overbox">
+            </form>
+            <form id="code" style="display: none">
                @csrf
-               <div class="alt-2 active" style="width: 700px; height: 700px;"><span class="shape" ></span></div>
                <div class="title">REGISTER</div>
                <div class="input">
                   <label for="code" style="line-height: 18px; font-size: 18px; font-weight: 100; top: 0px;">Код</label>
@@ -72,8 +70,8 @@
                <div class="button">
                   <button><span>Зарегистрироваться</span></button>
                </div>
-            </div>
-         </form>
+            </form>
+         </div>
       </div>
       <script src="{{asset('assets/js/index.js')}}"></script>
       <script>

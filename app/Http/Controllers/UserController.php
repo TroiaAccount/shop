@@ -113,6 +113,35 @@ class UserController extends Controller
         return $result;
     }
 
+    public function Recovery(request $req){
+        $result = ['status' => false, 'error' => 'Вы заполнили не все обязательные поля'];
+        $login = addslashes($req['login']);
+        if($login != null){
+            $check_user = User::select()->where('login', $login)->first();
+            if($check_user != null){
+                if($check_user->agree == 1){
+                    $password = rand(0, 99) . "KFfJfkdlfkrFK" . rand();
+                    
+                    $MessageBird = new \MessageBird\Client('c4ZDV8P8JRcX7KGVASNAClL3u');
+                    $Message = new \MessageBird\Objects\Message();
+                    $Message->originator = 'ozcom';
+                    $Message->recipients = array($login);
+                    $Message->body = $password;
+                    $MessageBird->messages->create($Message);
+                    $password = Hash::make($password);
+                    User::where('login', $login)->update(['password' => $password]);
+                    $result = ['status' => true];
+                } else {
+                    $result = ['status' => false, 'error' => 'Данный пользователь не прошел проверку номера телефона'];
+                }
+            } else {
+                $result = ['status' => false, 'error' => 'Вы ввели не верный логин'];
+            }
+        }
+        $result = json_encode($result, true);
+        return $result;
+    }
+
     private function CreateToken(){
         $token = Hash::make(md5('BBKJ>@njkwehfksjdahfkdjs@Njkasnbdfkaehrbf' . time() . rand() . time() . rand()));
         $check_token = login::select()->where('token', $token)->first();

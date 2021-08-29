@@ -19,5 +19,9 @@ class PageController extends Controller
     public function Auth(request $req){
         return view('Auth');
     }
+
+    public function Recovery(){
+        return view('Recovery');
+    }
     
 }
