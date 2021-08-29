@@ -31,12 +31,12 @@ class UserController extends Controller
                     'user_id' => $check_user->id,
                     'code' => $code
                 ]);
-                /*$MessageBird = new \MessageBird\Client('Secret');
+                $MessageBird = new \MessageBird\Client('c4ZDV8P8JRcX7KGVASNAClL3u');
                 $Message = new \MessageBird\Objects\Message();
                 $Message->originator = 'ozcom';
                 $Message->recipients = array($login);
                 $Message->body = $code;
-                $MessageBird->messages->create($Message);*/
+                $MessageBird->messages->create($Message);
                 $result = ['status' => true];
             } else {
                 $result = ['status' => false, 'error' => 'Пользователь с таким логином уже существует'];
