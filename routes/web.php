@@ -22,4 +22,5 @@ Route::get('/client/{page}', 'PageController@page')->middleware('MyAuth')->name(
 Route::post('/api/auth', 'UserController@Auth')->name('Auth');
 Route::post('/api/register', 'UserController@Register')->name('Register');
 Route::post('/api/code', 'UserController@CheckCode')->name('CheckCode'); 
-Route::post('/api/recovert', 'UserController@Recovery')->name('Recovery');
+Route::post('/api/recovery', 'UserController@Recovery')->name('Recovery');
+Route::post('/api/recovery/last', 'UserController@RecoveryLast')->name('RecoveryLast');

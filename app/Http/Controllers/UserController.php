@@ -31,7 +31,7 @@ class UserController extends Controller
                     'user_id' => $check_user->id,
                     'code' => $code
                 ]);
-                $MessageBird = new \MessageBird\Client('c4ZDV8P8JRcX7KGVASNAClL3u');
+                $MessageBird = new \MessageBird\Client('N5BTNCcMHRSeo5obVD0spNuLs');
                 $Message = new \MessageBird\Objects\Message();
                 $Message->originator = 'ozcom';
                 $Message->recipients = array($login);
@@ -120,22 +120,49 @@ class UserController extends Controller
             $check_user = User::select()->where('login', $login)->first();
             if($check_user != null){
                 if($check_user->agree == 1){
-                    $password = rand(0, 99) . "KFfJfkdlfkrFK" . rand();
-                    
-                    $MessageBird = new \MessageBird\Client('c4ZDV8P8JRcX7KGVASNAClL3u');
+                    $code = $this->CreateCode($check_user->id);
+                    code::where('user_id', $check_user->id)->delete();
+                    code::insert(['user_id' => $check_user->id, 'code' => $code]);
+                    $MessageBird = new \MessageBird\Client('N5BTNCcMHRSeo5obVD0spNuLs');
                     $Message = new \MessageBird\Objects\Message();
                     $Message->originator = 'ozcom';
                     $Message->recipients = array($login);
-                    $Message->body = $password;
+                    $Message->body = $code;
                     $MessageBird->messages->create($Message);
-                    $password = Hash::make($password);
-                    User::where('login', $login)->update(['password' => $password]);
-                    $result = ['status' => true];
+                    $result = ['status' => true, 'data' => $check_user->id];
                 } else {
                     $result = ['status' => false, 'error' => 'Данный пользователь не прошел проверку номера телефона'];
                 }
             } else {
                 $result = ['status' => false, 'error' => 'Вы ввели не верный логин'];
+            }
+        }
+        $result = json_encode($result, true);
+        return $result;
+    }
+
+    public function RecoveryLast(request $req){
+        $result = ['status' => false, 'error' => 'Вы заполнили не все обязательные поля'];
+        $password = addslashes($req['password']);
+        $id = addslashes($req['id']);
+        $code = addslashes($req['code']);
+        if($password != null && $id != null && $code != null){
+            $check_user = User::select()->where('id', $id)->first();
+            if($check_user != null){
+                if($check_user->agree == 1){
+                    $check_code = code::select()->where(['user_id' => $id, 'code' => $code])->first();
+                    if($check_code != null){
+                        $password = Hash::make($password);
+                        User::where('id', $id)->update(['password' => $password]);
+                        $result = ['status' => true];
+                    } else {
+                        $result = ['status' => false, 'error' => 'Вы указали неверный код'];
+                    }
+                } else {
+                    $result = ['status' => false, 'error' => 'Данный пользователь не прошел проверку номера телефона'];
+                }
+            } else {
+                $result = ['status' => false, 'error' => 'Такого пользователя не существует'];
             }
         }
         $result = json_encode($result, true);

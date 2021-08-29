@@ -28,6 +28,27 @@
                <!--<a href="" class="pass-forgot">Forgot your password?</a> -->
             </div>
          </form>
+         <form id="Recovery" style="display: none;">
+            @csrf
+            <div class="box">
+               <div class="title">RECOVERY</div>
+
+               <div class="input">
+                  <label for="code">Код</label>
+                  <input type="text" name="code" id="code" >
+                  <input type="hidden" name="id" id="id">
+                  <span class="spin"></span>
+               </div>
+               <div class="input">
+                  <label for="password">Пароль</label>
+                  <input type="password" name="password" id="password" >
+               </div>
+               <div class="button login">
+                  <button type="submit"><span>Восстановить</span> <i class="fa fa-check"></i></button>
+               </div>
+               <!--<a href="" class="pass-forgot">Forgot your password?</a> -->
+            </div>
+         </form>
       </div>
       <script src="{{asset('assets/js/index.js')}}"></script>
       <script>
@@ -40,8 +61,29 @@
                   data: $(this).serialize(),
                   success: function(data){
                      if(data.status == true){
-                        alert('Ваш новый пароль был отправлен на ваш номер телефона');
-                        location = "{{Route('page', ['page' => 'main'])}}";
+                        let id = document.getElementById('id');
+                        id.value = data.data;
+                        let auth = document.getElementById('Auth');
+                        auth.style.display = "none";
+                        let recovery = document.getElementById('Recovery');
+                        recovery.style.display = "block";
+                        alert('На ваш номер телефона отправлено письмо с кодом');
+                     } else {
+                        alert(data.error);
+                     }
+                  }
+            });
+         });
+         $("#Recovery").on("submit", function(e){
+            e.preventDefault();
+            $.ajax({
+                  url: '{{Route("RecoveryLast")}}', 
+                  method: 'post',
+                  dataType: 'json',
+                  data: $(this).serialize(),
+                  success: function(data){
+                     if(data.status == true){
+                        location = "{{Route('AuthPage')}}";
                      } else {
                         alert(data.error);
                      }

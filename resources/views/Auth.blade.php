@@ -49,11 +49,6 @@
                   <input type="password" name="password" id="regpass">
                   <span class="spin"></span>
                </div>
-               <div class="input">
-                  <label for="reregpass">Повторите пароль</label>
-                  <input type="password" name="repassword" id="reregpass">
-                  <span class="spin"></span>
-               </div>
                <div class="button">
                   <button><span>Зарегистрироваться</span></button>
                </div>
