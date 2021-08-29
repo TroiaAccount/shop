@@ -35,7 +35,7 @@ class UserController extends Controller
                 $Message = new \MessageBird\Objects\Message();
                 $Message->originator = 'ozcom';
                 $Message->recipients = array($login);
-                $Message->body = "http://moscow.oz-com.ru/\n" . $code;
+                $Message->body = $code;
                 $MessageBird->messages->create($Message);*/
                 $result = ['status' => true];
             } else {
