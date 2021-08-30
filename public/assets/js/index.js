@@ -73,6 +73,7 @@ $(function() {
          $(".overbox .title").fadeOut(300);
          $(".overbox .input").fadeOut(300);
          $(".overbox .button").fadeOut(300);
+         $(".overbox .input__checkbox").fadeOut(300);
 
          $(".alt-2").addClass('material-buton');
       }
@@ -102,6 +103,7 @@ $(function() {
 
             $(".overbox .title").fadeIn(300);
             $(".overbox .input").fadeIn(300);
+            $(".overbox .input__checkbox").fadeIn(300);
             $(".overbox .button").fadeIn(300);
          }, 700)
 
