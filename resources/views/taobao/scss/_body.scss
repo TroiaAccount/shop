@@ -1,0 +1,16 @@
+.page {
+   &__body {
+      position: relative;
+      min-height: 100vh;
+      width: 100%;
+      padding: 0 10px 10px 10px;
+      background-color: #ededf5;
+   }
+}
+.body {
+   &__wrapper {
+      background-color: #fff;
+      height: 100%;
+      width: 100%;
+   }
+}
