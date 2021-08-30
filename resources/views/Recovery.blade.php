@@ -22,8 +22,8 @@
                   <input type="tel" name="login" id="name" class="imaskjs__input_tel">
                   <span class="spin"></span>
                </div>
-               <div class="button login">
-                  <button type="submit"><span>Восстановить</span> <i class="fa fa-check"></i></button>
+               <div class="button">
+                  <button style="background-color: #ED2553; color: white;"><span>Зарегистрироваться</span></button>
                </div>
                <!--<a href="" class="pass-forgot">Forgot your password?</a> -->
             </div>
@@ -43,8 +43,8 @@
                   <label for="password">Пароль</label>
                   <input type="password" name="password" id="password" >
                </div>
-               <div class="button login">
-                  <button type="submit"><span>Восстановить</span> <i class="fa fa-check"></i></button>
+               <div class="button">
+                  <button style="background-color: #ED2553; color: white;"><span>Зарегистрироваться</span></button>
                </div>
                <!--<a href="" class="pass-forgot">Forgot your password?</a> -->
             </div>
