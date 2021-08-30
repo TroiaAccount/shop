@@ -23,7 +23,7 @@
                   <span class="spin"></span>
                </div>
                <div class="button">
-                  <button style="background-color: #ED2553; color: white;"><span>Зарегистрироваться</span></button>
+                  <button style="background-color: #ED2553; color: white;"><span>Восстановить</span></button>
                </div>
                <!--<a href="" class="pass-forgot">Forgot your password?</a> -->
             </div>
@@ -44,7 +44,7 @@
                   <input type="password" name="password" id="password" >
                </div>
                <div class="button">
-                  <button style="background-color: #ED2553; color: white;"><span>Зарегистрироваться</span></button>
+                  <button style="background-color: #ED2553; color: white;"><span>Восстановить</span></button>
                </div>
                <!--<a href="" class="pass-forgot">Forgot your password?</a> -->
             </div>
