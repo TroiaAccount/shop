@@ -27,8 +27,8 @@
                   <input type="password" name="password" id="pass">
                   <span class="spin"></span>
                </div>
-               <div class="button login">
-                  <button type="submit"><span>Войти</span> <i class="fa fa-check"></i></button>
+               <div class="button">
+                  <button style="background: red;"><span style="color: #fff;">Войти</span></button>
                </div>
                <a href="{{Route('RecoveryPage')}}" class="pass-forgot">Forgot your password?</a>
             </div>
@@ -44,10 +44,18 @@
                   <input type="tel" name="login" id="regname" class="imaskjs__input_tel">
                   <span class="spin"></span>
                </div>
-               <div class="input">
+               <div class="input" style="margin-bottom: 60px">
                   <label for="regpass">Пароль</label>
                   <input type="password" name="password" id="regpass">
                   <span class="spin"></span>
+               </div>
+               <div class="input__checkbox">
+                  <input type="checkbox" id="opt" name="opt">
+                  <label for="opt">Я <a href="#" class="auth__href">оптовый покупатель</a></label>
+               </div>
+               <div class="input__checkbox" style="top: 330px;">
+                  <input type="checkbox" id="policies" name="policies" required>
+                  <label for="policies">Я принимаю <a href="#" class="auth__href">договор</a>, <a href="#" class="auth__href">согласие</a> и <a href="#" class="auth__href">положение</a> <br> об обработке персональных данных</label>
                </div>
                <div class="button">
                   <button><span>Зарегистрироваться</span></button>
@@ -70,6 +78,15 @@
       </div>
       <script src="{{asset('assets/js/index.js')}}"></script>
       <script>
+         const alt2 = document.querySelector('.alt-2');
+         alt2.addEventListener('click', () => {
+            const checkboxes = document.querySelectorAll('.input__checkbox');
+            setTimeout(() => {
+               checkboxes.forEach(item => {
+               item.classList.toggle('active');
+            });
+            }, 500);
+         });
          $("#Auth").on("submit", function(e){
             e.preventDefault();
             $.ajax({
