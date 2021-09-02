@@ -8,8 +8,8 @@
                   </div>
                </div>
                <div class="col-6">
-                  <h3 class="profile__phone">5700</h3>
-                  <p class="profile__balance">Баланс: 3435.24</p>
+                  <h3 class="profile__phone">{{$user_info->word}}{{substr($user_info->login, -4)}}</h3>
+                  <p class="profile__balance">Баланс: {{$user_info->balance}}</p>
                   <a href="#" class="profile__exit">Выход</a>
                </div>
             </div>

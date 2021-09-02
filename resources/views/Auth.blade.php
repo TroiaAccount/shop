@@ -96,7 +96,7 @@
                   data: $(this).serialize(),
                   success: function(data){
                      if(data.status == true){
-                        location = "{{Route('page', ['page' => 'main'])}}";
+                        location = "{{Route('page', ['page' => 'orders'])}}";
                      } else {
                         alert(data.error);
                      }

@@ -19,9 +19,16 @@ class UserController extends Controller
             $check_user = User::select()->where('login', $login)->first();
             if($check_user == null){
                 $password = Hash::make($password);
+                $last = substr($login, -4);
+                $word = null;
+                $check = User::select()->where('login', 'LIKE', '%' . $last)->first();
+                if($check != null){
+                    $word = $this->GenerateWord();
+                }
                 User::insert([
                     'login' => $login,
-                    'password' => $password
+                    'password' => $password,
+                    'word' => $word
                 ]);
                 $check_user = User::select()->where('login', $login)->first();
                 $code = $this->CreateCode($check_user->id); 
@@ -79,6 +86,31 @@ class UserController extends Controller
         $check = code::select()->where(['code' => $result, 'user_id' => $id])->first();
         if($check != null){
             $result = $this->CreateCode($id);
+        }
+        return $result;
+    }
+
+    private function GenerateWord($word_array = []){
+        $words = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+        $result = "";
+        foreach($words as $word){
+            $temp = "";
+            foreach($word_array as $temp_word){
+                $temp .= $temp_word; 
+            }
+            $temp .= $word;
+            $check = User::select()->where('word', $temp)->first();
+            if($check == null){
+                $result = $temp;
+                break;
+            }
+            if(!next($words)){
+                $count = count($word_array);
+                $word_array[] = $words[$count];
+            }
+        }
+        if($result == ""){
+            $result = $this->GenerateWord($word_array);
         }
         return $result;
     }

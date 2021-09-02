@@ -35,16 +35,18 @@
          </tr>
        </thead>
        <tbody>
-         <tr>
-           <td>5799-2</td>
-           <td>Оформлен</td>
-           <td class="table-summ">34521</td>
-           <td class="table-commission">2%</td>
-           <td>Товар прибыл в Хэй-Хэ</td>
-           <td>2020-10-15 23:23</td>
-           <td>....</td>
-           <td>...</td>
-         </tr>
+         @foreach($table as $result)
+            <tr>
+               <td>{{$result->number}}</td>
+               <td>@if($result->status == 1) Отправлен @elseif($result->status == 2) Прибыл @elseif($result->status == 3) Упаковывается @elseif($result->status == 4) Обрабатывается @endif</td>
+               <td class="table-summ">{{$result->cost}}</td>
+               <td class="table-commission">{{$result->commission}}%</td>
+               <td>{{$result->status2}}</td>
+               <td>{{$result->datetime}}</td>
+               <td>....</td>
+               <td>...</td>
+            </tr>
+         @endforeach
        </tbody>
    </table>
 </div>
