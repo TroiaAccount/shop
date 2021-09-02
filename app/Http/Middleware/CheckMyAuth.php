@@ -22,7 +22,7 @@ class CheckMyAuth
         if($token != null){
             $CheckToken = login::select()->where('token', $token)->first();
             if($CheckToken != null){
-                return redirect(Route('page', ['page' => 'main']));
+                return redirect(Route('page', ['page' => 'orders']));
             }
         }
 

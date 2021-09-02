@@ -11,9 +11,8 @@ class PageController extends Controller
 {
 
     public function page(request $req, $page){
-        $token = $req->session()->get('token');
-        $select_token = login::select()->where('token', $token)->first();
-        $user_info = User::select()->where('id', $select_token->user_id)->first();
+        $id = $req->session()->get('id');
+        $user_info = User::select()->where('id', $id)->first();
         $table = null;
         if($page == "orders"){
             $table = order::select()->where('user_id', $user_info->id)->get();

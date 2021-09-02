@@ -19,11 +19,10 @@ class UserController extends Controller
             $check_user = User::select()->where('login', $login)->first();
             if($check_user == null){
                 $password = Hash::make($password);
-                $last = substr($login, -4);
-                $word = null;
-                $check = User::select()->where('login', 'LIKE', '%' . $last)->first();
+                $word = substr($login, -4);
+                $check = User::select()->where('login', 'LIKE', '%' . $word)->first();
                 if($check != null){
-                    $word = $this->GenerateWord();
+                    $word = $this->GenerateWord($word);
                 }
                 User::insert([
                     'login' => $login,
@@ -90,7 +89,7 @@ class UserController extends Controller
         return $result;
     }
 
-    private function GenerateWord($word_array = []){
+    private function GenerateWord($login, $word_array = []){
         $words = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
         $result = "";
         foreach($words as $word){
@@ -98,7 +97,7 @@ class UserController extends Controller
             foreach($word_array as $temp_word){
                 $temp .= $temp_word; 
             }
-            $temp .= $word;
+            $temp .= $word . $login;
             $check = User::select()->where('word', $temp)->first();
             if($check == null){
                 $result = $temp;
@@ -130,6 +129,7 @@ class UserController extends Controller
                             'token' => $token
                         ]);
                         $req->session()->put('token', $token);
+                        $req->session()->put('id', $check_user->id);
                         $result = ['status' => true];
                     } else {
                         $result = ['status' => false, 'error' => 'Неверный пароль'];
