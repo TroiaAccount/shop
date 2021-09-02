@@ -1,15 +1,15 @@
 <section class="page__header header container">
             <div class="header__wrapper d-flex justify-content-between">
                <div class="header__arrival">
-                  <ul class="nav">
+                  <ul class="nav header-links">
                      <li class="nav-item ms-3">
                         <div class="link-wrapper">
-                           <a href="#" class="nav-link">Доставка до Благовещенска</a>
+                           <a href="#" class="nav-link hl">Доставка до Благовещенска</a>
                         </div>
                      </li>
                      <li class="nav-item ms-5">
                         <div class="link-wrapper">
-                           <a href="#" class="nav-link">Доставка по Росии</a>
+                           <a href="#" class="nav-link hl">Доставка по Росии</a>
                         </div>
                      </li>
                   </ul>
