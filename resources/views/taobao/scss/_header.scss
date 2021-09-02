@@ -1,8 +1,8 @@
 .page {
    &__header {
       padding-top: 20px;
-      height: 70px;
-      width: 100%;
+      height: 65px;
+      min-width: 100%;
       position: sticky;
       top: 0;
       z-index: 20;

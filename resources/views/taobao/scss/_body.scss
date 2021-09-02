@@ -1,0 +1,53 @@
+.page {
+   &__body {
+      position: absolute;
+      top: 65px;
+      left: 0;
+      width: 100%;
+      padding: 10px 10px 10px 10px;
+      background-color: #ededf5;
+   }
+   &__wrapper {
+      background-color: #ededf5;
+      position: relative;
+      height: 100vh;
+   }
+}
+.body {
+   &__wrapper {
+      padding: 10px;
+      height: 100%;
+      width: 100%;
+      .card {
+         input {
+            margin-left: -15px;
+            padding: 6px;
+            font-size: 14px;
+         }
+         select {
+            margin-left: -15px;
+            padding: 6px;
+            font-size: 14px;
+         }
+         button {
+            padding: 6px 14px;
+            font-size: 14px;
+         }
+         box-shadow: 0px 0px 12px #ccc;
+      }
+   }
+}
+
+.text-input {
+   font-size: 14px;
+}
+
+.table__wrapper {
+   font-size: 14px;
+   .table-summ {
+      color: green
+   }
+   .table-commission {
+      color: rgb(196, 166, 0)
+   }
+}
