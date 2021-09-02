@@ -21,7 +21,6 @@
       color: #fff;
 		&__icon {
          padding: 0;
-         width: 90%;
 		}
 		&__phone {
          margin: 0px 0px 10px 0px;
@@ -49,6 +48,7 @@
    .flex-column {
    }
    .nav-item {
+      margin-top: 10px;
    }
    .nav-link {
       font-size: 14px;
@@ -64,4 +64,8 @@
       font-size: 12px;
       color: #34598f;
    }
+}
+
+.icon-wrapper {
+   width: 95%;
 }

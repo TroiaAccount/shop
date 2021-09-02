@@ -1,3 +1,262 @@
+@charset "UTF-8";
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+body {
+  height: 100%;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+article > * + * {
+  margin-top: 1em;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+.wrapper {
+  min-height: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    -webkit-animation-duration: 0.01ms !important;
+            animation-duration: 0.01ms !important;
+    -webkit-animation-iteration-count: 1 !important;
+            animation-iteration-count: 1 !important;
+    -webkit-transition-duration: 0.01ms !important;
+            transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+main#page {
+  margin: 0px 0px 0px 250px;
+}
+
+::-webkit-scrollbar {
+  /* chrome based */
+  width: 0px;
+  /* ширина scrollbar'a */
+  background: transparent;
+  /* опционально */
+}
+
+html {
+  -ms-overflow-style: none;
+  /* IE 10+ */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.bg-primary {
+  background-color: #1c4583 !important;
+}
+
+.sidenav {
+  min-height: 100vh;
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+}
+
+.sidenav .container {
+  padding: 20px 30px;
+}
+
+.sidenav .container .col-6 {
+  padding: 0;
+}
+
+.sidenav .profile {
+  color: #fff;
+}
+
+.sidenav .profile__icon {
+  padding: 0;
+}
+
+.sidenav .profile__phone {
+  margin: 0px 0px 10px 0px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.sidenav .profile__balance {
+  margin: 3px 0px 0px 0px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.sidenav .profile__exit {
+  text-decoration: none;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.sidenav .nav-item {
+  margin-top: 10px;
+}
+
+.sidenav .nav-link {
+  font-size: 14px;
+  color: #859cbe;
+}
+
+.sidenav .nav-link:hover {
+  color: #c7d6e6;
+  background: #183d72;
+}
+
+.sidenav__version {
+  margin: 40px 0px 0px 0px;
+  font-size: 12px;
+  color: #34598f;
+}
+
+.icon-wrapper {
+  width: 95%;
+}
+
+.page__header {
+  padding-top: 20px;
+  height: 65px;
+  min-width: 100%;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background-color: #fff;
+}
+
+.header__arrival .nav-link {
+  padding: 0 0 20px 0;
+  color: #8f8c8c;
+}
+
+.header__arrival .nav-link:hover {
+  color: #000;
+  border-bottom: 2px solid #90b4da;
+}
+
+.header__nav .nav-item {
+  margin: 0px 30px 0px 0px;
+}
+
+.header__nav .nav-link {
+  padding: 0 0 20px 0;
+}
+
+.page__body {
+  position: absolute;
+  top: 65px;
+  left: 0;
+  width: 100%;
+  padding: 10px 10px 10px 10px;
+  background-color: #ededf5;
+}
+
+.page__wrapper {
+  background-color: #ededf5;
+  position: relative;
+  height: 100vh;
+}
+
+.body__wrapper {
+  padding: 10px;
+  height: 100%;
+  width: 100%;
+}
+
+.body__wrapper .card {
+  -webkit-box-shadow: 0px 0px 12px #ccc;
+          box-shadow: 0px 0px 12px #ccc;
+}
+
+.body__wrapper .card input {
+  margin-left: -15px;
+  padding: 6px;
+  font-size: 14px;
+}
+
+.body__wrapper .card select {
+  margin-left: -15px;
+  padding: 6px;
+  font-size: 14px;
+}
+
+.body__wrapper .card button {
+  padding: 6px 14px;
+  font-size: 14px;
+}
+
+.text-input {
+  font-size: 14px;
+}
+
+.table__wrapper {
+  font-size: 14px;
+}
+
+.table__wrapper .table-summ {
+  color: green;
+}
+
+.table__wrapper .table-commission {
+  color: #c4a600;
+}
+
 .box {
    position: relative;
    top: 0;
