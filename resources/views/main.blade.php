@@ -20,9 +20,10 @@
 
          <section class="page__body body">
             <div class="container body__wrapper">
-               <div class="body__card">
-               
-                  @include('page/' . $page)
+               <div class="card">
+                  <div class="card-body">
+                     @include('page/' . $page)
+                  </div>
                </div>
             </div>
          </section>

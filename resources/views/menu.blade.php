@@ -4,7 +4,7 @@
             <div class="row align-items-center">
                <div class="col-6">
                   <div class="icon-wrapper">
-                     <img class="profile__icon w-75" src="{{asset('assets/taobao/assets/images/profile.png')}}" alt="profile photo">
+                     <img class="profile__icon" src="{{asset('assets/images/profile-icon.png')}}" alt="profile photo">
                   </div>
                </div>
                <div class="col-6">
