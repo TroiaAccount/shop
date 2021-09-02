@@ -659,7 +659,7 @@ html {
    top: 300px;
    left: 50px;
 }
-
+в
 .input__checkbox.active {
    display: block;
 }
@@ -667,3 +667,4 @@ html {
    text-decoration: underline;
    color: #ddd;
 }
+

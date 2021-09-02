@@ -2,7 +2,7 @@
       <div class="sidenav__profile-wrapper container">
          <div class="sidenav__profile d-flex justify-content-start profile">
             <div class="row align-items-center">
-               <div class="col-6">
+               <div class="col-6" style="margin-left: -10px">
                   <div class="icon-wrapper">
                      <img class="profile__icon" src="{{asset('assets/images/profile-icon.png')}}" alt="profile photo">
                   </div>
