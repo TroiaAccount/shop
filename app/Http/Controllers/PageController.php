@@ -9,13 +9,14 @@ use App\Models\login;
 class PageController extends Controller
 {
 
-    public function page(request $req){
+    public function page(request $req, $page){
         $token = $req->session()->get('token');
         $select_token = login::select()->where('token', $token)->first();
         $user_info = User::select()->where('id', $select_token->user_id)->first();
-        return $user_info->login;
+
+        return view('main')->with(['page' => $page]);
     }
-    //
+
     public function Auth(request $req){
         return view('Auth');
     }
