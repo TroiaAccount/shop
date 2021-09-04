@@ -155,13 +155,13 @@ html {
 }
 
 .sidenav .nav-link:hover {
-  color: #c7d6e6;
-  background: #183d72;
+   color: #c7d6e6;
+   background: #183d72;
 }
 
 .sidenav .nav-link._active {
    color: #c7d6e6;
-   background: #183d72;
+   background: #386cb4b0;
 }
 
 .sidenav__version {
@@ -191,8 +191,8 @@ html {
 }
 
 .header__arrival .nav-link:hover {
-  color: #000;
   border-bottom: 2px solid #90b4da;
+  color: #756c6c
 }
 
 .header__arrival .nav-link._active {
