@@ -7,7 +7,7 @@
             <input type="text" id="number" name="number" class="form-control">
          </div>
       </div>
-      <div class="card-input col-3 row">
+      <div class="card-input col-3 row ms-1">
          <label for="number" class="col-form-label col-sm-4">Статус:</label>
          <div class="col-sm-8 p-0">
             <select class="form-select" aria-label="Выбор статуса" name="status">
@@ -38,7 +38,7 @@
            <th scope="col">Примечания</th>
          </tr>
        </thead>
-       <tbody>
+       <tbody id="table-body">
          @foreach($table as $result)
             <tr>
                <td>{{$result->number}}</td>
@@ -63,7 +63,40 @@
                data: $(this).serialize(),
                success: function(data){
                   if(data.status == true){
-                     
+                     const table = document.querySelector('.table-bordered');
+                     table.querySelector('#table-body').remove();
+                     const tbody = document.createElement(`tbody`);
+                     tbody.setAttribute('id', 'table-body');
+                     data.data.forEach(item => {
+                        const tr = document.createElement('tr');
+                        let status;
+                        switch (item.status) {
+                           case 1: 
+                              status = 'Отправлен';
+                              break;
+                           case 2: 
+                              status = 'Прибыл';
+                              break;
+                           case 3: 
+                              status = 'Упаковывается';
+                              break;
+                           case 4: 
+                              status = 'Обрабатывается';
+                              break;   
+                        }
+                        tr.innerHTML = `
+                           <td>${item.number}</td>
+                           <td>${status}</td>
+                           <td class="table-summ">${item.cost}</td>
+                           <td class="table-commission">${item.commission}%</td>
+                           <td>${item.status2}</td>
+                           <td>${item.datetime}</td>
+                           <td>....</td>
+                           <td>...</td>
+                        `;
+                        tbody.append(tr);
+                     })
+                     table.append(tbody);
                   } else {
                      alert(data.error);
                   }

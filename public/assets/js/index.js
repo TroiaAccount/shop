@@ -119,3 +119,24 @@ $(function() {
    });
 
 });
+
+// Добавление класса активности 
+
+const sideLinks = document.querySelector('ul.nav.flex-column'),
+      headerLinks = document.querySelector('ul.nav.header-links');
+
+function addActiveClass(ul, selectorSiblings) {
+   ul.addEventListener('click', (e) => {
+      if (e.target.classList.contains('nav-link')) {
+         if (!e.target.classList.contains('_active')) {
+            document.querySelectorAll(selectorSiblings).forEach(item => {
+               item.classList.remove('_active');
+            })
+            e.target.classList.add('_active');
+         }
+      }
+   })
+}
+
+addActiveClass(sideLinks, '.nav-link.sn');
+addActiveClass(headerLinks, '.nav-link.hl');

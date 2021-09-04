@@ -155,8 +155,13 @@ html {
 }
 
 .sidenav .nav-link:hover {
-  color: #c7d6e6;
-  background: #183d72;
+   color: #c7d6e6;
+   background: #183d72;
+}
+
+.sidenav .nav-link._active {
+   color: #c7d6e6;
+   background: #386cb4b0;
 }
 
 .sidenav__version {
@@ -186,9 +191,14 @@ html {
 }
 
 .header__arrival .nav-link:hover {
-  color: #000;
   border-bottom: 2px solid #90b4da;
+  color: #756c6c
 }
+
+.header__arrival .nav-link._active {
+   color: #000;
+   border-bottom: 2px solid #90b4da;
+ }
 
 .header__nav .nav-item {
   margin: 0px 30px 0px 0px;
@@ -659,7 +669,7 @@ html {
    top: 300px;
    left: 50px;
 }
-
+в
 .input__checkbox.active {
    display: block;
 }
@@ -667,3 +677,4 @@ html {
    text-decoration: underline;
    color: #ddd;
 }
+
