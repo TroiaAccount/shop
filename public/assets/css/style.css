@@ -256,7 +256,7 @@ html {
 }
 
 .table__wrapper {
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .table__wrapper .table-summ {
@@ -678,3 +678,22 @@ html {
    color: #ddd;
 }
 
+.page-indicator {
+   align-items: center;
+   width: 28px;
+   background: #3c3c3c;
+}
+
+.page-indicator > p {
+   margin-top: 6px;
+   text-align: center;
+   color: #fefefe;
+}
+
+.change__buttons-group {
+   font-size: 14px;
+}
+
+button.change-page-btn {
+   padding: 4px 10px!important;
+}
