@@ -47,8 +47,12 @@
                <td class="table-commission">{{$result->commission}}%</td>
                <td>{{$result->status2}}</td>
                <td>{{$result->datetime}}</td>
-               <td>....</td>
-               <td>...</td>
+               <td align="right">
+                  <a href="#"><i class="far fa-file-alt"></i></a>
+                  <a href="#"><i class="fas fa-download"></i></a>
+                  <a href="#"><i class="far fa-copy"></i></a>
+               </td>
+               <td align="center" style="background-color: #eaf5cb;"><i class="fas fa-info-circle"></i></td>
             </tr>
          @endforeach
        </tbody>
@@ -104,4 +108,28 @@
          });
       });
    </script>
+</div>
+<div class="change__page-wrapper">
+   <div class="buttons-wrapper d-flex justify-content-end">
+
+      <div class="change__buttons-group">
+         <div class="d-flex justify-content-center">
+            <button class="btn btn-outline-secondary change-page-btn" style="border-bottom-right-radius: 0px; border-top-right-radius: 0px;"><i class="fas fa-chevron-left fa-xs"></i></button>
+            <div class="page-indicator">
+               <p>1</p>
+            </div>
+            <button class="btn btn-outline-secondary change-page-btn" style="border-bottom-left-radius: 0px; border-top-left-radius: 0px;"><i class="fas fa-chevron-right fa-xs"></i></button>
+         </div>
+      </div>
+
+      <div class="change__buttons-group ms-4">
+         <select class="form-select" aria-label="select-page" style="width: 80px; padding: 4px 6px;">
+            <option selected>1</option>
+            <option value="1">2</option>
+            <option value="2">3</option>
+            <option value="3">4</option>
+         </select>
+      </div>
+
+   </div>
 </div>
