@@ -25,3 +25,4 @@ Route::post('/api/code', 'UserController@CheckCode')->middleware('CheckMyAuth')-
 Route::post('/api/recovery', 'UserController@Recovery')->middleware('CheckMyAuth')->name('Recovery');
 Route::post('/api/recovery/last', 'UserController@RecoveryLast')->middleware('CheckMyAuth')->name('RecoveryLast');
 Route::post('/api/select/order/filter', 'OrderController@Filter')->middleware('MyAuth')->name('Filter');
+Route::get('/api/exit', 'UserController@Exit')->middleware('MyAuth')->name('Exit');

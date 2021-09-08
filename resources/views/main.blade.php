@@ -8,7 +8,7 @@
    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
    <script src="https://kit.fontawesome.com/e573f55991.js" crossorigin="anonymous"></script>
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-   <title>CNSHOP</title>
+   <title>Cabinet</title>
 </head>
 <body>
    

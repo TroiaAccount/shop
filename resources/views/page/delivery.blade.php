@@ -59,7 +59,19 @@
          </tr>
       </thead>
       <tbody id="table-body">
-         
+         @foreach($table as $result)
+            <tr class="align-middle">
+               <td class="delivery-row"><img src="{{asset($result->image)}}" alt="" style="max-width: 300px"></td>
+               <td>{{$result->datetime}}</td>
+               <td>{{$result->cost}}</td>
+               <td>{{$result->course}}</td>
+               <td>{{$result->yan}}</td>
+               <td>{{$result->transport_company}}</td>
+               <td>{{$result->trek_number}}</td>
+               <td>{{$result->note}}</td>
+               <td>{{$result->created_at}}</td>
+            </tr>
+         @endforeach
       </tbody>
    </table>
    <script>

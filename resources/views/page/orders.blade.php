@@ -99,6 +99,8 @@
                            <td>...</td>
                         `;
                         tbody.append(tr);
+                        let pagination = document.getElementById('pagination');
+                        pagination.style.display = "none";
                      })
                      table.append(tbody);
                   } else {
@@ -109,27 +111,5 @@
       });
    </script>
 </div>
-<div class="change__page-wrapper">
-   <div class="buttons-wrapper d-flex justify-content-end">
 
-      <div class="change__buttons-group">
-         <div class="d-flex justify-content-center">
-            <button class="btn btn-outline-secondary change-page-btn" style="border-bottom-right-radius: 0px; border-top-right-radius: 0px;"><i class="fas fa-chevron-left fa-xs"></i></button>
-            <div class="page-indicator">
-               <p>1</p>
-            </div>
-            <button class="btn btn-outline-secondary change-page-btn" style="border-bottom-left-radius: 0px; border-top-left-radius: 0px;"><i class="fas fa-chevron-right fa-xs"></i></button>
-         </div>
-      </div>
-
-      <div class="change__buttons-group ms-4">
-         <select class="form-select" aria-label="select-page" style="width: 80px; padding: 4px 6px;">
-            <option selected>1</option>
-            <option value="1">2</option>
-            <option value="2">3</option>
-            <option value="3">4</option>
-         </select>
-      </div>
-
-   </div>
-</div>
+@include('pagination')

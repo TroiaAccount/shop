@@ -209,4 +209,12 @@ class UserController extends Controller
         }
         return $token;
     }
+
+    public function Exit(request $req){
+        $token = $req->session()->get('token');
+        login::where('token', $token)->delete();
+        $req->session()->put(['token' => '', 'id' => '']);
+        $result = ['status' => true];
+        return json_encode($result, true);
+    }
 }

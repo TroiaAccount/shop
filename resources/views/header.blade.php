@@ -4,7 +4,7 @@
                   <ul class="nav header-links">
                      <li class="nav-item ms-3">
                         <div class="link-wrapper">
-                           <a href="#" class="nav-link hl">Доставка до Благовещенска</a>
+                           <a href="#" class="nav-link hl _active">Доставка до Москвы</a>
                         </div>
                      </li>
                      <li class="nav-item ms-5">
@@ -23,7 +23,7 @@
                         <a href="#" class="nav-link">Главная</a>
                      </li>
                      <li class="nav-item">
-                        <a href="#" class="nav-link">Старые заказы</a>
+                        <a href="#" class="nav-link">Создать заказ</a>
                      </li>
                      <li class="nav-item">
                         <a href="#" class="nav-link"><i class="fas fa-language me-2"></i> русский язык</a>

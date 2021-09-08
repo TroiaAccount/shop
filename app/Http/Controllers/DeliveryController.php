@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\order;
+use App\Models\delivery;
 
 class OrderController extends Controller
 {
@@ -11,17 +11,9 @@ class OrderController extends Controller
     public function Filter(request $req){
         $id = $req->session()->get('id');
         $result = ['status' => false, 'error' => 'Вы не указали параметры'];
-        $number = addslashes($req['number']);
-        $status = addslashes($req['status']);
         $operation = [];
         $operation['user_id'] = $id;
-        if($number != null){
-            $operation[] = ['number', 'like', '%' . $number . '%'];
-        }
-        if($status != null){
-            $operation['status'] = $status;
-        }
-        $select = order::select()->where($operation)->get();
+        $select = delivery::select()->where($operation)->get();
         $result = ['status' => true, 'data' => $select];
         $result = json_encode($result, true);
         return $result;

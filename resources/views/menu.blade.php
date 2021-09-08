@@ -10,18 +10,31 @@
                <div class="col-6">
                   <h3 class="profile__phone">{{$user_info->word}}</h3>
                   <p class="profile__balance">Баланс: {{$user_info->balance}}</p>
-                  <a href="#" class="profile__exit">Выход</a>
+                  <a href="#" onclick="Exit()" class="profile__exit">Выход</a>
                </div>
             </div>
          </div>
       </div>
+      <script>
+         function Exit(){
+            $.ajax({
+               url: '{{Route("Exit")}}',
+               method: 'get',
+               dataType: 'json',
+               data: $(this).serialize(),
+               success: function(data){
+                  location.reload();
+               }
+            });
+         };
+      </script>
       <nav class="sidenav__nav">
          <ul class="nav flex-column">
             <li class="nav-item">
-               <a class="nav-link sn" href="#"><i class="fas fa-plane-departure me-3"></i>Мои заказы</a>
+               <a class="nav-link sn @if($page == 'orders') _active @endif" href="{{Route('page', ['page' => 'orders'])}}"><i class="fas fa-plane-departure me-3"></i>Мои заказы</a>
             </li>
             <li class="nav-item">
-               <a class="nav-link sn" href="#"><i class="fas fa-truck me-3"></i>Моя доставка</a>
+               <a class="nav-link sn @if($page == 'delivery') _active @endif"" href="{{Route('page', ['page' => 'delivery'])}}"><i class="fas fa-truck me-3"></i>Моя доставка</a>
             </li>
             <li class="nav-item">
                <a class="nav-link sn" href="#"><i class="fas fa-shopping-cart me-3"></i>Заказы Мини-магазина</a>
