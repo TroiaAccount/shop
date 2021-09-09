@@ -28,17 +28,17 @@
    <table class="table table-bordered">
       <thead>
          <tr>
-           <th scope="col">Номер</th>
-           <th scope="col">Сохранён/Оформлен</th>
-           <th scope="col">Сумма</th>
-           <th scope="col">Комиссия</th>
-           <th scope="col">Статус</th>
-           <th scope="col">Дата/Время</th>
-           <th scope="col">Операции</th>
-           <th scope="col">Примечания</th>
+            <th scope="col">Номер</th>
+            <th scope="col">Сохранён/Оформлен</th>
+            <th scope="col">Сумма</th>
+            <th scope="col">Комиссия</th>
+            <th scope="col">Статус</th>
+            <th scope="col">Дата/Время</th>
+            <th scope="col">Операции</th>
+            <th scope="col">Примечания</th>
          </tr>
-       </thead>
-       <tbody id="table-body">
+      </thead>
+      <tbody id="table-body">
          @foreach($table as $result)
             <tr>
                <td>{{$result->number}}</td>
@@ -55,7 +55,7 @@
                <td align="center" style="background-color: #eaf5cb;"><i class="fas fa-info-circle"></i></td>
             </tr>
          @endforeach
-       </tbody>
+      </tbody>
    </table>
    <script>
       $("#filter").on("submit", function(e){

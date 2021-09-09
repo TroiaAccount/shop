@@ -64,7 +64,6 @@
             <button type="submit" class="btn btn-primary col-2">Создать</button>
          </div>
       </div>
-     
    </form>
 </div>
 <script>
