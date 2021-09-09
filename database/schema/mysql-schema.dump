@@ -72,6 +72,7 @@ CREATE TABLE `Users` (
   `id` int NOT NULL AUTO_INCREMENT,
   `login` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `password` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `word` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `agree` int NOT NULL DEFAULT '0',
   `balance` float NOT NULL DEFAULT '0',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
