@@ -1,3 +1,8 @@
+@php
+   echo "2q";
+   exit;
+@endphp
+
 <!DOCTYPE html>
 <html >
    <head>
