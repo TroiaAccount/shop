@@ -23,7 +23,7 @@
                         <a href="#" class="nav-link">Главная</a>
                      </li>
                      <li class="nav-item">
-                        <a href="#" class="nav-link">Создать заказ</a>
+                        <a href="{{Route('Page', ['page' => 'create', 'subpage' => 'order'])}}" class="nav-link">Создать заказ</a>
                      </li>
                      <li class="nav-item">
                         <a href="#" class="nav-link"><i class="fas fa-language me-2"></i> русский язык</a>

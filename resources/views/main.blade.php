@@ -23,7 +23,11 @@
             <div class="container body__wrapper">
                <div class="card">
                   <div class="card-body">
-                     @include('page/' . $page)
+                     @if($subpage == null)
+                        @include('page/' . $page)
+                     @else
+                        @include('page/' . $page . '/' . $subpage)
+                     @endif
                   </div>
                </div>
             </div>
