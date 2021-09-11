@@ -46,30 +46,35 @@ class OrderController extends Controller
         $color = addslashes($req['color']);
         $size = addslashes($req['size']);
         $model = addslashes($req['model']);
-        $ImageUrl = $req['ImageUrl'];
-        $url = $req['url'];
+        $ImageUrl = json_decode($req['ImageUrl']);
+        $url = json_decode($req['url']);
         $images = [];
         $urls = [];
+ 
+
         if($color != null && $cost != null && $size != null && $model != null){
             if($image != null || $ImageUrl != null){
                 if($image != null){
-                    foreach($req->file() as $image_result){
+                    foreach($req->file('image') as $image_result){
                         $extension = explode('.', $image_result->getClientOriginalName());
                         $extension = end($extension);
                         $filename = $this->CreateFilename($id, $extension) . '.' . $extension;
-                        mkdir('assets/img/' . $id, 0777);
+                        if(file_exists('assets/img/' . $id) == false){
+                            mkdir('assets/img/' . $id, 0777, true);
+                        }
                         $image_result->move('assets/img/' . $id . '/', $filename);
                         $images[] = 'assets/img/' . $id . '/' . $filename;
                     }
+                    exit;
                 }
                 if($ImageUrl != null){
+
                     if(is_array($ImageUrl)){
                         foreach($ImageUrl as $image_result){
                             $images[] = $image_result;
                         }
                     }
                 }
-                return var_dump($images);
                 if(count($images) >= 1){
                     if(is_array($url)){
                         foreach($url as $url_result){
@@ -83,6 +88,7 @@ class OrderController extends Controller
                         $count = order::select('id')->where('user_id', $id)->count();
                         $count = $count + 1;
                         $number = $word . '-' . $count;
+                        $datetime = time();
                         order::insert([
                             'user_id' => $id,
                             'number' => $number,
@@ -90,9 +96,12 @@ class OrderController extends Controller
                             'status' => 4,
                             'cost' => $cost,
                             'count' => $count,
+                            'commission' => 0,
                             'color' => $color,
                             'size' => $size,
-                            'model' => $model
+                            'model' => $model,
+                            'status2' => 'Test',
+                            'datetime' => $datetime
                         ]);
                         $result = ['status' => true];
                     }

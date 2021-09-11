@@ -11,7 +11,9 @@
         "laravel/framework": "^8.54",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
-        "messagebird/php-rest-api": "^2.0"
+        "messagebird/php-rest-api": "^2.0",
+        "nyholm/psr7": "^1.4",
+        "symfony/psr-http-message-bridge": "^2.1"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

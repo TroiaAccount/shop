@@ -6,7 +6,7 @@
             <label for="number" class="col-form-label col-sm-3">Фото товара:</label>
             <div id="filesGroup" class="col-sm-9 p-0">
                <div class="input-group">
-                  <input type="file" name="image-1" class="form-control m-0 files-input" required>
+                  <input type="file" name="image[]" class="form-control m-0 files-input" required>
                   <span class="input-group-text add__input-btn" style="cursor: pointer;" data-input="files"><i class="fas fa-xs fa-plus"></i></span>
                </div>
             </div>
@@ -86,7 +86,7 @@
                   span.style.cursor = 'pointer';
                   span.innerHTML = '<i class="fas fa-xs fa-minus"></i>';
                   input.innerHTML = `
-                     <input type="file" name="image-${fileInd}" class="form-control m-0 files-input" required>
+                     <input type="file" name="image-[]" class="form-control m-0 files-input" required>
                   `
                   input.append(span);
                   span.addEventListener('click', () => input.remove())
@@ -156,15 +156,16 @@
          url = [],
          ImageUrl = [],
          image = [],
+         
          pushDataToArray = (data, array) => {
             data.forEach(input => {
                array.push(input.value)
             })
          };
+         
 
       pushDataToArray(urlProduct, url);
       pushDataToArray(urlPhoto, ImageUrl);
-      pushDataToArray(files, image);
 
       const data = new FormData();
       data.append('count', count);
@@ -174,60 +175,23 @@
       data.append('size', size);
       data.append('url', JSON.stringify(url));
       data.append('ImageUrl', JSON.stringify(ImageUrl));
-      data.append('image', JSON.stringify(image));
+      files.forEach((input, i) => {
+         data.append('image[]', input.files[0]);
+      })
 
       $.ajax({
-            headers: {
-               'X-CSRF-TOKEN': _token
-            },
-            url: '{{Route("CreateOrder")}}',
-            method: 'POST',
-            data,
-            dataType: 'json',
-            processData: false,
-            success: function(data){
-               if(data.status == true){
-                  console.log(data)
-                  const table = document.querySelector('.table-bordered');
-                  table.querySelector('#table-body').remove();
-                  const tbody = document.createElement(`tbody`);
-                  tbody.setAttribute('id', 'table-body');
-                  data.data.forEach(item => {
-                     const tr = document.createElement('tr');
-                     let status;
-                     switch (item.status) {
-                        case 1: 
-                           status = 'Отправлен';
-                           break;
-                        case 2: 
-                           status = 'Прибыл';
-                           break;
-                        case 3: 
-                           status = 'Упаковывается';
-                           break;
-                        case 4: 
-                           status = 'Обрабатывается';
-                           break;   
-                     }
-                     tr.innerHTML = `
-                        <td>${item.number}</td>
-                        <td>${status}</td>
-                        <td class="table-summ">${item.cost}</td>
-                        <td class="table-commission">${item.commission}%</td>
-                        <td>${item.status2}</td>
-                        <td>${item.datetime}</td>
-                        <td>....</td>
-                        <td>...</td>
-                     `;
-                     tbody.append(tr);
-                     const pagination = document.getElementById('pagination');
-                     pagination.style.display = "none";
-                  })
-                  table.append(tbody);
-               } else {
-                  alert(data.error);
-               }
-            }
+         url: '{{Route("CreateOrder")}}',
+         method: 'post',
+         data: data,
+         contentType: false,
+         processData: false,
+         success: function (response) {
+            alert('Заказ успешно создан!')
+         },
+         error: function (err) {
+            console.log(err);
+         }
       });
+      
    });
 </script>
