@@ -10,6 +10,8 @@ use App\Models\code;
 
 class UserController extends Controller
 {
+
+    private $ApiKey = "ViyHUneWN1bWSf22HNSWy7heR";
     
     public function Register(request $req){
         $login = addslashes($req['login']);
@@ -37,7 +39,7 @@ class UserController extends Controller
                     'user_id' => $check_user->id,
                     'code' => $code
                 ]);
-                $MessageBird = new \MessageBird\Client('VnqFMLF6ivx0xA8Q1cnvmNeI7');
+                $MessageBird = new \MessageBird\Client($this->$ApiKey);
                 $Message = new \MessageBird\Objects\Message();
                 $Message->originator = 'ozcom';
                 $Message->recipients = array($login);
@@ -155,7 +157,7 @@ class UserController extends Controller
                     $code = $this->CreateCode($check_user->id);
                     code::where('user_id', $check_user->id)->delete();
                     code::insert(['user_id' => $check_user->id, 'code' => $code]);
-                    $MessageBird = new \MessageBird\Client('VnqFMLF6ivx0xA8Q1cnvmNeI7');
+                    $MessageBird = new \MessageBird\Client($this->$ApiKey);
                     $Message = new \MessageBird\Objects\Message();
                     $Message->originator = 'ozcom';
                     $Message->recipients = array($login);
