@@ -186,7 +186,7 @@
          contentType: false,
          processData: false,
          success: function (response) {
-            alert('Заказ успешно создан!')
+            console.log(response);
          },
          error: function (err) {
             console.log(err);

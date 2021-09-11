@@ -16,9 +16,4 @@ yarn-error.log
 composer.lock
 .env.example
 public/test.html
-public/assets/img/1/7cc75dd83d4ccf15134da9dd881208fe.png
-public/assets/img/1/9df205b0c5f92d50cb8b3b31ca666416.png
-public/assets/img/1/946d6339a0cc51d5211385ecf1a806f5.png
-public/assets/img/1/a8734898fde744869287ae1a6b91ecdf.png
-public/assets/img/1/b28678fc08f85ba5547e820bd1d221f5.png
-public/assets/img/1/cf0732e783cd3255560f7d37f53e422a.png
+public/assets/img/1/
