@@ -101,7 +101,8 @@ class OrderController extends Controller
                             'size' => $size,
                             'model' => $model,
                             'status2' => 'Test',
-                            'datetime' => $datetime
+                            'datetime' => $datetime,
+                            'urls' => $urls
                         ]);
                         $result = ['status' => true];
                     }
