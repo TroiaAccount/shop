@@ -38,7 +38,6 @@ class OrderController extends Controller
     }
 
     public function CreateOrder(request $req){
-        
         $id = $req->session()->get('id');
         $result = ['status' => false, 'error' => 'Вы не заполнили все поля'];
         $image = $req['image'];
@@ -51,14 +50,9 @@ class OrderController extends Controller
         $url = json_decode($req['url']);
         $images = [];
         $urls = [];
- 
-        
         if($color != null && $cost != null && $size != null && $model != null){
-            
             if($image != null || $ImageUrl != null){
-                
                 if($image != null){
-
                     foreach($req->file('image') as $image_result){
                         $extension = explode('.', $image_result->getClientOriginalName());
                         $extension = end($extension);
@@ -70,7 +64,6 @@ class OrderController extends Controller
                         $images[] = 'assets/img/' . $id . '/' . $filename;
                     }
                 }
-                
                 if($ImageUrl != null){
                     if(is_array($ImageUrl)){
                         foreach($ImageUrl as $image_result){
@@ -78,10 +71,8 @@ class OrderController extends Controller
                         }
                     }
                 }
-                
                 if(count($images) >= 1){
                     if(is_array($url)){
-                        
                         foreach($url as $url_result){
                             $urls[] = $url_result;
                         }
@@ -115,7 +106,6 @@ class OrderController extends Controller
             }
         }
         $result = json_encode($result, true);
-        
         return $result;
     }
 }
