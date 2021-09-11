@@ -39,7 +39,7 @@ class UserController extends Controller
                     'user_id' => $check_user->id,
                     'code' => $code
                 ]);
-                $MessageBird = new \MessageBird\Client($this->$ApiKey);
+                $MessageBird = new \MessageBird\Client($this->ApiKey);
                 $Message = new \MessageBird\Objects\Message();
                 $Message->originator = 'ozcom';
                 $Message->recipients = array($login);
@@ -157,7 +157,7 @@ class UserController extends Controller
                     $code = $this->CreateCode($check_user->id);
                     code::where('user_id', $check_user->id)->delete();
                     code::insert(['user_id' => $check_user->id, 'code' => $code]);
-                    $MessageBird = new \MessageBird\Client($this->$ApiKey);
+                    $MessageBird = new \MessageBird\Client($this->ApiKey);
                     $Message = new \MessageBird\Objects\Message();
                     $Message->originator = 'ozcom';
                     $Message->recipients = array($login);
