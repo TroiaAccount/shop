@@ -35,6 +35,34 @@
                         </div>
                      </li>
                      @endif
+                     @if($page == "favorites")
+                     <li class="nav-item ms-3">
+                        <div class="link-wrapper">
+                           <a href="#" class="nav-link hl _active">Избранное</a>
+                        </div>
+                     </li>
+                     @endif
+                     @if($page == "return")
+                     <li class="nav-item ms-3">
+                        <div class="link-wrapper">
+                           <a href="#" class="nav-link hl _active">Возврат товара</a>
+                        </div>
+                     </li>
+                     @endif
+                     @if($page == "rebuy")
+                     <li class="nav-item ms-3">
+                        <div class="link-wrapper">
+                           <a href="#" class="nav-link hl _active">Перепродажа</a>
+                        </div>
+                     </li>
+                     @endif
+                     @if($page == "mini-market")
+                     <li class="nav-item ms-3">
+                        <div class="link-wrapper">
+                           <a href="#" class="nav-link hl _active">Заказы мини-магазина</a>
+                        </div>
+                     </li>
+                     @endif
                   </ul>
                </div>
                <div class="header__nav">

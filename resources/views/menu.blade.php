@@ -46,13 +46,13 @@
                <a class="nav-link sn @if($page == 'history') _active @endif" href="{{Route('page', ['page' => 'history'])}}"><i class="fas fa-envelope me-3"></i>История сообщений</a>
             </li>
             <li class="nav-item">
-               <a class="nav-link sn" href="#"><i class="fas fa-exchange-alt me-3"></i>Возврат товара</a>
+            <a class="nav-link sn @if($page == 'return') _active @endif" href="{{Route('page', ['page' => 'return'])}}"><i class="fas fa-exchange-alt me-3"></i>Возврат товара</a>
             </li>
             <li class="nav-item">
-               <a class="nav-link sn" href="#"><i class="fas fa-heart me-3"></i>Избранное</a>
+               <a class="nav-link sn @if($page == 'favorites') _active @endif" href="{{Route('page', ['page' => 'favorites'])}}"><i class="fas fa-heart me-3"></i>Избранное</a>
             </li>
             <li class="nav-item">
-               <a class="nav-link sn" href="#"><i class="fas fa-sync-alt me-3"></i>Перепродажа</a>
+            <a class="nav-link sn @if($page == 'rebuy') _active @endif" href="{{Route('page', ['page' => 'rebuy'])}}"><i class="fas fa-sync-alt me-3"></i>Перепродажа</a>
             </li>
          </ul>
       </nav>
