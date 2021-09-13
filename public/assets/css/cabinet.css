@@ -180,6 +180,7 @@ html {
 }
 
 .header__arrival .nav-link {
+  font-weight: 500;
   padding: 0 0 20px 0;
   color: #8f8c8c;
 }
@@ -245,6 +246,10 @@ html {
   font-size: 14px;
 }
 
+.card-body {
+  min-height: 300px;
+}
+
 .text-input {
   font-size: 14px;
 }
@@ -261,6 +266,11 @@ html {
   color: #c4a600;
 }
 
+.change__page-wrapper {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
 
 .page-indicator {
   align-items: center;
@@ -289,4 +299,73 @@ button.change-page-btn {
 .form-wrapper {
   margin: 0 auto;
   max-width: 500px;
+}
+
+.add__address-wrapper {
+  padding-bottom: 16px;
+}
+
+.add__address-btn {
+  position: relative;
+  height: 24px;
+}
+
+.add__address-btn > span {
+  transition: color 0.15s ease-in;
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: rgb(0, 183, 255);
+  cursor: pointer;
+}
+
+.add__address-btn > span:hover {
+  color: #0d6efd;
+}
+
+.add__info-form {
+  display: none;
+}
+
+.history__nav {
+  border-radius: 3px;
+  padding: 10px 15px;
+  background-color: #e8ecef;
+}
+
+.history__nav > span {
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.history__nav > span._active {
+  color: #2e85e5;
+}
+
+.history__readAll-btn {
+  margin-top: 1em;
+}
+
+.message__info-item {
+  margin-right: 15px;
+  font-size: 14px;
+}
+
+.history__messages-wrapper {
+  margin-top: 1em;
+}
+
+.history__message {
+  padding: 5px 8px;
+}
+
+.message-body {
+  font-size: 14px;
+}
+
+.btn-success.hs {
+  background-color: #26a843;
+  border-color: #26a843;
+  padding: 4px 10px!important;
 }

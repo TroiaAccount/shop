@@ -3,7 +3,7 @@
       @csrf
       <div class="form-wrapper">
          <div class="card-input row">
-            <label for="number" class="col-form-label col-sm-3">Фото товара:</label>
+            <label for="image[]" class="col-form-label col-sm-3">Фото товара:</label>
             <div id="filesGroup" class="col-sm-9 p-0">
                <div class="input-group">
                   <input type="file" name="image[]" class="form-control m-0 files-input" required>
@@ -12,7 +12,7 @@
             </div>
          </div>
          <div class="card-input row mt-2">
-            <label for="number" class="col-form-label col-sm-3">Ссылка на фото:</label>
+            <label for="ImageUrl-1" class="col-form-label col-sm-3">Ссылка на фото:</label>
             <div id="UrlPhotoGroup" class="col-sm-9 p-0">
                <div class="input-group">
                   <input type="text" name="ImageUrl-1" class="form-control m-0 urlPhotos-input">
@@ -21,7 +21,7 @@
             </div>
          </div>
          <div class="card-input row mt-2">
-            <label for="number" class="col-form-label col-sm-3">Ссылка на товар:</label>
+            <label for="url-1" class="col-form-label col-sm-3">Ссылка на товар:</label>
             <div id="UrlProductGroup" class="col-sm-9 p-0">
                <div class="input-group">
                   <input type="text" name="url-1" class="form-control m-0 urlProduct-input" required>
@@ -30,31 +30,31 @@
             </div>
          </div>
          <div class="card-input row mt-2">
-            <label for="number" class="col-form-label col-sm-3">Кол-во штук:</label>
+            <label for="count" class="col-form-label col-sm-3">Кол-во штук:</label>
             <div class="col-sm-9 p-0">
                <input type="text" name="count" class="form-control m-0">
             </div>
          </div>
          <div class="card-input row mt-2">
-            <label for="number" class="col-form-label col-sm-3">Цена:</label>
+            <label for="cost" class="col-form-label col-sm-3">Цена:</label>
             <div class="col-sm-9 p-0">
                <input type="text" name="cost" class="form-control m-0">
             </div>
          </div>
          <div class="card-input row mt-2">
-            <label for="number" class="col-form-label col-sm-3">Цвет:</label>
+            <label for="color" class="col-form-label col-sm-3">Цвет:</label>
             <div class="col-sm-9 p-0">
                <input type="text" name="color" class="form-control m-0">
             </div>
          </div>
          <div class="card-input row mt-2">
-            <label for="number" class="col-form-label col-sm-3">Размер:</label>
+            <label for="size" class="col-form-label col-sm-3">Размер:</label>
             <div class="col-sm-9 p-0">
                <input type="text" name="size" class="form-control m-0">
             </div>
          </div>
          <div class="card-input row mt-2">
-            <label for="number" class="col-form-label col-sm-3">Модель:</label>
+            <label for="model" class="col-form-label col-sm-3">Модель:</label>
             <div class="col-sm-9 p-0">
                <input type="text" name="model" class="form-control m-0">
             </div>

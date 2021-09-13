@@ -37,22 +37,22 @@
                <a class="nav-link sn @if($page == 'delivery') _active @endif"" href="{{Route('page', ['page' => 'delivery'])}}"><i class="fas fa-truck me-3"></i>Моя доставка</a>
             </li>
             <li class="nav-item">
-               <a class="nav-link sn" href="#"><i class="fas fa-shopping-cart me-3"></i>Заказы Мини-магазина</a>
+               <a class="nav-link sn @if($page == 'mini-market') _active @endif" href="{{Route('page', ['page' => 'mini-market'])}}"><i class="fas fa-shopping-cart me-3"></i>Заказы Мини-магазина</a>
             </li>
             <li class="nav-item">
-               <a class="nav-link sn" href="#"><i class="fas fa-address-card me-3"></i>Персональные данные</a>
+               <a class="nav-link sn @if($page == 'personal-info') _active @endif" href="{{Route('page', ['page' => 'personal-info'])}}"><i class="fas fa-address-card me-3"></i>Персональные данные</a>
             </li>
             <li class="nav-item">
-               <a class="nav-link sn" href="#"><i class="fas fa-envelope me-3"></i>История сообщений</a>
+               <a class="nav-link sn @if($page == 'history') _active @endif" href="{{Route('page', ['page' => 'history'])}}"><i class="fas fa-envelope me-3"></i>История сообщений</a>
             </li>
             <li class="nav-item">
-               <a class="nav-link sn" href="#"><i class="fas fa-exchange-alt me-3"></i>Возврат товара</a>
+            <a class="nav-link sn @if($page == 'return') _active @endif" href="{{Route('page', ['page' => 'return'])}}"><i class="fas fa-exchange-alt me-3"></i>Возврат товара</a>
             </li>
             <li class="nav-item">
-               <a class="nav-link sn" href="#"><i class="fas fa-heart me-3"></i>Избранное</a>
+               <a class="nav-link sn @if($page == 'favorites') _active @endif" href="{{Route('page', ['page' => 'favorites'])}}"><i class="fas fa-heart me-3"></i>Избранное</a>
             </li>
             <li class="nav-item">
-               <a class="nav-link sn" href="#"><i class="fas fa-sync-alt me-3"></i>Перепродажа</a>
+            <a class="nav-link sn @if($page == 'rebuy') _active @endif" href="{{Route('page', ['page' => 'rebuy'])}}"><i class="fas fa-sync-alt me-3"></i>Перепродажа</a>
             </li>
          </ul>
       </nav>
