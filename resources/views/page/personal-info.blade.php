@@ -57,7 +57,7 @@
       e.preventDefault();
       
       $.ajax({
-         url: '{{Route("AddAddress")}}',
+         url: '/',
          method: 'post',
          data: $(this).serialize(),
          contentType: false,
