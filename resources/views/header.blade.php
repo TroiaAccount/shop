@@ -63,6 +63,13 @@
                         </div>
                      </li>
                      @endif
+                     @if($subpage == "order")
+                     <li class="nav-item ms-3">
+                        <div class="link-wrapper">
+                           <a href="#" class="nav-link hl _active">Онлайн "Бланк Заказа"</a>
+                        </div>
+                     </li>
+                     @endif
                   </ul>
                </div>
                <div class="header__nav">
