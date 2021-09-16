@@ -7,7 +7,7 @@
                <label for="image[]" class="order-title">Фото товара:</label>
                <p class="order-subtitle">Загрузить фото товара для заказа</p>
             </div>
-            <div id="filesGroup" class="mt-2 row" style="margin-top: 7.8px!important;">
+            <div id="filesGroup" class="mt-2 row" style="margin-top: 15.4px!important;">
                <p class="numeration">1</p>
                <div class="input-group col-3">
                   <input id="file-input" type="file" name="image[]" class="m-0 files-input" required>
@@ -22,7 +22,7 @@
                <label for="ImageUrl-1" class="order-title">Ссылка на фото:</label>
                <p class="order-subtitle">Вставьте ссылку на фото</p>
             </div>
-            <div id="UrlPhotoGroup" class="mt-2 row">
+            <div id="UrlPhotoGroup" class="mt-3 row">
                <div>
                   <input type="text" name="ImageUrl-1" class="m-0 urlPhotos-input text-order-input" placeholder="Вставьте ссылку на фото" required>
                </div>
@@ -33,7 +33,7 @@
                <label for="ImageUrl-1" class="order-title">Ссылка на товар:</label>
                <p class="order-subtitle">Вставьте ссылку на товар</p>
             </div>
-            <div id="UrlProductGroup" class="mt-2 row">
+            <div id="UrlProductGroup" class="mt-3 row">
                <div class="position-relative">
                   <input type="text" name="url-1" class="m-0 urlProduct-input text-order-input" placeholder="Вставьте ссылку на товар" required>
                   <span id="plusGreen-0" class="plus-green-btn"><i class="fas fa-plus"></i></span>
@@ -45,7 +45,7 @@
                <label for="count" class="order-title">Кол-во штук:</label>
                <p class="order-subtitle">Укажите количество штук</p>
             </div>
-            <div class="mt-2 row">
+            <div class="mt-3 row">
                <div>
                   <input type="number" name="count" class="m-0 text-order-input" required>
                </div>
@@ -56,7 +56,7 @@
                <label for="cost" class="order-title">Цена:</label>
                <p class="order-subtitle">Укажите цену как на сайте</p>
             </div>
-            <div class="mt-2 row">
+            <div class="mt-3 row">
                <div>
                   <input type="text" name="cost" class="m-0 text-order-input" required>
                </div>
@@ -67,7 +67,7 @@
                <label for="color" class="order-title">Цвет:</label>
                <p class="order-subtitle">Укажите нужный цвет</p>
             </div>
-            <div class="mt-2 row">
+            <div class="mt-3 row">
                <div>
                   <input type="text" name="color" class="m-0 text-order-input" required>
                </div>
@@ -78,7 +78,7 @@
                <label for="size" class="order-title">Размер:</label>
                <p class="order-subtitle">Укажите нужный размер</p>
             </div>
-            <div class="mt-2 row">
+            <div class="mt-3 row">
                <div>
                   <input type="number" name="size" class="m-0 text-order-input" required>
                </div>
@@ -89,7 +89,7 @@
                <label for="model" class="order-title">Модель:</label>
                <p class="order-subtitle">Укажите необходимую модель</p>
             </div>
-            <div class="mt-2 row">
+            <div class="mt-3 row">
                <div class="position-relative me-2">
                   <input type="text" name="model" class="m-0 text-order-input" required>
                   <span id="plusBlue-0" class="plus-blue-btn"><i class="fas fa-plus"></i></span>
