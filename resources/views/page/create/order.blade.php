@@ -133,6 +133,7 @@
          position: absolute;
          top: 10px;
          right: 5px;
+         color: #dc3545;
       `
 
       file.innerHTML = `
