@@ -1,0 +1,64 @@
+[
+    {
+        "photo":[
+            { 
+                //1 photo
+            },
+            {
+                //2 photo
+            }
+        ],
+        "PhotoUrl": [
+            {
+                "url": "apple.ru/iphone/image.png"
+            },
+            {
+                "url": "apple.ru/iphone/image2.png"
+            }
+        ],
+        "ProductUrl":[
+            {
+                "url": "apple.ru/iphone/"
+            },
+            {
+                "url": "apple.ru/iphone/"
+            }
+        ],
+        "count": 5,
+        "price": 20.5,
+        "color": "green",
+        "size": "20x5",
+        "model": "Apple"
+    },
+    {
+        "photo":[
+            {
+                //1 photo
+            },
+            {
+                //2 photo
+            }
+        ],
+        "PhotoUrl": [
+            {
+                "url": "samsung.ru/image.png"
+            },
+            {
+                "url": "samsung.ru/image.png"
+            }
+        ],
+        "ProductUrl":[
+            {
+                "url": "samsung.ru/image.png"
+            },
+            {
+                "url": "samsung.ru/image.png"
+            }
+        ],
+        "count": 5,
+        "price": 20.5,
+        "color": "blue",
+        "size": "25x2",
+        "model": "Sumsung"
+    }
+]

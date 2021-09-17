@@ -37,72 +37,126 @@ class OrderController extends Controller
         return $name;
     }
 
+    public function test(){
+        $json = [
+            [
+                "photo" => [
+                    [
+                        'url' => "test"
+                    ],
+                    [
+                        'url' => "test"
+                    ]
+                ],
+                "PhotoUrl" => [
+                    [
+                        'url' => "test"
+                    ],
+                    [
+                        'url' => "test"
+                    ]
+                ],
+                "ProductUrl" => [
+                    [
+                        'url' => "test"
+                    ],
+                    [
+                        'url' => "test"
+                    ]
+                ],
+                "count" => 5,
+                "price" => 20.5,
+                "color" => "green",
+                "size" => "20x5",
+                "model" => "Apple"
+            ],
+            [
+                "photo" => [
+                    [
+                        'url' => "test"
+                    ],
+                    [
+                        'url' => "test"
+                    ]
+                ],
+                "PhotoUrl" => [
+                    [
+                        'url' => "test"
+                    ],
+                    [
+                        'url' => "test"
+                    ]
+                ],
+                "ProductUrl" => [
+                    [
+                        'url' => "test"
+                    ],
+                    [
+                        'url' => "test"
+                    ]
+                ],
+                "count" => 5,
+                "price" => 20.5,
+                "color" => "green",
+                "size" => "20x5",
+                "model" => "Apple"
+            ]
+        ];
+        $json = json_encode($json, true);
+        return $json;
+    }
+
+    public function UploadOrderPhoto(request $req){
+        $id = $req->session()->get('id');
+        $result = ['status' => false, 'error' => 'Вы не выбрали картинку'];
+        if($req->hasFile('image')){
+            $image = $req->file('image');
+            $extension = explode('.', $image->getClientOriginalName());
+            $extension = end($extension);
+            $filename = $this->CreateFilename($id, $extension) . '.' . $extension;
+            if(file_exists('assets/img/' . $id) == false){
+                mkdir('assets/img/' . $id, 0777, true);
+            }
+            $image->move('assets/img/' . $id . '/', $filename);
+            $url = asset('assets/img/' . $id . '/' . $filename);
+            $result = ['status' => true, 'url' => $url];
+        }
+        $result = json_encode($result, true);
+        return $result;
+    }
+    
     public function CreateOrder(request $req){
         $id = $req->session()->get('id');
-        $result = ['status' => false, 'error' => 'Вы не заполнили все поля'];
-        $image = $req['image'];
-        $count = addslashes($req['count']);
-        $cost = addslashes($req['cost']);
-        $color = addslashes($req['color']);
-        $size = addslashes($req['size']);
-        $model = addslashes($req['model']);
-        $ImageUrl = json_decode($req['ImageUrl']);
-        $url = json_decode($req['url']);
-        $images = [];
-        $urls = [];
-        if($color != null && $cost != null && $size != null && $model != null){
-            if($image != null || $ImageUrl != null){
-                if($image != null){
-                    foreach($req->file('image') as $image_result){
-                        $extension = explode('.', $image_result->getClientOriginalName());
-                        $extension = end($extension);
-                        $filename = $this->CreateFilename($id, $extension) . '.' . $extension;
-                        if(file_exists('assets/img/' . $id) == false){
-                            mkdir('assets/img/' . $id, 0777, true);
-                        }
-                        $image_result->move('assets/img/' . $id . '/', $filename);
-                        $images[] = 'assets/img/' . $id . '/' . $filename;
-                    }
+        $word = $req->session()->get('word');
+        $json = $req->json();
+        $result = ['status' => false, 'error' => 'Вы не передали весь запрос'];
+        if($json != null){
+            foreach($json as $object){
+                $photos = [];
+                foreach($object->photo as $image){
+                    $photos[] = $image->url;
                 }
-                if($ImageUrl != null){
-                    if(is_array($ImageUrl)){
-                        foreach($ImageUrl as $image_result){
-                            $images[] = $image_result;
-                        }
-                    }
+                foreach($object->PhotoUrl as $image){
+                    $photos[] = $image->url;
                 }
-                if(count($images) >= 1){
-                    if(is_array($url)){
-                        foreach($url as $url_result){
-                            $urls[] = $url_result;
-                        }
-                        $images = json_encode($images, true);
-                        $urls = json_encode($urls, true);
-                        $number = "";
-                        $word = User::select('word')->where('id', $id)->first();
-                        $word = $word->word;
-                        $count = order::select('id')->where('user_id', $id)->count();
-                        $count = $count + 1;
-                        $number = $word . '-' . $count;
-                        $datetime = time();
-                        order::insert([
-                            'user_id' => $id,
-                            'number' => $number,
-                            'image' => $images,
-                            'status' => 4,
-                            'cost' => $cost,
-                            'count' => $count,
-                            'commission' => 0,
-                            'color' => $color,
-                            'size' => $size,
-                            'model' => $model,
-                            'status2' => 'Test',
-                            'datetime' => $datetime,
-                            'urls' => $urls
-                        ]);
-                        $result = ['status' => true];
-                    }
+                $ProdctUrls = [];
+                foreach($object->ProductUrl as $url){
+                    $ProdctUrls[] = $url->url;
                 }
+                $number = order::select('id')->where('user_id', $id)->count() + 1;
+                $number = $word . "-" . $number;
+                order::insert([
+                    'user_id' => $id,
+                    'number' => $number,
+                    'image' => json_encode($photos, true),
+                    'status' => 4,
+                    'cosr' => $object->price,
+                    'count' => $object->count,
+                    'size' => $object->size,
+                    'model' => $object->model,
+                    'color' => $object->color
+                ]);
+                $result = ['status' => true];
             }
         }
         $result = json_encode($result, true);
