@@ -394,7 +394,7 @@ button.change-page-btn {
   margin-right: 20px;
 }
 
-#file-input {
+.files-input {
   display: none;
 }
 

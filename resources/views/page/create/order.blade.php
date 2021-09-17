@@ -10,9 +10,9 @@
             <div id="filesGroup" class="mt-2 row" style="margin-top: 15.4px!important;">
                <p class="numeration">1</p>
                <div class="input-group col-3">
-                  <input id="file-input" type="file" name="image[]" class="m-0 files-input" required>
+                  <input id="file-input-0-0" type="file" name="image[]" class="m-0 files-input" required>
                   <div class="file-label-wrapper w-100">
-                     <label class="file-label" for="file-input">Загрузите фото товара</label>
+                     <label class="file-label" for="file-input-0-0">Загрузите фото товара</label>
                   </div>
                </div>
             </div>
@@ -125,15 +125,23 @@
       photoInputs.dataset.count++;
       const count = photoInputs.dataset.count;
       const style = count > 9 ? 'left: -17px;' : '';
-      console.log(count);
+   
+      const minusBtn = document.createElement('span');
+      minusBtn.innerHTML = '<i class="fas fa-minus"></i>';
+      minusBtn.style.cssText = `
+         cursor: pointer;
+         position: absolute;
+         top: 10px;
+         right: 5px;
+      `
 
       file.innerHTML = `
          <div id="filesGroup" class="mt-2 rowms-2" style="margin-top: 7.8px!important;">
                <p class="subnumeration ms-2" style="${style}">${id + 1}.${count}</p>
                <div class="input-group col-3 p-0">
-                  <input id="file-input" type="file" name="image[]" class="m-0 files-input" required>
+                  <input id="file-input-${id}-${count}" type="file" name="image[]" class="m-0 files-input" required>
                   <div class="file-label-wrapper ms-4">
-                     <label class="file-label-mini" for="file-input">Загрузите фото товара</label>
+                     <label class="file-label-mini" for="file-input-${id}-${count}">Загрузите фото товара</label>
                   </div>
                </div>
          </div>
@@ -152,6 +160,14 @@
             </div>
          </div>
       `;
+      console.log(product.lastElementChild.lastElementChild);
+      product.lastElementChild.lastElementChild.append(minusBtn);
+      minusBtn.addEventListener('click', () => {
+         file.remove();
+         url.remove();
+         product.remove();
+         photoInputs.dataset.count--;
+      });
 
       photoInputs.append(file);
       urlPhotoInputs.append(url);
@@ -174,9 +190,9 @@
                <div id="filesGroup" class="mt-2 row" style="margin-top: 7.8px!important;">
                   <p class="numeration">${count + 1}</p>
                   <div class="input-group col-3">
-                     <input id="file-input" type="file" name="image[]" class="m-0 files-input" required>
+                     <input id="file-input-${count}-0" type="file" name="image[]" class="m-0 files-input" required>
                      <div class="file-label-wrapper w-100">
-                        <label class="file-label" for="file-input">Загрузите фото товара</label>
+                        <label class="file-label" for="file-input-${count}-0">Загрузите фото товара</label>
                      </div>
                   </div>
                </div>
