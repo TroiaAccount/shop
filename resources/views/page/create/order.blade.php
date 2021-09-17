@@ -104,12 +104,6 @@
 </form>
 
 <script>
-   const input = document.querySelector('[name="image[]"]')
-   input.addEventListener('change', () => {
-      alert('Файл успешно добавлен')
-      console.log(input)
-   })
-
    const greenPlusBtn = document.querySelector('.plus-green-btn');
    let countOfMainInputs = 0;
 
@@ -161,7 +155,6 @@
             </div>
          </div>
       `;
-      console.log(product.lastElementChild.lastElementChild);
       product.lastElementChild.lastElementChild.append(minusBtn);
       minusBtn.addEventListener('click', () => {
          file.remove();
