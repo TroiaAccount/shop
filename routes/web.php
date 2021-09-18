@@ -29,3 +29,5 @@ Route::post('/api/select/order/filter', 'OrderController@Filter')->middleware('M
 Route::get('/api/exit', 'UserController@Exit')->middleware('MyAuth')->name('Exit');
 Route::post('/api/create/order', 'OrderController@CreateOrder')->middleware('MyAuth')->name('CreateOrder');
 Route::post('/api/create/order/upload/image', 'OrderController@UploadOrderPhoto')->middleware('MyAuth')->name('UploadOrderPhoto');
+Route::post('/api/history/listen/all', 'NotificationController@AllListen')->middleware('MyAuth')->name('AllListen');
+Route::post('/api/history/select', 'NotificationController@Select')->middleware('MyAuth')->name('Select');

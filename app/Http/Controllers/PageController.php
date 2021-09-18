@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\order;
 use App\Models\delivery;
+use App\Models\notification;
 
 class PageController extends Controller
 {
@@ -15,10 +16,15 @@ class PageController extends Controller
         $user_info = User::select()->where('id', $id)->first();
         $table = null;
         if($page == "orders"){
-            $table = order::select()->where('user_id', $user_info->id)->paginate(10);
+            $table = order::select()->where('user_id', $id)->paginate(10);
         }
         if($page == "delivery"){
-            $table = delivery::select()->where('user_id', $user_info->id)->paginate(10);
+            $table = delivery::select()->where('user_id', $id)->paginate(10);
+        }
+        if($page == "history"){
+            $table = notification::select()->where(['user_id' => $id, 'listen' => 0])->orderby('id', 'desc')->get();
+            $listen = count($table);
+            $table = ['list' => $table, 'count' => $listen];
         }
         return view('main')->with(['page' => $page, 'user_info' => $user_info, 'table' => $table, 'subpage' => $subpage]);
     }
