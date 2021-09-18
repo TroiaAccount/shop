@@ -279,10 +279,11 @@
          });
          res = await res.json();
 
-         if (photosUrl[e.target.getAttribute('name')]) {
-            photosUrl[e.target.getAttribute('name')] = [...photosUrl[e.target.getAttribute('name')], res.url];
+         const _target = e.target.getAttribute('name');
+         if (photosUrl[_target]) {
+            photosUrl[_target] = [...photosUrl[_target], res.url];
          } else {
-            photosUrl[e.target.getAttribute('name')] = [res.url];
+            photosUrl[_target] = [res.url];
          }
 
          console.log('Успешно создан: ', JSON.stringify(res));
