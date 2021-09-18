@@ -24,7 +24,7 @@
       </div>
    </form>
 </div>
-<div class="table__wrapper mt-3">
+<div class="table__wrapper mt-3 mb-5">
    <table class="table table-bordered">
       <thead>
          <tr>
@@ -48,9 +48,9 @@
                <td>{{$result->status2}}</td>
                <td>{{$result->datetime}}</td>
                <td align="right">
-                  <a href="#"><i class="far fa-file-alt"></i></a>
-                  <a href="#"><i class="fas fa-download"></i></a>
-                  <a href="#"><i class="far fa-copy"></i></a>
+                  <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Подробнее"><i class="far fa-file-alt"></i></a>
+                  <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Скачать"><i class="fas fa-download"></i></a>
+                  <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Копировать"><i class="far fa-copy"></i></a>
                </td>
                <td align="center" style="background-color: #eaf5cb;"><i class="fas fa-info-circle"></i></td>
             </tr>

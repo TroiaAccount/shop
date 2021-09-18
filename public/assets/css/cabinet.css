@@ -497,5 +497,24 @@ button.change-page-btn {
   right: 30px;
   bottom: 30px;
 }
+/* 
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
 
-
+.tooltiptext {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60px;
+  visibility: hidden;
+  text-align: center;
+  color: #0d6efd;
+  background-color: #fefefe;
+  border: 1px solid #0d6efd;
+  padding: 2px 4px;
+  border-radius: 2px;
+  opacity: 0;
+  transition: opacity 0.2s ease-in;
+} */
