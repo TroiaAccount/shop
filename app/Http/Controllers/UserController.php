@@ -121,7 +121,7 @@ class UserController extends Controller
         $password = addslashes($req['password']);
         $result = ['status' => false, 'error' => 'Вы заполнили не все обязательные поля'];
         if($login != null && $password != null){
-            $check_user = User::select(['word', 'id', 'password'])->where('login', $login)->first();
+            $check_user = User::select(['word', 'id', 'password', 'agree'])->where('login', $login)->first();
             if($check_user != null){
                 if($check_user->agree == 1){
                     if(Hash::check($password, $check_user->password)){
