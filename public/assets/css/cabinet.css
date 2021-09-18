@@ -491,3 +491,11 @@ button.change-page-btn {
   position: relative;
   width: 20px;
 }
+
+.submitBtn {
+  position: absolute;
+  right: 30px;
+  bottom: 30px;
+}
+
+
