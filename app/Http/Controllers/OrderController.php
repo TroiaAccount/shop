@@ -64,15 +64,15 @@ class OrderController extends Controller
         if($json != null){
             foreach($json as $object){
                 $photos = [];
-                foreach($object->photo as $image){
-                    $photos[] = $image->url;
+                foreach($object['Photo'] as $image){
+                    $photos[] = $image['url'];
                 }
-                foreach($object->PhotoUrl as $image){
-                    $photos[] = $image->url;
+                foreach($object['PhotoUrl'] as $image){
+                    $photos[] = $image['url'];
                 }
                 $ProdctUrls = [];
-                foreach($object->ProductUrl as $url){
-                    $ProdctUrls[] = $url->url;
+                foreach($object['ProductUrl'] as $url){
+                    $ProdctUrls[] = $url['url'];
                 }
                 $number = order::select('id')->where('user_id', $id)->count() + 1;
                 $number = $word . "-" . $number;
@@ -81,11 +81,11 @@ class OrderController extends Controller
                     'number' => $number,
                     'image' => json_encode($photos, true),
                     'status' => 4,
-                    'cosr' => $object->price,
-                    'count' => $object->count,
-                    'size' => $object->size,
-                    'model' => $object->model,
-                    'color' => $object->color
+                    'cost' => $object['cost'],
+                    'count' => $object['count'],
+                    'size' => $object['size'],
+                    'model' => $object['model'],
+                    'color' => $object['color']
                 ]);
                 $result = ['status' => true];
             }
