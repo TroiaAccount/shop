@@ -312,12 +312,12 @@
          const makeData = (inputs, array, fieldName) => {
             data[fieldName] = array;
             inputs.forEach(input => {
-               data[fieldName].push({url: input.value});
+               data[fieldName].push(input.value);
             })
          }
          
          photosUrl[i].forEach(url => {
-            photos.push({url: url});
+            photos.push(url);
          })
          makeData(urlPhotoInputs, urlPhotos, 'PhotoUrl');
          makeData(urlProductInputs, urlProducts, 'ProductUrl');
