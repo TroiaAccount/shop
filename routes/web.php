@@ -31,3 +31,4 @@ Route::post('/api/create/order', 'OrderController@CreateOrder')->middleware('MyA
 Route::post('/api/create/order/upload/image', 'OrderController@UploadOrderPhoto')->middleware('MyAuth')->name('UploadOrderPhoto');
 Route::post('/api/history/listen/all', 'NotificationController@AllListen')->middleware('MyAuth')->name('AllListen');
 Route::post('/api/history/select', 'NotificationController@Select')->middleware('MyAuth')->name('Select');
+Route::post('/api/personal/info/add', 'AdresController@CreateAdres')->middleware('MyAuth')->name('CreateAdres');

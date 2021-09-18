@@ -7,16 +7,17 @@
    <form id="AddAddress">
       @csrf
       <div class="form-wrapper">
+         
          <div class="card-input row mt-2">
             <label for="fullName" class="col-form-label col-sm-3">ФИО:</label>
             <div class="col-sm-9 p-0">
-               <input type="text" name="fullName" class="form-control m-0">
+               <input type="text" name="full_name" class="form-control m-0">
             </div>
          </div>
          <div class="card-input row mt-2">
             <label for="phone" class="col-form-label col-sm-3">Телефон:</label>
             <div class="col-sm-9 p-0">
-               <input type="tel" name="phone" class="form-control m-0">
+               <input type="tel" name="telephone" class="form-control m-0">
             </div>
          </div>
          <div class="card-input row mt-2">
@@ -28,7 +29,7 @@
          <div class="card-input row mt-2">
             <label for="address" class="col-form-label col-sm-3">Адрес:</label>
             <div class="col-sm-9 p-0">
-               <input type="text" name="address" class="form-control m-0">
+               <input type="text" name="adres" class="form-control m-0">
             </div>
          </div>
          <div class="card-input row mt-2">
@@ -44,30 +45,60 @@
       </div>
    </form>
 </div>
-
+<div class="table__wrapper mt-3">
+   <table class="table table-bordered">
+      <thead>
+         <tr>
+            <th scope="col">ФИО</th>
+            <th scope="col">Адрес</th>
+            <th scope="col">Номер телефона</th>
+            <th scope="col">Почта</th>
+            <th scope="col">Паспорт</th>
+         </tr>
+      </thead>
+      <tbody id="table-body">
+         @foreach($table as $result)
+            <tr>
+               <td>{{$result->full_name}}</td>
+               <td>{{$result->adres}}</td>
+               <td class="table-summ">{{$result->telephone}}</td>
+               <td class="table-commission">{{$result->email}}</td>
+               <td>{{$result->passport}}</td>
+            </tr>
+         @endforeach
+      </tbody>
+   </table>
+</div>
 <script>
    const addForm = document.querySelector('.add__info-form'),
          addBtn = document.querySelector('.add__address-btn > span');
 
    addBtn.addEventListener('click', () => {
-      addForm.style.display = 'block';
+      if(addForm.style.display == 'block'){
+         addForm.style.display = 'none';
+      } else {
+         addForm.style.display = "block";
+      }
+
    })
+
 
    $('#AddAddress').on('submit', function(e) {
       e.preventDefault();
-      
       $.ajax({
-         url: '/',
+         url: '{{Route("CreateAdres")}}',
          method: 'post',
          data: $(this).serialize(),
-         contentType: false,
+         dataType: 'json',
          success: function (response) {
-            alert('Адрес успешно добавлен')
-            window.location.reload();
+            //alert('Адрес успешно добавлен')
+            //window.location.reload();
+            if(response.status == true){
+
+            } else {
+               alert(response.error);
+            }
          },
-         error: function (err) {
-            console.log(err);
-         }
       });
    })
 </script>

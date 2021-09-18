@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\order;
 use App\Models\delivery;
 use App\Models\notification;
+use App\Models\adres;
 
 class PageController extends Controller
 {
@@ -25,6 +26,9 @@ class PageController extends Controller
             $table = notification::select()->where(['user_id' => $id, 'listen' => 0])->orderby('id', 'desc')->get();
             $listen = count($table);
             $table = ['list' => $table, 'count' => $listen];
+        }
+        if($page == "personal-info"){
+            $table = adres::select()->where('user_id', $id)->orderby('id', 'desc')->get();
         }
         return view('main')->with(['page' => $page, 'user_info' => $user_info, 'table' => $table, 'subpage' => $subpage]);
     }
