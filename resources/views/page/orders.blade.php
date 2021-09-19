@@ -95,8 +95,12 @@
                            <td class="table-commission">${item.commission}%</td>
                            <td>${item.status2}</td>
                            <td>${item.datetime}</td>
-                           <td>....</td>
-                           <td>...</td>
+                           <td align="right">
+                              <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Подробнее"><i class="far fa-file-alt"></i></a>
+                              <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Скачать"><i class="fas fa-download"></i></a>
+                              <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Копировать"><i class="far fa-copy"></i></a>
+                           </td>
+                           <td align="center" style="background-color: #eaf5cb;"><i class="fas fa-info-circle"></i></td>
                         `;
                         tbody.append(tr);
                         let pagination = document.getElementById('pagination');
