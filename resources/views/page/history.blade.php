@@ -1,16 +1,18 @@
 <div class="history__nav-wrapper">
     <div class="history__nav">
-        <span id="allmsg" class="history__nav-toggler me-2" onclick="Select(1)">Все сообщения</span>
-        <span id="unread" class="history__nav-toggler _active" onclick="Select(2)">Не прочитанное({{$table['count']}})</span>
+        <span id="allmsg" class="history__nav-toggler me-2 _active" onclick="Select(1)">Все сообщения</span>
+        <span id="unread" class="history__nav-toggler" onclick="Select(2)">Не прочитанное({{$table['count']}})</span>
     </div>
 </div>
 
-<div class="history__readAll-btn">
-    <form id="Listen">
-        @csrf
-        <button class="btn btn-success hs"><i class="fas fa-cog me-2"></i>Установить всё как прочитанное</button>
-    </form>
-</div>
+@if($table['count'] > 0)
+    <div class="history__readAll-btn">
+        <form id="Listen">
+            @csrf
+            <button class="btn btn-success hs"><i class="fas fa-cog me-2"></i>Установить всё как прочитанное</button>
+        </form>
+    </div>
+@endif
 
 <div class="history__messages-wrapper" id="table">
     @foreach($table['list'] as $result)

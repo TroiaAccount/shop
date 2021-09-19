@@ -5,14 +5,14 @@
                      @if($page == "delivery")
                      <li class="nav-item ms-3">
                         <div class="link-wrapper">
-                           <a href="#" class="nav-link hl _active">Доставка до Москвы</a>
+                           <a href="?delivery=moscow" class="nav-link hl _active">Доставка до Москвы</a>
                         </div>
                      </li>
-                     <li class="nav-item ms-5">
+                     <!--<li class="nav-item ms-5">
                         <div class="link-wrapper">
-                           <a href="#" class="nav-link hl">Доставка по Росии</a>
+                           <a href="" class="nav-link hl">Доставка по Росии</a>
                         </div>
-                     </li>
+                     </li>-->
                      @endif
                      @if($page == "orders")
                      <li class="nav-item ms-3">
