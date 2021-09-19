@@ -23,8 +23,8 @@ class PageController extends Controller
             $table = delivery::select()->where('user_id', $id)->paginate(10);
         }
         if($page == "history"){
-            $table = notification::select()->where(['user_id' => $id, 'listen' => 0])->orderby('id', 'desc')->get();
-            $listen = count($table);
+            $table = notification::select()->where(['user_id' => $id])->orderby('id', 'desc')->get();
+            $listen = notification::select('id')->where(['user_id' => $id, 'listen' => 0])->count();
             $table = ['list' => $table, 'count' => $listen];
         }
         if($page == "personal-info"){
