@@ -22,7 +22,7 @@
             </div>
             <div class="message-info d-flex justify-content-start mt-3">
                 <div class="message__info-item">
-                    <p class="border-right">{{$result->created_at}}</p>
+                    <p class="border-right">{{date_format($result->created_at, 'Y-m-d H:i:s')}}</p>
                 </div>
                 <div class="message__info-item">
                     <p class="border-right">|</p>

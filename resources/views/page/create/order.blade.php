@@ -1,6 +1,6 @@
 <form id="CreateOrder" enctype="multipart/form-data">
    @csrf
-   <div class="form-wrapper container ps-0">
+   <div class="form-wrapper container ps-0 mb-5">
       <div id="0" class="card-input d-flex justify-content-between">
          <div id="photoInputs-0" class="order-card ms-3" style="min-width: 135px;" data-count="0">
             <div class="label-card">
@@ -272,16 +272,25 @@
       const formData = new FormData();
       formData.append('image', file);
       formData.append('_token', _token);
-      let res = await fetch('{{Route("UploadOrderPhoto")}}', {
-         method: 'POST',
-         body: formData
-      })
-      res = await res.json();
-      if (photosUrl[e.target.getAttribute('name')]) {
-         photosUrl[e.target.getAttribute('name')] = [...photosUrl[e.target.getAttribute('name')], res.url];
-      } else {
-         photosUrl[e.target.getAttribute('name')] = [res.url];
+      try {
+         let res = await fetch('{{Route("UploadOrderPhoto")}}', {
+            method: 'POST',
+            body: formData
+         });
+         res = await res.json();
+
+         const _target = e.target.getAttribute('name');
+         if (photosUrl[_target]) {
+            photosUrl[_target] = [...photosUrl[_target], res.url];
+         } else {
+            photosUrl[_target] = [res.url];
+         }
+
+         console.log('Успешно создан: ', JSON.stringify(res));
+      } catch (e) {
+         console.error('Ошибка', e);
       }
+      
       
    }
 
@@ -321,16 +330,21 @@
          data['model'] = model;
          dataToServer.push(data);
       }
-      const res = await fetch('{{Route("CreateOrder")}}', {
-         method: 'POST',
-         headers: {
-            'Content-type': 'application/json',
-            'X-CSRF-TOKEN': document.querySelector('[name="_token"]').value
-         },
-         body: JSON.stringify(dataToServer)
-      })
-      console.log(JSON.stringify(dataToServer));
-      console.log(await res.json());
+      try {
+         let res = await fetch('{{Route("CreateOrder")}}', {
+            method: 'POST',
+            headers: {
+               'Content-type': 'application/json',
+               'X-CSRF-TOKEN': document.querySelector('[name="_token"]').value
+            },
+            body: JSON.stringify(dataToServer)
+         });
+         res = await res.json();
+         console.log('Успешно создан: ', JSON.stringify(res));
+      } catch (e) {
+         console.error('Ошибка', e);
+      }
+      
    }
    
 </script>
