@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\notification;
+use App\Models\User;
 
 class NotificationController extends Controller
 {
@@ -30,5 +31,15 @@ class NotificationController extends Controller
         }
         $result = json_encode($result, true);
         return $result;
+    }
+
+    public function CreateNotification($params = []){
+        $word = $req->session()->get('word');
+        notification::insert([
+            'user_id' => $params['id'],
+            'title' => $params['title'],
+            'text' => $params['text'],
+            'from_' => $word
+        ]);
     }
 }

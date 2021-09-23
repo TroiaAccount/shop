@@ -87,4 +87,35 @@ class OrderController extends Controller
         $result = json_encode($result, true);
         return $result;
     }
+
+    public function Copy(request $req){
+        $id = $req->session()->get('id');
+        $order_id = addslashes($req['id']);
+        $word = $req->session()->get('number');
+        $result = ['status' => false, 'error' => 'Вы не заполнили все поля'];
+        if($order_id != null){
+            $check_order = order::select()->where(['user_id' => $id, 'id' => $order_id])->first();
+            if($check_order != null){
+                $number = order::select('id')->where('user_id', $id)->count() + 1;
+                $number = $word . "-" . $number;
+                order::insert([
+                    'user_id' => $id,
+                    'number' => $number,
+                    'image' => $check_order->image,
+                    'status' => 4,
+                    'cost' => $check_order->cost,
+                    'count' => $check_order->count,
+                    'size' => $check_order->size,
+                    'model' => $check_order->model,
+                    'color' => $check_order->color,
+                    'ProductUrl' => $check_order->ProductUrl
+                ]);
+                $result = ['status' => true];
+            } else {
+                $result['error'] = "Вы передали неверный ID";
+            }
+        }
+        $result = json_encode($result, true);
+        return $result;
+    }
 }
