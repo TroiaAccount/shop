@@ -42,6 +42,12 @@ Route::middleware('MyAuth')->group(function(){ // Other route
     Route::get('/client/{page}/{subpage}', 'PageController@page')->name('Page');
     
     /* Page route end */
+    Route::middleware('CheckAdmin')->group(function(){
+        Route::get('/admin', function(){
+            return redirect(Route('AdminPage', ['page' => 'main']));
+        });
+        Route::get('/admin/{page}', 'AdminController@page')->name('AdminPage');
+    });
 });
 
 Route::middleware('CheckMyAuth')->group(function(){ // User Route
@@ -54,9 +60,3 @@ Route::middleware('CheckMyAuth')->group(function(){ // User Route
     Route::post('/api/recovery/last', 'UserController@RecoveryLast')->middleware('CheckMyAuth')->name('RecoveryLast');
 });
 
-Route::middleware('CheckAdmin')->group(function(){
-    Route::get('/admin', function(){
-        return redirect(Route('AdminPage', ['page' => 'main']));
-    });
-    Route::get('/admin/{page}', 'AdminController@page')->name('AdminPage');
-});

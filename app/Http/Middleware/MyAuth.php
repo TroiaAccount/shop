@@ -25,7 +25,10 @@ class MyAuth
             $CheckToken = login::select()->where('token', $token)->first();
             if($CheckToken != null){
                 if($CheckToken->user_id == $id){
-                    return $next($req);
+                    $CheckUser = User::select('id')->where('id', $id)->first();
+                    if($CheckUser != null){
+                        return $next($req);
+                    }
                 }
             }
         }
