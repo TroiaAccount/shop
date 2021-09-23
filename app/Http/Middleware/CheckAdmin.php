@@ -20,6 +20,7 @@ class CheckAdmin
     {
         $id = $req->session()->get('id');
         $CheckUser = User::select('admin')->where('id', $id)->first();
+        $RouteName = $req->Route()->action['as'];
         if($CheckUser->admin == 1){
             return $next($req);
         }
