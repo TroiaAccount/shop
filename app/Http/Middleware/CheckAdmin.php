@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\login;
 
-class MyAuth
+class CheckAdmin
 {
     /**
      * Handle an incoming request.
@@ -17,7 +17,7 @@ class MyAuth
      * @return mixed
      */
     public function handle(Request $req, Closure $next)
-    {   
+    {
         $token = $req->session()->get('token');
         $id = $req->session()->get('id');
         $word = $req->session()->get('word');
@@ -25,14 +25,13 @@ class MyAuth
             $CheckToken = login::select()->where('token', $token)->first();
             if($CheckToken != null){
                 if($CheckToken->user_id == $id){
-                    return $next($req);
+                    $CheckUser = User::select('admin')->where('id', $id)->first();
+                    if($CheckUser->admin == 1){
+                        return $next($req);
+                    }
                 }
             }
         }
-        login::where('token', $token)->delete();
-        $req->session()->put('token', null);
-        $req->session()->put('word', null);
-        $req->session()->put('id', null);
         return redirect(Route('AuthPage'));
     }
 }
