@@ -5,7 +5,7 @@
       <title>Авторизация</title>
       <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
       <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900&subset=latin,latin-ext'>
-      <link rel="stylesheet" href="{{asset('assets/css/auth.css')}}">
+      <link rel="stylesheet" href="assets/css/auth.css">
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <script src="https://unpkg.com/imask"></script>
    </head>
