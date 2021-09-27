@@ -576,3 +576,11 @@ button.change-page-btn {
   right: 30px;
   bottom: 30px;
 }
+
+.minus-red-btn {
+  position: absolute;
+  top: 0;
+  right: -35px;
+  color: #dc3545;
+  cursor: pointer;
+}
