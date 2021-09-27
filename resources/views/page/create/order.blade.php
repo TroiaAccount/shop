@@ -24,7 +24,7 @@
             </div>
             <div id="UrlPhotoGroup" class="mt-3 row">
                <div>
-                  <input type="text" name="ImageUrl" class="m-0 urlPhotos-input text-order-input" placeholder="Вставьте ссылку на фото" required>
+                  <input type="text" name="ImageUrl" class="m-0 urlPhotos-input text-order-input" placeholder="Вставьте ссылку на фото">
                </div>
             </div>
          </div>
@@ -35,8 +35,8 @@
             </div>
             <div id="UrlProductGroup" class="mt-3 row">
                <div class="position-relative">
-                  <input type="text" name="url" class="m-0 urlProduct-input text-order-input" placeholder="Вставьте ссылку на товар" required>
-                  <span id="plusGreen-0" class="plus-green-btn"><i class="fas fa-plus"></i></span>
+                  <input type="text" name="url" class="m-0 urlProduct-input text-order-input" placeholder="Вставьте ссылку на товар">
+                  <span id="plusGreen-0" class="plus-green-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Добавить такой же товар, но другого продавца"><i class="fas fa-plus"></i></span>
                </div>
             </div>
          </div>
@@ -47,7 +47,7 @@
             </div>
             <div class="mt-3 row">
                <div>
-                  <input type="number" name="count" class="m-0 text-order-input" required>
+                  <input type="number" name="count" class="m-0 text-order-input">
                </div>
             </div>
          </div>
@@ -58,7 +58,7 @@
             </div>
             <div class="mt-3 row">
                <div>
-                  <input type="number" name="cost" class="m-0 text-order-input" required>
+                  <input type="number" name="cost" class="m-0 text-order-input">
                </div>
             </div>
          </div>
@@ -69,7 +69,7 @@
             </div>
             <div class="mt-3 row">
                <div>
-                  <input type="text" name="color" class="m-0 text-order-input" required>
+                  <input type="text" name="color" class="m-0 text-order-input">
                </div>
             </div>
          </div>
@@ -80,7 +80,7 @@
             </div>
             <div class="mt-3 row">
                <div>
-                  <input type="text" name="size" class="m-0 text-order-input" required>
+                  <input type="text" name="size" class="m-0 text-order-input">
                </div>
             </div>
          </div>
@@ -91,12 +91,12 @@
             </div>
             <div class="mt-3 row">
                <div class="position-relative me-2">
-                  <input type="text" name="model" class="m-0 text-order-input" required>
-                  <span id="plusBlue-0" class="plus-blue-btn"><i class="fas fa-plus"></i></span>
+                  <input type="text" name="model" class="m-0 text-order-input">
+                  <span id="plusBlue-0" class="plus-blue-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Добавить еще однин товар (если товар тот же и отличается цветом, то добавлять новую строку нужно обязательно, даже если ссылка на товар та же, нужно заполнять полностью все поля, фото товара или ссылку на фото по желанию)"><i class="fas fa-plus"></i></span>
                </div>
             </div>
          </div>
-         <div class="order-card">
+         <div class="order-card" style="margin-left: 24px;">
             <div class="space"></div>
          </div>
       </div>
@@ -152,14 +152,14 @@
       url.innerHTML = `
          <div id="UrlPhotoGroup" class="row">
             <div>
-               <input type="text" name="ImageUrl" class="m-0 urlPhotos-input text-order-input mini-input" placeholder="Вставьте ссылку на фото" required>
+               <input type="text" name="ImageUrl" class="m-0 urlPhotos-input text-order-input mini-input" placeholder="Вставьте ссылку на фото">
             </div>
          </div>
       `;
       product.innerHTML = `
          <div id="UrlProductGroup" class="row">
             <div class="position-relative">
-               <input type="text" name="url" class="m-0 urlProduct-input text-order-input mini-input" placeholder="Вставьте ссылку на товар" required>
+               <input type="text" name="url" class="m-0 urlProduct-input text-order-input mini-input" placeholder="Вставьте ссылку на товар">
             </div>
          </div>
       `;
@@ -190,7 +190,7 @@
             <div id="photoInputs-${count}" class="order-card ms-3" style="min-width: 135px;" data-count="0">
                <div></div>
                <div id="filesGroup" class="mt-2 row" style="margin-top: 7.8px!important;">
-                  <p class="numeration">${count + 1}</p>
+                  <p class="numeration" ${count >= 9 ? 'style="width: 43px;"' : ""}>${count + 1}</p>
                   <div class="input-group col-3">
                      <input id="file-input-${count}-0" type="file" name="${count}" class="m-0 files-input"  onchange="getImageUrl(event)">
                      <div class="file-label-wrapper w-100">
@@ -202,51 +202,52 @@
             <div id="urlPhotoInputs-${count}" class="order-card" style="min-width: 145px;">
                <div id="UrlPhotoGroup" class="mt-2 row">
                   <div>
-                     <input type="text" name="ImageUrl" class="m-0 urlPhotos-input text-order-input" placeholder="Вставьте ссылку на фото" required>
+                     <input type="text" name="ImageUrl" class="m-0 urlPhotos-input text-order-input" placeholder="Вставьте ссылку на фото">
                   </div>
                </div>
             </div>
             <div id="urlProductInputs-${count}" class="order-card" style="min-width: 150px;">
                <div id="UrlProductGroup" class="mt-2 row">
                   <div class="position-relative">
-                     <input type="text" name="url" class="m-0 urlProduct-input text-order-input" placeholder="Вставьте ссылку на товар" required>
-                     <span id="plusGreen-${count}" class="plus-green-btn"><i class="fas fa-plus"></i></span>
+                     <input type="text" name="url" class="m-0 urlProduct-input text-order-input" placeholder="Вставьте ссылку на товар">
+                     <span id="plusGreen-${count}" class="plus-green-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Добавить такой же товар, но другого продавца"><i class="fas fa-plus"></i></span>
                   </div>
                </div>
             </div>
             <div class="order-card ms-3" style="min-width: 120px;">
                <div class="mt-2 row">
                   <div>
-                     <input type="number" name="count" class="m-0 text-order-input" required>
+                     <input type="number" name="count" class="m-0 text-order-input">
                   </div>
                </div>
             </div>
             <div class="order-card" style="min-width: 105px;">
                <div class="mt-2 row">
                   <div>
-                     <input type="text" name="cost" class="m-0 text-order-input" required>
+                     <input type="text" name="cost" class="m-0 text-order-input">
                   </div>
                </div>
             </div>
             <div class="order-card" style="min-width: 95px;">
                <div class="mt-2 row">
                   <div>
-                     <input type="text" name="color" class="m-0 text-order-input" required>
+                     <input type="text" name="color" class="m-0 text-order-input">
                   </div>
                </div>
             </div>
             <div class="order-card" style="min-width: 105px;">
                <div class="mt-2 row">
                   <div>
-                     <input type="text" name="size" class="m-0 text-order-input" required>
+                     <input type="text" name="size" class="m-0 text-order-input">
                   </div>
                </div>
             </div>
             <div class="order-card" style="min-width: 135px;">
                <div class="mt-2 row">
                   <div class="position-relative me-2">
-                     <input type="text" name="model" class="m-0 text-order-input" required>
+                     <input type="text" name="model" class="m-0 text-order-input">
                      <span id="plusBlue-${count}" class="plus-blue-btn"><i class="fas fa-plus"></i></span>
+                     <span id="minusRed-${count}" class="minus-red-btn"><i class="fas fa-minus"></i></span>
                   </div>
                </div>
             </div>
@@ -256,11 +257,16 @@
          </div>
       `
       formWrapper.append(div);
+      
       const greenPlusBtn = document.querySelector(`#plusGreen-${count}`),
-            bluePlusBtn = document.querySelector(`#plusBlue-${count}`);
+            bluePlusBtn = document.querySelector(`#plusBlue-${count}`),
+            redMinusBtn = document.querySelector(`#minusRed-${count}`);
 
       greenPlusBtn.addEventListener('click', () => greenBtnHandler(count));
       bluePlusBtn.addEventListener('click', blueBtnHandler);
+      redMinusBtn.addEventListener('click', () => {
+         div.remove();
+      });
    }
    bluePlusBtn.addEventListener('click', blueBtnHandler);
 
@@ -287,6 +293,7 @@
          }
 
          console.log('Успешно создан: ', JSON.stringify(res));
+         e.target.nextElementSibling.querySelector('label').style.backgroundColor = '#ecffc6';
       } catch (e) {
          console.error('Ошибка', e);
       }
