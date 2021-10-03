@@ -1,0 +1,7 @@
+.hovered-link:hover {
+    color: #fff;
+    cursor: pointer;
+}
+.hovered-link {
+    margin-bottom: 0;
+}

@@ -19,7 +19,10 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.min.css" rel="stylesheet" type="text/css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/jqvmap.min.css" rel="stylesheet" type="text/css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" type="text/css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" rel="stylesheet" type="text/css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" rel="stylesheet" type="text/css">
     <link href="{{asset('assets/admin/assets/css/style.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('assets/admin/assets/css/admin.css')}}" rel="stylesheet" type="text/css">
     <!-- Head Libs -->
     <script src="{{asset('assets/admin/assets/js/modernizr.min.js')}}"></script>
     <script data-pace-options='{ "ajax": false, "selectors": [ "img" ]}' src="{{asset('assets/admin/assets/js/pace.min.js')}}"></script>
@@ -55,13 +58,13 @@
         <aside class="site-sidebar scrollbar-enabled" data-suppress-scroll-x="true">
             <!-- User Details -->
             <div class="side-user">
-                <figure class="side-user-bg" style="background-image: url(assets/demo/user-image-cropped.jpg)">
-                    <img src="assets/demo/user-image-cropped.jpg" alt="" class="d-none">
+                <figure class="side-user-bg" style="background-image: url()">
+                    <img src="" alt="" class="d-none">
                 </figure>
                 <div class="col-sm-12 text-center p-0 clearfix">
                     <div class="d-inline-block pos-relative mr-b-10"><span class="avatar-text">{{mb_substr($user_info->word, 0, 2)}}</span>
                         <figure class="avatar-img thumb-sm mr-b-0 d-none">
-                            <img src="assets/demo/users/user1.jpg" class="rounded-circle" alt="">
+                            <img src="" class="rounded-circle" alt="">
                         </figure>
                     </div>
                     <!-- /.d-inline-block -->
@@ -94,37 +97,37 @@
                     <div class="list-group row">
                         <a href="javascript:void(0)" class="list-group-item" data-chat-user="Julein Renvoye">
                             <figure class="thumb-xs user--online mr-3 mr-0-rtl ml-3-rtl">
-                                <img src="assets/demo/users/user2.jpg" class="rounded-circle" alt="">
+                                <img src="" class="rounded-circle" alt="">
                             </figure><span><span class="name">Gene Newman</span>  <span class="username">@gene_newman</span> </span>
                         </a>
                         <a href="javascript:void(0)" class="list-group-item" data-chat-user="Eddie Lebanovkiy">
                             <figure class="thumb-xs user--online mr-3 mr-0-rtl ml-3-rtl">
-                                <img src="assets/demo/users/user3.jpg" class="rounded-circle" alt="">
+                                <img src="" class="rounded-circle" alt="">
                             </figure><span><span class="name">Billy Black</span>  <span class="username">@billyblack</span> </span>
                         </a>
                         <a href="javascript:void(0)" class="list-group-item" data-chat-user="Cameron Moll">
                             <figure class="thumb-xs user--online mr-3 mr-0-rtl ml-3-rtl">
-                                <img src="assets/demo/users/user5.jpg" class="rounded-circle" alt="">
+                                <img src="" class="rounded-circle" alt="">
                             </figure><span><span class="name">Herbert Diaz</span>  <span class="username">@herbert</span> </span>
                         </a>
                         <a href="javascript:void(0)" class="list-group-item" data-chat-user="Bill S Kenny">
                             <figure class="user--busy thumb-xs mr-3 mr-0-rtl ml-3-rtl">
-                                <img src="assets/demo/users/user4.jpg" class="rounded-circle" alt="">
+                                <img src="" class="rounded-circle" alt="">
                             </figure><span><span class="name">Sylvia Harvey</span>  <span class="username">@sylvia</span> </span>
                         </a>
                         <a href="javascript:void(0)" class="list-group-item" data-chat-user="Trent Walton">
                             <figure class="user--busy thumb-xs mr-3 mr-0-rtl ml-3-rtl">
-                                <img src="assets/demo/users/user6.jpg" class="rounded-circle" alt="">
+                                <img src="" class="rounded-circle" alt="">
                             </figure><span><span class="name">Marsha Hoffman</span>  <span class="username">@m_hoffman</span> </span>
                         </a>
                         <a href="javascript:void(0)" class="list-group-item" data-chat-user="Julien Renvoye">
                             <figure class="user--offline thumb-xs mr-3 mr-0-rtl ml-3-rtl">
-                                <img src="assets/demo/users/user7.jpg" class="rounded-circle" alt="">
+                                <img src="" class="rounded-circle" alt="">
                             </figure><span><span class="name">Mason Grant</span>  <span class="username">@masongrant</span> </span>
                         </a>
                         <a href="javascript:void(0)" class="list-group-item" data-chat-user="Eddie Lebaovskiy">
                             <figure class="user--offline thumb-xs mr-3 mr-0-rtl ml-3-rtl">
-                                <img src="assets/demo/users/user8.jpg" class="rounded-circle" alt="">
+                                <img src="" class="rounded-circle" alt="">
                             </figure><span><span class="name">Shelly Sullivan</span>  <span class="username">@shelly</span></span>
                         </a>
                     </div>
@@ -148,7 +151,7 @@
                             <div class="message media reply">
                                 <figure class="thumb-xs2 user--online">
                                     <a href="#">
-                                        <img src="assets/demo/users/user3.jpg" class="rounded-circle" alt="">
+                                        <img src="" class="rounded-circle" alt="">
                                     </a>
                                 </figure>
                                 <div class="message-body media-body">
@@ -160,7 +163,7 @@
                             <div class="message media">
                                 <figure class="thumb-xs2 user--online">
                                     <a href="#">
-                                        <img src="assets/demo/users/user1.jpg" class="rounded-circle" alt="">
+                                        <img src="" class="rounded-circle" alt="">
                                     </a>
                                 </figure>
                                 <div class="message-body media-body">
@@ -172,7 +175,7 @@
                             <div class="message media reply">
                                 <figure class="thumb-xs2 user--offline">
                                     <a href="#">
-                                        <img src="assets/demo/users/user5.jpg" class="rounded-circle" alt="">
+                                        <img src="" class="rounded-circle" alt="">
                                     </a>
                                 </figure>
                                 <div class="message-body media-body">
@@ -185,7 +188,7 @@
                             <div class="message media">
                                 <figure class="thumb-xs2 user--online">
                                     <a href="#">
-                                        <img src="assets/demo/users/user1.jpg" class="rounded-circle" alt="">
+                                        <img src="" class="rounded-circle" alt="">
                                     </a>
                                 </figure>
                                 <div class="message-body media-body">
@@ -197,7 +200,7 @@
                             <div class="message media reply">
                                 <figure class="thumb-xs2 user--busy">
                                     <a href="#">
-                                        <img src="assets/demo/users/user6.jpg" class="rounded-circle" alt="">
+                                        <img src="" class="rounded-circle" alt="">
                                     </a>
                                 </figure>
                                 <div class="message-body media-body">
@@ -209,7 +212,7 @@
                             <div class="message media">
                                 <figure class="thumb-xs2 user--online">
                                     <a href="#">
-                                        <img src="assets/demo/users/user1.jpg" class="rounded-circle" alt="">
+                                        <img src="" class="rounded-circle" alt="">
                                     </a>
                                 </figure>
                                 <div class="message-body media-body">
