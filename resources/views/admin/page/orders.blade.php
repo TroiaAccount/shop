@@ -54,20 +54,22 @@
                            <tr>
                               <td>{{$result->number}}</td>
                               <td>
-                                 <p class="hovered-link text-inline" onclick="getImages('{{$result->image}}')" data-toggle="modal" data-target=".bs-modal-md-info">Посмотреть
-                                 </p>
+                                 <p class="hovered-link text-inline" onclick="getImages('{{$result->image}}')">Посмотреть</p>
                               </td>
                               <td data-redact>
                                  <div class="status-select show">
-                                    @if ($result->status == 1) Отправлен  @elseif ($result->status == 2) Прибыл @elseif ($result->status == 3) Упаковывается @elseif ($result->status == 4) Обрабатывается @endif
+                                    @if ($result->status == 1) Отправлен @elseif ($result->status == 2) Прибыл 
+                                    @elseif ($result->status == 3) Упаковывается @elseif ($result->status == 4) Обрабатывается
+                                    @endif
                                  </div>
                                  <select class="m-b-10 form-control hide" data-placeholder="Choose"
                                     data-toggle="select2">
                                     <optgroup label="Статус">
                                        @for($i = 1; $i <= 4; $i++) <option value="{{$i}}" @if($result->status == $i)
                                           selected @endif>
-                                          @if ($i == 1) Отправлен  @elseif ($i == 2) Прибыл @elseif ($i == 3) Упаковывается @elseif ($i == 4) Обрабатывается @endif</option>
-                                       @endfor
+                                          @if ($i == 1) Отправлен @elseif ($i == 2) Прибыл @elseif ($i == 3)
+                                          Упаковывается @elseif ($i == 4) Обрабатывается @endif</option>
+                                          @endfor
                                     </optgroup>
                               </td>
                               </select>
@@ -103,50 +105,65 @@
    <!-- /.container-fluid -->
    <div class="col-md-6 widget-holder">
       <div class="widget-bg">
-          <div class="widget-body clearfix">
-              <h5 class="box-title">Medium Modal</h5>
-              <p>You can do the same with medium sized Modals</p><a href="#" data-toggle="modal" data-target=".bs-modal-md-info"
-              class="mr-3 btn btn-outline-info">Info</a>
-              <!-- /.modal -->
-              <div class="modal modal-info fade bs-modal-md-info" tabindex="-1" role="dialog" aria-labelledby="myMediumModalLabel2" aria-hidden="true" style="display: none">
-                  <div class="modal-dialog modal-md">
-                      <div class="modal-content">
-                          <div class="modal-header text-inverse">
-                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                              <h5 class="modal-title" id="myMediumModalLabel2">Medium Modal Heading</h5>
-                          </div>
-                          <div class="modal-body">
-                              <h5>First Sub Heading</h5>
-                              <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
-                                  Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                              <hr>
-                              <h5>Overflowing text to show scroll behavior</h5>
-                              <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-                              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
-                                  and scrambled it to make a type specimen book.</p>
-                              <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-                              <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
-                                  Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                          </div>
-                          <div class="modal-footer"><a href="#" class="btn btn-info btn-rounded ripple text-left">Learn more</a> 
-                              <button type="button" class="btn btn-danger btn-rounded ripple text-left" data-dismiss="modal">Close this</button>
-                          </div>
-                      </div>
-                      <!-- /.modal-content -->
+         <div class="widget-body clearfix">
+            <h5 class="box-title">Medium Modal</h5>
+            <p>You can do the same with medium sized Modals</p><a href="#" data-toggle="modal"
+               data-target=".bs-modal-md-info" class="mr-3 btn btn-outline-info">Info</a>
+            <!-- /.modal -->
+            <div class="modal modal-info fade bs-modal-md-info" tabindex="-1" role="dialog"
+               aria-labelledby="myMediumModalLabel2" aria-hidden="true" style="display: none">
+               <div class="modal-dialog modal-md">
+                  <div class="modal-content">
+                     <div class="modal-header text-inverse">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h5 class="modal-title" id="myMediumModalLabel2">Фото товара</h5>
+                     </div>
+                     <div class="modal-body">
+                        <div class="d-flex flex-column modal-content-wrapper">
+                           <!-- <div class="image-wrapper">
+                              <img class="w-100" src="https://images.pexels.com/photos/8579202/pexels-photo-8579202.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
+                           </div>
+                           <div class="image-wrapper">
+                              <img class="w-100" src="https://images.pexels.com/photos/9708306/pexels-photo-9708306.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
+                           </div>
+                           <div class="image-wrapper">
+                              <img class="w-100" src="https://images.pexels.com/photos/3041865/pexels-photo-3041865.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
+                           </div> -->
+                        </div>
+                     </div>
+                     <div class="modal-footer">
+                        <button type="button" class="btn btn-danger btn-rounded ripple text-left"
+                           data-dismiss="modal">Закрыть</button>
+                     </div>
                   </div>
-                  <!-- /.modal-dialog -->
-              </div>
-              <!-- /.modal -->
-          </div>
-          <!-- /.widget-body -->
+                  <!-- /.modal-content -->
+               </div>
+               <!-- /.modal-dialog -->
+            </div>
+            <!-- /.modal -->
+         </div>
+         <!-- /.widget-body -->
       </div>
       <!-- /.widget-bg -->
-  </div>
+   </div>
 </main>
 <script>
    function getImages(images) {
       if (images) {
-         console.log(JSON.parse(images));
+         const $modal = $('.modal'),
+               modalContent = $('.modal-content-wrapper');
+         for (const img of JSON.parse(images)) {
+            console.log(img[0]);
+            const imageWrapper = document.createElement('div');
+            imageWrapper.classList.add('image-wrapper');
+            imageWrapper.innerHTML = `
+               <div class="image-wrapper">
+                  <img class="w-100" src="${img[0]}" alt="">
+               </div>
+            `
+            modalContent.append(imageWrapper);
+         }
+         $modal.modal('toggle');
       }
    }
 
@@ -172,9 +189,9 @@
    }
    async function redact(e, id) {
       const parent = e.target.parentElement.parentElement,
-            cells = parent.querySelectorAll('[data-redact]'),
-            select = parent.querySelector('select'),
-            status = parent.querySelector('.status-select');
+         cells = parent.querySelectorAll('[data-redact]'),
+         select = parent.querySelector('select'),
+         status = parent.querySelector('.status-select');
 
       e.target.classList.toggle('redact');
       select.classList.toggle('show');
@@ -183,8 +200,22 @@
       status.classList.toggle('hide');
 
       select.addEventListener('change', (e) => {
-         console.log(e.target.value);
-         status.textContent = e.target.value;
+         switch (e.target.value) {
+            case '1':
+               status.textContent = 'Отправлен';
+               break;
+            case '2':
+               status.textContent = 'Прибыл';
+               break;
+            case '3':
+               status.textContent = 'Упаковывается';
+               break;
+            case '4':
+               status.textContent = 'Обрабатывается';
+               break;
+            default:
+               break;
+         }
       })
 
       for (const cell of cells) {
@@ -196,17 +227,17 @@
       }
       if (!e.target.classList.contains('redact')) {
          const status = select.value,
-               cost = parent.querySelector('[name="cost"]').textContent,
-               commission = parent.querySelector('[name="comission"]').textContent,
-               count = parent.querySelector('[name="count"]').textContent,
-               size = parent.querySelector('[name="size"]').textContent,
-               model = parent.querySelector('[name="model"]').textContent,
-               color = parent.querySelector('[name="color"]').textContent;
+            cost = parent.querySelector('[name="cost"]').textContent,
+            commission = parent.querySelector('[name="comission"]').textContent,
+            count = parent.querySelector('[name="count"]').textContent,
+            size = parent.querySelector('[name="size"]').textContent,
+            model = parent.querySelector('[name="model"]').textContent,
+            color = parent.querySelector('[name="color"]').textContent;
 
          try {
             const res = await fetchUrl('{{Route("ReplaceOrder")}}', 'POST', {
                'Content-type': 'application/json'
-            }, JSON.stringify({id, status, cost, commission, count, size, model, color}));
+            }, JSON.stringify({ id, status, cost, commission, count, size, model, color }));
             if (res.status === 200) {
                console.log('Завершен');
             }

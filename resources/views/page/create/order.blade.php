@@ -323,10 +323,12 @@
                data[fieldName].push(input.value);
             })
          }
-         
-         photosUrl[i].forEach(url => {
+         if (photosUrl[i]) {
+            photosUrl[i].forEach(url => {
             photos.push(url);
          })
+         }
+         
          makeData(urlPhotoInputs, urlPhotos, 'PhotoUrl');
          makeData(urlProductInputs, urlProducts, 'ProductUrl');
          data['Photo'] = photos;
@@ -348,6 +350,7 @@
          });
          res = await res.json();
          console.log('Успешно создан: ', JSON.stringify(res));
+         window.location.href = '{{Route("page", ["page" => "orders"])}}'
       } catch (e) {
          console.error('Ошибка', e);
       }
