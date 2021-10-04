@@ -47,6 +47,8 @@ Route::middleware('MyAuth')->group(function(){ // Other route
             return redirect(Route('AdminPage', ['page' => 'main']));
         })->name('Admin');
         Route::get('/admin/{page}', 'AdminController@page')->name('AdminPage');
+        Route::post('/admin/order/completed', 'OrderController@CompletedOrder')->name('CompletedOrder');
+        Route::post('/admin/order/replace', 'OrderController@ReplaceOrder')->name('ReplaceOrder');
     });
 });
 

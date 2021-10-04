@@ -29,6 +29,7 @@
 </head>
 
 <body class="sidebar-dark sidebar-expand navbar-brand-dark content-dark right-sidebar-dark">
+    @csrf
     <div id="wrapper" class="wrapper">
         <!-- HEADER & TOP NAVIGATION -->
         <nav class="navbar">
@@ -262,8 +263,24 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/jquery.vmap.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/maps/jquery.vmap.usa.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
     <script src="{{asset('assets/admin/assets/js/template.js')}}"></script>
     <script src="{{asset('assets/admin/assets/js/custom.js')}}"></script>
+    <script>
+        
+        async function fetchUrl(url, method, headers, body) {
+            const _token = document.querySelector('[name="_token"]').value;
+
+            const res = await fetch(url, {
+                method, 
+                headers: {
+                    'X-CSRF-TOKEN': _token,
+                    ...headers
+                }, body
+            });
+            return await res.json();
+        }
+    </script>
 </body>
 
 </html>

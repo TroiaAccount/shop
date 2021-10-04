@@ -5,3 +5,16 @@
 .hovered-link {
     margin-bottom: 0;
 }
+.hide {
+    display: none;
+}
+.show {
+    display: block;
+}
+.text-inline {
+    text-decoration: underline;
+}
+
+.table th, .table td {
+    padding: 5px!important;
+}

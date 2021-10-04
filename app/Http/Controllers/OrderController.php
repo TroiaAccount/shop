@@ -118,4 +118,68 @@ class OrderController extends Controller
         $result = json_encode($result, true);
         return $result;
     }
+
+    // Admin Api
+
+    public function CompletedOrder(request $req){
+        $req = $req->json()->all();
+
+        $id = addslashes($req['id']);
+        $result = ['status' => false, 'error' => 'Вы не указали все параметры'];
+        if($id != null){
+            $check_order = order::select('id')->where(['id' => $id, 'completed' => 0])->first();
+            if($check_order != null){
+                order::where('id', $id)->update(['completed' => 1]);
+                $result = ['status' => true];
+            } else {
+                $result['error'] = "Такого заказа не существует или он уже завершен";
+            }
+        }
+        $result = json_encode($result, true);
+        return $result;
+    }
+
+    public function ReplaceOrder(request $req){
+        $req = $req->json()->all();
+        $id = addslashes($req['id']);
+        $status = addslashes($req['status']);
+        $cost = addslashes($req['cost']);
+        $commission = addslashes($req['commission']);
+        $count = addslashes($req['count']);
+        $size = addslashes($req['size']);
+        $model = addslashes($req['model']);
+        $color = addslashes($req['color']);
+        $result = ['status' => false, 'error' => 'Вы не заполнили все параметры'];
+        if($id != null){
+            $check_order = order::select()->where(['id' => $id, 'completed' => 0])->first();
+            if($check_order != null){
+                $parameters = [];
+                if($status != null){
+                    $parameters['status'] = $status;
+                }
+                if($cost != null){
+                    $parameters['cost'] = $cost;
+                }
+                if($commission != null){
+                    $parameters['commission'] = $commission;
+                }
+                if($count != null){
+                    $parameters['count'] = $count;
+                }
+                if($size != null){
+                    $parameters['size'] = $size;
+                }
+                if($model != null){
+                    $parameters['model'] = $model;
+                }
+                if($color != null){
+                    $parameters['color'] = $color;
+                }
+                order::where('id', $id)->update($parameters);
+                $result = ['status' => true];
+            }
+        }
+        $result = json_encode($result, true);
+        return $result;
+    }
 }

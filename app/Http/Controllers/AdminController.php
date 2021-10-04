@@ -46,7 +46,7 @@ class AdminController extends Controller
                 $table['AllOrder'] = ['percent' => $percent, 'upper' => "-"];
             } else {
                 $table['AllOrder'] = ['percent' => $percent, 'upper' => null];
-            }
+            } 
         }
 
         if($page == "orders"){
