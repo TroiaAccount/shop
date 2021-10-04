@@ -103,41 +103,29 @@
       <!-- /.widget-list -->
    </div>
    <!-- /.container-fluid -->
-   <div class="col-md-6 widget-holder">
-      <div class="widget-bg">
-         <div class="widget-body clearfix">
-            <h5 class="box-title">Medium Modal</h5>
-            <p>You can do the same with medium sized Modals</p><a href="#" data-toggle="modal"
-               data-target=".bs-modal-md-info" class="mr-3 btn btn-outline-info">Info</a>
-            <!-- /.modal -->
-            <div class="modal modal-info fade bs-modal-md-info" tabindex="-1" role="dialog"
-               aria-labelledby="myMediumModalLabel2" aria-hidden="true" style="display: none">
-               <div class="modal-dialog modal-md">
-                  <div class="modal-content">
-                     <div class="modal-header text-inverse">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        <h5 class="modal-title" id="myMediumModalLabel2"></h5>
-                     </div>
-                     <div class="modal-body">
-                        <div class="d-flex flex-column modal-content-wrapper">
-                           
-                        </div>
-                     </div>
-                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger btn-rounded ripple text-left"
-                           data-dismiss="modal">Закрыть</button>
-                     </div>
-                  </div>
-                  <!-- /.modal-content -->
-               </div>
-               <!-- /.modal-dialog -->
+   <div class="modal modal-info fade bs-modal-md-info" tabindex="-1" role="dialog"
+      aria-labelledby="myMediumModalLabel2" aria-hidden="true" style="display: none">
+      <div class="modal-dialog modal-md">
+         <div class="modal-content">
+            <div class="modal-header text-inverse">
+               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+               <h5 class="modal-title" id="myMediumModalLabel2"></h5>
             </div>
-            <!-- /.modal -->
+            <div class="modal-body">
+               <div class="d-flex flex-column modal-content-wrapper">
+                  
+               </div>
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-danger btn-rounded ripple text-left"
+                  data-dismiss="modal">Закрыть</button>
+            </div>
          </div>
-         <!-- /.widget-body -->
+         <!-- /.modal-content -->
       </div>
-      <!-- /.widget-bg -->
+      <!-- /.modal-dialog -->
    </div>
+   <!-- /.modal -->
 </main>
 <script>
 
