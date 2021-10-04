@@ -116,7 +116,7 @@
                   <div class="modal-content">
                      <div class="modal-header text-inverse">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        <h5 class="modal-title" id="myMediumModalLabel2">Фото товара</h5>
+                        <h5 class="modal-title" id="myMediumModalLabel2"></h5>
                      </div>
                      <div class="modal-body">
                         <div class="d-flex flex-column modal-content-wrapper">
@@ -142,14 +142,18 @@
 <script>
 
    function checkImage(image) {
-      image.style.display = 'none';
+      console.log('removed', image);
+      image.parentNode.remove();
    }
+
    function getImages(images) {
       if (images) {
          const $modal = $('.modal'),
+               $modalTitle = $('.modal-title'),
                $modalContent = $('.modal-content-wrapper');
 
          $modalContent.empty();
+         $modalTitle.text('Фото товара');
 
          for (const img of JSON.parse(images)) {
             if (img) {
@@ -170,7 +174,28 @@
 
    function getUrls(urls) {
       if (urls) {
-         console.log(JSON.parse(urls));
+         const $modal = $('.modal'),
+               $modalTitle = $('.modal-title'),
+               $modalContent = $('.modal-content-wrapper');
+
+         $modalContent.empty();
+         $modalTitle.text('Ссылки на товары');
+
+         const urlsWrapper = document.createElement('div');
+         urlsWrapper.classList.add('list-group');
+
+         for (const url of JSON.parse(urls)) {
+            if (url) {
+               const a = document.createElement('a');
+               a.classList.add('list-group-item', 'list-group-item-action');
+               a.href = url;
+               a.textContent = url.length > 45 ? url.slice(0, 45) + '...' : url;
+               urlsWrapper.append(a);
+            }
+         }
+
+         $modalContent.append(urlsWrapper);
+         $modal.modal('toggle');
       }
    }
 
