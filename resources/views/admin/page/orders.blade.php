@@ -120,15 +120,7 @@
                      </div>
                      <div class="modal-body">
                         <div class="d-flex flex-column modal-content-wrapper">
-                           <!-- <div class="image-wrapper">
-                              <img class="w-100" src="https://images.pexels.com/photos/8579202/pexels-photo-8579202.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
-                           </div>
-                           <div class="image-wrapper">
-                              <img class="w-100" src="https://images.pexels.com/photos/9708306/pexels-photo-9708306.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
-                           </div>
-                           <div class="image-wrapper">
-                              <img class="w-100" src="https://images.pexels.com/photos/3041865/pexels-photo-3041865.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
-                           </div> -->
+                           
                         </div>
                      </div>
                      <div class="modal-footer">
@@ -148,20 +140,29 @@
    </div>
 </main>
 <script>
+
+   function checkImage(image) {
+      image.style.display = 'none';
+   }
    function getImages(images) {
       if (images) {
          const $modal = $('.modal'),
-               modalContent = $('.modal-content-wrapper');
+               $modalContent = $('.modal-content-wrapper');
+
+         $modalContent.empty();
+
          for (const img of JSON.parse(images)) {
-            console.log(img[0]);
-            const imageWrapper = document.createElement('div');
-            imageWrapper.classList.add('image-wrapper');
-            imageWrapper.innerHTML = `
-               <div class="image-wrapper">
-                  <img class="w-100" src="${img[0]}" alt="">
-               </div>
-            `
-            modalContent.append(imageWrapper);
+            if (img) {
+               const imageWrapper = document.createElement('div'),
+                     image = document.createElement('img');
+
+               imageWrapper.classList.add('image-wrapper');
+               image.classList.add('w-100');
+               image.onerror = () => checkImage(image);
+               image.src = img[0];
+               imageWrapper.append(image);
+               $modalContent.append(imageWrapper);
+            }
          }
          $modal.modal('toggle');
       }
