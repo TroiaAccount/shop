@@ -8,10 +8,10 @@
                     <a href="{{Route('AdminPage', ['page' => 'delivery'])}}">Доставка</a>
                     <ul class="list-unstyled sub-menu mt-0">
                         <li>
-                            <a href="../default/app-calender.html">До Москвы</a>
+                            <a href="{{Route('AdminPage', ['page' => 'delivery'])}}">До Москвы</a>
                         </li>
                         <li>
-                            <a href="../default/app-calender.html">По Росии</a>
+                            <a href="{{Route('AdminPage', ['page' => 'delivery'])}}">По Росии</a>
                         </li>
                     </ul>
                 </li>
