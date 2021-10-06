@@ -83,9 +83,9 @@
                                  <p class="hovered-link text-inline" onclick="getUrls('{{$result->ProductUrl}}')">
                                     Посмотреть</p>
                               </td>
-                              <th>
-                                 <p class="hovered-link" onclick="done({{$result->id}})">Завершить</p>
-                                 <p class="hovered-link" onclick="redact(event, {{$result->id}})">Изменить</p>
+                              <th class="d-flex">
+                                 <p><i class="fas fa-check hovered-link green" data-toggle="tooltip" data-placement="bottom" title="Завершить заказ" onclick="done({{$result->id}})"></i></p>
+                                 <p class="ml-3"><i class="fas fa-pen hovered-link yellow" data-toggle="tooltip" data-placement="bottom" title="Редактировать заказ, нажмите еще раз чтобы завершить редактирование" onclick="redact(event, {{$result->id}})"></i></p>
                               </th>
                            </tr>
                            @endforeach
@@ -130,7 +130,6 @@
 <script>
 
    function checkImage(image) {
-      console.log('removed', image);
       image.parentNode.remove();
    }
 
@@ -202,12 +201,12 @@
 
    }
    async function redact(e, id) {
-      const parent = e.target.parentElement.parentElement,
-         cells = parent.querySelectorAll('[data-redact]'),
-         select = parent.querySelector('select'),
-         status = parent.querySelector('.status-select');
+      const parent = e.target.parentElement.parentElement.parentElement,
+            cells = parent.querySelectorAll('[data-redact]'),
+            select = parent.querySelector('select'),
+            status = parent.querySelector('.status-select');
 
-      e.target.classList.toggle('redact');
+      e.target.parentElement.classList.toggle('redact');
       select.classList.toggle('show');
       select.classList.toggle('hide');
       status.classList.toggle('show');
@@ -233,20 +232,20 @@
       })
 
       for (const cell of cells) {
-         if (e.target.classList.contains('redact')) {
+         if (e.target.parentElement.classList.contains('redact')) {
             cell.setAttribute('contenteditable', true);
          } else {
             cell.setAttribute('contenteditable', false);
          }
       }
-      if (!e.target.classList.contains('redact')) {
+      if (!e.target.parentElement.classList.contains('redact')) {
          const status = select.value,
-            cost = parent.querySelector('[name="cost"]').textContent,
-            commission = parent.querySelector('[name="comission"]').textContent,
-            count = parent.querySelector('[name="count"]').textContent,
-            size = parent.querySelector('[name="size"]').textContent,
-            model = parent.querySelector('[name="model"]').textContent,
-            color = parent.querySelector('[name="color"]').textContent;
+               cost = parent.querySelector('[name="cost"]').textContent,
+               commission = parent.querySelector('[name="comission"]').textContent,
+               count = parent.querySelector('[name="count"]').textContent,
+               size = parent.querySelector('[name="size"]').textContent,
+               model = parent.querySelector('[name="model"]').textContent,
+               color = parent.querySelector('[name="color"]').textContent;
 
          try {
             const res = await fetchUrl('{{Route("ReplaceOrder")}}', 'POST', {

@@ -2,6 +2,14 @@
     color: #fff;
     cursor: pointer;
 }
+.hovered-link.green:hover {
+    color: #198754;
+    cursor: pointer;
+}
+.hovered-link.yellow:hover {
+    color: #ffc107;
+    cursor: pointer;
+}
 .hovered-link {
     margin-bottom: 0;
 }

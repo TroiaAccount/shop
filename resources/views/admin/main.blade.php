@@ -24,6 +24,7 @@
     <link href="{{asset('assets/admin/assets/css/style.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('assets/admin/assets/css/admin.css')}}" rel="stylesheet" type="text/css">
     <!-- Head Libs -->
+    <script src="https://kit.fontawesome.com/e573f55991.js" crossorigin="anonymous"></script>
     <script src="{{asset('assets/admin/assets/js/modernizr.min.js')}}"></script>
     <script data-pace-options='{ "ajax": false, "selectors": [ "img" ]}' src="{{asset('assets/admin/assets/js/pace.min.js')}}"></script>
 </head>
@@ -267,7 +268,6 @@
     <script src="{{asset('assets/admin/assets/js/template.js')}}"></script>
     <script src="{{asset('assets/admin/assets/js/custom.js')}}"></script>
     <script>
-        
         async function fetchUrl(url, method, headers, body) {
             const _token = document.querySelector('[name="_token"]').value;
 
@@ -280,6 +280,10 @@
             });
             return await res.json();
         }
+
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
     </script>
 </body>
 
