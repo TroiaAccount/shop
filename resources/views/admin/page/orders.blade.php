@@ -83,9 +83,9 @@
                                  <p class="hovered-link text-inline" onclick="getUrls('{{$result->ProductUrl}}')">
                                     Посмотреть</p>
                               </td>
-                              <th>
-                                 <p class="hovered-link" onclick="done({{$result->id}})">Завершить</p>
-                                 <p class="hovered-link" onclick="redact(event, {{$result->id}})">Изменить</p>
+                              <th class="d-flex justify-content-start">
+                                 <p><i class="fas fa-pen hovered-link yellow" data-toggle="tooltip" data-placement="bottom" title="Редактировать заказ, нажмите еще раз чтобы завершить редактирование" onclick="redact(event, {{$result->id}})"></i></p>
+                                 <p class="ml-3"><i class="fas fa-check hovered-link green" data-toggle="tooltip" data-placement="bottom" title="Завершить заказ" onclick="done({{$result->id}})"></i></p>
                               </th>
                            </tr>
                            @endforeach
@@ -103,65 +103,57 @@
       <!-- /.widget-list -->
    </div>
    <!-- /.container-fluid -->
-   <div class="col-md-6 widget-holder">
-      <div class="widget-bg">
-         <div class="widget-body clearfix">
-            <h5 class="box-title">Medium Modal</h5>
-            <p>You can do the same with medium sized Modals</p><a href="#" data-toggle="modal"
-               data-target=".bs-modal-md-info" class="mr-3 btn btn-outline-info">Info</a>
-            <!-- /.modal -->
-            <div class="modal modal-info fade bs-modal-md-info" tabindex="-1" role="dialog"
-               aria-labelledby="myMediumModalLabel2" aria-hidden="true" style="display: none">
-               <div class="modal-dialog modal-md">
-                  <div class="modal-content">
-                     <div class="modal-header text-inverse">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        <h5 class="modal-title" id="myMediumModalLabel2">Фото товара</h5>
-                     </div>
-                     <div class="modal-body">
-                        <div class="d-flex flex-column modal-content-wrapper">
-                           <!-- <div class="image-wrapper">
-                              <img class="w-100" src="https://images.pexels.com/photos/8579202/pexels-photo-8579202.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
-                           </div>
-                           <div class="image-wrapper">
-                              <img class="w-100" src="https://images.pexels.com/photos/9708306/pexels-photo-9708306.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
-                           </div>
-                           <div class="image-wrapper">
-                              <img class="w-100" src="https://images.pexels.com/photos/3041865/pexels-photo-3041865.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
-                           </div> -->
-                        </div>
-                     </div>
-                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger btn-rounded ripple text-left"
-                           data-dismiss="modal">Закрыть</button>
-                     </div>
-                  </div>
-                  <!-- /.modal-content -->
-               </div>
-               <!-- /.modal-dialog -->
+   <div class="modal modal-info fade bs-modal-md-info" tabindex="-1" role="dialog"
+      aria-labelledby="myMediumModalLabel2" aria-hidden="true" style="display: none">
+      <div class="modal-dialog modal-md">
+         <div class="modal-content">
+            <div class="modal-header text-inverse">
+               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+               <h5 class="modal-title" id="myMediumModalLabel2"></h5>
             </div>
-            <!-- /.modal -->
+            <div class="modal-body">
+               <div class="d-flex flex-column modal-content-wrapper">
+                  
+               </div>
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-danger btn-rounded ripple text-left"
+                  data-dismiss="modal">Закрыть</button>
+            </div>
          </div>
-         <!-- /.widget-body -->
+         <!-- /.modal-content -->
       </div>
-      <!-- /.widget-bg -->
+      <!-- /.modal-dialog -->
    </div>
+   <!-- /.modal -->
 </main>
 <script>
+
+   function checkImage(image) {
+      image.parentNode.remove();
+   }
+
    function getImages(images) {
       if (images) {
          const $modal = $('.modal'),
-               modalContent = $('.modal-content-wrapper');
+               $modalTitle = $('.modal-title'),
+               $modalContent = $('.modal-content-wrapper');
+
+         $modalContent.empty();
+         $modalTitle.text('Фото товара');
+
          for (const img of JSON.parse(images)) {
-            console.log(img[0]);
-            const imageWrapper = document.createElement('div');
-            imageWrapper.classList.add('image-wrapper');
-            imageWrapper.innerHTML = `
-               <div class="image-wrapper">
-                  <img class="w-100" src="${img[0]}" alt="">
-               </div>
-            `
-            modalContent.append(imageWrapper);
+            if (img) {
+               const imageWrapper = document.createElement('div'),
+                     image = document.createElement('img');
+
+               imageWrapper.classList.add('image-wrapper');
+               image.classList.add('w-100');
+               image.onerror = () => checkImage(image);
+               image.src = img[0];
+               imageWrapper.append(image);
+               $modalContent.append(imageWrapper);
+            }
          }
          $modal.modal('toggle');
       }
@@ -169,7 +161,28 @@
 
    function getUrls(urls) {
       if (urls) {
-         console.log(JSON.parse(urls));
+         const $modal = $('.modal'),
+               $modalTitle = $('.modal-title'),
+               $modalContent = $('.modal-content-wrapper');
+
+         $modalContent.empty();
+         $modalTitle.text('Ссылки на товары');
+
+         const urlsWrapper = document.createElement('div');
+         urlsWrapper.classList.add('list-group');
+
+         for (const url of JSON.parse(urls)) {
+            if (url) {
+               const a = document.createElement('a');
+               a.classList.add('list-group-item', 'list-group-item-action');
+               a.href = url;
+               a.textContent = url.length > 45 ? url.slice(0, 45) + '...' : url;
+               urlsWrapper.append(a);
+            }
+         }
+
+         $modalContent.append(urlsWrapper);
+         $modal.modal('toggle');
       }
    }
 
@@ -188,12 +201,12 @@
 
    }
    async function redact(e, id) {
-      const parent = e.target.parentElement.parentElement,
-         cells = parent.querySelectorAll('[data-redact]'),
-         select = parent.querySelector('select'),
-         status = parent.querySelector('.status-select');
+      const parent = e.target.parentElement.parentElement.parentElement,
+            cells = parent.querySelectorAll('[data-redact]'),
+            select = parent.querySelector('select'),
+            status = parent.querySelector('.status-select');
 
-      e.target.classList.toggle('redact');
+      e.target.parentElement.classList.toggle('redact');
       select.classList.toggle('show');
       select.classList.toggle('hide');
       status.classList.toggle('show');
@@ -219,20 +232,20 @@
       })
 
       for (const cell of cells) {
-         if (e.target.classList.contains('redact')) {
+         if (e.target.parentElement.classList.contains('redact')) {
             cell.setAttribute('contenteditable', true);
          } else {
             cell.setAttribute('contenteditable', false);
          }
       }
-      if (!e.target.classList.contains('redact')) {
+      if (!e.target.parentElement.classList.contains('redact')) {
          const status = select.value,
-            cost = parent.querySelector('[name="cost"]').textContent,
-            commission = parent.querySelector('[name="comission"]').textContent,
-            count = parent.querySelector('[name="count"]').textContent,
-            size = parent.querySelector('[name="size"]').textContent,
-            model = parent.querySelector('[name="model"]').textContent,
-            color = parent.querySelector('[name="color"]').textContent;
+               cost = parent.querySelector('[name="cost"]').textContent,
+               commission = parent.querySelector('[name="comission"]').textContent,
+               count = parent.querySelector('[name="count"]').textContent,
+               size = parent.querySelector('[name="size"]').textContent,
+               model = parent.querySelector('[name="model"]').textContent,
+               color = parent.querySelector('[name="color"]').textContent;
 
          try {
             const res = await fetchUrl('{{Route("ReplaceOrder")}}', 'POST', {
