@@ -46,7 +46,7 @@
                               <th>Модель</th>
                               <th>Цвет</th>
                               <th>Ссылки на товары</th>
-                              <th>Действия</th>
+                              <th class="text-center">Действия</th>
                            </tr>
                         </thead>
                         <tbody>
@@ -83,7 +83,7 @@
                                  <p class="hovered-link text-inline" onclick="getUrls('{{$result->ProductUrl}}')">
                                     Посмотреть</p>
                               </td>
-                              <th class="d-flex justify-content-start">
+                              <th class="d-flex justify-content-center">
                                  <p><i class="fas fa-pen hovered-link yellow" data-toggle="tooltip" data-placement="bottom" title="Редактировать заказ, нажмите еще раз чтобы завершить редактирование" onclick="redact(event, {{$result->id}})"></i></p>
                                  <p class="ml-3"><i class="fas fa-check hovered-link green" data-toggle="tooltip" data-placement="bottom" title="Завершить заказ" onclick="done({{$result->id}})"></i></p>
                               </th>
