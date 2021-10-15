@@ -42,16 +42,16 @@
                             </tr>
                          </thead>
                          <tbody>
-                            {{-- @foreach($table as $result) --}}
-                            <tr>
-                               <td>1</td>
-                               <td name="role" data-redact>Менеджер</td>
-                               <th class="d-flex justify-content-center">
-                                  <p><i class="fas fa-pen hovered-link yellow" data-toggle="tooltip" data-placement="bottom" title="Редактировать"></i></p>
-                                  <p class="ml-3"><i class="fas fa-trash-alt hovered-link green" data-toggle="tooltip" data-placement="bottom" title="Удалить"></i></p>
-                               </th>
-                            </tr>
-                            {{-- @endforeach --}}
+                            @foreach($table as $result) 
+                              <tr>
+                                 <td>{{$result->id}}</td>
+                                 <td name="role" data-redact>{{$result->name}}</td>
+                                 <th class="d-flex justify-content-center">
+                                    <p><i class="fas fa-pen hovered-link yellow" data-toggle="tooltip" data-placement="bottom" title="Редактировать"></i></p>
+                                    <p class="ml-3"><i class="fas fa-trash-alt hovered-link green" data-toggle="tooltip" data-placement="bottom" title="Удалить"></i></p>
+                                 </th>
+                              </tr>
+                            @endforeach 
                          </tbody>
                       </table>
                    </div>
@@ -72,4 +72,22 @@
             </div>
         </div>
     </div>
+    <script>
+      async function Delete(id) {
+          const data = { id: id };
+          try {
+              const res = await fetchUrl('{{Route("delete_roles_DeleteRole")}}', 'POST', {
+                  'Content-type': 'application/json'
+              }, JSON.stringify(data));
+              if(res.status == true){
+                  location.reload();
+              } else {
+                  alert(res.error);
+              }
+          } catch (e) {
+              console.error('Error:', e.message);
+          }
+
+      }
+  </script>
 </main>

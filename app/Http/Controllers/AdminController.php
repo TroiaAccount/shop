@@ -7,6 +7,7 @@ use App\Models\User;
 Use App\Models\delivery;
 Use App\Models\order;
 Use App\Models\role;
+use App\Models\adres;
 
 class AdminController extends Controller
 {
@@ -64,6 +65,22 @@ class AdminController extends Controller
                 $roles[$result->id] = $result->name;
             }
             $table = ['admins' => $admins, 'roles' => $roles];
+        }
+        if($page == "roles"){
+            $table = role::select()->get();
+        }
+        if($page == "adress"){
+            $adress = adres::select()->paginate(50);
+            $table = [];
+            foreach($adress as $result){
+                $selectUser = User::select()->where('id', $result->user_id)->first();
+                if($selectUser != null){
+                    $table[] = [
+                        'user' => $selectUser->login,
+                        'adres' => $result
+                    ];
+                }
+            }
         }
 
         return view('admin/main')->with([

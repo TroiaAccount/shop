@@ -54,6 +54,8 @@ Route::middleware('MyAuth')->group(function(){ // Other route
             Route::post('/admin/users/replace', 'UserController@Replace')->name('write_users_ReplaceUser');
             Route::post('/admin/admins/delete', 'AdminController@DeleteAdmin')->name('delete_admins_DeleteAdmin');
             Route::post('/admin/admins/add', 'AdminController@AddAdmin')->name('write_admins_AddAdmin');
+            Route::post('/admin/roles/delete', 'RoleController@DeleteRole')->name('delete_roles_DeleteRole');
+            Route::post('/admin/adress/delete', 'AdresController@DeleteAdres')->name('delete_adress_DeleteAdres');
         });
     });
 });

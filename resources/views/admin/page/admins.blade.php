@@ -51,7 +51,6 @@
                                  <td name="full_name" data-redact>{{$result->full_name}}</td>
                                  <td name="role" data-redact>{{$table['roles'][$result->role]}}</td>
                                  <th class="d-flex justify-content-center">
-                                    <p><i class="fas fa-pen hovered-link yellow" data-toggle="tooltip" data-placement="bottom" title="Редактировать"></i></p>
                                     <p class="ml-3" onclick="Delete({{$result->id}})"><i class="fas fa-trash-alt hovered-link green" data-toggle="tooltip" data-placement="bottom" title="Удалить"></i></p>
                                  </th>
                               </tr>

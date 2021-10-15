@@ -35,4 +35,19 @@ class AdresController extends Controller
         $result = json_encode($result, true);
         return $result;
     }
+
+    public function DeleteAdres(request $req){
+        $result = ['status' => false, 'error' => 'Вы не заполнили все поля'];
+        $id = $req->session()->get('id');
+        if($id != null){
+            $checkAdres = adres::select()->where('id', $id)->first();
+            $result['error'] = "Такого адреса не существует";
+            if($checkAdres != null){
+                $checkAdres->delete();
+                $result = ['status' => true];
+            }
+        }
+        $result = json_encode($result, true);
+        return $result;
+    }
 }

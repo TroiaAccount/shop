@@ -46,20 +46,23 @@
                            </tr>
                         </thead>
                         <tbody>
-                           {{-- @foreach($table as $result) --}}
-                           <tr>
-                              <td name="login" data-redact>admirated</td>
-                              <td name="full_name" data-redact>Нибожинский Владимир Владимирович</td>
-                              <td name="phone" data-redact>+38056045643</td>
-                              <td name="email" data-redact>vovanebozhinsky@gmail.com</td>
-                              <td name="adress" data-redact>Хрещатик 1а</td>
-                              <td name="passport" data-redact>1454 141244</td>
-                              <th class="d-flex justify-content-center">
-                                 <p><i class="fas fa-pen hovered-link yellow" data-toggle="tooltip" data-placement="bottom" title="Редактировать"></i></p>
-                                 <p class="ml-3"><i class="fas fa-trash-alt hovered-link green" data-toggle="tooltip" data-placement="bottom" title="Удалить"></i></p>
-                              </th>
-                           </tr>
-                           {{-- @endforeach --}}
+                           @foreach($table as $result)
+                              @php
+                                 $adres = $result['adres'];
+                              @endphp
+                              <tr>
+                                 <td name="login" data-redact>{{$result['user']}}</td>
+                                 <td name="full_name" data-redact>{{$adres->full_name}}</td>
+                                 <td name="phone" data-redact>{{$adres->telephone}}</td>
+                                 <td name="email" data-redact>{{$adres->email}}</td>
+                                 <td name="adress" data-redact>{{$adres->adres}}</td>
+                                 <td name="passport" data-redact>{{$adres->passport}}</td>
+                                 <th class="d-flex justify-content-center">
+                                    <p><i class="fas fa-pen hovered-link yellow" data-toggle="tooltip" data-placement="bottom" title="Редактировать"></i></p>
+                                    <p class="ml-3" onclick="Delete({{$adres->id}})"><i class="fas fa-trash-alt hovered-link green" data-toggle="tooltip" data-placement="bottom" title="Удалить"></i></p>
+                                 </th>
+                              </tr>
+                           @endforeach
                         </tbody>
                      </table>
                   </div>
@@ -73,5 +76,23 @@
       </div>
       <!-- /.widget-list -->
    </div>
+   <script>
+      async function Delete(id) {
+          const data = { id: id };
+          try {
+              const res = await fetchUrl('{{Route("delete_adress_DeleteAdres")}}', 'POST', {
+                  'Content-type': 'application/json'
+              }, JSON.stringify(data));
+              if(res.status == true){
+                  location.reload();
+              } else {
+                  alert(res.error);
+              }
+          } catch (e) {
+              console.error('Error:', e.message);
+          }
+
+      }
+  </script>
    
 </main>
