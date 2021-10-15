@@ -66,5 +66,6 @@ class Kernel extends HttpKernel
         'MyAuth' => \App\Http\Middleware\MyAuth::class,
         'CheckMyAuth' => \App\Http\Middleware\CheckMyAuth::class,
         'CheckAdmin' => \App\Http\Middleware\CheckAdmin::class,
+        'ChechAdminRights' =>\App\Http\Middleware\ChechAdminRights::class,
     ];
 }

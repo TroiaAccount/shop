@@ -220,4 +220,42 @@ class UserController extends Controller
         $result = ['status' => true];
         return json_encode($result, true);
     }
+
+    public function Delete(request $req){
+        $id = addslashes($req['id']);
+        $result = ['status' => false, 'error' => 'Вы не заполнили все обязательные параметры'];
+        if($id != null){
+            $checkUser = User::select()->where('id', $id)->first();
+            $result['error'] = "Такого пользователя не существует";
+            if($checkUser != null){
+                $checkUser->delete();
+                $result = ['status' => true];
+            }
+        }
+        $result = json_encode($result, true);
+        return $result;
+    }
+
+    public function Replace(request $req){
+        $fullName = addslashes($req['fullname']);
+        $login = addslashes($req['login']);
+        $id = addslashes($req['id']);
+        $result = ['status' => false, 'error' => 'Вы не заполнили все обязательные параметры'];
+        if(($fullName != null || $login != null) && $id != null){
+            $checkUser = User::select()->where('id', $id)->first();
+            $result['error'] = "Такого пользователя не существует";
+            if($checkUser != null){
+                if($fullName != null){
+                    $checkUser->full_name = $fullName;
+                }
+                if($login != null){
+                    $checkUser->login = $login;
+                }
+                $checkUser->save();
+                $result = ['status' => true];
+            }
+        }
+        $result = json_encode($result, true);
+        return $result;
+    }
 }

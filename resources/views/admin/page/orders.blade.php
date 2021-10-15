@@ -189,7 +189,7 @@
    async function done(id) {
       const data = { id: id };
       try {
-         const res = await fetchUrl('{{Route("CompletedOrder")}}', 'POST', {
+         const res = await fetchUrl('{{Route("write_orders_CompletedOrder")}}', 'POST', {
             'Content-type': 'application/json'
          }, JSON.stringify(data));
          if (res.status === 200) {
@@ -248,7 +248,7 @@
                color = parent.querySelector('[name="color"]').textContent;
 
          try {
-            const res = await fetchUrl('{{Route("ReplaceOrder")}}', 'POST', {
+            const res = await fetchUrl('{{Route("write_orders_ReplaceOrder")}}', 'POST', {
                'Content-type': 'application/json'
             }, JSON.stringify({ id, status, cost, commission, count, size, model, color }));
             if (res.status === 200) {

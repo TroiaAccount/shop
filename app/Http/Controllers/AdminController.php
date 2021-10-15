@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 Use App\Models\delivery;
 Use App\Models\order;
+Use App\Models\role;
 
 class AdminController extends Controller
 {
@@ -52,11 +53,62 @@ class AdminController extends Controller
         if($page == "orders"){
             $table = order::select()->where('completed', 0)->orderby('id', 'desc')->get();
         }
+        if($page == "users"){
+            $table = User::select()->get();
+        }
+        if($page == "admins"){
+            $admins = User::select()->where('admin', 1)->get();
+            $roles = [];
+            $selectRoles = role::select()->get();
+            foreach($selectRoles as $result){
+                $roles[$result->id] = $result->name;
+            }
+            $table = ['admins' => $admins, 'roles' => $roles];
+        }
 
         return view('admin/main')->with([
             'page' => $page,
             'user_info' => $user_info,
             'table' => $table
         ]);
+        
+    }
+
+    public function DeleteAdmin(request $req){
+        $id = addslashes($req['id']);
+        $result = ['status' => false, 'error' => 'Вы не заполнили все обязательные поля'];
+        if($id != null){
+            $checkAdmin = User::select()->where(['admin' => 1, 'id' => $id])->first();
+            $result['error'] = "Такого админа не существует";
+            if($checkAdmin != null){
+                $checkAdmin->admin = 0;
+                $checkAdmin->save();
+                $result = ['status' => true];
+            }
+        }
+        $result = json_encode($result, true);
+        return $result;
+    }
+
+    public function AddAdmin(request $req){
+        $id = addslashes($req['id']);
+        $role = addslashes($req['role']);
+        $result = ['status' => false, 'error' => 'Вы не заполнили все обязательные поля'];
+        if($id != null && $role != null){
+            $checkUser = User::select()->where('id', $id)->first();
+            $result['error'] = "Такого пользователя не сущевствует";
+            if($checkUser != null){
+                $checkRole = role::select()->where('id', $role)->first();
+                $result['error'] = "Такой роли не существует";
+                if($checkRole != null){
+                    $checkUser->admin = 1;
+                    $checkUser->role = $role;
+                    $checkUser->save();
+                    $result = ['status' => true];
+                }
+            }
+        }
+        $result = json_encode($result, true);
+        return $result;
     }
 }

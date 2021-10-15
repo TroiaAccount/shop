@@ -43,17 +43,17 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- @foreach($table as $result) --}}
-                                <tr>
-                                <td>Номер</td>
-                                <td name="phone" data-redact>+380680892389</td>
-                                <td name="full_name" data-redact>Нибожинский Владимир Владимирович</td>
-                                <th class="d-flex justify-content-center">
-                                    <p><i class="fas fa-pen hovered-link yellow" data-toggle="tooltip" data-placement="bottom" title="Редактировать"></i></p>
-                                    <p class="ml-3"><i class="fas fa-trash-alt hovered-link green" data-toggle="tooltip" data-placement="bottom" title="Удалить"></i></p>
-                                </th>
-                                </tr>
-                                {{-- @endforeach --}}
+                                @foreach($table as $result)
+                                    <tr>
+                                        <td>{{$result->id}}</td>
+                                        <td name="phone" data-redact>{{$result->login}}</td>
+                                        <td name="full_name" data-redact>{{$result->full_name}}</td>
+                                        <th class="d-flex justify-content-center">
+                                            <p><i class="fas fa-pen hovered-link yellow" data-toggle="tooltip" data-placement="bottom" title="Редактировать"></i></p>
+                                            <p class="ml-3" onclick="Delete({{$result->id}})"><i class="fas fa-trash-alt hovered-link green" data-toggle="tooltip" data-placement="bottom" title="Удалить"></i></p>
+                                        </th>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -67,4 +67,22 @@
         </div>
     <!-- /.widget-list -->
     </div>
+    <script>
+        async function Delete(id) {
+            const data = { id: id };
+            try {
+                const res = await fetchUrl('{{Route("delete_users_DeleteUser")}}', 'POST', {
+                    'Content-type': 'application/json'
+                }, JSON.stringify(data));
+                if(res.status == true){
+                    location.reload();
+                } else {
+                    alert(res.error);
+                }
+            } catch (e) {
+                console.error('Error:', e.message);
+            }
+
+        }
+    </script>
 </main>

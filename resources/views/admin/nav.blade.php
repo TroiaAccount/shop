@@ -4,7 +4,7 @@
             <ul class="list-unstyled sub-menu">
                 <li @if($page == "main") class="active" @endif><a href="{{Route('AdminPage', ['page' => 'main'])}}">Главная</a></li>
                 <li @if($page == "orders") class="active" @endif><a href="{{Route('AdminPage', ['page' => 'orders'])}}">Заказы</a></li>
-                <li @if($page == "clients") class="active" @endif><a href="{{Route('AdminPage', ['page' => 'users'])}}">Пользователи</a></li>
+                <li @if($page == "users") class="active" @endif><a href="{{Route('AdminPage', ['page' => 'users'])}}">Пользователи</a></li>
                 <li @if($page == "admins") class="active" @endif><a href="{{Route('AdminPage', ['page' => 'admins'])}}">Админы</a></li>
                 <li @if($page == "roles") class="active" @endif><a href="{{Route('AdminPage', ['page' => 'roles'])}}">Роли</a></li>
                 <li @if($page == "adress") class="active" @endif><a href="{{Route('AdminPage', ['page' => 'adress'])}}">Адреса</a></li>

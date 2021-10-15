@@ -43,12 +43,18 @@ Route::middleware('MyAuth')->group(function(){ // Other route
     
     /* Page route end */
     Route::middleware('CheckAdmin')->group(function(){
-        Route::get('/admin', function(){
-            return redirect(Route('AdminPage', ['page' => 'main']));
-        })->name('Admin');
-        Route::get('/admin/{page}', 'AdminController@page')->name('AdminPage');
-        Route::post('/admin/order/completed', 'OrderController@CompletedOrder')->name('CompletedOrder');
-        Route::post('/admin/order/replace', 'OrderController@ReplaceOrder')->name('ReplaceOrder');
+        Route::middleware('ChechAdminRights')->group(function(){
+            Route::get('/admin', function(){
+                return redirect(Route('AdminPage', ['page' => 'main']));
+            })->name('Admin');
+            Route::get('/admin/{page}', 'AdminController@page')->name('AdminPage');
+            Route::post('/admin/order/completed', 'OrderController@CompletedOrder')->name('write_orders_CompletedOrder');
+            Route::post('/admin/order/replace', 'OrderController@ReplaceOrder')->name('write_orders_ReplaceOrder');
+            Route::post('/admin/users/delete', 'UserController@Delete')->name('delete_users_DeleteUser');
+            Route::post('/admin/users/replace', 'UserController@Replace')->name('write_users_ReplaceUser');
+            Route::post('/admin/admins/delete', 'AdminController@DeleteAdmin')->name('delete_admins_DeleteAdmin');
+            Route::post('/admin/admins/add', 'AdminController@AddAdmin')->name('write_admins_AddAdmin');
+        });
     });
 });
 
