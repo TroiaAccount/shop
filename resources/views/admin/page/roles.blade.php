@@ -72,11 +72,67 @@
    <div class="container-fluid">
       <div class="row page-title clearfix justify-content-end">
          <div>
-               <a href="#" class="btn btn-block btn-outline-success btn-rounded ripple">Добавить роль</a>
+               <a onclick="getModal()" class="btn btn-block btn-outline-success btn-rounded ripple">Добавить роль</a>
          </div>
       </div>
    </div>
+   <div class="modal modal-info fade bs-modal-md-info" tabindex="-1" role="dialog"
+      aria-labelledby="myMediumModalLabel2" aria-hidden="true" style="display: none">
+      <div class="modal-dialog modal-md">
+         <div class="modal-content">
+               <div class="modal-header text-inverse">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                  <h5 class="modal-title" id="myMediumModalLabel2">Создание админа</h5>
+               </div>
+               <div class="modal-body">
+                  <div class="d-flex flex-column modal-content-wrapper">
+                     <p>Название роли:
+                        <input type="text" id="role_name">
+                     </p>
+                  </div>
+                  <div class="d-flex flex-column modal-content-wrapper">
+                     <p>Заказы:
+                        <input type="checkbox"> Чтение
+                        <input type="checkbox"> Запись
+                        <input type="checkbox"> Удаление
+                     </p>
+                     <p>Пользователи:
+                        <input type="checkbox"> Чтение
+                        <input type="checkbox"> Запись
+                        <input type="checkbox"> Удаление
+                     </p>
+                     <p>Админы:
+                        <input type="checkbox"> Чтение
+                        <input type="checkbox"> Запись
+                        <input type="checkbox"> Удаление
+                     </p>
+                     <p>Роли:
+                        <input type="checkbox"> Чтение
+                        <input type="checkbox"> Запись
+                        <input type="checkbox"> Удаление
+                     </p>
+                     <p>Адресса:
+                        <input type="checkbox"> Чтение
+                        <input type="checkbox"> Запись
+                        <input type="checkbox"> Удаление
+                     </p>
+                  </div>
+                  <a onclick="" class="btn btn-block btn-outline-success btn-rounded ripple">Добавить роль</a>
+               </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-danger btn-rounded ripple text-left"
+                     data-dismiss="modal">Закрыть</button>
+               </div>
+         </div>
+         <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+   </div>
    <script>
+      function getModal(){
+         const $modal = $('.modal');
+         $modal.modal('toggle');
+      }
       async function redact(e, id) {
          editableToggler(e.target);
          const parent = getParent(e.target);
@@ -85,7 +141,7 @@
                const role = parent.querySelector('[name="role"]').textContent;
 
                try {
-                  const res = await fetchUrl('{{ Route('write_roles_ReplaceRole') }}', 'POST', {
+                  const res = await fetchUrl('', 'POST', {
                      'Content-type': 'application/json'
                   }, JSON.stringify({
                      id,

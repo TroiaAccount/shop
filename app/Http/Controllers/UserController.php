@@ -237,8 +237,9 @@ class UserController extends Controller
     }
 
     public function Replace(request $req){
-        $fullName = addslashes($req['fullname']);
-        $login = addslashes($req['login']);
+        $req = $req->json()->all();
+        $fullName = addslashes($req['fullName']);
+        $login = addslashes($req['phone']);
         $id = addslashes($req['id']);
         $result = ['status' => false, 'error' => 'Вы не заполнили все обязательные параметры'];
         if(($fullName != null || $login != null) && $id != null){

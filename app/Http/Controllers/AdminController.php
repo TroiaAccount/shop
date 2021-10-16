@@ -64,7 +64,8 @@ class AdminController extends Controller
             foreach($selectRoles as $result){
                 $roles[$result->id] = $result->name;
             }
-            $table = ['admins' => $admins, 'roles' => $roles];
+            $users = User::select()->where('admin', 0)->get();
+            $table = ['admins' => $admins, 'roles' => $roles, 'users' => $users];
         }
         if($page == "roles"){
             $table = role::select()->get();
@@ -108,8 +109,8 @@ class AdminController extends Controller
     }
 
     public function AddAdmin(request $req){
-        $id = addslashes($req['id']);
-        $role = addslashes($req['role']);
+        $id = addslashes($req['user_id']);
+        $role = addslashes($req['role_id']);
         $result = ['status' => false, 'error' => 'Вы не заполнили все обязательные поля'];
         if($id != null && $role != null){
             $checkUser = User::select()->where('id', $id)->first();

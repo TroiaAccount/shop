@@ -54,7 +54,7 @@
                                                       onclick="redact(event, {{ $result->id }})"></i></p>
                                              <p class="ml-3"><i class="fas fa-trash-alt hovered-link red"
                                                       data-toggle="tooltip" data-placement="bottom" title="Удалить"
-                                                      onclick="deleteRow({{ $result->id }}, {{ Route('delete_users_DeleteUser') }})"></i></p>
+                                                      onclick="deleteRow({{ $result->id }}, '{{ Route('delete_users_DeleteUser') }}')"></i></p>
                                           </th>
                                        </tr>
                                  @endforeach
@@ -81,15 +81,15 @@
                   fullName = parent.querySelector('[name="full_name"]').textContent;
 
                try {
-                  const res = await fetchUrl('{{ Route('write_users_ReplaceUser') }}', 'POST', {
+                  const res = await fetchUrl('{{ Route("write_users_ReplaceUser") }}', 'POST', {
                      'Content-type': 'application/json'
                   }, JSON.stringify({
                      id,
                      phone,
                      fullName
                   }));
-                  if (res.status === 200) {
-                     console.log('Завершен');
+                  if (res.status == true) {
+                     location.reload();
                   }
                } catch (e) {
                   console.error('Error:', e.message);

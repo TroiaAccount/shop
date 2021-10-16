@@ -43,10 +43,10 @@ Route::middleware('MyAuth')->group(function(){ // Other route
     
     /* Page route end */
     Route::middleware('CheckAdmin')->group(function(){
+        Route::get('/admin', function(){
+            return redirect(Route('AdminPage', ['page' => 'main']));
+        })->name('Admin');
         Route::middleware('ChechAdminRights')->group(function(){
-            Route::get('/admin', function(){
-                return redirect(Route('AdminPage', ['page' => 'main']));
-            })->name('Admin');
             Route::get('/admin/{page}', 'AdminController@page')->name('AdminPage');
             Route::post('/admin/order/completed', 'OrderController@CompletedOrder')->name('write_orders_CompletedOrder');
             Route::post('/admin/order/replace', 'OrderController@ReplaceOrder')->name('write_orders_ReplaceOrder');

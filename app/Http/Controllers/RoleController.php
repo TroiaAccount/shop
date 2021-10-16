@@ -22,4 +22,37 @@ class RoleController extends Controller
         $result = json_encode($result, true);
         return $result;
     }
+
+    public function CreateRole(request $req){
+        //$req = $req->json()->all();
+        $array = [
+            'users' => [
+                "write" => 1,
+                "read" => 1,
+                "delete" => 1
+            ],
+            "admins" => [
+                'write' => 1,
+                'read' => 1,
+                'delete' => 1
+            ],
+            "adress" => [
+                'write' => 1,
+                'read' => 1,
+                'delete' => 1
+            ],
+            'orders' => [
+                'write' => 1,
+                'read' => 1,
+                'delete' => 1
+            ],
+            'roles' => [
+                'write' => 1,
+                'read' => 1,
+                'delete' => 1
+            ]
+        ];
+        $array = json_encode($array, true);
+        return $array;
+    }
 }
