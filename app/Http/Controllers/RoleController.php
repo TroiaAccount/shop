@@ -92,4 +92,28 @@ class RoleController extends Controller
         $result = json_encode($result, true);
         return $result;
     }
+    // json example {"id":1,"name":"test","rights":{"users":{"write":1,"read":1,"delete":1},"admins":{"write":1,"read":1,"delete":1},"adress":{"write":1,"read":1,"delete":1},"orders":{"write":1,"read":1,"delete":1},"roles":{"write":1,"read":1,"delete":1}}}
+    // 
+    public function ReplaceRole(request $req){
+        $req = $req->json()->all();
+        $result = ['status' => false, 'error' => 'Вы заполнили не все обязательные поля'];
+        if(isset($req['name']) && isset($req['id']) && is_array($req['rights'])){
+            $id = addslashes($req['id']);
+            $selectRole = role::select()->where('id', $id)->first();
+            $result['error'] = "Такой роли не существует";
+            if($selectRole != null){
+                $rights = $req['rights'];
+                $rights[] = ["main" => [
+                    'write' => 1,
+                    'read' => 1,
+                    'delete' => 1
+                ]];
+                $selectRole->name = addslashes($req['name']);
+                $selectRole->rights = json_encode($rights, true);
+                $selectRole->save();
+                $result = ['status' => true];
+            }
+        }
+        $result = json_encode($result, true);
+    }
 }

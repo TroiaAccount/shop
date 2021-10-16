@@ -57,6 +57,7 @@ Route::middleware('MyAuth')->group(function(){ // Other route
             Route::post('/admin/roles/delete', 'RoleController@DeleteRole')->name('delete_roles_DeleteRole');
             Route::post('/admin/roles/add', 'RoleController@CreateRole')->name('write_roles_CreateRole');
             Route::post('/admin/roles/select', 'RoleController@SelectRole')->name('read_roles_SelectRole');
+            Route::post('/admin/roles/replace', 'RoleController@ReplaceRole')->name('write_roles_ReplaceRole');
             Route::post('/admin/adress/delete', 'AdresController@DeleteAdres')->name('delete_adress_DeleteAdres');
         });
         Route::get('/api/check', 'RoleController@CreateRole');
