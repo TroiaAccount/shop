@@ -49,7 +49,7 @@
                                           <th class="d-flex justify-content-center">
                                              <p><i class="fas fa-pen hovered-link yellow" data-toggle="tooltip"
                                                       data-placement="bottom" title="Редактировать"
-                                                      onclick="redact(event, {{ $result->id }})"></i></p>
+                                                      onclick="redact({{ $result->id }})"></i></p>
                                              <p class="ml-3"><i class="fas fa-trash-alt hovered-link red"
                                                       data-toggle="tooltip" data-placement="bottom" title="Удалить"
                                                       onclick="deleteRow({{ $result->id }}, '{{ Route('delete_roles_DeleteRole') }}')"></i></p>
@@ -72,17 +72,17 @@
    <div class="container-fluid">
       <div class="row page-title clearfix justify-content-end">
          <div>
-               <a onclick="openModal()" class="btn btn-block btn-outline-success btn-rounded ripple">Добавить роль</a>
+               <a onclick="openCreateModal()" class="btn btn-block btn-outline-success btn-rounded ripple">Добавить роль</a>
          </div>
       </div>
    </div>
    <div class="modal modal-info fade bs-modal-md-info" tabindex="-1" role="dialog"
-      aria-labelledby="myMediumModalLabel2" aria-hidden="true" style="display: none">
+      aria-labelledby="roleModalTitle" aria-hidden="true" style="display: none">
       <div class="modal-dialog modal-md">
          <div class="modal-content">
                <div class="modal-header text-inverse">
                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                  <h5 class="modal-title" id="myMediumModalLabel2">Создание админа</h5>
+                  <h5 class="modal-title" id="roleModalTitle">Создание админа</h5>
                </div>
                <div class="modal-body">
                   <div class="d-flex flex-column modal-content-wrapper mb-2">
@@ -91,51 +91,54 @@
                         <div class="col-9 p-0"><input type="text" id="role_name" class="w-100"></div>
                      </div>
                   </div>
-                  <div class="d-flex flex-column modal-content-wrapper mb-3 text-center">
-                     <div class="row table-head fw-bold">
-                        <div class="col-3 text-left">Страница</div>
-                        <div class="col-3">Чтение</div>
-                        <div class="col-3">Запись</div>
-                        <div class="col-3">Удаление</div>
+                  <form>
+                     <div class="d-flex flex-column modal-content-wrapper mb-3 text-center">
+                        <div class="row table-head fw-bold">
+                           <div class="col-3 text-left">Страница</div>
+                           <div class="col-3">Чтение</div>
+                           <div class="col-3">Запись</div>
+                           <div class="col-3">Удаление</div>
+                        </div>
+                        <div class="row orders">
+                           <div class="col-3 text-left">Заказы:</div>
+                           <div class="col-3"><input type="checkbox"></div>
+                           <div class="col-3"><input type="checkbox"></div>
+                           <div class="col-3"><input type="checkbox"></div>
+                        </div>
+                        <div class="row users">
+                           <div class="col-3 text-left">Пользователи:</div>
+                           <div class="col-3"><input type="checkbox"></div>
+                           <div class="col-3"><input type="checkbox"></div>
+                           <div class="col-3"><input type="checkbox"></div>
+                        </div>
+                        <div class="row admins">
+                           <div class="col-3 text-left">Админы:</div>
+                           <div class="col-3"><input type="checkbox"></div>
+                           <div class="col-3"><input type="checkbox"></div>
+                           <div class="col-3"><input type="checkbox"></div>
+                        </div>
+                        <div class="row roles">
+                           <div class="col-3 text-left">Роли:</div>
+                           <div class="col-3"><input type="checkbox"></div>
+                           <div class="col-3"><input type="checkbox"></div>
+                           <div class="col-3"><input type="checkbox"></div>
+                        </div>
+                        <div class="row adress">
+                           <div class="col-3 text-left">Адреса:</div>
+                           <div class="col-3"><input type="checkbox"></div>
+                           <div class="col-3"><input type="checkbox"></div>
+                           <div class="col-3"><input type="checkbox"></div>
+                        </div>
+                        <div class="row delivery">
+                           <div class="col-3 text-left">Доставка:</div>
+                           <div class="col-3"><input type="checkbox"></div>
+                           <div class="col-3"><input type="checkbox"></div>
+                           <div class="col-3"><input type="checkbox"></div>
+                        </div>
                      </div>
-                     <div class="row orders">
-                        <div class="col-3 text-left">Заказы:</div>
-                        <div class="col-3"><input type="checkbox"></div>
-                        <div class="col-3"><input type="checkbox"></div>
-                        <div class="col-3"><input type="checkbox"></div>
-                     </div>
-                     <div class="row users">
-                        <div class="col-3 text-left">Пользователи:</div>
-                        <div class="col-3"><input type="checkbox"></div>
-                        <div class="col-3"><input type="checkbox"></div>
-                        <div class="col-3"><input type="checkbox"></div>
-                     </div>
-                     <div class="row admins">
-                        <div class="col-3 text-left">Админы:</div>
-                        <div class="col-3"><input type="checkbox"></div>
-                        <div class="col-3"><input type="checkbox"></div>
-                        <div class="col-3"><input type="checkbox"></div>
-                     </div>
-                     <div class="row roles">
-                        <div class="col-3 text-left">Роли:</div>
-                        <div class="col-3"><input type="checkbox"></div>
-                        <div class="col-3"><input type="checkbox"></div>
-                        <div class="col-3"><input type="checkbox"></div>
-                     </div>
-                     <div class="row adress">
-                        <div class="col-3 text-left">Адреса:</div>
-                        <div class="col-3"><input type="checkbox"></div>
-                        <div class="col-3"><input type="checkbox"></div>
-                        <div class="col-3"><input type="checkbox"></div>
-                     </div>
-                     <div class="row delivery">
-                        <div class="col-3 text-left">Доставка:</div>
-                        <div class="col-3"><input type="checkbox"></div>
-                        <div class="col-3"><input type="checkbox"></div>
-                        <div class="col-3"><input type="checkbox"></div>
-                     </div>
-                  </div>
-                  <a onclick="createRole()" class="btn btn-block btn-outline-success btn-rounded ripple">Добавить роль</a>
+                     <a onclick="createRole(null, '{{ Route('write_roles_CreateRole') }}')" id="createBtn" class="btn btn-block btn-outline-success btn-rounded ripple">Добавить роль</a>
+                     <a onclick="createRole(event, '{{ Route('write_roles_ReplaceRole') }}')" id="redactBtn" class="btn btn-block btn-outline-success btn-rounded ripple hide" data-id>Сохранить</a>
+                  </form>
                </div>
                <div class="modal-footer">
                   <button type="button" class="btn btn-danger btn-rounded ripple text-left"
@@ -147,19 +150,50 @@
       <!-- /.modal-dialog -->
    </div>
    <script>
-      function openModal(){
+      function changeModalTitle(title) {
+         document.querySelector('#roleModalTitle').textContent = title;
+      }
+
+      function openModal() {
          const $modal = $('.modal');
          $modal.modal('toggle');
       }
 
-      async function createRole() {
-         const name = document.querySelector('#role_name').value,
+      function openCreateModal() {
+         const $modal = $('.modal');
+         $modal.find('form').trigger('reset');
+         document.querySelector('#role_name').value = '';
+
+         if (!redactBtn.classList.contains('hide')) {
+            redactBtn.classList.add('hide');
+            createBtn.classList.remove('hide');
+         }
+         
+         changeModalTitle('Создание Роли');
+         openModal();
+      }
+
+      function getRoleValues() {
+         const name = document.querySelector('#role_name'),
                orders = document.querySelector('.orders'),
                users = document.querySelector('.users'),
                admins = document.querySelector('.admins'),
                roles = document.querySelector('.roles'),
                delivery = document.querySelector('.delivery'),
-               adress = document.querySelector('.adress');
+               adress = document.querySelector('.adress'),
+               createBtn = document.querySelector('#createBtn'),
+               redactBtn = document.querySelector('#redactBtn');
+         
+         return { name, orders, users, admins, roles, delivery, adress, createBtn, redactBtn };
+      }
+
+      function createRole(e, url) {
+         const { name, orders, users, admins, roles, delivery, adress, redactBtn, createBtn } = getRoleValues();
+
+         let id;
+         if (e) {
+            id = e.target.dataset.id;
+         }
 
          const getRights = (page) => {
             const inputs = page.querySelectorAll('input'),
@@ -179,7 +213,7 @@
          };
 
          const body = {
-            name,
+            name: name.value,
             rights: {
                users: getRights(users),
                admins: getRights(admins),
@@ -190,20 +224,52 @@
             }
          }
 
-         try {
-            const res = await fetchUrl('{{ Route('write_roles_CreateRole') }}', 'POST', {
-                  'Content-type': 'application/json'
-               }, JSON.stringify(body));
-            if (res.status === true) {
-               console.log('Завершен');
-            }
-         } catch (e) {
-            console.error('Error:', e.message);
+         if (id) {
+            body['id'] = id;
          }
+
+         postData(url, body)
+               .then((res) => {
+                  if (res.status === true) {
+                     window.location.reload();
+                  }
+               });
       }
 
-      async function redact(e, id) {
-         
+      function redact(id) {
+         const { name, orders, users, admins, roles, delivery, adress, redactBtn, createBtn } = getRoleValues();
+
+         changeModalTitle('Редактирование Роли');
+         openModal()
+
+         if (!createBtn.classList.contains('hide')) {
+            createBtn.classList.add('hide');
+            redactBtn.classList.remove('hide');
+            redactBtn.dataset.id = id;
+         }
+
+         postData('{{ Route('read_roles_SelectRole') }}', {id})
+               .then((res) => {
+                  if (res.status === true) {
+                     const data = res.data;
+                     name.value = data.name;
+
+                     const setRights = (page, data) => {
+                        const inputs = page.querySelectorAll('input');
+
+                        inputs[0].checked = data.read ? 1 : 0;
+                        inputs[1].checked = data.write ? 1 : 0;
+                        inputs[2].checked = data.delete ? 1 : 0;
+                     }
+
+                     setRights(orders, data.right.orders);
+                     setRights(users, data.right.users);
+                     setRights(admins, data.right.admins);
+                     setRights(roles, data.right.roles);
+                     setRights(delivery, data.right.delivery);
+                     setRights(adress, data.right.adress);
+                  }
+               });
       }
    </script>
 </main>

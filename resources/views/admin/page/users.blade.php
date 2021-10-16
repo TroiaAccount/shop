@@ -72,28 +72,26 @@
       <!-- /.widget-list -->
    </div>
    <script>
-      async function redact(e, id) {
+      function redact(e, id) {
          editableToggler(e.target);
          const parent = getParent(e.target);
 
          if (!e.target.parentElement.classList.contains('redact')) {
-               const phone = parent.querySelector('[name="phone"]').textContent,
-                  fullName = parent.querySelector('[name="full_name"]').textContent;
+            const phone = parent.querySelector('[name="phone"]').textContent,
+               fullName = parent.querySelector('[name="full_name"]').textContent;
 
-               try {
-                  const res = await fetchUrl('{{ Route("write_users_ReplaceUser") }}', 'POST', {
-                     'Content-type': 'application/json'
-                  }, JSON.stringify({
-                     id,
-                     phone,
-                     fullName
-                  }));
-                  if (res.status == true) {
-                     location.reload();
+            const body = {
+               id,
+               phone,
+               fullName
+            };
+
+            postData('{{ Route('write_users_ReplaceUser') }}', body)
+               .then((res) => {
+                  if (res.status === true) {
+                     window.location.reload();
                   }
-               } catch (e) {
-                  console.error('Error:', e.message);
-               }
+               });
          }
       }
    </script>

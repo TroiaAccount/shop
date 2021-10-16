@@ -116,24 +116,21 @@
          $modal.modal('toggle');
       }
 
-      async function addAdmin() {
+      function addAdmin() {
          let user = document.getElementById('user_id');
          let role = document.getElementById('role_id');
-         const data = {
+
+         const body = {
             user_id: user.value,
             role_id: role.value
          };
-         try {
-            const res = await fetchUrl('{{ Route("write_admins_AddAdmin") }}', 'POST', {
-                  'Content-type': 'application/json'
-            }, JSON.stringify(data));
-            if (res.status == true) {
-               location.reload();
-            }
-         } catch (e) {
-            console.error('Error:', e.message);
-         }
-
+         
+         postData('{{ Route('write_admins_AddAdmin') }}', body)
+               .then((res) => {
+                  if (res.status === true) {
+                     window.location.reload();
+                  }
+               });
       }
    </script>
 

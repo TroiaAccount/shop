@@ -1,17 +1,22 @@
 'use strict';
 
-async function fetchUrl(url, method, headers, body) {
+async function postData(url = '', body = {}) {
    const _token = document.querySelector('[name="_token"]').value;
 
-   const res = await fetch(url, {
-         method,
+   try {
+      const res = await fetch(url, {
+         method: 'POST',
          headers: {
             'X-CSRF-TOKEN': _token,
-            ...headers
+            'Content-type': 'application/json'
          },
-         body
-   });
-   return await res.json();
+         body: JSON.stringify(body)
+      });
+      return await res.json();
+   } catch (e) {
+      console.error('Error:', e.message);
+   }
+
 }
 
 $(function() {
@@ -19,19 +24,12 @@ $(function() {
 })
 
 async function deleteRow(id, url) {
-   const data = {id};
-   try {
-         const res = await fetchUrl(url, 'POST', {
-            'Content-type': 'application/json'
-         }, JSON.stringify(data));
+   postData(url, {id})
+      .then((res) => {
          if (res.status === true) {
-            location.reload();
-         } else {
-            alert(res.error);
+            window.location.reload();
          }
-   } catch (e) {
-         console.error('Error:', e.message);
-   }
+      });
 }
 
 function editableToggler(target) {

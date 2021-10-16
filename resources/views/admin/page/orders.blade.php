@@ -200,24 +200,18 @@
       }
    }
 
-   async function done(id) {
-      const data = {
-         id: id
-      };
-      try {
-         const res = await fetchUrl('{{ Route('write_orders_CompletedOrder') }}', 'POST', {
-               'Content-type': 'application/json'
-         }, JSON.stringify(data));
-         if (res.status === 200) {
-               console.log('Завершен');
-         }
-      } catch (e) {
-         console.error('Error:', e.message);
-      }
+   function done(id) {
+      const body = {id};
 
+      postData('{{ Route('write_orders_CompletedOrder') }}', body)
+         .then((res) => {
+            if (res.status === true) {
+               window.location.reload();
+            }
+         });
    }
 
-   async function redact(e, id) {
+   function redact(e, id) {
       editableToggler(e.target);
       const parent = getParent(e.target);
 
@@ -257,25 +251,23 @@
                model = parent.querySelector('[name="model"]').textContent,
                color = parent.querySelector('[name="color"]').textContent;
 
-         try {
-               const res = await fetchUrl('{{ Route('write_orders_ReplaceOrder') }}', 'POST', {
-                  'Content-type': 'application/json'
-               }, JSON.stringify({
-                  id,
-                  status,
-                  cost,
-                  commission,
-                  count,
-                  size,
-                  model,
-                  color
-               }));
-               if (res.status === 200) {
-                  console.log('Завершен');
-               }
-         } catch (e) {
-               console.error('Error:', e.message);
-         }
+         const body = {
+            id,
+            status,
+            cost,
+            commission,
+            count,
+            size,
+            model,
+            color
+         };
+         
+         postData('{{ Route('write_orders_ReplaceOrder') }}', body)
+               .then((res) => {
+                  if (res.status === true) {
+                     window.location.reload();
+                  }
+               });
       }
    }
 </script>
