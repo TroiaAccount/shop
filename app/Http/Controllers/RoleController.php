@@ -23,38 +23,7 @@ class RoleController extends Controller
         return $result;
     }
 
-    /* request example
-        $array = [
-            'name' => "test",
-            "rights" => [
-                'users' => [
-                    "write" => 1,
-                    "read" => 1,
-                    "delete" => 1
-                ],
-                "admins" => [
-                    'write' => 1,
-                    'read' => 1,
-                    'delete' => 1
-                ],
-                "adress" => [
-                    'write' => 1,
-                    'read' => 1,
-                    'delete' => 1
-                ],
-                'orders' => [
-                    'write' => 1,
-                    'read' => 1,
-                    'delete' => 1
-                ],
-                'roles' => [
-                    'write' => 1,
-                    'read' => 1,
-                    'delete' => 1
-                ]
-            ]
-        ];
-    */
+    // json example {"name":"test","rights":{"users":{"write":1,"read":1,"delete":1},"admins":{"write":1,"read":1,"delete":1},"adress":{"write":1,"read":1,"delete":1},"orders":{"write":1,"read":1,"delete":1},"roles":{"write":1,"read":1,"delete":1}}}
 
     public function CreateRole(request $req){
         $req = $req->json()->all();
@@ -93,7 +62,7 @@ class RoleController extends Controller
         return $result;
     }
     // json example {"id":1,"name":"test","rights":{"users":{"write":1,"read":1,"delete":1},"admins":{"write":1,"read":1,"delete":1},"adress":{"write":1,"read":1,"delete":1},"orders":{"write":1,"read":1,"delete":1},"roles":{"write":1,"read":1,"delete":1}}}
-    // 
+
     public function ReplaceRole(request $req){
         $req = $req->json()->all();
         $result = ['status' => false, 'error' => 'Вы заполнили не все обязательные поля'];
