@@ -84,5 +84,6 @@ class RoleController extends Controller
             }
         }
         $result = json_encode($result, true);
+        return $result;
     }
 }
