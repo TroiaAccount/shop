@@ -70,7 +70,6 @@
       </div>
       <!-- /.widget-list -->
    </div>
-
    <div class="modal modal-info fade bs-modal-md-info" tabindex="-1" role="dialog"
       aria-labelledby="myMediumModalLabel2" aria-hidden="true" style="display: none">
       <div class="modal-dialog modal-md">
@@ -80,25 +79,27 @@
                   <h5 class="modal-title" id="myMediumModalLabel2">Создание админа</h5>
                </div>
                <div class="modal-body">
-                  <div class="d-flex flex-column modal-content-wrapper">
-                     <p>Пользователь:
-                        <select name="user" id="user_id">
+                  <div class="d-flex modal-content-wrapper justify-content-between mb-3">
+                     <div class="col-3 p-0 text-right">Пользователь:</div>
+                     <div class="col-8 p-0 pr-3">
+                        <select name="role" id="role_id" class="m-b-10 form-control bg-light text-dark">
                            @foreach ($table['users'] as $result)
                               <option value="{{$result->id}}">{{$result->login}}({{$result->fullname}})</option>
                            @endforeach
                         </select>
-                     </p>
+                     </div>
                   </div>
-                  <div class="d-flex flex-column modal-content-wrapper">
-                     <p>Роль:
-                        <select name="role" id="role_id">
+                  <div class="d-flex modal-content-wrapper justify-content-between mb-3">
+                     <div class="col-3 p-0 text-right">Роль:</div>
+                     <div class="col-8 p-0 pr-3">
+                        <select name="role" id="role_id" class="m-b-10 form-control bg-light text-dark">
                            @foreach ($table['roles'] as $key => $result)
                               <option value="{{$key}}">{{$result}}</option>
                            @endforeach
                         </select>
-                     </p>
+                     </div>
                   </div>
-                  <a onclick="addAdmin()" class="btn btn-block btn-outline-success btn-rounded ripple">Добавить админа</a>
+                  <a onclick="addAdmin()" class="btn btn-block btn-outline-success btn-rounded ripple hovered-btn dark">Добавить админа</a>
                </div>
                <div class="modal-footer">
                   <button type="button" class="btn btn-danger btn-rounded ripple text-left"
@@ -110,15 +111,18 @@
       <!-- /.modal-dialog -->
    </div>
 
-   <script>
-      function getModal(){
-         const $modal = $('.modal');
-         $modal.modal('toggle');
-      }
+   <div class="container-fluid">
+      <div class="row page-title clearfix justify-content-end">
+         <div>
+               <a onclick="openModal()" class="btn btn-block btn-outline-success btn-rounded ripple hovered-btn dark">Добавить админа</a>
+         </div>
+      </div>
+   </div>
 
+   <script>
       function addAdmin() {
-         let user = document.getElementById('user_id');
-         let role = document.getElementById('role_id');
+         const user = document.getElementById('user_id'),
+               role = document.getElementById('role_id');
 
          const body = {
             user_id: user.value,
@@ -133,12 +137,4 @@
                });
       }
    </script>
-
-   <div class="container-fluid">
-      <div class="row page-title clearfix justify-content-end">
-         <div>
-               <a onclick="getModal()" class="btn btn-block btn-outline-success btn-rounded ripple">Добавить админа</a>
-         </div>
-      </div>
-   </div>
 </main>

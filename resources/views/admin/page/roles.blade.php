@@ -72,7 +72,7 @@
    <div class="container-fluid">
       <div class="row page-title clearfix justify-content-end">
          <div>
-               <a onclick="openCreateModal()" class="btn btn-block btn-outline-success btn-rounded ripple">Добавить роль</a>
+               <a onclick="openCreateModal()" class="btn btn-block btn-outline-success btn-rounded ripple hovered-btn dark">Добавить роль</a>
          </div>
       </div>
    </div>
@@ -136,8 +136,8 @@
                            <div class="col-3"><input type="checkbox"></div>
                         </div>
                      </div>
-                     <a onclick="createRole(null, '{{ Route('write_roles_CreateRole') }}')" id="createBtn" class="btn btn-block btn-outline-success btn-rounded ripple">Добавить роль</a>
-                     <a onclick="createRole(event, '{{ Route('write_roles_ReplaceRole') }}')" id="redactBtn" class="btn btn-block btn-outline-success btn-rounded ripple hide" data-id>Сохранить</a>
+                     <a onclick="createRole(null, '{{ Route('write_roles_CreateRole') }}')" id="createBtn" class="btn btn-block btn-outline-success btn-rounded ripple hovered-btn dark">Добавить роль</a>
+                     <a onclick="createRole(event, '{{ Route('write_roles_ReplaceRole') }}')" id="redactBtn" class="btn btn-block btn-outline-success btn-rounded ripple hide hovered-btn dark" data-id>Сохранить</a>
                   </form>
                </div>
                <div class="modal-footer">
@@ -150,15 +150,6 @@
       <!-- /.modal-dialog -->
    </div>
    <script>
-      function changeModalTitle(title) {
-         document.querySelector('#roleModalTitle').textContent = title;
-      }
-
-      function openModal() {
-         const $modal = $('.modal');
-         $modal.modal('toggle');
-      }
-
       function openCreateModal() {
          const $modal = $('.modal');
          $modal.find('form').trigger('reset');
@@ -169,7 +160,7 @@
             createBtn.classList.remove('hide');
          }
          
-         changeModalTitle('Создание Роли');
+         changeTextContent('#roleModalTitle', 'Создание Роли');
          openModal();
       }
 
@@ -239,7 +230,7 @@
       function redact(id) {
          const { name, orders, users, admins, roles, delivery, adress, redactBtn, createBtn } = getRoleValues();
 
-         changeModalTitle('Редактирование Роли');
+         changeTextContent('#roleModalTitle', 'Редактирование Роли');
          openModal()
 
          if (!createBtn.classList.contains('hide')) {
