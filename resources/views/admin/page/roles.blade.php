@@ -196,8 +196,8 @@
                rightsArray.push(right);
             }
 
-            rights['write'] = rightsArray[0];
-            rights['read'] = rightsArray[1];
+            rights['read'] = rightsArray[0];
+            rights['write'] = rightsArray[1];
             rights['delete'] = rightsArray[2];
 
             return rights;
@@ -222,7 +222,7 @@
          postData(url, body)
                .then((res) => {
                   if (res.status === true) {
-                     window.location.reload();
+                     // window.location.reload();
                   }
                });
       }

@@ -121,12 +121,12 @@
 
    <script>
       function addAdmin() {
-         const user = document.getElementById('user_id'),
-               role = document.getElementById('role_id');
+         const user = document.querySelector('#user_id').value,
+               role = document.querySelector('#role_id').value;
 
          const body = {
-            user_id: user.value,
-            role_id: role.value
+            user_id: user,
+            role_id: role
          };
          
          postData('{{ Route('write_admins_AddAdmin') }}', body)
