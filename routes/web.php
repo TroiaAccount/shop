@@ -28,6 +28,8 @@ Route::middleware('MyAuth')->group(function(){ // Other route
     Route::post('/api/create/order/upload/image', 'OrderController@UploadOrderPhoto')->name('UploadOrderPhoto');
     Route::post('/api/select/order/filter', 'OrderController@Filter')->name('Filter');
     Route::post('/api/copy/order', 'OrderController@Copy')->name('CopyOrder');
+    Route::post('/api/favorite', 'OrderController@Favorite')->name('Favorite');
+    Route::post('/api/select/order', 'OrderController@SelectOrder')->name('SelectOrder');
     /* Order route end
     Notification route start */
     Route::post('/api/history/listen/all', 'NotificationController@AllListen')->name('AllListen');

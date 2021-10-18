@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\order;
 use App\Models\User;
+use App\Models\favorite;
 
 class OrderController extends Controller
 {
@@ -177,6 +178,45 @@ class OrderController extends Controller
                 }
                 order::where('id', $id)->update($parameters);
                 $result = ['status' => true];
+            }
+        }
+        $result = json_encode($result, true);
+        return $result;
+    }
+
+    public function Favorite(request $req){
+        $id = $req->session()->get('id');
+        $order_id = addslashes($req['order_id']);
+        $result = ['status' => false, 'error' => 'Вы не заполнили все обязательные поля'];
+        if($order_id != null){
+            $checkOrder = order::select('id')->where(['id' => $order_id, 'user_id' => $id])->first();
+            $result['error'] = "Такого заказа не существует или он пренадлежит не вам";
+            if($checkOrder != null){
+                $checkFavorite = favorite::select('id')->where(['user_id' => $id, 'order_id' => $order_id])->first();
+                if($checkFavorite == null){
+                    $checkFavorite = new favorite();
+                    $checkFavorite->user_id = $id;
+                    $checkFavorite->order_id = $order_id;
+                    $checkFavorite->save();
+                } else {
+                    $checkFavorite->delete();
+                }
+                $result = ['status' => true];
+            }
+        }
+        $result = json_encode($result, true);
+        return $result;
+    }
+
+    public function SelectOrder(request $req){
+        $id = $req->session()->get('id');
+        $order_id = addslashes($req['order_id']);
+        $result = ['status' => false, 'error' => 'Вы не заполнили все обязательные поля'];
+        if($order_id != null){
+            $checkOrder = order::select('id')->where(['id' => $order_id, 'user_id' => $id])->first();
+            $result['error'] = "Такого заказа не существует или он пренадлежит не вам";
+            if($checkOrder != null){
+                $result = ['status' => true, 'data' => $checkOrder];
             }
         }
         $result = json_encode($result, true);
