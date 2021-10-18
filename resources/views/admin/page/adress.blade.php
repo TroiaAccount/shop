@@ -92,7 +92,7 @@
                      passport = parent.querySelector('[name="passport"]').textContent;
 
                try {
-                  const res = await fetchUrl('{{ Route('write_adress_ReplaceAdres') }}', 'POST', {
+                  const res = await fetchUrl('', 'POST', {
                      'Content-type': 'application/json'
                   }, JSON.stringify({
                      id,
