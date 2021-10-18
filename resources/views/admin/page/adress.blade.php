@@ -62,7 +62,7 @@
                                                       data-placement="bottom" title="Редактировать"></i></p>
                                              <p class="ml-3"><i class="fas fa-trash-alt hovered-link red"
                                                 data-toggle="tooltip" data-placement="bottom" title="Удалить"
-                                                onclick="deleteRow({{ $result->id }}, {{ Route('delete_adress_DeleteAdres') }})"></i></p>
+                                                onclick="deleteRow({{ $adres->id }}, {{ Route('delete_adress_DeleteAdres') }})"></i></p>
                                           </th>
                                        </tr>
                                  @endforeach
