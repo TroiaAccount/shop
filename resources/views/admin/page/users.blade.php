@@ -65,7 +65,7 @@
                   </div>
                   <!-- /.widget-bg -->
                </div>
-               <!-- /.widget-holder -->
+               <!-- /.widget-holdr -->
          </div>
          <!-- /.row -->
       </div>
