@@ -59,7 +59,8 @@
                                           <td name="passport" data-redact>{{ $adres->passport }}</td>
                                           <th class="d-flex justify-content-center">
                                              <p><i class="fas fa-pen hovered-link yellow" data-toggle="tooltip"
-                                                      data-placement="bottom" title="Редактировать"></i></p>
+                                                      data-placement="bottom" title="Редактировать"
+                                                      onclick="redact(event, {{ $adres->id }})"></i></p>
                                              <p class="ml-3"><i class="fas fa-trash-alt hovered-link red"
                                                 data-toggle="tooltip" data-placement="bottom" title="Удалить"
                                                 onclick="deleteRow({{ $adres->id }}, {{ Route('delete_adress_DeleteAdres') }})"></i></p>
