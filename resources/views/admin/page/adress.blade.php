@@ -62,7 +62,7 @@
                                                       data-placement="bottom" title="Редактировать"></i></p>
                                              <p class="ml-3"><i class="fas fa-trash-alt hovered-link red"
                                                 data-toggle="tooltip" data-placement="bottom" title="Удалить"
-                                                onclick="deleteRow({{ $adres->id }}, {{ Route('delete_adress_DeleteAdres') }})"></i></p>
+                                                onclick="deleteRow({{ $result->id }}, {{ Route('delete_adress_DeleteAdres') }})"></i></p>
                                           </th>
                                        </tr>
                                  @endforeach
@@ -80,34 +80,29 @@
       <!-- /.widget-list -->
    </div>
    <script>
-      async function redact(e, id) {
+      function redact(e, id) {
          editableToggler(e.target);
          const parent = getParent(e.target);
-
          if (!e.target.parentElement.classList.contains('redact')) {
-               const fullName = parent.querySelector('[name="full_name"]').textContent,
-                     phone = parent.querySelector('[name="phone"]').textContent,
-                     email = parent.querySelector('[name="email"]').textContent,
-                     adress = parent.querySelector('[name="adress"]').textContent,
-                     passport = parent.querySelector('[name="passport"]').textContent;
-
-               try {
-                  const res = await fetchUrl('', 'POST', {
-                     'Content-type': 'application/json'
-                  }, JSON.stringify({
-                     id,
-                     fullName,
-                     phone,
-                     email,
-                     adress,
-                     passport
-                  }));
-                  if (res.status === 200) {
-                     console.log('Завершен');
-                  }
-               } catch (e) {
-                  console.error('Error:', e.message);
-               }
+            const fullName = parent.querySelector('[name="full_name"]').textContent,
+                  phone = parent.querySelector('[name="phone"]').textContent,
+                  email = parent.querySelector('[name="email"]').textContent,
+                  adress = parent.querySelector('[name="adress"]').textContent,
+                  passport = parent.querySelector('[name="passport"]').textContent;
+            const body = {
+               id,
+               fullName,
+               phone,
+               email,
+               adress,
+               passport
+            };
+            postData('{{ Route('write_adress_ReplaceAdres') }}', body)
+                  .then((res) => {
+                     if (res.status === true) {
+                        window.location.reload();
+                     }
+                  });
          }
       }
    </script>
