@@ -31,11 +31,11 @@ class RoleController extends Controller
         if(isset($req['name']) && is_array($req['rights'])){
             $name = addslashes($req['name']);
             $rights = $req['rights'];
-            $rights[] = ["main" => [
+            $rights['main'] = [
                 'write' => 1,
                 'read' => 1,
                 'delete' => 1
-            ]];
+            ];
             $rights = json_encode($rights, true);
             role::insert([
                 'name' => $name,
@@ -43,7 +43,7 @@ class RoleController extends Controller
             ]);
             $result = ['status' => true];
         }
-        $array = json_encode($array, true);
+        $array = json_encode($result, true);
         return $array;
     }
 
@@ -72,11 +72,11 @@ class RoleController extends Controller
             $result['error'] = "Такой роли не существует";
             if($selectRole != null){
                 $rights = $req['rights'];
-                $rights[] = ["main" => [
+                $rights['main'] = [
                     'write' => 1,
                     'read' => 1,
                     'delete' => 1
-                ]];
+                ];
                 $selectRole->name = addslashes($req['name']);
                 $selectRole->rights = json_encode($rights, true);
                 $selectRole->save();

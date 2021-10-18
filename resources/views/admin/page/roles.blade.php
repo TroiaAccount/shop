@@ -222,7 +222,7 @@
          postData(url, body)
                .then((res) => {
                   if (res.status === true) {
-                     // window.location.reload();
+                     window.location.reload();
                   }
                });
       }
