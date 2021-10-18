@@ -83,7 +83,6 @@
       function redact(e, id) {
          editableToggler(e.target);
          const parent = getParent(e.target);
-
          if (!e.target.parentElement.classList.contains('redact')) {
             const fullName = parent.querySelector('[name="full_name"]').textContent,
                   phone = parent.querySelector('[name="phone"]').textContent,
