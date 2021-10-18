@@ -69,7 +69,7 @@
                               </tbody>
                            </table>
                      </div>
-                     <!-- /.widget-body -->
+                     <!-- /.widget-ody -->
                   </div>
                   <!-- /.widget-bg -->
                </div>

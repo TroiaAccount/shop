@@ -1,5 +1,5 @@
 'use strict';
-
+// Post Json To Server
 async function postData(url = '', body = {}) {
    const _token = document.querySelector('[name="_token"]').value;
 

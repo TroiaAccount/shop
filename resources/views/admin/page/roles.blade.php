@@ -145,7 +145,7 @@
                      data-dismiss="modal">Закрыть</button>
                </div>
          </div>
-         <!-- /.modal-content -->
+         <!-- /.modal-contet -->
       </div>
       <!-- /.modal-dialog -->
    </div>
