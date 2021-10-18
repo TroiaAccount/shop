@@ -48,15 +48,28 @@
                <td>{{$result->status2}}</td>
                <td>{{$result->datetime}}</td>
                <td align="right">
-                  <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Подробнее"><i class="far fa-file-alt"></i></a>
-                  <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Скачать"><i class="fas fa-download"></i></a>
-                  <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Копировать"><i class="far fa-copy"></i></a>
+                  <a onclick="redactOrder({{ $result->id }})" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Редактировать" class="hovered-link green"><i class="far fa-edit"></i></a>
+                  <a onclick="setFavorite({{ $result->id }})" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Добавить в избранные" class="hovered-link red"><i class="far fa-heart"></i></a>
+                  <a onclick="copyOrder({{ $result->id }})" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Копировать" class="hovered-link yellow"><i class="far fa-copy"></i></a>
                </td>
                <td align="center" style="background-color: #eaf5cb;"><i class="fas fa-info-circle"></i></td>
             </tr>
          @endforeach
       </tbody>
    </table>
+   <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+      <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+          <strong class="me-auto">CNSHOP</strong>
+          <small>now</small>
+          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+          Вы успешно добавили заказ в избранное.
+        </div>
+      </div>
+    </div>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
    <script>
       $("#filter").on("submit", function(e){
          e.preventDefault();
@@ -96,9 +109,9 @@
                            <td>${item.status2}</td>
                            <td>${item.datetime}</td>
                            <td align="right">
-                              <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Подробнее"><i class="far fa-file-alt"></i></a>
-                              <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Скачать"><i class="fas fa-download"></i></a>
-                              <a href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Копировать"><i class="far fa-copy"></i></a>
+                              <a onclick="redactOrder({{ $result->id }})" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Редактировать"><i class="far fa-edit"></i></a>
+                              <a onclick="setFavorite({{ $result->id }})" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Добавить в избранные"><i class="far fa-heart"></i></a>
+                              <a onclick="copyOrder({{ $result->id }})" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Копировать"><i class="far fa-copy"></i></a>
                            </td>
                            <td align="center" style="background-color: #eaf5cb;"><i class="fas fa-info-circle"></i></td>
                         `;
@@ -113,6 +126,66 @@
                }
          });
       });
+
+      const toastElList = [].slice.call(document.querySelectorAll('.toast'));
+      const toastList = toastElList.map(function (toastEl) {
+         return new bootstrap.Toast(toastEl);
+      })
+      
+      function setFavorite(id) {
+         const body = { order_id: id };
+
+         postData('{{ Route('Favorite') }}', body)
+               .then(res => {
+                  if (res.status === true) {
+                  }
+               })
+      }
+
+      function copyOrder(id) {
+         const body = { order_id: id };
+
+         postData('{{ Route('Favorite') }}', body)
+               .then(res => {
+                  if (res.status === true) {
+                     toastList[0].show();
+                  }
+               })
+      }
+
+      function selectOrder(id) {
+         const body = { order_id: id };
+
+         const promise = postData('{{ Route('SelectOrder') }}', body)
+               .then(res => {
+                  if (res.status === true) {
+                     return res.data;
+                  } else {
+                     return null;
+                  }
+               })
+
+         return promise;
+      }
+
+      async function redactOrder(id) {
+         const promise = selectOrder(id),
+               data = await promise;
+
+         if (data === null) {
+            console.log('no data');
+         } else {
+            console.log(data);
+            const body = { order_id: id };
+
+            // postData('{{ Route('SelectOrder') }}', body)
+            //       .then(res => {
+            //          if (res.status === true) {
+
+            //          }
+            //       })
+         }
+      }
    </script>
 </div>
 
