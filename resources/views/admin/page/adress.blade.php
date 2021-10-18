@@ -89,6 +89,7 @@
                   email = parent.querySelector('[name="email"]').textContent,
                   adress = parent.querySelector('[name="adress"]').textContent,
                   passport = parent.querySelector('[name="passport"]').textContent;
+
             const body = {
                id,
                fullName,
@@ -97,6 +98,7 @@
                adress,
                passport
             };
+
             postData('{{ Route('write_adress_ReplaceAdres') }}', body)
                   .then((res) => {
                      if (res.status === true) {
