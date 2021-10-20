@@ -142,3 +142,22 @@ window.addEventListener('DOMContentLoaded', () => {
    addActiveClass(sideLinks, '.nav-link.sn');
    addActiveClass(headerLinks, '.nav-link.hl');
 })
+
+async function postData(url = '', body = {}) {
+   const _token = document.querySelector('[name="_token"]').value;
+
+   try {
+      const res = await fetch(url, {
+         method: 'POST',
+         headers: {
+            'X-CSRF-TOKEN': _token,
+            'Content-type': 'application/json'
+         },
+         body: JSON.stringify(body)
+      });
+      return await res.json();
+   } catch (e) {
+      console.error('Error:', e.message);
+   }
+
+}
