@@ -54,7 +54,7 @@ class AdresController extends Controller
     public function ReplaceAdres(request $req){
         $result = ['status' => false, 'error' => 'Вы не заполнили все поля'];
         $req = $req->json()->all();
-        $full_name = addslashes($req['full_name']);
+        $full_name = addslashes($req['fullName']);
         $telephone = addslashes($req['phone']);
         $email = addslashes($req['email']);
         $adress = addslashes($req['adress']);
