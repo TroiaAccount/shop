@@ -14,6 +14,10 @@
     color: #ff3333;
     cursor: pointer;
 }
+.hovered-link.blue:hover {
+    color: #06d6a0;
+    cursor: pointer;
+}
 .hovered-link {
     margin-bottom: 0;
 }
