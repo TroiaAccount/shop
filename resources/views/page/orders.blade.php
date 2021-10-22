@@ -39,7 +39,7 @@
          </tr>
       </thead>
       <tbody id="table-body">
-         @foreach($table as $result)
+         @foreach($table['order'] as $result)
             <tr>
                <td>{{$result->number}}</td>
                <td>@if($result->status == 1) Отправлен @elseif($result->status == 2) Прибыл @elseif($result->status == 3) Упаковывается @elseif($result->status == 4) Обрабатывается @endif</td>
@@ -64,8 +64,8 @@
           <small>now</small>
           <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
-        <div class="toast-body">
-          Вы успешно добавили заказ в избранное.
+        <div class="toast-body" id="alertBody">
+            Вы успешно добавили заказ в избранное.
         </div>
       </div>
     </div>
@@ -109,9 +109,9 @@
                            <td>${item.status2}</td>
                            <td>${item.datetime}</td>
                            <td align="right">
-                              <a onclick="redactOrder({{ $result->id }})" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Редактировать"><i class="far fa-edit"></i></a>
-                              <a onclick="setFavorite({{ $result->id }})" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Добавить в избранные"><i class="far fa-heart"></i></a>
-                              <a onclick="copyOrder({{ $result->id }})" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Копировать"><i class="far fa-copy"></i></a>
+                              <a onclick="redactOrder( ${item.id })" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Редактировать"><i class="far fa-edit"></i></a>
+                              <a onclick="setFavorite(${item.id })" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Добавить в избранные"><i class="far fa-heart"></i></a>
+                              <a onclick="copyOrder(${item.id })" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Копировать"><i class="far fa-copy"></i></a>
                            </td>
                            <td align="center" style="background-color: #eaf5cb;"><i class="fas fa-info-circle"></i></td>
                         `;
@@ -138,6 +138,11 @@
          postData('{{ Route('Favorite') }}', body)
                .then(res => {
                   if (res.status === true) {
+                     let alertBody = document.getElementById('alertBody');
+                     alertBody.innerHTML = "Вы успешно добавили заказ в избранное.";
+                     toastList[0].show();
+                  } else {
+                     alert(res.error);
                   }
                })
       }
@@ -145,10 +150,13 @@
       function copyOrder(id) {
          const body = { order_id: id };
 
-         postData('{{ Route('Favorite') }}', body)
+         postData('{{ Route('CopyOrder') }}', body)
                .then(res => {
                   if (res.status === true) {
+                     alertBody.innerHTML = "Вы успешно скопировали заказ.";
                      toastList[0].show();
+                  } else {
+                     alert(res.error);
                   }
                })
       }
@@ -161,7 +169,7 @@
                   if (res.status === true) {
                      return res.data;
                   } else {
-                     return null;
+                     return res.error;
                   }
                })
 

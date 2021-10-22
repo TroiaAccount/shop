@@ -1,3 +1,8 @@
+@php
+   if($page == "orders"){
+      $table = $table['order'];
+   }
+@endphp
 <div class="change__page-wrapper" id="pagination">
    <div class="buttons-wrapper d-flex justify-content-end">
 

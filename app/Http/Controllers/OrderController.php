@@ -91,27 +91,27 @@ class OrderController extends Controller
 
     public function Copy(request $req){
         $id = $req->session()->get('id');
-        $order_id = addslashes($req['id']);
-        $word = $req->session()->get('number');
+        $order_id = addslashes($req['order_id']);
+        $word = $req->session()->get('word');
         $result = ['status' => false, 'error' => 'Вы не заполнили все поля'];
         if($order_id != null){
             $check_order = order::select()->where(['user_id' => $id, 'id' => $order_id])->first();
             if($check_order != null){
                 $number = order::select('id')->where('user_id', $id)->count() + 1;
                 $number = $word . "-" . $number;
-                order::insert([
-                    'user_id' => $id,
-                    'number' => $number,
-                    'image' => $check_order->image,
-                    'status' => 4,
-                    'cost' => $check_order->cost,
-                    'count' => $check_order->count,
-                    'size' => $check_order->size,
-                    'model' => $check_order->model,
-                    'color' => $check_order->color,
-                    'ProductUrl' => $check_order->ProductUrl
-                ]);
-                $result = ['status' => true];
+                $order = new order();
+                $order->user_id = $id;
+                $order->number = $number;
+                $order->image = $check_order->image;
+                $order->status = 4;
+                $order->cost = $check_order->cost;
+                $order->count = $check_order->count;
+                $order->size = $check_order->size;
+                $order->model = $check_order->model;
+                $order->color = $check_order->color;
+                $order->ProductUrl = $check_order->ProductUrl;
+                $order->save();
+                $result = ['status' => true, 'data' => ['number' => $number, 'id' => $order->id]];
             } else {
                 $result['error'] = "Вы передали неверный ID";
             }
@@ -213,7 +213,7 @@ class OrderController extends Controller
         $order_id = addslashes($req['order_id']);
         $result = ['status' => false, 'error' => 'Вы не заполнили все обязательные поля'];
         if($order_id != null){
-            $checkOrder = order::select('id')->where(['id' => $order_id, 'user_id' => $id])->first();
+            $checkOrder = order::select()->where(['id' => $order_id, 'user_id' => $id])->first();
             $result['error'] = "Такого заказа не существует или он пренадлежит не вам";
             if($checkOrder != null){
                 $result = ['status' => true, 'data' => $checkOrder];
