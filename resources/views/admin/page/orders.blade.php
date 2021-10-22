@@ -97,7 +97,11 @@
                                        <p><i class="fas fa-pen hovered-link yellow" data-toggle="tooltip"
                                              data-placement="bottom"
                                              title="Редактировать заказ, нажмите еще раз чтобы завершить редактирование"
-                                             onclick="redact(event, {{ $result->id }})"></i></p>
+                                             onclick=""></i></p>
+                                       <p class="ml-3"><i class="fas fa-search hovered-link blue" data-toggle="tooltip"
+                                          data-placement="bottom"
+                                          title="Подробнее"
+                                          onclick="redact(event, {{ $result->id }})"></i></p>
                                        <p class="ml-3"><i class="fas fa-check hovered-link green"
                                              data-toggle="tooltip" data-placement="bottom" title="Завершить заказ"
                                              onclick="done({{ $result->id }})"></i></p>
