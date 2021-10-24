@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
    <meta charset="utf-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -31,6 +30,9 @@
       type="text/css">
    <link href="{{ asset('assets/admin/assets/css/style.css') }}" rel="stylesheet" type="text/css">
    <link href="{{ asset('assets/admin/assets/css/admin.css') }}" rel="stylesheet" type="text/css">
+   @if($page == 'blank')
+      <link href="{{ asset('assets/admin/assets/css/blank.css') }}" rel="stylesheet" type="text/css">
+   @endif
    <!-- Head Libs -->
    <script src="https://kit.fontawesome.com/e573f55991.js" crossorigin="anonymous"></script>
    <script src="{{ asset('assets/admin/assets/js/modernizr.min.js') }}"></script>
@@ -41,6 +43,7 @@
 <body class="sidebar-dark sidebar-expand navbar-brand-dark content-dark right-sidebar-dark">
    @csrf
    <div id="wrapper" class="wrapper">
+
       <!-- HEADER & TOP NAVIGATION -->
       <nav class="navbar">
          <div class="container-fluid px-0 align-items-stretch">
@@ -94,7 +97,7 @@
                @include('admin/nav')
                <!-- /.sidebar-nav -->
          </aside>
-         <!-- /.site-sidebar -->
+<!-- /.site-sidebar -->
          @include('admin/page/' . $page)
          <!-- /.main-wrappper -->
          <!-- RIGHT SIDEBAR -->
@@ -273,13 +276,15 @@
       </div>
       <!-- /.content-wrapper -->
       <!-- FOOTER -->
-      <footer class="footer bg-primary text-inverse text-center">
-         <div class="container-fluid"><span class="fs-13 heading-font-family">Copyright @ 2017. All rights reserved
-                  <a class="fw-800" href="https://kinetic.dharansh.in">WiseOwl Admin</a> by <a
-                     class="fw-800" href="https://themeforest.net/user/unifato">Unifato</a></span>
-         </div>
-         <!-- /.container-fluid -->
-      </footer>
+      @if($page != 'blank')
+         <footer class="footer bg-primary text-inverse text-center">
+            <div class="container-fluid"><span class="fs-13 heading-font-family">Copyright @ 2017. All rights reserved
+                     <a class="fw-800" href="https://kinetic.dharansh.in">WiseOwl Admin</a> by <a
+                        class="fw-800" href="https://themeforest.net/user/unifato">Unifato</a></span>
+            </div>
+            <!-- /.container-fluid -->
+         </footer>
+      @endif
    </div>
    <!--/ #wrapper -->
    <!-- Scripts -->

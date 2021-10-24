@@ -181,7 +181,7 @@
                data = await promise;
 
          if (data === null) {
-            console.log('no data');
+            console.error('Error: no order data');
          } else {
             console.log(data);
             const body = { order_id: id };
