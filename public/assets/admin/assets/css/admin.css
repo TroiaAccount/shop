@@ -36,3 +36,6 @@
 .hovered-btn.dark:hover {
     color: #212529!important;
 }
+.label-card {
+    height: 75px!important;
+}
