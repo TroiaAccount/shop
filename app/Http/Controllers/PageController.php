@@ -20,14 +20,14 @@ class PageController extends Controller
         if($page == "orders"){
             $order = order::select()->where('user_id', $id)->paginate(10);
             $favorites = null;
+            $table = [];
             foreach($order as $result){
                 $selectFavorite = favorite::select()->where(['order_id' => $result->id, 'user_id' => $id])->first();
-                $favorite = false;
+                $favorite = 0;
                 if($selectFavorite != null){
-                    $favorite = true;
-                    $favorites[] = $selectFavorite->order_id;
+                    $favorite = 1;
                 }
-                
+                $result->favorite = $favorite;
             }
             $table = ['favorites' => $favorites, 'order' => $order];
         }
@@ -41,6 +41,16 @@ class PageController extends Controller
         }
         if($page == "personal-info"){
             $table = adres::select()->where('user_id', $id)->orderby('id', 'desc')->get();
+        }
+        if($page == "favorites"){
+            $select = favorite::select()->where('user_id', $id)->orderby('id', 'desc')->get();
+            $table = [];
+            foreach($select as $result){
+                $select_item = order::select()->where('id', $result->order_id)->first();
+                if($select_item != null){
+                    $table[] = $select_item;
+                }
+            }
         }
         return view('main')->with(['page' => $page, 'user_info' => $user_info, 'table' => $table, 'subpage' => $subpage]);
     }

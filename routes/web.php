@@ -52,6 +52,7 @@ Route::middleware('MyAuth')->group(function(){ // Other route
             Route::get('/admin/{page}', 'AdminController@page')->name('AdminPage');
             Route::post('/admin/order/completed', 'OrderController@CompletedOrder')->name('write_orders_CompletedOrder');
             Route::post('/admin/order/replace', 'OrderController@ReplaceOrder')->name('write_orders_ReplaceOrder');
+            Route::post('/admin/order/select', 'OrderController@SelectOrder')->name('read_orders_SelectOrder');
             Route::post('/admin/users/delete', 'UserController@Delete')->name('delete_users_DeleteUser');
             Route::post('/admin/users/replace', 'UserController@Replace')->name('write_users_ReplaceUser');
             Route::post('/admin/admins/delete', 'AdminController@DeleteAdmin')->name('delete_admins_DeleteAdmin');

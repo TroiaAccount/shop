@@ -30,8 +30,6 @@
          <tr>
             <th scope="col">Номер</th>
             <th scope="col">Сохранён/Оформлен</th>
-            <th scope="col">Сумма</th>
-            <th scope="col">Комиссия</th>
             <th scope="col">Статус</th>
             <th scope="col">Дата/Время</th>
             <th scope="col">Операции</th>
@@ -43,13 +41,11 @@
             <tr>
                <td>{{$result->number}}</td>
                <td>@if($result->status == 1) Отправлен @elseif($result->status == 2) Прибыл @elseif($result->status == 3) Упаковывается @elseif($result->status == 4) Обрабатывается @endif</td>
-               <td class="table-summ">{{$result->cost}}</td>
-               <td class="table-commission">{{$result->commission}}%</td>
                <td>{{$result->status2}}</td>
                <td>{{$result->datetime}}</td>
                <td align="right">
                   <a onclick="redactOrder({{ $result->id }})" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Редактировать" class="hovered-link green"><i class="far fa-edit"></i></a>
-                  <a onclick="setFavorite({{ $result->id }})" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Добавить в избранные" class="hovered-link red"><i class="far fa-heart"></i></a>
+                  <a onclick="setFavorite({{ $result->id }})" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Добавить в избранные" class="hovered-link red"><i class="@if($result->favorite == 1) fas @else far @endif fa-heart"></i></a>
                   <a onclick="copyOrder({{ $result->id }})" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Копировать" class="hovered-link yellow"><i class="far fa-copy"></i></a>
                </td>
                <td align="center" style="background-color: #eaf5cb;"><i class="fas fa-info-circle"></i></td>

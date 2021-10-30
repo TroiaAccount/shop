@@ -37,15 +37,7 @@
                               <thead>
                                  <tr>
                                        <th>Номер</th>
-                                       <th>Картинки</th>
                                        <th>Статус</th>
-                                       <th>Стоимость</th>
-                                       <th>Комиссия</th>
-                                       <th>Количество</th>
-                                       <th>Размер</th>
-                                       <th>Модель</th>
-                                       <th>Цвет</th>
-                                       <th>Ссылки на товары</th>
                                        <th class="text-center">Действия</th>
                                  </tr>
                               </thead>
@@ -53,9 +45,6 @@
                                  @foreach ($table as $result)
                                        <tr>
                                           <td>{{ $result->number }}</td>
-                                          <td>
-                                             <p class="hovered-link text-inline" onclick="getImages('{{ $result->image }}')">Посмотреть</p>
-                                          </td>
                                           <td data-redact>
                                              <div class="status-select show">
                                                    @if ($result->status == 1) Отправлен 
@@ -81,17 +70,6 @@
                                  </optgroup>
                                  </td>
                                  </select>
-                                 <td name="cost" data-redact>{{ $result->cost }}</td>
-                                 <td name="comission" data-redact>{{ $result->commission }}</td>
-                                 <td name="count" data-redact>{{ $result->count }}</td>
-                                 <td name="size" data-redact>{{ $result->size }}</td>
-                                 <td name="model" data-redact>{{ $result->model }}</td>
-                                 <td name="color" data-redact>{{ $result->color }}</td>
-                                 <td>
-                                       <p class="hovered-link text-inline"
-                                          onclick="getUrls('{{ $result->ProductUrl }}')">
-                                          Посмотреть</p>
-                                 </td>
                                  <th class="d-flex justify-content-center">
                                        <p><i class="fas fa-pen hovered-link yellow" data-toggle="tooltip"
                                              data-placement="bottom"

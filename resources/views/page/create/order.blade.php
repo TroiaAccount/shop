@@ -350,7 +350,7 @@
          });
          res = await res.json();
          console.log('Успешно создан: ', JSON.stringify(res));
-         window.location.href = '{{Route("page", ["page" => "orders"])}}'
+         //window.location.href = '{{Route("page", ["page" => "orders"])}}'
       } catch (e) {
          console.error('Ошибка', e);
       }

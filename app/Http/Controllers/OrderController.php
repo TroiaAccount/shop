@@ -63,27 +63,15 @@ class OrderController extends Controller
         $json = $req->json();
         $result = ['status' => false, 'error' => 'Вы не передали весь запрос'];
         if($json != null){
-            foreach($json as $object){
-                $photos = [];
-                array_push($photos, $object['Photo']);
-                array_push($photos, $object['PhotoUrl']);
-                $ProdctUrls = $object['ProductUrl'];
-                $number = order::select('id')->where('user_id', $id)->count() + 1;
-                $number = $word . "-" . $number;
-                order::insert([
-                    'user_id' => $id,
-                    'number' => $number,
-                    'image' => json_encode($photos, true),
-                    'status' => 4,
-                    'cost' => $object['cost'],
-                    'count' => $object['count'],
-                    'size' => $object['size'],
-                    'model' => $object['model'],
-                    'color' => $object['color'],
-                    'ProductUrl' => json_encode($ProdctUrls, true)
-                ]);
-                $result = ['status' => true];
-            }
+            $number = order::select('id')->where('user_id', $id)->count() + 1;
+            $number = $word . "-" . $number;
+            order::insert([
+                'user_id' => $id,
+                'number' => $number,
+                'status' => 4,
+                'json' => $json
+            ]);
+            $result = ['status' => true];
         }
         $result = json_encode($result, true);
         return $result;
@@ -216,7 +204,7 @@ class OrderController extends Controller
             $checkOrder = order::select()->where(['id' => $order_id, 'user_id' => $id])->first();
             $result['error'] = "Такого заказа не существует или он пренадлежит не вам";
             if($checkOrder != null){
-                $result = ['status' => true, 'data' => $checkOrder];
+                $result = ['status' => true, 'data' => $checkOrder->json];
             }
         }
         $result = json_encode($result, true);
