@@ -60,7 +60,7 @@ class OrderController extends Controller
     public function CreateOrder(request $req){
         $id = $req->session()->get('id');
         $word = $req->session()->get('word');
-        $json = $req->json();
+        $json = $req->all();
         $result = ['status' => false, 'error' => 'Вы не передали весь запрос'];
         if($json != null){
             $number = order::select('id')->where('user_id', $id)->count() + 1;
@@ -69,7 +69,7 @@ class OrderController extends Controller
                 'user_id' => $id,
                 'number' => $number,
                 'status' => 4,
-                'json' => $json
+                'json' => json_encode($json)
             ]);
             $result = ['status' => true];
         }
