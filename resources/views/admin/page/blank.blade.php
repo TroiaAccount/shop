@@ -264,7 +264,7 @@
                      <div class="widget-body p-0">
                         <div class="-w-info media">
                            <div class="media-body w-100">
-                              <a class="btn btn-primary w-100">Посмотреть</a>
+                              <a class="btn btn-primary w-100" onclick="checkImage()">Посмотреть</a>
                            </div>
                         </div>
                      </div>
@@ -402,3 +402,68 @@
       <div class="order__body"></div>
       <div class="order__footer"></div>
 </section>
+
+<div class="modal modal-info fade bs-modal-md-info" tabindex="-1" role="dialog"
+   aria-labelledby="myMediumModalLabel2" aria-hidden="true" style="display: none">
+   <div class="modal-dialog modal-md">
+      <div class="modal-content">
+            <div class="modal-header text-inverse">
+               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+               <h5 class="modal-title" id="myMediumModalLabel2"></h5>
+            </div>
+            <div class="modal-body">
+               <div class="d-flex flex-column modal-content-wrapper">
+                  <div class="image">
+                     <img src="{{asset('assets/admin/assets/img/no-image.png')}}" alt="">
+                  </div>
+                  <div class="file-input">
+                     <div class="widget-list">
+                        <div class="row">
+                           <div class="col-md-12 widget-holder">
+                              <div class="widget-bg">
+                                 <div class="widget-body clearfix">
+                                       <h5 class="box-title mr-b-0">Dropzone</h5>
+                                       <p class="text-muted">For multiple file upload</p>
+                                       <form action="#" data-toggle="dropzone">
+                                          <div class="fallback">
+                                             <input type="file" name="file" id="file1" multiple="multiple">
+                                          </div>
+                                          <!-- /.fallback -->
+                                          <div class="dz-message" data-dz-message><span>Drop files here to upload</span>
+                                          </div>
+                                       </form>
+                                 </div>
+                                 <!-- /.widget-body -->
+                              </div>
+                              <!-- /.widget-bg -->
+                           </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-danger btn-rounded ripple text-left"
+                  data-dismiss="modal">Закрыть</button>
+            </div>
+      </div>
+      <!-- /.modal-content -->
+   </div>
+   <!-- /.modal-dialog -->
+</div>
+
+<script>
+   window.addEventListener('DOMContentLoaded', () => {
+      const href = window.location.href.split('/'),
+            id = href[href.length - 1];
+      
+      getData(id);
+   })
+   async function getData(id) {
+      const body = { id };
+      return await postData('http://taobao:8080/admin/order/select', body);
+   }
+
+   function checkImage() {
+      openModal();
+   }
+</script>

@@ -36,7 +36,6 @@ class ChechAdminRights
                     }
                 } else {
                     $route = explode("_", $routes);
-                    dd($route);
                     $page = $route[1];
                     $right = $route[0];
                     if($rights[$page][$right] == 1){
