@@ -12,17 +12,6 @@
                      </div>
                   </div>
                </div>
-               <div class="widget-bg bg-transparent text-inverse mt-2">
-                  <div class="widget-body p-0">
-                     <div class="-w-info media number">
-                        <div class="media-body w-100">
-                           <div class="rounded-card bg-light">
-                              <p class="text-dark fw-600 m-0">1</p>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
             </div>
             <div class="widget-holder widget-sm col">
                   <div class="widget-bg bg-primary text-inverse mb-2">
@@ -30,27 +19,6 @@
                         <div class="-w-info media">
                            <div class="media-body w-50">
                               <p class="text-muted mr-b-5 fw-600">Фото товара</p><span class="-title d-block"><span class=""></span></span>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="widget-bg bg-transparent text-inverse mt-2">
-                     <div class="widget-body p-0">
-                        <div class="-w-info media">
-                           <div class="media-body w-100">
-                              <a class="btn btn-primary w-100">Посмотреть</a>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="widget-bg bg-transparent text-inverse mt-2">
-                     <div class="widget-body p-0">
-                        <div class="-w-info media">
-                           <div class="media-body w-100 text-right position-relative">
-                              <div class="rounded-card bg-light numeration position-absolute subnumeration">
-                                 <p class="text-dark fw-600 m-0">1.1</p>
-                              </div>
-                              <a class="btn btn-primary w-75" style="font-size: 13px; padding: 5px 8px;">Посмотреть</a>
                            </div>
                         </div>
                      </div>
@@ -66,29 +34,6 @@
                         </div>
                      </div>
                   </div>
-                  <div class="widget-bg bg-transparent text-inverse mt-2">
-                     <div class="widget-body p-0">
-                        <div class="-w-info media">
-                           <div class="media-body w-100">
-                              <div class="rounded-card bg-info d-flex flex-column justify-content-between url-input-wrapper">
-                                 <input class="url-input bg-info" type="text" value="https://getbootstrap.com/docs/5.0/getting-started/introduction/"> 
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="widget-bg bg-transparent text-inverse mt-2 w-75">
-                     <div class="widget-body p-0">
-                        <div class="-w-info media">
-                           <div class="media-body w-100 d-flex">
-                              <div class=""></div>
-                              <div class="rounded-card bg-info d-flex flex-column justify-content-between url-input-wrapper text-right" style="padding: 4px 0.75rem;">
-                                 <input class="url-input bg-info" style="font-size: 13px" type="text" value="https://getbootstrap.com/docs/5.0/getting-started/introduction/"> 
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
             </div>
             <div class="widget-holder widget-sm col">
                   <div class="widget-bg bg-success mb-2">
@@ -96,29 +41,6 @@
                         <div class="-w-info media">
                            <div class="media-body w-50">
                               <p class="text-muted mr-b-5 fw-600">Ссылка на товар</p><span class="-title d-block"><span class=""></span></span>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="widget-bg bg-transparent text-inverse mt-2">
-                     <div class="widget-body p-0">
-                        <div class="-w-info media">
-                           <div class="media-body w-100">
-                              <div class="rounded-card bg-success d-flex flex-column justify-content-between url-input-wrapper">
-                                 <input class="url-input bg-success text-dark" type="text" value="https://getbootstrap.com/docs/5.0/getting-started/introduction/"> 
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="widget-bg bg-transparent text-inverse mt-2 w-75">
-                     <div class="widget-body p-0">
-                        <div class="-w-info media">
-                           <div class="media-body w-100 d-flex">
-                              <div class=""></div>
-                              <div class="rounded-card bg-success d-flex flex-column justify-content-between url-input-wrapper text-right" style="padding: 4px 0.75rem;">
-                                 <input class="url-input bg-success text-dark" style="font-size: 13px" type="text" value="https://getbootstrap.com/docs/5.0/getting-started/introduction/"> 
-                              </div>
                            </div>
                         </div>
                      </div>
@@ -135,17 +57,6 @@
                         </div>
                      </div>
                   </div>
-                  <div class="widget-bg bg-transparent text-inverse mt-2">
-                     <div class="widget-body p-0">
-                        <div class="-w-info media">
-                           <div class="media-body w-100">
-                              <div class="rounded-card bg-primary">
-                                 <p class="text-muted fw-600 m-0">1325</p>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
             </div>
             <div class="widget-holder widget-sm col">
                <div class="widget-bg bg-primary mb-2">
@@ -153,17 +64,6 @@
                      <div class="-w-info media">
                         <div class="media-body w-50">
                            <p class="text-muted mr-b-5 fw-600">Цена</p><span class="-title d-block"><span class=""></span></span>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="widget-bg bg-transparent text-inverse mt-2">
-                  <div class="widget-body p-0">
-                     <div class="-w-info media">
-                        <div class="media-body w-100">
-                           <div class="rounded-card bg-primary">
-                              <p class="text-muted fw-600 m-0">430004</p>
-                           </div>
                         </div>
                      </div>
                   </div>
@@ -179,17 +79,6 @@
                      </div>
                   </div>
                </div>
-               <div class="widget-bg bg-transparent text-inverse mt-2">
-                  <div class="widget-body p-0">
-                     <div class="-w-info media">
-                        <div class="media-body w-100">
-                           <div class="rounded-card bg-success">
-                              <p class="text-muted fw-600 m-0">Красный</p>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
             </div>
             <div class="widget-holder widget-sm col">
                <div class="widget-bg bg-info text-inverse mb-2">
@@ -197,17 +86,6 @@
                      <div class="-w-info media">
                         <div class="media-body w-50">
                            <p class="text-muted mr-b-5 fw-600">Размер</p><span class="-title d-block"><span class=""></span></span>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="widget-bg bg-transparent text-inverse mt-2">
-                  <div class="widget-body p-0">
-                     <div class="-w-info media">
-                        <div class="media-body w-100">
-                           <div class="rounded-card bg-info">
-                              <p class="text-muted fw-600 m-0">XL</p>
-                           </div>
                         </div>
                      </div>
                   </div>
@@ -223,183 +101,10 @@
                      </div>
                   </div>
                </div>
-               <div class="widget-bg bg-transparent text-inverse mt-2">
-                  <div class="widget-body p-0">
-                     <div class="-w-info media">
-                        <div class="media-body w-100">
-                           <div class="rounded-card bg-primary">
-                              <p class="text-muted fw-600 m-0">21M-V32</p>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <div class="widget-list row">
-            <div class="widget-holder widget-sm col" style="max-width: 65px;">
-               <div class="widget-bg bg-transparent text-inverse number mb-2">
-                  <div class="widget-body p-0">
-                     <div class="-w-info media">
-                        <div class="media-body w-50">
-                           <p class="text-muted mr-b-5 fw-600"></p><span class="-title d-block"><span class=""></span></span>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="widget-bg bg-transparent text-inverse mt-2">
-                  <div class="widget-body p-0">
-                     <div class="-w-info media number">
-                        <div class="media-body w-100">
-                           <div class="rounded-card bg-light">
-                              <p class="text-dark fw-600 m-0">2</p>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="widget-holder widget-sm col" style="min-width: 176.48px;">
-                  <div class="widget-bg bg-transparent text-inverse mt-2">
-                     <div class="widget-body p-0">
-                        <div class="-w-info media">
-                           <div class="media-body w-100">
-                              <a class="btn btn-primary w-100" onclick="checkImage()">Посмотреть</a>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="widget-bg bg-transparent text-inverse mt-2">
-                     <div class="widget-body p-0">
-                        <div class="-w-info media">
-                           <div class="media-body w-100 text-right position-relative">
-                              <div class="rounded-card bg-light numeration position-absolute subnumeration">
-                                 <p class="text-dark fw-600 m-0">2.1</p>
-                              </div>
-                              <a class="btn btn-primary w-75" style="font-size: 13px; padding: 5px 8px;">Посмотреть</a>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-            </div>
-            <div class="widget-holder widget-sm col">
-                  <div class="widget-bg bg-transparent text-inverse mt-2">
-                     <div class="widget-body p-0">
-                        <div class="-w-info media">
-                           <div class="media-body w-100">
-                              <div class="rounded-card bg-info d-flex flex-column justify-content-between url-input-wrapper">
-                                 <input class="url-input bg-info" type="text" value="https://getbootstrap.com/docs/5.0/getting-started/introduction/"> 
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="widget-bg bg-transparent text-inverse mt-2 w-75">
-                     <div class="widget-body p-0">
-                        <div class="-w-info media">
-                           <div class="media-body w-100 d-flex">
-                              <div class=""></div>
-                              <div class="rounded-card bg-info d-flex flex-column justify-content-between url-input-wrapper text-right" style="padding: 4px 0.75rem;">
-                                 <input class="url-input bg-info" style="font-size: 13px" type="text" value="https://getbootstrap.com/docs/5.0/getting-started/introduction/"> 
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-            </div>
-            <div class="widget-holder widget-sm col">
-                  <div class="widget-bg bg-transparent text-inverse mt-2">
-                     <div class="widget-body p-0">
-                        <div class="-w-info media">
-                           <div class="media-body w-100">
-                              <div class="rounded-card bg-success d-flex flex-column justify-content-between url-input-wrapper">
-                                 <input class="url-input bg-success text-dark" type="text" value="https://getbootstrap.com/docs/5.0/getting-started/introduction/"> 
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="widget-bg bg-transparent text-inverse mt-2 w-75">
-                     <div class="widget-body p-0">
-                        <div class="-w-info media">
-                           <div class="media-body w-100 d-flex">
-                              <div class=""></div>
-                              <div class="rounded-card bg-success d-flex flex-column justify-content-between url-input-wrapper text-right" style="padding: 4px 0.75rem;">
-                                 <input class="url-input bg-success text-dark" style="font-size: 13px" type="text" value="https://getbootstrap.com/docs/5.0/getting-started/introduction/"> 
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-            </div>
-            <div class="widget-holder widget-sm col" style="min-width: 177.78px;">
-                  <div class="widget-bg bg-transparent text-inverse mt-2">
-                     <div class="widget-body p-0">
-                        <div class="-w-info media">
-                           <div class="media-body w-100">
-                              <div class="rounded-card bg-primary">
-                                 <p class="text-muted fw-600 m-0">1325</p>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-            </div>
-            <div class="widget-holder widget-sm col">
-               <div class="widget-bg bg-transparent text-inverse mt-2">
-                  <div class="widget-body p-0">
-                     <div class="-w-info media">
-                        <div class="media-body w-100">
-                           <div class="rounded-card bg-primary">
-                              <p class="text-muted fw-600 m-0">430004</p>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="widget-holder widget-sm col">
-               <div class="widget-bg bg-transparent text-inverse mt-2">
-                  <div class="widget-body p-0">
-                     <div class="-w-info media">
-                        <div class="media-body w-100">
-                           <div class="rounded-card bg-success">
-                              <p class="text-muted fw-600 m-0">Красный</p>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="widget-holder widget-sm col">
-               <div class="widget-bg bg-transparent text-inverse mt-2">
-                  <div class="widget-body p-0">
-                     <div class="-w-info media">
-                        <div class="media-body w-100">
-                           <div class="rounded-card bg-info">
-                              <p class="text-muted fw-600 m-0">XL</p>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="widget-holder widget-sm col">
-               <div class="widget-bg bg-transparent text-inverse mt-2">
-                  <div class="widget-body p-0">
-                     <div class="-w-info media">
-                        <div class="media-body w-100">
-                           <div class="rounded-card bg-primary">
-                              <p class="text-muted fw-600 m-0">21M-V32</p>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
             </div>
          </div>
       </div>
-      <div class="order__body"></div>
+      <div class="order__body container-fluid"></div>
       <div class="order__footer"></div>
 </section>
 
@@ -452,14 +157,207 @@
 </div>
 
 <script>
-   window.addEventListener('DOMContentLoaded', () => {
+   window.addEventListener('DOMContentLoaded', async () => {
       const href = window.location.href.split('/'),
             id = href[href.length - 1];
-      
-      getData(id);
+            
+      let data = await getData(id);
+      data = await JSON.parse(data.data);  
+      console.log(data);
+
+      const container = document.querySelector('.order__header');
+
+      data.forEach((product, i) => {
+         console.log(product, i);
+         const row = document.createElement('div');
+         row.classList.add('widget-list', 'row');
+         row.innerHTML = `
+               <div class="widget-holder widget-sm col" style="max-width: 65px;">
+                  <div class="widget-bg bg-transparent text-inverse number mb-2">
+                     <div class="widget-body p-0">
+                        <div class="-w-info media">
+                           <div class="media-body w-50">
+                              <p class="text-muted mr-b-5 fw-600"></p><span class="-title d-block"><span class=""></span></span>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="widget-bg bg-transparent text-inverse mt-2">
+                     <div class="widget-body p-0">
+                        <div class="-w-info media number">
+                           <div class="media-body w-100">
+                              <div class="rounded-card bg-light">
+                                 <p class="text-dark fw-600 m-0">${i + 1}</p>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="widget-holder widget-sm col" name="photo-${i + 1}">
+                     <div class="widget-bg bg-transparent text-inverse mt-2">
+                        <div class="widget-body p-0">
+                           <div class="-w-info media">
+                              <div class="media-body w-100">
+                                 <a class="btn btn-primary w-100" data-url="${product.Photo[0] ? product.Photo[0] : ''}">Посмотреть</a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+               </div>
+               <div class="widget-holder widget-sm col" name="photoUrl-${i + 1}">
+                     <div class="widget-bg bg-transparent text-inverse mt-2">
+                        <div class="widget-body p-0">
+                           <div class="-w-info media">
+                              <div class="media-body w-100">
+                                 <div class="rounded-card bg-info d-flex flex-column justify-content-between url-input-wrapper">
+                                    <input class="url-input bg-info" type="text" value="${product.PhotoUrl[0] ? product.PhotoUrl[0] : ''}"> 
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+               </div>
+               <div class="widget-holder widget-sm col" name="productUrl-${i + 1}">
+                     <div class="widget-bg bg-transparent text-inverse mt-2">
+                        <div class="widget-body p-0">
+                           <div class="-w-info media">
+                              <div class="media-body w-100">
+                                 <div class="rounded-card bg-success d-flex flex-column justify-content-between url-input-wrapper">
+                                    <input class="url-input bg-success text-dark" type="text" value="${product.ProductUrl[0] ? product.ProductUrl[0] : ''}"> 
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+               </div>
+               <div class="widget-holder widget-sm col">
+                     <div class="widget-bg bg-transparent text-inverse mt-2">
+                        <div class="widget-body p-0">
+                           <div class="-w-info media">
+                              <div class="media-body w-100">
+                                 <div class="rounded-card bg-primary">
+                                    <p class="text-muted fw-600 m-0">${product.count ? product.count : ''}</p>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+               </div>
+               <div class="widget-holder widget-sm col">
+                  <div class="widget-bg bg-transparent text-inverse mt-2">
+                     <div class="widget-body p-0">
+                        <div class="-w-info media">
+                           <div class="media-body w-100">
+                              <div class="rounded-card bg-primary">
+                                 <p class="text-muted fw-600 m-0">${product.cost ? product.cost : ''}</p>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="widget-holder widget-sm col">
+                  <div class="widget-bg bg-transparent text-inverse mt-2">
+                     <div class="widget-body p-0">
+                        <div class="-w-info media">
+                           <div class="media-body w-100">
+                              <div class="rounded-card bg-success">
+                                 <p class="text-muted fw-600 m-0">${product.color ? product.color : ''}</p>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="widget-holder widget-sm col">
+                  <div class="widget-bg bg-transparent text-inverse mt-2">
+                     <div class="widget-body p-0">
+                        <div class="-w-info media">
+                           <div class="media-body w-100">
+                              <div class="rounded-card bg-info">
+                                 <p class="text-muted fw-600 m-0">${product.size ? product.size : ''}</p>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="widget-holder widget-sm col">
+                  <div class="widget-bg bg-transparent text-inverse mt-2">
+                     <div class="widget-body p-0">
+                        <div class="-w-info media">
+                           <div class="media-body w-100">
+                              <div class="rounded-card bg-primary">
+                                 <p class="text-muted fw-600 m-0">${product.model ? product.model : ''}</p>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+         `;
+
+         container.append(row);
+
+         const addWidget = (array, selector, color, textClass) => {
+            if (array.length > 1) {
+               const photoWrapper = document.querySelector(`[name="${selector}-${i + 1}"]`);
+               for (let j = 1; j < array.length; j++) {
+                  const widget = document.createElement('div');
+                  widget.classList.add('widget-bg', 'bg-transparent', 'text-inverse', 'mt-2');
+                  widget.innerHTML = `
+                     <div class="widget-bg bg-transparent text-inverse mt-2 w-75">
+                        <div class="widget-body p-0">
+                           <div class="-w-info media">
+                              <div class="media-body w-100 d-flex">
+                                 <div class="rounded-card bg-${color} d-flex flex-column justify-content-between url-input-wrapper text-right" style="padding: 4px 0.75rem;">
+                                    <input class="url-input bg-${color} ${textClass}" style="font-size: 13px" type="text" value="${array[j] ? array[j] : ''}"> 
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  `
+                  photoWrapper.append(widget);
+               }
+            }
+         }
+
+         addWidget(product.PhotoUrl, 'photoUrl', 'info', '');
+         addWidget(product.ProductUrl, 'productUrl', 'success', 'text-dark');
+
+         if (product.Photo.length > 1) {
+            const photoWrapper = document.querySelector(`[name="photo-${i + 1}"]`);
+            for (let j = 1; j < product.Photo.length; j++) {
+               const widget = document.createElement('div');
+               widget.classList.add('widget-bg', 'bg-transparent', 'text-inverse', 'mt-2');
+               widget.innerHTML = `
+                  <div class="widget-body p-0">
+                     <div class="-w-info media">
+                        <div class="media-body w-100 text-right position-relative">
+                           <div class="rounded-card bg-light numeration position-absolute subnumeration">
+                              <p class="text-dark fw-600 m-0">${i + 1}.${j}</p>
+                           </div>
+                           <a class="btn btn-primary w-75" style="font-size: 13px; padding: 5px 8px;" data-url="${product.Photo[j]}">Посмотреть</a>
+                        </div>
+                     </div>
+                  </div>
+               `
+               photoWrapper.append(widget);
+            }
+         }
+
+      })
+
+      const inputs = document.querySelectorAll('input');
+      inputs.forEach(input => {
+         input.addEventListener('click', () => input.select())
+      })
    })
+
    async function getData(id) {
-      const body = { id };
+      const body = { order_id: id };
       return await postData('http://taobao:8080/admin/order/select', body);
    }
 

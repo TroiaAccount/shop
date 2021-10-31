@@ -48,10 +48,6 @@
    color: #fff!important;
 }
 
-.widget-holder {
-   max-width: 300px;
-}
-
 .eclips {
    overflow: hidden;
    text-overflow: ellipsis;
@@ -88,4 +84,9 @@
 
 .image {
    
+}
+
+.widget-holder:not(:first-child) {
+   max-width: 208.47px;
+   min-width: 207px;
 }
