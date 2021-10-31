@@ -22,7 +22,7 @@ class ChechAdminRights
         $CheckUser = User::select(['admin', 'role'])->where('id', $id)->first();
         $page = null;
         $routes = $req->Route()->action['as'];
-        if($routes == "AdminPage"){
+        if($routes == "AdminPage" || $routes == "AdminPages"){
             $page = $req->Route()->parameters['page'];
         }
         $status = false;
@@ -36,6 +36,7 @@ class ChechAdminRights
                     }
                 } else {
                     $route = explode("_", $routes);
+                    dd($route);
                     $page = $route[1];
                     $right = $route[0];
                     if($rights[$page][$right] == 1){

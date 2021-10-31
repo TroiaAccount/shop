@@ -12,7 +12,7 @@ use App\Models\adres;
 class AdminController extends Controller
 {
     //
-    public function Page($page, request $req){
+    public function Page($page, request $req, $id = null){
         $id = $req->session()->get('id');
         $user_info = User::select()->where('id', $id)->first();
         $table = null;

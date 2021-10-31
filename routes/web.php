@@ -50,6 +50,7 @@ Route::middleware('MyAuth')->group(function(){ // Other route
         })->name('Admin');
         Route::middleware('ChechAdminRights')->group(function(){
             Route::get('/admin/{page}', 'AdminController@page')->name('AdminPage');
+            Route::get('/admin/{page}/{id}', 'AdminController@page')->name('AdminPages');
             Route::post('/admin/order/completed', 'OrderController@CompletedOrder')->name('write_orders_CompletedOrder');
             Route::post('/admin/order/replace', 'OrderController@ReplaceOrder')->name('write_orders_ReplaceOrder');
             Route::post('/admin/order/select', 'OrderController@SelectOrder')->name('read_orders_SelectOrder');
