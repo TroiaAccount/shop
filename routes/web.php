@@ -42,7 +42,8 @@ Route::middleware('MyAuth')->group(function(){ // Other route
     */
     Route::get('/client/{page}', 'PageController@page')->name('page');
     Route::get('/client/{page}/{subpage}', 'PageController@page')->name('Page');
-    
+    Route::post('/api/order/replace', 'OrderController@ReplaceOrder')->name('ReplaceOrder');
+
     /* Page route end */
     Route::middleware('CheckAdmin')->group(function(){
         Route::get('/admin', function(){
@@ -52,7 +53,7 @@ Route::middleware('MyAuth')->group(function(){ // Other route
             Route::get('/admin/{page}', 'AdminController@page')->name('AdminPage');
             Route::get('/admin/{page}/{id}', 'AdminController@page')->name('AdminPages');
             Route::post('/admin/order/completed', 'OrderController@CompletedOrder')->name('write_orders_CompletedOrder');
-            Route::post('/admin/order/replace', 'OrderController@ReplaceOrder')->name('write_orders_ReplaceOrder');
+            Route::post('/admin/order/replace', 'OrderController@ReplaceOrderAdmin')->name('write_orders_ReplaceOrder');
             Route::post('/admin/order/select', 'OrderController@SelectOrder')->name('read_orders_SelectOrder');
             Route::post('/admin/users/delete', 'UserController@Delete')->name('delete_users_DeleteUser');
             Route::post('/admin/users/replace', 'UserController@Replace')->name('write_users_ReplaceUser');

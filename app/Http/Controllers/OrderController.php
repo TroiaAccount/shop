@@ -128,7 +128,7 @@ class OrderController extends Controller
         return $result;
     }
 
-    public function ReplaceOrder(request $req){
+    public function ReplaceOrderAdmin(request $req){
         $id = addslashes($req['id']);
         $json = addslashes($req['json']);
         $result = ['status' => false, 'error' => 'Вы не заполнили все параметры'];
@@ -143,6 +143,24 @@ class OrderController extends Controller
         $result = json_encode($result, true);
         return $result;
     }
+
+    public function ReplaceOrder(request $req){
+        $user_id = $req->session()->get('id');
+        $id = addslashes($req['id']);
+        $json = addslashes($req['json']);
+        $result = ['status' => false, 'error' => 'Вы не заполнили все параметры'];
+        if($id != null){
+            $check_order = order::select()->where(['id' => $id, 'completed' => 0, 'user_id' => $user_id])->first();
+            if($check_order != null){
+                $check_order->json = $json;
+                $check_order->save(); 
+                $result = ['status' => true];
+            }
+        }
+        $result = json_encode($result, true);
+        return $result;
+    }
+
 
     public function Favorite(request $req){
         $id = $req->session()->get('id');
