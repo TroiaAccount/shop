@@ -71,3 +71,7 @@ async function postFormData(url, formData) {
       console.log('Error Post FormData', e.message);
    }
 }
+
+function setAttributeBySelector(selector, attribute, value) {
+   document.querySelector(selector).setAttribute(attribute, value);
+}

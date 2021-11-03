@@ -134,15 +134,9 @@
                         <div class="row">
                            <div class="col-md-12 widget-holder">
                               <div class="widget-bg">
-                                 <div class="widget-body clearfix">
-                                       <form action="#" data-toggle="dropzone">
-                                          <div class="fallback">
-                                             <input type="file" name="0" id="file1" multiple="multiple" onchange="getImageUrl(event)">
-                                          </div>
-                                          <!-- /.fallback -->
-                                          <div class="dz-message" data-dz-message><span>Перенесите файл для загрузки</span>
-                                          </div>
-                                       </form>
+                                 <div class="widget-body clearfix p-0 pt-3">
+                                    <input type="file" class="customInput" id="file1" onchange="getImageUrl(event)">
+                                    <label class="customInputLabel" for="file1">Выбрать фото</label>
                                  </div>
                                  <!-- /.widget-body -->
                               </div>
@@ -306,7 +300,7 @@
 
          container.append(row);
 
-         const addWidget = (array, selector, color, textClass) => {
+         const addWidget = (array, selector, color, textClass, name) => {
             if (array.length > 1) {
                const photoWrapper = document.querySelector(`[name="${selector}-${i + 1}"]`);
                for (let j = 1; j < array.length; j++) {
@@ -318,7 +312,7 @@
                            <div class="-w-info media">
                               <div class="media-body w-100 d-flex">
                                  <div class="rounded-card bg-${color} d-flex flex-column justify-content-between url-input-wrapper text-right" style="padding: 4px 0.75rem;">
-                                    <input class="url-input bg-${color} ${textClass}" style="font-size: 13px" type="text" value="${array[j] ? array[j] : ''}"> 
+                                    <input class="url-input bg-${color} ${textClass}" name="${name}" style="font-size: 13px" type="text" value="${array[j] ? array[j] : ''}"> 
                                  </div>
                               </div>
                            </div>
@@ -330,8 +324,8 @@
             }
          }
 
-         addWidget(product.PhotoUrl, 'photoUrl', 'info', '');
-         addWidget(product.ProductUrl, 'productUrl', 'success', 'text-dark');
+         addWidget(product.PhotoUrl, 'photoUrl', 'info', '', 'imageUrl');
+         addWidget(product.ProductUrl, 'productUrl', 'success', 'text-dark', 'url');
 
          if (product.Photo.length > 1) {
             const photoWrapper = document.querySelector(`[name="photo-${i + 1}"]`);
@@ -385,17 +379,15 @@
 //Открываем модалку с переданной картинкой
    function openModalWithImg(url, id) {
       console.log(url);
-      if (id) {
-         const input = document.querySelector('#file1');
-         input.name = id;
-      }
       if (!url) {
          openModal();
+         setAttributeBySelector('#file1', 'name', id);
          return;
       }
       const imgTag = document.querySelector('.image img');
       changeModalImg(imgTag, url);
       openModal();
+      setAttributeBySelector('#file1', 'name', id);
    }
    
 //Постим на сервер загруженную картинку и получаем ее url
@@ -415,6 +407,7 @@
          photosUrl[id] = [res.url];
       }
       console.log('Успешно создан: ', JSON.stringify(res));
+      e.target.nextElementSibling.style.backgroundColor = '#ecffc6';
    }
 //Собираем заказ и отправляем на сервер
    function makeOrder() {
@@ -426,7 +419,7 @@
                photos = [],
                urlPhotos = [],
                urlProducts = [],
-               urlPhotoInputs = order.querySelectorAll('[name="ImageUrl"]'),
+               urlPhotoInputs = order.querySelectorAll('[name="imageUrl"]'),
                urlProductInputs = order.querySelectorAll('[name="url"]'),
                count = order.querySelector('[name="count"]').value,
                cost = order.querySelector('[name="cost"]').value,

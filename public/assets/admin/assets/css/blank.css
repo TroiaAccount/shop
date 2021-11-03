@@ -91,15 +91,17 @@
    min-width: 207px;
 }
 
-form.dropzone {
-   background: border-box;
-   border: 1px dashed aqua;
-}
-
-.dz-message {
-   white-space: nowrap;
-}
-
 .btn {
    font-weight: 700!important;
+}
+
+.customInput {
+   display: none;
+}
+
+.customInputLabel {
+   padding: 40px 0px;
+   border: 1px dashed aqua;
+   width: 100%;
+   white-space: nowrap;
 }
