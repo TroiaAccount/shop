@@ -297,8 +297,6 @@
       } catch (e) {
          console.error('Ошибка', e);
       }
-      
-      
    }
 
    async function makeOrder() {

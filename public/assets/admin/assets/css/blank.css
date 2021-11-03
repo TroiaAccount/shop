@@ -48,10 +48,6 @@
    color: #fff!important;
 }
 
-.widget-holder {
-   max-width: 300px;
-}
-
 .eclips {
    overflow: hidden;
    text-overflow: ellipsis;
@@ -84,4 +80,29 @@
 .subnumeration p {
    font-size: 12px;
    color: #fff!important;
+}
+
+.image {
+   
+}
+
+.widget-holder:not(:first-child) {
+   max-width: 208.47px;
+   min-width: 207px;
+}
+
+.btn {
+   font-weight: 700!important;
+}
+
+.customInput {
+   display: none;
+}
+
+.customInputLabel {
+   padding: 40px 0px;
+   border: 1px dashed aqua;
+   width: 100%;
+   white-space: nowrap;
+   cursor: pointer;
 }

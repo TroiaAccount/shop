@@ -75,10 +75,11 @@
                                              data-placement="bottom"
                                              title="Редактировать заказ, нажмите еще раз чтобы завершить редактирование"
                                              onclick="redact(event, {{ $result->id }})"></i></p>
-                                       <p class="ml-3"><i class="fas fa-search hovered-link blue" data-toggle="tooltip"
-                                          data-placement="bottom"
-                                          title="Подробнее"
-                                          onclick="showFull({{ $result->id }})"></i></p>
+                                       <a class="ml-3" href="{{ Route('AdminPages', ['page' => 'blank', 'id' => $result->id]) }}">
+                                          <i class="fas fa-search gray-link hovered-link blue" data-toggle="tooltip"
+                                             data-placement="bottom"title="Подробнее">
+                                          </i>
+                                       </a>
                                        <p class="ml-3"><i class="fas fa-check hovered-link green"
                                              data-toggle="tooltip" data-placement="bottom" title="Завершить заказ"
                                              onclick="done({{ $result->id }})"></i></p>
@@ -250,9 +251,5 @@
                   }
                });
       }
-   }
-
-   function showFull(id) {
-      
    }
 </script>

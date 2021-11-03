@@ -59,3 +59,19 @@ function openModal() {
 function changeTextContent(selector, content) {
    document.querySelector(selector).textContent = content;
 }
+
+async function postFormData(url, formData) {
+   try {
+      const res = await fetch(url, {
+         method: 'POST',
+         body: formData
+      });
+      return await res.json();
+   } catch (e) {
+      console.log('Error Post FormData', e.message);
+   }
+}
+
+function setAttributeBySelector(selector, attribute, value) {
+   document.querySelector(selector).setAttribute(attribute, value);
+}

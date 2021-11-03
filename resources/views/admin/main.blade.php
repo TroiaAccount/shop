@@ -32,6 +32,8 @@
    <link href="{{ asset('assets/admin/assets/css/admin.css') }}" rel="stylesheet" type="text/css">
    @if($page == 'blank')
       <link href="{{ asset('assets/admin/assets/css/blank.css') }}" rel="stylesheet" type="text/css">
+      <link href="{{ asset('assets/admin/assets/vendors/dropzone/min/dropzone.min.css') }}" rel="stylesheet" type="text/css">
+      <link href="{{ asset('assets/admin/assets/vendors/dropzone/min/basic.min.css') }}" rel="stylesheet" type="text/css">
    @endif
    <!-- Head Libs -->
    <script src="https://kit.fontawesome.com/e573f55991.js" crossorigin="anonymous"></script>
@@ -302,6 +304,9 @@
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/maps/jquery.vmap.usa.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+   @if($page == 'blank')
+      <script src="{{ asset('assets/admin/assets/vendors/dropzone/min/dropzone.min.js') }}"></script>
+   @endif
    <script src="{{ asset('assets/admin/assets/js/template.js') }}"></script>
    <script src="{{ asset('assets/admin/assets/js/custom.js') }}"></script>
    <script src="{{ asset('assets/admin/assets/js/app.js') }}"></script>
