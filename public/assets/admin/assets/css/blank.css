@@ -104,4 +104,5 @@
    border: 1px dashed aqua;
    width: 100%;
    white-space: nowrap;
+   cursor: pointer;
 }
