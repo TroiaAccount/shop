@@ -365,7 +365,7 @@
 //Получаем информацию о заказе
    async function getData(id) {
       const body = { order_id: id };
-      return await postData('http://taobao:8080/admin/order/select', body);
+      return await postData("{{Route('read_orders_SelectOrder')}}", body);
    }
 //Вставляем в тег дефолт картинку
    function pasteNoImage(imgTag) {

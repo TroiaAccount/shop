@@ -129,42 +129,14 @@ class OrderController extends Controller
     }
 
     public function ReplaceOrder(request $req){
-        $req = $req->json()->all();
         $id = addslashes($req['id']);
-        $status = addslashes($req['status']);
-        $cost = addslashes($req['cost']);
-        $commission = addslashes($req['commission']);
-        $count = addslashes($req['count']);
-        $size = addslashes($req['size']);
-        $model = addslashes($req['model']);
-        $color = addslashes($req['color']);
+        $json = addslashes($req['json']);
         $result = ['status' => false, 'error' => 'Вы не заполнили все параметры'];
         if($id != null){
             $check_order = order::select()->where(['id' => $id, 'completed' => 0])->first();
             if($check_order != null){
-                $parameters = [];
-                if($status != null){
-                    $parameters['status'] = $status;
-                }
-                if($cost != null){
-                    $parameters['cost'] = $cost;
-                }
-                if($commission != null){
-                    $parameters['commission'] = $commission;
-                }
-                if($count != null){
-                    $parameters['count'] = $count;
-                }
-                if($size != null){
-                    $parameters['size'] = $size;
-                }
-                if($model != null){
-                    $parameters['model'] = $model;
-                }
-                if($color != null){
-                    $parameters['color'] = $color;
-                }
-                order::where('id', $id)->update($parameters);
+                $check_order->json = $json;
+                $check_order->save(); 
                 $result = ['status' => true];
             }
         }
@@ -198,6 +170,7 @@ class OrderController extends Controller
 
     public function SelectOrder(request $req){
         $id = $req->session()->get('id');
+        $req = $req->json()->all();
         $order_id = addslashes($req['order_id']);
         $result = ['status' => false, 'error' => 'Вы не заполнили все обязательные поля'];
         if($order_id != null){
