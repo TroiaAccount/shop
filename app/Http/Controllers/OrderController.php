@@ -130,7 +130,7 @@ class OrderController extends Controller
 
     public function ReplaceOrderAdmin(request $req){
         $id = addslashes($req['id']);
-        $json = addslashes($req['json']);
+        $json = $req['json'];
         $result = ['status' => false, 'error' => 'Вы не заполнили все параметры'];
         if($id != null){
             $check_order = order::select()->where(['id' => $id, 'completed' => 0])->first();
@@ -147,7 +147,7 @@ class OrderController extends Controller
     public function ReplaceOrder(request $req){
         $user_id = $req->session()->get('id');
         $id = addslashes($req['id']);
-        $json = addslashes($req['json']);
+        $json = $req['json'];
         $result = ['status' => false, 'error' => 'Вы не заполнили все параметры'];
         if($id != null){
             $check_order = order::select()->where(['id' => $id, 'completed' => 0, 'user_id' => $user_id])->first();
