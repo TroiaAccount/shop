@@ -157,11 +157,11 @@
 </div>
 
 <script>
+   const href = window.location.href.split('/'),
+         _page_id = href[href.length - 1];
+
    window.addEventListener('DOMContentLoaded', async () => {
-      const href = window.location.href.split('/'),
-            id = href[href.length - 1];
-            
-      let data = await getData(id);
+      let data = await getData(_page_id);
       data = await JSON.parse(data.data);  
       console.log(data);
 
@@ -412,7 +412,7 @@
 //Собираем заказ и отправляем на сервер
    function makeOrder() {
       const orderRows = document.querySelectorAll('.orderRow'),
-            dataToServer = [];
+            dataToServer = {id: _page_id, json: []};
 
       orderRows.forEach((order, i) => {
          const data = {},
@@ -448,10 +448,10 @@
          data['color'] = color;
          data['size'] = size;
          data['model'] = model;
-         dataToServer.push(data);
+         dataToServer['json'].push(data);
       })
 
-      postData('{{Route("CreateOrder")}}', dataToServer)
+      postData('{{Route("ReplaceOrder")}}', dataToServer)
             .then(res => {
                if (res.status === true) {
                   console.log('Успешно создан: ', JSON.stringify(res));
