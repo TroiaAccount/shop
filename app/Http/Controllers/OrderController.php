@@ -186,6 +186,21 @@ class OrderController extends Controller
         return $result;
     }
 
+    public function SelectOrderAdmin(request $req){
+        $req = $req->json()->all();
+        $order_id = addslashes($req['order_id']);
+        $result = ['status' => false, 'error' => 'Вы не заполнили все обязательные поля'];
+        if($order_id != null){
+            $checkOrder = order::select()->where(['id' => $order_id])->first();
+            $result['error'] = "Такого заказа не существует или он пренадлежит не вам";
+            if($checkOrder != null){
+                $result = ['status' => true, 'data' => $checkOrder->json];
+            }
+        }
+        $result = json_encode($result, true);
+        return $result;
+    }
+
     public function SelectOrder(request $req){
         $id = $req->session()->get('id');
         $req = $req->json()->all();
