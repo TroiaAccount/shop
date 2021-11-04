@@ -163,12 +163,10 @@
    window.addEventListener('DOMContentLoaded', async () => {
       let data = await getData(_page_id);
       data = await JSON.parse(data.data);  
-      console.log(data);
 
       const container = document.querySelector('.order__header');
 
       data.forEach((product, i) => {
-         console.log(product, i);
          const row = document.createElement('div');
          row.classList.add('widget-list', 'row', 'orderRow');
          row.innerHTML = `
@@ -455,7 +453,7 @@
             .then(res => {
                if (res.status === true) {
                   console.log('Успешно создан: ', JSON.stringify(res));
-                  //window.location.href = '{{Route("page", ["page" => "orders"])}}'
+                  window.location.href = '{{Route('AdminPage', ['page' => 'orders'])}}'
                }
             });
    }

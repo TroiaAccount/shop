@@ -2,14 +2,14 @@
    <form id="filter" style="display: flex">
       @csrf
       <div class="card-input col-4 row">
-         <label for="number" class="col-form-label col-sm-3">Номер:</label>
-         <div class="col-sm-9 p-0">
+         <label for="number" class="col-form-label col-sm-5">Номер:</label>
+         <div class="col-sm-7 p-0">
             <input type="text" id="number" name="number" class="form-control">
          </div>
       </div>
-      <div class="card-input col-3 row ms-1">
+      <div class="card-input col-5 row ms-1">
          <label for="number" class="col-form-label col-sm-4">Статус:</label>
-         <div class="col-sm-8 p-0">
+         <div class="col-sm-7 p-0">
             <select class="form-select" aria-label="Выбор статуса" name="status">
                <option value="" selected>Не указано</option>
                <option value="1">Отправлен</option>
@@ -44,7 +44,7 @@
                <td>{{$result->status2}}</td>
                <td>{{$result->datetime}}</td>
                <td align="right">
-                  <a onclick="redactOrder({{ $result->id }})" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Редактировать" class="hovered-link green"><i class="far fa-edit"></i></a>
+                  <a href="{{ Route('pages', ['page' => 'blank', 'id' => $result->id]) }}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Редактировать" class="hovered-link green"><i class="far fa-edit"></i></a>
                   <a onclick="setFavorite({{ $result->id }})" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Добавить в избранные" class="hovered-link red"><i class="@if($result->favorite == 1) fas @else far @endif fa-heart"></i></a>
                   <a onclick="copyOrder({{ $result->id }})" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Копировать" class="hovered-link yellow"><i class="far fa-copy"></i></a>
                </td>
@@ -170,25 +170,6 @@
                })
 
          return promise;
-      }
-
-      async function redactOrder(id) {
-         const promise = selectOrder(id),
-               data = await promise;
-
-         if (data === null) {
-            console.error('Error: no order data');
-         } else {
-            console.log(data);
-            const body = { order_id: id };
-
-            // postData('{{ Route('SelectOrder') }}', body)
-            //       .then(res => {
-            //          if (res.status === true) {
-
-            //          }
-            //       })
-         }
       }
    </script>
 </div>

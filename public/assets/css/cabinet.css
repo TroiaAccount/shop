@@ -604,3 +604,6 @@ button.change-page-btn {
   color: #ff3333;
   cursor: pointer;
 }
+.white-space {
+  white-space: nowrap;
+}
