@@ -24,7 +24,7 @@
       </div>
    </form>
 </div>
-<div class="table__wrapper mt-3 mb-5">
+<div class="table__wrapper mt-3">
    <table class="table table-bordered">
       <thead>
          <tr>
@@ -44,7 +44,7 @@
                <td>{{$result->status2}}</td>
                <td>{{$result->datetime}}</td>
                <td align="right">
-                  <a href="{{ Route('pages', ['page' => 'blank', 'id' => $result->id]) }}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Редактировать" class="hovered-link green"><i class="far fa-edit"></i></a>
+                  {{-- <a href="{{ Route('pages', ['page' => 'blank', 'id' => $result->id]) }}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Редактировать" class="hovered-link green"><i class="far fa-edit"></i></a> --}}
                   <a onclick="setFavorite({{ $result->id }})" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Добавить в избранные" class="hovered-link red"><i class="@if($result->favorite == 1) fas @else far @endif fa-heart"></i></a>
                   <a onclick="copyOrder({{ $result->id }})" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Копировать" class="hovered-link yellow"><i class="far fa-copy"></i></a>
                </td>

@@ -60,13 +60,51 @@
    </div>
 </form>
 
+<div class="modal" tabindex="-1" id="myModal">
+   <div class="modal-dialog">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h5 class="modal-title"></h5>
+         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+       </div>
+       <div class="modal-body">
+         <div class="d-flex flex-column modal-content-wrapper">
+            <div class="image">
+               <img src="{{asset('/assets/images/no-image.png')}}" alt="">
+            </div>
+            <div class="file-input">
+               <div class="widget-list">
+                  <div class="row">
+                     <div class="col-md-12 widget-holder">
+                        <div class="widget-bg">
+                           <div class="widget-body clearfix p-0 pt-3">
+                              <input type="file" class="customInput" id="file1" onchange="getImageUrl(event)">
+                              <label class="customInputLabel" for="file1">Выбрать фото</label>
+                           </div>
+                           <!-- /.widget-body -->
+                        </div>
+                        <!-- /.widget-bg -->
+                     </div>
+               </div>
+            </div>
+         </div>
+       </div>
+       <div class="modal-footer">
+         <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Сохранить</button>
+       </div>
+     </div>
+   </div>
+ </div>
+
 <script>
    const href = window.location.href.split('/'),
-         _page_id = href[href.length - 1],
+         _page_id = 10,
+         // _page_id = href[href.length - 1],
          photosUrl = {};
    let countOfMainInputs = 0;
 
    window.addEventListener('DOMContentLoaded', async () => {
+      var myModal = new bootstrap.Modal(document.getElementById('myModal'))
 
       document.querySelector('#CreateOrder').addEventListener('submit', (e) => {
          e.preventDefault();
@@ -76,12 +114,9 @@
       let data = await getData(_page_id);
       data = await JSON.parse(data.data);  
 
-      console.log(data);
-
       const greenPlusBtn = document.querySelector('.plus-green-btn');
 
       const greenBtnHandler = (id, data) => {
-         console.log('Data:', id, 'for', data);
          const photoInputs = document.querySelector(`#photoInputs-${id}`),
                urlPhotoInputs = document.querySelector(`#urlPhotoInputs-${id}`),
                urlProductInputs = document.querySelector(`#urlProductInputs-${id}`);
@@ -110,7 +145,7 @@
                   <div class="input-group col-3 p-0">
                      <input id="file-input-${id}-${count}" type="file" name="${id}" class="m-0 files-input" onchange="getImageUrl(event)">
                      <div class="file-label-wrapper ms-4">
-                        <label class="file-label-mini" for="file-input-${id}-${count}">Загрузите фото товара</label>
+                        <label class="file-label-mini" data-row="${id}" data-url="${data.photo}">Загрузите фото товара</label>
                      </div>
                   </div>
             </div>
@@ -143,7 +178,6 @@
       }
 
       const rowInnerHtml = (countRows, data) => {
-         console.log(data);
          const div = document.createElement('div');
          const Photo = data['Photo'] ? data['Photo'] : '';
          const PhotoUrl = data['PhotoUrl'] ? data['PhotoUrl'] : '';
@@ -163,7 +197,7 @@
                      <div class="input-group col-3">
                         <input id="file-input-${countRows}-0" type="file" name="${countRows}" class="m-0 files-input"  onchange="getImageUrl(event)">
                         <div class="file-label-wrapper w-100">
-                           <label class="file-label" for="file-input-${countRows}-0">Загрузите фото товара</label>
+                           <label class="file-label" data-row="${countRows}" data-url="${Photo[0] ? Photo[0] : ''}">Загрузите фото товара</label>
                         </div>
                      </div>
                   </div>
@@ -295,40 +329,66 @@
          });
       }
 
+      function openModal() {
+         myModal.show()
+      }
+
+      setTimeout(() => {
+         const imgLabels = document.querySelectorAll('[data-url]');
+
+         imgLabels.forEach(label => {
+            label.addEventListener('click', () => openModalWithImg(label.dataset.url, label.dataset.row));
+         })
+         //Вставляем в тег дефолт картинку
+         function pasteNoImage(imgTag) {
+            imgTag.src = '{{asset('assets/images/no-image.png')}}';
+         }
+         //Вставляем в тег картинку по url
+         function changeModalImg(imgTag, url) {
+            imgTag.addEventListener('error', () => pasteNoImage(imgTag));
+            imgTag.src = url;
+         }
+         //Открываем модалку с переданной картинкой
+         function openModalWithImg(url, id) {
+            const imgTag = document.querySelector('.image img');
+
+            if (!url) {
+               pasteNoImage(imgTag);
+               openModal();
+               setAttributeBySelector('#file1', 'name', id);
+               return;
+            }
+            changeModalImg(imgTag, url);
+            openModal();
+            setAttributeBySelector('#file1', 'name', id);
+         }
+
+      }, (600));
+
       data.forEach((row, i) => {
          blueBtnHandler(row);
          if (data[i].Photo) {
             photosUrl[i] = data[i].Photo;
          }
       })
-
-      async function getImageUrl(e) {
-         file = e.target.files[0];
-         const _token = document.querySelector('[name="_token"]').value;
-         const formData = new FormData();
-         formData.append('image', file);
-         formData.append('_token', _token);
-         try {
-            let res = await fetch('{{Route("UploadOrderPhoto")}}', {
-               method: 'POST',
-               body: formData
-            });
-            res = await res.json();
-
-            const _target = e.target.getAttribute('name');
-            if (photosUrl[_target]) {
-               photosUrl[_target] = [...photosUrl[_target], res.url];
-            } else {
-               photosUrl[_target] = [res.url];
-            }
-
-            console.log('Успешно создан: ', JSON.stringify(res));
-            e.target.nextElementSibling.querySelector('label').style.backgroundColor = '#ecffc6';
-         } catch (e) {
-            console.error('Ошибка', e);
-         }
-      }
    })
+   async function getImageUrl(e) {
+      const file = e.target.files[0];
+      const _token = document.querySelector('[name="_token"]').value;
+      const formData = new FormData();
+      formData.append('image', file);
+      formData.append('_token', _token);
+      const res = await postFormData('{{Route("UploadOrderPhoto")}}', formData);
+      const id = e.target.getAttribute('name');
+      if (photosUrl[id]) {
+         photosUrl[id] = [...photosUrl[id], res.url];
+      } else {
+         photosUrl[id] = [res.url];
+      }
+      console.log('Успешно создан: ', JSON.stringify(res));
+      e.target.nextElementSibling.style.backgroundColor = '#ecffc6';
+   }
+   
 
    async function getData(id) {
       const body = { order_id: id };
