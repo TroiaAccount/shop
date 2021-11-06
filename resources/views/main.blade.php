@@ -27,7 +27,7 @@
             <div class="container body__wrapper">
                <div class="card">
                   <div class="card-body">
-                     @if($subpage == null)
+                     @if($subpage == null || $page == "blank")
                         @include('page/' . $page)
                      @else
                         @include('page/' . $page . '/' . $subpage)
