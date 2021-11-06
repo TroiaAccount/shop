@@ -73,6 +73,13 @@
                </div>
             </li>
             @endif
+            @if($page == "blank")
+            <li class="nav-item ms-3 page-title">
+               <div class="link-wrapper">
+                  <a href="#" class="nav-link hl _active">Редактирование заказа</a>
+               </div>
+            </li>
+            @endif
          </ul>
       </div>
       <div class="header__nav">

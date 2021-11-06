@@ -310,13 +310,11 @@ main#page {
 }
 
 .body__wrapper .card input {
-  margin-left: -15px;
   padding: 6px;
   font-size: 14px;
 }
 
 .body__wrapper .card select {
-  margin-left: -15px;
   padding: 6px;
   font-size: 14px;
 }
@@ -336,6 +334,7 @@ main#page {
 }
 
 .table__wrapper {
+  margin-bottom: 60px;
   font-size: 12px;
 }
 
@@ -349,7 +348,7 @@ main#page {
 
 .change__page-wrapper {
   position: absolute;
-  bottom: 10px;
+  bottom: 26px;
   right: 10px;
 }
 
@@ -603,4 +602,24 @@ button.change-page-btn {
 .hovered-link.red:hover {
   color: #ff3333;
   cursor: pointer;
+}
+.white-space {
+  white-space: nowrap;
+}
+.col-form-label {
+  text-align: end!important;
+}
+.customInput {
+  display: none;
+}
+.customInputLabel {
+  padding: 40px 0px;
+  border: 1px dashed rgb(15, 38, 38);
+  width: 100%;
+  white-space: nowrap;
+  cursor: pointer;
+  text-align: center;
+  font-weight: 700;
+  font-size: 20px;
+  color: #6b6b6a;
 }
