@@ -148,7 +148,7 @@
             </div>
             <div class="modal-footer">
                <button type="button" class="btn btn-danger btn-rounded ripple text-left"
-                  data-dismiss="modal">Закрыть</button>
+                  data-dismiss="modal">Сохранить</button>
             </div>
       </div>
       <!-- /.modal-content -->
@@ -163,12 +163,9 @@
    window.addEventListener('DOMContentLoaded', async () => {
       let data = await getData(_page_id);
       data = await JSON.parse(data.data);  
-      console.log(data);
 
       const container = document.querySelector('.order__header');
-
       data.forEach((product, i) => {
-         console.log(product, i);
          const row = document.createElement('div');
          row.classList.add('widget-list', 'row', 'orderRow');
          row.innerHTML = `
@@ -378,13 +375,14 @@
    }
 //Открываем модалку с переданной картинкой
    function openModalWithImg(url, id) {
-      console.log(url);
+      const imgTag = document.querySelector('.image img');
+
       if (!url) {
+         pasteNoImage(imgTag);
          openModal();
          setAttributeBySelector('#file1', 'name', id);
          return;
       }
-      const imgTag = document.querySelector('.image img');
       changeModalImg(imgTag, url);
       openModal();
       setAttributeBySelector('#file1', 'name', id);
@@ -394,7 +392,7 @@
    const photosUrl = {};
 
    async function getImageUrl(e) {
-      file = e.target.files[0];
+      const file = e.target.files[0];
       const _token = document.querySelector('[name="_token"]').value;
       const formData = new FormData();
       formData.append('image', file);
@@ -455,7 +453,7 @@
             .then(res => {
                if (res.status === true) {
                   console.log('Успешно создан: ', JSON.stringify(res));
-                  //window.location.href = '{{Route("page", ["page" => "orders"])}}'
+                  // window.location.href = '{{Route('AdminPage', ['page' => 'orders'])}}'
                }
             });
    }

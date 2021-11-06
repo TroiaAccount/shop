@@ -2,23 +2,23 @@
     <form id="filter" style="display: flex">
        @csrf
        <div class="card-input col-4 row">
-          <label for="number" class="col-form-label col-sm-3">Номер:</label>
-          <div class="col-sm-9 p-0">
-             <input type="text" id="number" name="number" class="form-control">
-          </div>
-       </div>
-       <div class="card-input col-3 row ms-1">
-          <label for="number" class="col-form-label col-sm-4">Статус:</label>
-          <div class="col-sm-8 p-0">
-             <select class="form-select" aria-label="Выбор статуса" name="status">
-                <option value="" selected>Не указано</option>
-                <option value="1">Отправлен</option>
-                <option value="2">Прибыл</option>
-                <option value="3">Упаковывается</option>
-                <option value="4">Обрабатывается</option>
-             </select>
-          </div>
-       </div>
+         <label for="number" class="col-form-label col-sm-5">Номер:</label>
+         <div class="col-sm-7 p-0">
+            <input type="text" id="number" name="number" class="form-control">
+         </div>
+      </div>
+      <div class="card-input col-5 row ms-1">
+         <label for="number" class="col-form-label col-sm-4">Статус:</label>
+         <div class="col-sm-7 p-0">
+            <select class="form-select" aria-label="Выбор статуса" name="status">
+               <option value="" selected>Не указано</option>
+               <option value="1">Отправлен</option>
+               <option value="2">Прибыл</option>
+               <option value="3">Упаковывается</option>
+               <option value="4">Обрабатывается</option>
+            </select>
+         </div>
+      </div>
        <div class="col-4">
           <button type="submit" class="btn btn-primary">Поиск</button>
        </div>

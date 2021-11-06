@@ -2,14 +2,14 @@
    <form id="filter" style="display: flex">
       @csrf
       <div class="card-input col-4 row">
-         <label for="number" class="col-form-label col-sm-3">Номер:</label>
-         <div class="col-sm-9 p-0">
+         <label for="number" class="col-form-label col-sm-5">Номер:</label>
+         <div class="col-sm-7 p-0">
             <input type="text" id="number" name="number" class="form-control">
          </div>
       </div>
-      <div class="card-input col-3 row ms-1">
+      <div class="card-input col-5 row ms-1">
          <label for="number" class="col-form-label col-sm-4">Статус:</label>
-         <div class="col-sm-8 p-0">
+         <div class="col-sm-7 p-0">
             <select class="form-select" aria-label="Выбор статуса" name="status">
                <option value="" selected>Не указано</option>
                <option value="1">Отправлен</option>
@@ -24,7 +24,7 @@
       </div>
    </form>
 </div>
-<div class="table__wrapper mt-3 mb-5">
+<div class="table__wrapper mt-3">
    <table class="table table-bordered">
       <thead>
          <tr>
@@ -54,7 +54,7 @@
       </tbody>
    </table>
    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-      <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+      <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">git 
         <div class="toast-header">
           <strong class="me-auto">CNSHOP</strong>
           <small>now</small>
@@ -64,7 +64,7 @@
             Вы успешно добавили заказ в избранное.
         </div>
       </div>
-    </div>
+   </div>
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
    <script>
       $("#filter").on("submit", function(e){
@@ -172,25 +172,9 @@
          return promise;
       }
 
-      async function redactOrder(id) {
-         const promise = selectOrder(id),
-               data = await promise;
-
-         if (data === null) {
-            console.error('Error: no order data');
-         } else {
-            console.log(data);
-            const body = { order_id: id };
-
-            // postData('{{ Route('SelectOrder') }}', body)
-            //       .then(res => {
-            //          if (res.status === true) {
-
-            //          }
-            //       })
-         }
+      function redactOrder(id) {
+         window.location.href = `/client/blank/${id}`
       }
    </script>
-</div>
 
 @include('pagination')

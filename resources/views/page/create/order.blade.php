@@ -58,7 +58,7 @@
             </div>
             <div class="mt-3 row">
                <div>
-                  <input type="number" name="cost" class="m-0 text-order-input">
+                  <input type="number" name="cost" step="any" class="m-0 text-order-input">
                </div>
             </div>
          </div>
@@ -224,7 +224,7 @@
             <div class="order-card" style="min-width: 105px;">
                <div class="mt-2 row">
                   <div>
-                     <input type="text" name="cost" class="m-0 text-order-input">
+                     <input type="number" name="cost" step="any" class="m-0 text-order-input">
                   </div>
                </div>
             </div>
@@ -331,7 +331,7 @@
          makeData(urlProductInputs, urlProducts, 'ProductUrl');
          data['Photo'] = photos;
          data['count'] = parseInt(count);
-         data['cost'] = parseInt(cost);
+         data['cost'] = parseFloat(cost);
          data['color'] = color;
          data['size'] = size;
          data['model'] = model;
@@ -348,7 +348,7 @@
          });
          res = await res.json();
          console.log('Успешно создан: ', JSON.stringify(res));
-         //zwindow.location.href = '{{Route("page", ["page" => "orders"])}}'
+         window.location.href = '{{Route("page", ["page" => "orders"])}}'
       } catch (e) {
          console.error('Ошибка', e);
       }
