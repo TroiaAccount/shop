@@ -98,8 +98,7 @@
 
 <script>
    const href = window.location.href.split('/'),
-         _page_id = 10,
-         // _page_id = href[href.length - 1],
+         _page_id = href[href.length - 1],
          photosUrl = {};
    let countOfMainInputs = 0;
 

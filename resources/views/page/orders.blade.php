@@ -44,7 +44,7 @@
                <td>{{$result->status2}}</td>
                <td>{{$result->datetime}}</td>
                <td align="right">
-                  {{-- <a href="{{ Route('pages', ['page' => 'blank', 'id' => $result->id]) }}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Редактировать" class="hovered-link green"><i class="far fa-edit"></i></a> --}}
+                  <a onclick="redactOrder({{ $result->id }})" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Редактировать" class="hovered-link green"><i class="far fa-edit"></i></a>
                   <a onclick="setFavorite({{ $result->id }})" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Добавить в избранные" class="hovered-link red"><i class="@if($result->favorite == 1) fas @else far @endif fa-heart"></i></a>
                   <a onclick="copyOrder({{ $result->id }})" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Копировать" class="hovered-link yellow"><i class="far fa-copy"></i></a>
                </td>
@@ -54,7 +54,7 @@
       </tbody>
    </table>
    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-      <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+      <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">git 
         <div class="toast-header">
           <strong class="me-auto">CNSHOP</strong>
           <small>now</small>
@@ -64,7 +64,7 @@
             Вы успешно добавили заказ в избранное.
         </div>
       </div>
-    </div>
+   </div>
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
    <script>
       $("#filter").on("submit", function(e){
@@ -171,7 +171,10 @@
 
          return promise;
       }
+
+      function redactOrder(id) {
+         window.location.href = `/client/blank/${id}`
+      }
    </script>
-</div>
 
 @include('pagination')
