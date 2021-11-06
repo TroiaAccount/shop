@@ -90,14 +90,10 @@ class OrderController extends Controller
                 $order = new order();
                 $order->user_id = $id;
                 $order->number = $number;
-                $order->image = $check_order->image;
                 $order->status = 4;
                 $order->cost = $check_order->cost;
-                $order->count = $check_order->count;
-                $order->size = $check_order->size;
-                $order->model = $check_order->model;
-                $order->color = $check_order->color;
-                $order->ProductUrl = $check_order->ProductUrl;
+
+                $order->json = $check_order->json;
                 $order->save();
                 $result = ['status' => true, 'data' => ['number' => $number, 'id' => $order->id]];
             } else {
