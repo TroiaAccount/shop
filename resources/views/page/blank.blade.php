@@ -324,7 +324,8 @@
          greenPlusBtn.addEventListener('click', () => greenBtnHandler(countOfRows, defaultData));
          bluePlusBtn.addEventListener('click', blueBtnHandler);
          redMinusBtn.addEventListener('click', () => {
-            div.remove();
+            row.remove();
+            countOfMainInputs--;
          });
       }
 
