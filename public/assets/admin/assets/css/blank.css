@@ -107,3 +107,23 @@
    cursor: pointer;
 }
 
+#client-info p {
+   white-space: nowrap;
+}
+
+.order__body input {
+   width: 100px!important;
+   margin-left: 20px!important;
+}
+
+#client-info {
+   margin: 20px 0;
+   align-items: center;
+   font-weight: 700;
+}
+
+.order__body p {
+   white-space: nowrap;
+   margin: 0;
+   font-weight: 700;
+}
