@@ -1,6 +1,48 @@
 <section class="page__order order main-wrapper clerfix">
    <div class="order__wrapper d-flex flex-column">
-      <div class="order__header container-fluid pt-3">
+      <div id="client-info" class="widget-list row mt-4">
+         <div class="col d-flex justify-content-start" style="max-width: 150px;">
+            <div class="col">
+               <p>Сумма:</p>
+            </div>
+            <div class="col p-0">
+               <p class="text-success">24.44</p>
+            </div>
+         </div>
+         <div class="col d-flex ml-3" style="max-width: 300px;">
+            <div class="col">
+               <p>Статус:</p>
+            </div>
+            <div class="col p-0">
+               <input type="text">
+            </div>
+         </div>
+         <div class="col d-flex ml-3" style="max-width: 150px;">
+            <div class="col">
+               <p>Баланс:</p>
+            </div>
+            <div class="col p-0">
+               <p class="text-danger">24.44</p>
+            </div>
+         </div>
+         <div class="col d-flex ml-3" style="max-width: 300px;">
+            <div class="col">
+               <p>Номер телефона:</p>
+            </div>
+            <div class="col p-0">
+               <p>+380680828856</p>
+            </div>
+         </div>
+         <div class="col d-flex ml-3" style="max-width: 300px;">
+            <div class="col">
+               <p>Имя клиента:</p>
+            </div>
+            <div class="col p-0">
+               <p>Василий Петрович</p>
+            </div>
+         </div>
+      </div>
+      <div class="order__header container-fluid pt-1">
          <div class="widget-list row">
             <div class="widget-holder widget-sm col" style="max-width: 65px;">
                <div class="widget-bg bg-transparent text-inverse number mb-2" style="height: 70px;">
@@ -14,7 +56,7 @@
                </div>
             </div>
             <div class="widget-holder widget-sm col">
-                  <div class="widget-bg bg-primary text-inverse mb-2">
+                  <div class="widget-bg bg-danger text-inverse mb-2">
                      <div class="widget-body">
                         <div class="-w-info media">
                            <div class="media-body w-50">
@@ -25,7 +67,7 @@
                   </div>
             </div>
             <div class="widget-holder widget-sm col">
-                  <div class="widget-bg bg-info text-inverse mb-2">
+                  <div class="widget-bg bg-danger text-inverse mb-2">
                      <div class="widget-body">
                         <div class="-w-info media">
                            <div class="media-body w-50">
@@ -36,7 +78,7 @@
                   </div>
             </div>
             <div class="widget-holder widget-sm col">
-                  <div class="widget-bg bg-success mb-2">
+                  <div class="widget-bg bg-danger text-inverse mb-2">
                      <div class="widget-body">
                         <div class="-w-info media">
                            <div class="media-body w-50">
@@ -48,7 +90,7 @@
             </div>
             
             <div class="widget-holder widget-sm col">
-                  <div class="widget-bg bg-primary mb-2">
+                  <div class="widget-bg bg-danger mb-2">
                      <div class="widget-body text-inverse">
                         <div class="-w-info media">
                            <div class="media-body w-50">
@@ -59,8 +101,8 @@
                   </div>
             </div>
             <div class="widget-holder widget-sm col">
-               <div class="widget-bg bg-primary mb-2">
-                  <div class="widget-body bg-primary text-inverse">
+               <div class="widget-bg bg-danger mb-2">
+                  <div class="widget-body bg-danger text-inverse">
                      <div class="-w-info media">
                         <div class="media-body w-50">
                            <p class="text-muted mr-b-5 fw-600">Цена</p><span class="-title d-block"><span class=""></span></span>
@@ -70,7 +112,7 @@
                </div>
             </div>
             <div class="widget-holder widget-sm col">
-               <div class="widget-bg bg-success mb-2">
+               <div class="widget-bg bg-danger text-inverse mb-2">
                   <div class="widget-body">
                      <div class="-w-info media">
                         <div class="media-body w-50">
@@ -81,11 +123,154 @@
                </div>
             </div>
             <div class="widget-holder widget-sm col">
-               <div class="widget-bg bg-info text-inverse mb-2">
+               <div class="widget-bg bg-danger text-inverse mb-2">
                   <div class="widget-body">
                      <div class="-w-info media">
                         <div class="media-body w-50">
                            <p class="text-muted mr-b-5 fw-600">Размер</p><span class="-title d-block"><span class=""></span></span>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="widget-holder widget-sm col">
+               <div class="widget-bg bg-danger text-inverse mb-2">
+                  <div class="widget-body">
+                     <div class="-w-info media">
+                        <div class="media-body w-50">
+                           <p class="text-muted mr-b-5 fw-600">Модель</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="widget-holder widget-sm col">
+               <div class="widget-bg bg-success text-inverse mb-2">
+                  <div class="widget-body">
+                     <div class="-w-info media">
+                        <div class="media-body w-50">
+                           <p class="text-muted mr-b-5 fw-600">Модель</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="widget-holder widget-sm col">
+               <div class="widget-bg bg-success text-inverse mb-2">
+                  <div class="widget-body">
+                     <div class="-w-info media">
+                        <div class="media-body w-50">
+                           <p class="text-muted mr-b-5 fw-600">Модель</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="widget-holder widget-sm col">
+               <div class="widget-bg bg-success text-inverse mb-2">
+                  <div class="widget-body">
+                     <div class="-w-info media">
+                        <div class="media-body w-50">
+                           <p class="text-muted mr-b-5 fw-600">Модель</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="widget-holder widget-sm col">
+               <div class="widget-bg bg-success text-inverse mb-2">
+                  <div class="widget-body">
+                     <div class="-w-info media">
+                        <div class="media-body w-50">
+                           <p class="text-muted mr-b-5 fw-600">Модель</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="widget-holder widget-sm col">
+               <div class="widget-bg bg-success text-inverse mb-2">
+                  <div class="widget-body">
+                     <div class="-w-info media">
+                        <div class="media-body w-50">
+                           <p class="text-muted mr-b-5 fw-600">Модель</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="widget-holder widget-sm col">
+               <div class="widget-bg bg-success text-inverse mb-2">
+                  <div class="widget-body">
+                     <div class="-w-info media">
+                        <div class="media-body w-50">
+                           <p class="text-muted mr-b-5 fw-600">Модель</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="widget-holder widget-sm col">
+               <div class="widget-bg bg-success text-inverse mb-2">
+                  <div class="widget-body">
+                     <div class="-w-info media">
+                        <div class="media-body w-50">
+                           <p class="text-muted mr-b-5 fw-600">Модель</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="widget-holder widget-sm col">
+               <div class="widget-bg bg-success text-inverse mb-2">
+                  <div class="widget-body">
+                     <div class="-w-info media">
+                        <div class="media-body w-50">
+                           <p class="text-muted mr-b-5 fw-600">Модель</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="widget-holder widget-sm col">
+               <div class="widget-bg bg-success text-inverse mb-2">
+                  <div class="widget-body">
+                     <div class="-w-info media">
+                        <div class="media-body w-50">
+                           <p class="text-muted mr-b-5 fw-600">Модель</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="widget-holder widget-sm col">
+               <div class="widget-bg bg-success text-inverse mb-2">
+                  <div class="widget-body">
+                     <div class="-w-info media">
+                        <div class="media-body w-50">
+                           <p class="text-muted mr-b-5 fw-600">Модель</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="widget-holder widget-sm col">
+               <div class="widget-bg bg-success text-inverse mb-2">
+                  <div class="widget-body">
+                     <div class="-w-info media">
+                        <div class="media-body w-50">
+                           <p class="text-muted mr-b-5 fw-600">Модель</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="widget-holder widget-sm col">
+               <div class="widget-bg bg-primary text-inverse mb-2">
+                  <div class="widget-body">
+                     <div class="-w-info media">
+                        <div class="media-body w-50">
+                           <p class="text-muted mr-b-5 fw-600">Модель</p>
                         </div>
                      </div>
                   </div>
@@ -104,7 +289,26 @@
             </div>
          </div>
       </div>
-      <div class="order__body container-fluid"></div>
+      <div class="order__body container-fluid mt-2">
+         <div class="d-flex justify-content-between">
+            <div>
+               <div class="row">
+                  <div class="col-6 d-flex flex-column justify-content-between">
+                     <p>Логин клиента - номер заказа</p>
+                     <div class="d-flex">
+                        <p>Количество позиций товара:</p>
+                        <input type="text">
+                     </div>
+                  </div>
+                  <div class="col-6"></div>
+               </div>
+            </div>
+            <div class="d-flex align-items-center">
+               <p>Сумма заказа:</p>
+               <input type="text">
+            </div>
+         </div>
+      </div>
       <div class="order__footer pt-3">
          <div class="container-fluid">
             <div class="row page-title clearfix justify-content-end">
@@ -196,7 +400,7 @@
                         <div class="widget-body p-0">
                            <div class="-w-info media">
                               <div class="media-body w-100">
-                                 <a class="btn btn-primary w-100" data-row="${i}" data-url="${product.Photo[0] ? product.Photo[0] : ''}">Посмотреть</a>
+                                 <a class="btn btn-danger w-100" data-row="${i}" data-url="${product.Photo[0] ? product.Photo[0] : ''}">Посмотреть</a>
                               </div>
                            </div>
                         </div>
@@ -207,8 +411,8 @@
                         <div class="widget-body p-0">
                            <div class="-w-info media">
                               <div class="media-body w-100">
-                                 <div class="rounded-card bg-info d-flex flex-column justify-content-between url-input-wrapper">
-                                    <input class="url-input bg-info" type="text" name="imageUrl" value="${product.PhotoUrl[0] ? product.PhotoUrl[0] : ''}"> 
+                                 <div class="rounded-card bg-danger d-flex flex-column justify-content-between url-input-wrapper">
+                                    <input class="url-input bg-danger" type="text" name="imageUrl" value="${product.PhotoUrl[0] ? product.PhotoUrl[0] : ''}"> 
                                  </div>
                               </div>
                            </div>
@@ -220,8 +424,8 @@
                         <div class="widget-body p-0">
                            <div class="-w-info media">
                               <div class="media-body w-100">
-                                 <div class="rounded-card bg-success d-flex flex-column justify-content-between url-input-wrapper">
-                                    <input class="url-input bg-success text-dark" type="text" name="url" value="${product.ProductUrl[0] ? product.ProductUrl[0] : ''}"> 
+                                 <div class="rounded-card bg-danger d-flex flex-column justify-content-between url-input-wrapper">
+                                    <input class="url-input bg-danger" type="text" name="url" value="${product.ProductUrl[0] ? product.ProductUrl[0] : ''}"> 
                                  </div>
                               </div>
                            </div>
@@ -233,8 +437,8 @@
                         <div class="widget-body p-0">
                            <div class="-w-info media">
                               <div class="media-body w-100">
-                                 <div class="rounded-card bg-primary d-flex flex-column justify-content-between">
-                                    <input class="url-input bg-primary text-muted text-center" type="text" name="count" value="${product.count ? product.count : ''}"> 
+                                 <div class="rounded-card bg-danger d-flex flex-column justify-content-between">
+                                    <input class="url-input bg-danger text-muted text-center" type="text" name="count" value="${product.count ? product.count : ''}"> 
                                  </div>
                               </div>
                            </div>
@@ -246,8 +450,47 @@
                      <div class="widget-body p-0">
                         <div class="-w-info media">
                            <div class="media-body w-100">
-                              <div class="rounded-card bg-primary d-flex flex-column justify-content-between">
-                                 <input class="url-input bg-primary text-muted text-center" type="text" name="cost" value="${product.cost ? product.cost : ''}"> 
+                              <div class="rounded-card bg-danger d-flex flex-column justify-content-between">
+                                 <input class="url-input bg-danger text-muted text-center" type="text" name="cost" value="${product.cost ? product.cost : ''}"> 
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="widget-holder widget-sm col">
+                  <div class="widget-bg bg-transparent text-inverse mt-2">
+                     <div class="widget-body p-0">
+                        <div class="-w-info media">
+                           <div class="media-body w-100">
+                              <div class="rounded-card bg-danger d-flex flex-column justify-content-between">
+                                 <input class="url-input bg-danger text-muted text-center" type="text" name="color" value="${product.color ? product.color : ''}"> 
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="widget-holder widget-sm col">
+                  <div class="widget-bg bg-transparent text-inverse mt-2">
+                     <div class="widget-body p-0">
+                        <div class="-w-info media">
+                           <div class="media-body w-100">
+                              <div class="rounded-card bg-danger d-flex flex-column justify-content-between">
+                                 <input class="url-input bg-danger text-muted text-center" type="text" name="size" value="${product.size ? product.size : ''}"> 
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="widget-holder widget-sm col">
+                  <div class="widget-bg bg-transparent text-inverse mt-2">
+                     <div class="widget-body p-0">
+                        <div class="-w-info media">
+                           <div class="media-body w-100">
+                              <div class="rounded-card bg-danger d-flex flex-column justify-content-between">
+                                 <input class="url-input bg-danger text-muted text-center" type="text" name="model" value="${product.model ? product.model : ''}"> 
                               </div>
                            </div>
                         </div>
@@ -260,7 +503,7 @@
                         <div class="-w-info media">
                            <div class="media-body w-100">
                               <div class="rounded-card bg-success d-flex flex-column justify-content-between">
-                                 <input class="url-input bg-success text-muted text-center" type="text" name="color" value="${product.color ? product.color : ''}"> 
+                                 <input class="url-input bg-success text-muted text-center" type="text" name="model" value="${product.model ? product.model : ''}"> 
                               </div>
                            </div>
                         </div>
@@ -272,8 +515,138 @@
                      <div class="widget-body p-0">
                         <div class="-w-info media">
                            <div class="media-body w-100">
-                              <div class="rounded-card bg-info d-flex flex-column justify-content-between">
-                                 <input class="url-input bg-info text-muted text-center" type="text" name="size" value="${product.size ? product.size : ''}"> 
+                              <div class="rounded-card bg-success d-flex flex-column justify-content-between">
+                                 <input class="url-input bg-success text-muted text-center" type="text" name="model" value="${product.model ? product.model : ''}"> 
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="widget-holder widget-sm col">
+                  <div class="widget-bg bg-transparent text-inverse mt-2">
+                     <div class="widget-body p-0">
+                        <div class="-w-info media">
+                           <div class="media-body w-100">
+                              <div class="rounded-card bg-success d-flex flex-column justify-content-between">
+                                 <input class="url-input bg-success text-muted text-center" type="text" name="model" value="${product.model ? product.model : ''}"> 
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="widget-holder widget-sm col">
+                  <div class="widget-bg bg-transparent text-inverse mt-2">
+                     <div class="widget-body p-0">
+                        <div class="-w-info media">
+                           <div class="media-body w-100">
+                              <div class="rounded-card bg-success d-flex flex-column justify-content-between">
+                                 <input class="url-input bg-success text-muted text-center" type="text" name="model" value="${product.model ? product.model : ''}"> 
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="widget-holder widget-sm col">
+                  <div class="widget-bg bg-transparent text-inverse mt-2">
+                     <div class="widget-body p-0">
+                        <div class="-w-info media">
+                           <div class="media-body w-100">
+                              <div class="rounded-card bg-success d-flex flex-column justify-content-between">
+                                 <input class="url-input bg-success text-muted text-center" type="text" name="model" value="${product.model ? product.model : ''}"> 
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="widget-holder widget-sm col">
+                  <div class="widget-bg bg-transparent text-inverse mt-2">
+                     <div class="widget-body p-0">
+                        <div class="-w-info media">
+                           <div class="media-body w-100">
+                              <div class="rounded-card bg-success d-flex flex-column justify-content-between">
+                                 <input class="url-input bg-success text-muted text-center" type="text" name="model" value="${product.model ? product.model : ''}"> 
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="widget-holder widget-sm col">
+                  <div class="widget-bg bg-transparent text-inverse mt-2">
+                     <div class="widget-body p-0">
+                        <div class="-w-info media">
+                           <div class="media-body w-100">
+                              <div class="rounded-card bg-success d-flex flex-column justify-content-between">
+                                 <input class="url-input bg-success text-muted text-center" type="text" name="model" value="${product.model ? product.model : ''}"> 
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="widget-holder widget-sm col">
+                  <div class="widget-bg bg-transparent text-inverse mt-2">
+                     <div class="widget-body p-0">
+                        <div class="-w-info media">
+                           <div class="media-body w-100">
+                              <div class="rounded-card bg-success d-flex flex-column justify-content-between">
+                                 <input class="url-input bg-success text-muted text-center" type="text" name="model" value="${product.model ? product.model : ''}"> 
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="widget-holder widget-sm col">
+                  <div class="widget-bg bg-transparent text-inverse mt-2">
+                     <div class="widget-body p-0">
+                        <div class="-w-info media">
+                           <div class="media-body w-100">
+                              <div class="rounded-card bg-success d-flex flex-column justify-content-between">
+                                 <input class="url-input bg-success text-muted text-center" type="text" name="model" value="${product.model ? product.model : ''}"> 
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="widget-holder widget-sm col">
+                  <div class="widget-bg bg-transparent text-inverse mt-2">
+                     <div class="widget-body p-0">
+                        <div class="-w-info media">
+                           <div class="media-body w-100">
+                              <div class="rounded-card bg-success d-flex flex-column justify-content-between">
+                                 <input class="url-input bg-success text-muted text-center" type="text" name="model" value="${product.model ? product.model : ''}"> 
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="widget-holder widget-sm col">
+                  <div class="widget-bg bg-transparent text-inverse mt-2">
+                     <div class="widget-body p-0">
+                        <div class="-w-info media">
+                           <div class="media-body w-100">
+                              <div class="rounded-card bg-success d-flex flex-column justify-content-between">
+                                 <input class="url-input bg-success text-muted text-center" type="text" name="model" value="${product.model ? product.model : ''}"> 
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="widget-holder widget-sm col">
+                  <div class="widget-bg bg-transparent text-inverse mt-2">
+                     <div class="widget-body p-0">
+                        <div class="-w-info media">
+                           <div class="media-body w-100">
+                              <div class="rounded-card bg-primary d-flex flex-column justify-content-between">
+                                 <input class="url-input bg-primary text-muted text-center" type="text" name="model" value="${product.model ? product.model : ''}"> 
                               </div>
                            </div>
                         </div>
