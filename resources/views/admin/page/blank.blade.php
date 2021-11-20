@@ -149,7 +149,7 @@
                   <div class="widget-body">
                      <div class="-w-info media">
                         <div class="media-body w-50">
-                           <p class="text-muted mr-b-5 fw-600">Модель</p>
+                           <p class="text-muted mr-b-5 fw-600">Кол-во шт. наличие</p>
                         </div>
                      </div>
                   </div>
@@ -160,7 +160,7 @@
                   <div class="widget-body">
                      <div class="-w-info media">
                         <div class="media-body w-50">
-                           <p class="text-muted mr-b-5 fw-600">Модель</p>
+                           <p class="text-muted mr-b-5 fw-600">Цена факт</p>
                         </div>
                      </div>
                   </div>
@@ -171,7 +171,7 @@
                   <div class="widget-body">
                      <div class="-w-info media">
                         <div class="media-body w-50">
-                           <p class="text-muted mr-b-5 fw-600">Модель</p>
+                           <p class="text-muted mr-b-5 fw-600">Комиссия %</p>
                         </div>
                      </div>
                   </div>
@@ -182,7 +182,7 @@
                   <div class="widget-body">
                      <div class="-w-info media">
                         <div class="media-body w-50">
-                           <p class="text-muted mr-b-5 fw-600">Модель</p>
+                           <p class="text-muted mr-b-5 fw-600">Доставка по Китаю</p>
                         </div>
                      </div>
                   </div>
@@ -193,7 +193,7 @@
                   <div class="widget-body">
                      <div class="-w-info media">
                         <div class="media-body w-50">
-                           <p class="text-muted mr-b-5 fw-600">Модель</p>
+                           <p class="text-muted mr-b-5 fw-600">Сумма</p>
                         </div>
                      </div>
                   </div>
@@ -204,7 +204,7 @@
                   <div class="widget-body">
                      <div class="-w-info media">
                         <div class="media-body w-50">
-                           <p class="text-muted mr-b-5 fw-600">Модель</p>
+                           <p class="text-muted mr-b-5 fw-600">Общий вес</p>
                         </div>
                      </div>
                   </div>
@@ -215,7 +215,7 @@
                   <div class="widget-body">
                      <div class="-w-info media">
                         <div class="media-body w-50">
-                           <p class="text-muted mr-b-5 fw-600">Модель</p>
+                           <p class="text-muted mr-b-5 fw-600">Общий объём</p>
                         </div>
                      </div>
                   </div>
@@ -226,7 +226,7 @@
                   <div class="widget-body">
                      <div class="-w-info media">
                         <div class="media-body w-50">
-                           <p class="text-muted mr-b-5 fw-600">Модель</p>
+                           <p class="text-muted mr-b-5 fw-600">Примечание</p>
                         </div>
                      </div>
                   </div>
@@ -237,7 +237,7 @@
                   <div class="widget-body">
                      <div class="-w-info media">
                         <div class="media-body w-50">
-                           <p class="text-muted mr-b-5 fw-600">Модель</p>
+                           <p class="text-muted mr-b-5 fw-600">Статус</p>
                         </div>
                      </div>
                   </div>
@@ -248,18 +248,18 @@
                   <div class="widget-body">
                      <div class="-w-info media">
                         <div class="media-body w-50">
-                           <p class="text-muted mr-b-5 fw-600">Модель</p>
+                           <p class="text-muted mr-b-5 fw-600">Дата выкупа</p>
                         </div>
                      </div>
                   </div>
                </div>
             </div>
-            <div class="widget-holder widget-sm col">
+            <div class="widget-holder widget-sm col long-block">
                <div class="widget-bg bg-success text-inverse mb-2">
                   <div class="widget-body">
                      <div class="-w-info media">
                         <div class="media-body w-50">
-                           <p class="text-muted mr-b-5 fw-600">Модель</p>
+                           <p class="text-muted mr-b-5 fw-600">Дата приход на склад в Китае</p>
                         </div>
                      </div>
                   </div>
@@ -270,7 +270,7 @@
                   <div class="widget-body">
                      <div class="-w-info media">
                         <div class="media-body w-50">
-                           <p class="text-muted mr-b-5 fw-600">Модель</p>
+                           <p class="text-muted mr-b-5 fw-600">Фото с фабрики</p>
                         </div>
                      </div>
                   </div>
@@ -281,7 +281,7 @@
                   <div class="widget-body">
                      <div class="-w-info media">
                         <div class="media-body w-50">
-                           <p class="text-muted mr-b-5 fw-600">Модель</p>
+                           <p class="text-muted mr-b-5 fw-600">Фотоотчет</p>
                         </div>
                      </div>
                   </div>
@@ -351,7 +351,7 @@
                </div>
             </div>
             <div class="modal-footer">
-               <button type="button" class="btn btn-danger btn-rounded ripple text-left"
+               <button type="button" class="btn btn-danger btn-rounded ripple text-left" onclick="resetLabelColor()"
                   data-dismiss="modal">Сохранить</button>
             </div>
       </div>
@@ -400,7 +400,7 @@
                         <div class="widget-body p-0">
                            <div class="-w-info media">
                               <div class="media-body w-100">
-                                 <a class="btn btn-danger w-100" data-row="${i}" data-url="${product.Photo[0] ? product.Photo[0] : ''}">Посмотреть</a>
+                                 <a class="btn btn-danger w-100" data-row="${i}" data-url="${product.Photo[0] ? product.Photo[0] : ''}" data-state="photosUrl">Посмотреть</a>
                               </div>
                            </div>
                         </div>
@@ -503,7 +503,7 @@
                         <div class="-w-info media">
                            <div class="media-body w-100">
                               <div class="rounded-card bg-success d-flex flex-column justify-content-between">
-                                 <input class="url-input bg-success text-muted text-center" type="text" name="model" value="${product.model ? product.model : ''}"> 
+                                 <input class="url-input bg-success text-muted text-center" type="text" name="availability" value="${product.availability ? product.availability : ''}"> 
                               </div>
                            </div>
                         </div>
@@ -516,7 +516,7 @@
                         <div class="-w-info media">
                            <div class="media-body w-100">
                               <div class="rounded-card bg-success d-flex flex-column justify-content-between">
-                                 <input class="url-input bg-success text-muted text-center" type="text" name="model" value="${product.model ? product.model : ''}"> 
+                                 <input class="url-input bg-success text-muted text-center" type="text" name="priceFact" value="${product.priceFact ? product.priceFact : ''}"> 
                               </div>
                            </div>
                         </div>
@@ -529,7 +529,7 @@
                         <div class="-w-info media">
                            <div class="media-body w-100">
                               <div class="rounded-card bg-success d-flex flex-column justify-content-between">
-                                 <input class="url-input bg-success text-muted text-center" type="text" name="model" value="${product.model ? product.model : ''}"> 
+                                 <input class="url-input bg-success text-muted text-center" type="text" name="commission" value="${product.commission ? product.commission : ''}"> 
                               </div>
                            </div>
                         </div>
@@ -542,7 +542,7 @@
                         <div class="-w-info media">
                            <div class="media-body w-100">
                               <div class="rounded-card bg-success d-flex flex-column justify-content-between">
-                                 <input class="url-input bg-success text-muted text-center" type="text" name="model" value="${product.model ? product.model : ''}"> 
+                                 <input class="url-input bg-success text-muted text-center" type="text" name="chinaDelivery" value="${product.chinaDelivery ? product.chinaDelivery : ''}"> 
                               </div>
                            </div>
                         </div>
@@ -555,7 +555,7 @@
                         <div class="-w-info media">
                            <div class="media-body w-100">
                               <div class="rounded-card bg-success d-flex flex-column justify-content-between">
-                                 <input class="url-input bg-success text-muted text-center" type="text" name="model" value="${product.model ? product.model : ''}"> 
+                                 <input class="url-input bg-success text-muted text-center" type="text" name="sum" value="${product.sum ? product.sum : ''}"> 
                               </div>
                            </div>
                         </div>
@@ -568,7 +568,7 @@
                         <div class="-w-info media">
                            <div class="media-body w-100">
                               <div class="rounded-card bg-success d-flex flex-column justify-content-between">
-                                 <input class="url-input bg-success text-muted text-center" type="text" name="model" value="${product.model ? product.model : ''}"> 
+                                 <input class="url-input bg-success text-muted text-center" type="text" name="weight" value="${product.weight ? product.weight : ''}"> 
                               </div>
                            </div>
                         </div>
@@ -581,7 +581,7 @@
                         <div class="-w-info media">
                            <div class="media-body w-100">
                               <div class="rounded-card bg-success d-flex flex-column justify-content-between">
-                                 <input class="url-input bg-success text-muted text-center" type="text" name="model" value="${product.model ? product.model : ''}"> 
+                                 <input class="url-input bg-success text-muted text-center" type="text" name="volume" value="${product.volume ? product.volume : ''}"> 
                               </div>
                            </div>
                         </div>
@@ -594,7 +594,7 @@
                         <div class="-w-info media">
                            <div class="media-body w-100">
                               <div class="rounded-card bg-success d-flex flex-column justify-content-between">
-                                 <input class="url-input bg-success text-muted text-center" type="text" name="model" value="${product.model ? product.model : ''}"> 
+                                 <input class="url-input bg-success text-muted text-center" type="text" name="note" value="${product.note ? product.note : ''}"> 
                               </div>
                            </div>
                         </div>
@@ -607,7 +607,7 @@
                         <div class="-w-info media">
                            <div class="media-body w-100">
                               <div class="rounded-card bg-success d-flex flex-column justify-content-between">
-                                 <input class="url-input bg-success text-muted text-center" type="text" name="model" value="${product.model ? product.model : ''}"> 
+                                 <input class="url-input bg-success text-muted text-center" type="text" name="status" value="${product.status ? product.status : ''}"> 
                               </div>
                            </div>
                         </div>
@@ -620,20 +620,20 @@
                         <div class="-w-info media">
                            <div class="media-body w-100">
                               <div class="rounded-card bg-success d-flex flex-column justify-content-between">
-                                 <input class="url-input bg-success text-muted text-center" type="text" name="model" value="${product.model ? product.model : ''}"> 
+                                 <input class="url-input bg-success text-muted text-center" type="text" name="buyoutDate" value="${product.buyoutDate ? product.buyoutDate : ''}"> 
                               </div>
                            </div>
                         </div>
                      </div>
                   </div>
                </div>
-               <div class="widget-holder widget-sm col">
+               <div class="widget-holder widget-sm col long-block">
                   <div class="widget-bg bg-transparent text-inverse mt-2">
                      <div class="widget-body p-0">
                         <div class="-w-info media">
                            <div class="media-body w-100">
                               <div class="rounded-card bg-success d-flex flex-column justify-content-between">
-                                 <input class="url-input bg-success text-muted text-center" type="text" name="model" value="${product.model ? product.model : ''}"> 
+                                 <input class="url-input bg-success text-muted text-center" type="text" name="chinaDate" value="${product.chinaDate ? product.chinaDate : ''}"> 
                               </div>
                            </div>
                         </div>
@@ -645,9 +645,7 @@
                      <div class="widget-body p-0">
                         <div class="-w-info media">
                            <div class="media-body w-100">
-                              <div class="rounded-card bg-primary d-flex flex-column justify-content-between">
-                                 <input class="url-input bg-primary text-muted text-center" type="text" name="model" value="${product.model ? product.model : ''}"> 
-                              </div>
+                              <a class="btn btn-primary w-100" data-row="${i}" data-url="${product.PhotoFactory ? product.PhotoFactory[0] : ''}" data-state="photosFactory">Посмотреть</a>
                            </div>
                         </div>
                      </div>
@@ -658,9 +656,7 @@
                      <div class="widget-body p-0">
                         <div class="-w-info media">
                            <div class="media-body w-100">
-                              <div class="rounded-card bg-primary d-flex flex-column justify-content-between">
-                                 <input class="url-input bg-primary text-muted text-center" type="text" name="model" value="${product.model ? product.model : ''}"> 
-                              </div>
+                              <a class="btn btn-primary w-100" data-row="${i}" data-url="${product.PhotoReport ? product.PhotoReport[0] : ''}" data-state="photosReport">Посмотреть</a>
                            </div>
                         </div>
                      </div>
@@ -670,7 +666,7 @@
 
          container.append(row);
 
-         const addWidget = (array, selector, color, textClass, name) => {
+         const addWidget = (array, selector, textClass, name) => {
             if (array.length > 1) {
                const photoWrapper = document.querySelector(`[name="${selector}-${i + 1}"]`);
                for (let j = 1; j < array.length; j++) {
@@ -681,8 +677,8 @@
                         <div class="widget-body p-0">
                            <div class="-w-info media">
                               <div class="media-body w-100 d-flex">
-                                 <div class="rounded-card bg-${color} d-flex flex-column justify-content-between url-input-wrapper text-right" style="padding: 4px 0.75rem;">
-                                    <input class="url-input bg-${color} ${textClass}" name="${name}" style="font-size: 13px" type="text" value="${array[j] ? array[j] : ''}"> 
+                                 <div class="rounded-card bg-danger d-flex flex-column justify-content-between url-input-wrapper text-right" style="padding: 4px 0.75rem;">
+                                    <input class="url-input bg-danger ${textClass}" name="${name}" style="font-size: 13px" type="text" value="${array[j] ? array[j] : ''}"> 
                                  </div>
                               </div>
                            </div>
@@ -694,8 +690,8 @@
             }
          }
 
-         addWidget(product.PhotoUrl, 'photoUrl', 'info', '', 'imageUrl');
-         addWidget(product.ProductUrl, 'productUrl', 'success', 'text-dark', 'url');
+         addWidget(product.PhotoUrl, 'photoUrl', '', 'imageUrl');
+         addWidget(product.ProductUrl, 'productUrl', 'text-dark', 'url');
 
          if (product.Photo.length > 1) {
             const photoWrapper = document.querySelector(`[name="photo-${i + 1}"]`);
@@ -709,7 +705,7 @@
                            <div class="rounded-card bg-light numeration position-absolute subnumeration">
                               <p class="text-dark fw-600 m-0">${i + 1}.${j}</p>
                            </div>
-                           <a class="btn btn-primary w-75" style="font-size: 13px; padding: 5px 8px;" data-row="${i}" data-url="${product.Photo[j]}">Посмотреть</a>
+                           <a class="btn btn-danger w-75" style="font-size: 13px; padding: 5px 8px;" data-row="${i}" data-url="${product.Photo[j]}" data-state="photosUrl">Посмотреть</a>
                         </div>
                      </div>
                   </div>
@@ -729,7 +725,7 @@
       const imgButtons = document.querySelectorAll('[data-url]');
 
       imgButtons.forEach(btn => {
-         btn.addEventListener('click', () => openModalWithImg(btn.dataset.url, btn.dataset.row));
+         btn.addEventListener('click', () => openModalWithImg(btn.dataset.url, btn.dataset.row, btn.dataset.state));
       })
    })
 //Получаем информацию о заказе
@@ -747,8 +743,10 @@
       imgTag.src = url;
    }
 //Открываем модалку с переданной картинкой
-   function openModalWithImg(url, id) {
+   function openModalWithImg(url, id, state) {
       const imgTag = document.querySelector('.image img');
+      const imgInput = document.querySelector('#file1');
+      imgInput.dataset.state = state;
 
       if (!url) {
          pasteNoImage(imgTag);
@@ -761,8 +759,15 @@
       setAttributeBySelector('#file1', 'name', id);
    }
    
+   function resetLabelColor() {
+      const label = document.querySelector('.customInputLabel');
+      label.style.background = 'none';
+   }
+
 //Постим на сервер загруженную картинку и получаем ее url
    const photosUrl = {};
+   const photosFactory = {};
+   const photosReport = {};
 
    async function getImageUrl(e) {
       const file = e.target.files[0];
@@ -772,13 +777,30 @@
       formData.append('_token', _token);
       const res = await postFormData('{{Route("UploadOrderPhoto")}}', formData);
       const id = e.target.getAttribute('name');
-      if (photosUrl[id]) {
-         photosUrl[id] = [...photosUrl[id], res.url];
+      const state = e.target.dataset.state;
+      console.log(state);
+      let array;
+      switch (state) {
+         case 'photosUrl':
+            array = photosUrl;
+            break;
+         case 'photosFactory':
+            array = photosFactory;
+            break;
+         case 'photosReport':
+            array = photosReport;
+            break;
+         default:
+            break;
+      }
+      if (array[id]) {
+         array[id] = [...array[id], res.url];
       } else {
-         photosUrl[id] = [res.url];
+         array[id] = [res.url];
       }
       console.log('Успешно создан: ', JSON.stringify(res));
       e.target.nextElementSibling.style.backgroundColor = '#ecffc6';
+      e.target.value = '';
    }
 //Собираем заказ и отправляем на сервер
    function makeOrder() {
@@ -787,7 +809,9 @@
 
       orderRows.forEach((order, i) => {
          const data = {},
-               photos = [],
+               photo = [],
+               photoFactory = [],
+               photoReport = [],
                urlPhotos = [],
                urlProducts = [],
                urlPhotoInputs = order.querySelectorAll('[name="imageUrl"]'),
@@ -796,7 +820,20 @@
                cost = order.querySelector('[name="cost"]').value,
                color = order.querySelector('[name="color"]').value,
                size = order.querySelector('[name="size"]').value,
-               model = order.querySelector('[name="model"]').value;
+               model = order.querySelector('[name="model"]').value,
+               //green
+               availability = order.querySelector('[name="availability"]').value,
+               priceFact = order.querySelector('[name="priceFact"]').value,
+               commission = order.querySelector('[name="commission"]').value,
+               chinaDelivery = order.querySelector('[name="chinaDelivery"]').value,
+               sum = order.querySelector('[name="sum"]').value,
+               weight = order.querySelector('[name="weight"]').value,
+               volume = order.querySelector('[name="volume"]').value,
+               note = order.querySelector('[name="note"]').value,
+               status = order.querySelector('[name="status"]').value,
+               buyoutDate = order.querySelector('[name="buyoutDate"]').value,
+               chinaDate = order.querySelector('[name="chinaDate"]').value;
+
 
          const makeData = (inputs, array, fieldName) => {
             data[fieldName] = array;
@@ -805,20 +842,46 @@
             })
          }
 
-         if (photosUrl[i]) {
-            photosUrl[i].forEach(url => {
-               photos.push(url);
-            })
+         const pushPhotosToArray = (photos, array) => {
+            if (photos[i]) {
+               photos[i].forEach(url => {
+                  array.push(url);
+               })
+            }
          }
-         
+
          makeData(urlPhotoInputs, urlPhotos, 'PhotoUrl');
          makeData(urlProductInputs, urlProducts, 'ProductUrl');
-         data['Photo'] = photos;
+         pushPhotosToArray(photosUrl, photo);
+         pushPhotosToArray(photosFactory, photoFactory);
+         pushPhotosToArray(photosReport, photoReport);
+
+         if (photo) {
+            data['Photo'] = photo;
+         }
+         if (photoFactory) {
+            data['PhotoFactory'] = photoFactory;
+         }
+         if (photoReport) {
+            data['PhotoReport'] = photoReport;
+         }
          data['count'] = parseInt(count);
          data['cost'] = parseInt(cost);
          data['color'] = color;
          data['size'] = size;
          data['model'] = model;
+         //green
+         data['availability'] = availability;
+         data['priceFact'] = priceFact;
+         data['commission'] = commission;
+         data['chinaDelivery'] = chinaDelivery;
+         data['sum'] = sum;
+         data['weight'] = weight;
+         data['volume'] = volume;
+         data['note'] = note;
+         data['status'] = status;
+         data['buyoutDate'] = buyoutDate;
+         data['chinaDate'] = chinaDate;
          dataToServer['json'].push(data);
       })
 
