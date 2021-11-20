@@ -127,3 +127,9 @@
    margin: 0;
    font-weight: 700;
 }
+
+.long-block {
+   max-width: 300px!important;
+   min-width: 299px!important;
+ }
+ 

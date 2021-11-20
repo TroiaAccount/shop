@@ -330,6 +330,8 @@
          makeData(urlPhotoInputs, urlPhotos, 'PhotoUrl');
          makeData(urlProductInputs, urlProducts, 'ProductUrl');
          data['Photo'] = photos;
+         data['PhotoFactory'] = [];
+         data['PhotoReport'] = [];
          data['count'] = parseInt(count);
          data['cost'] = parseFloat(cost);
          data['color'] = color;

@@ -90,7 +90,7 @@
          </div>
        </div>
        <div class="modal-footer">
-         <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Сохранить</button>
+         <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="resetLabelColor()">Сохранить</button>
        </div>
      </div>
    </div>
@@ -387,12 +387,18 @@
       }
       console.log('Успешно создан: ', JSON.stringify(res));
       e.target.nextElementSibling.style.backgroundColor = '#ecffc6';
+      e.target.value = '';
    }
    
 
    async function getData(id) {
       const body = { order_id: id };
       return await postData("{{Route('SelectOrder')}}", body);
+   }
+
+   function resetLabelColor() {
+      const label = document.querySelector('.customInputLabel');
+      label.style.background = 'none';
    }
 
    async function makeOrder() {
