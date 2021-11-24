@@ -131,5 +131,9 @@
 .long-block {
    max-width: 300px!important;
    min-width: 299px!important;
- }
- 
+}
+
+.medium-block {
+   max-width: 230px!important;
+   min-width: 229px!important;
+}

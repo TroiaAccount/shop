@@ -1,6 +1,6 @@
 <form id="CreateOrder" enctype="multipart/form-data">
    @csrf
-   <div class="form-wrapper container ps-0" style="margin-bottom: 4rem!important;">
+   <div class="form-wrapper container ps-0 ms-2">
       <div id="0" class="card-input d-flex justify-content-between">
          <div id="photoInputs-0" class="order-card ms-3" style="min-width: 135px;" data-count="0">
             <div class="label-card">

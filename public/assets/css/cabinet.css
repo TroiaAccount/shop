@@ -89,6 +89,10 @@ main#page {
   scrollbar-width: none;
 } */
 
+.hide {
+  display: none;
+}
+
 .bg-primary {
   background-color: #1c4583 !important;
 }
@@ -377,8 +381,18 @@ button.change-page-btn {
 }
 
 .form-wrapper {
+  min-width: 1177px;
+  padding: 20px;
+  border-radius: 6px;
+  margin-right: 3px;
+}
+.card-body {
+  padding: 1px;
 }
 
+.form-wrapper {
+  min-height: 300px;
+}
 .add__address-wrapper {
   padding-bottom: 16px;
 }
@@ -469,7 +483,7 @@ button.change-page-btn {
 }
 
 .order-card {
-  margin-right: 20px;
+  margin-right: 18px;
 }
 
 .files-input {
