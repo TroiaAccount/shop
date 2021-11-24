@@ -144,7 +144,7 @@
                   </div>
                </div>
             </div>
-            <div class="widget-holder widget-sm col">
+            <div class="widget-holder widget-sm col medium-block">
                <div class="widget-bg bg-success text-inverse mb-2">
                   <div class="widget-body">
                      <div class="-w-info media">
@@ -177,7 +177,7 @@
                   </div>
                </div>
             </div>
-            <div class="widget-holder widget-sm col">
+            <div class="widget-holder widget-sm col medium-block">
                <div class="widget-bg bg-success text-inverse mb-2">
                   <div class="widget-body">
                      <div class="-w-info media">
@@ -497,7 +497,7 @@
                      </div>
                   </div>
                </div>
-               <div class="widget-holder widget-sm col">
+               <div class="widget-holder widget-sm col medium-block">
                   <div class="widget-bg bg-transparent text-inverse mt-2">
                      <div class="widget-body p-0">
                         <div class="-w-info media">
@@ -536,7 +536,7 @@
                      </div>
                   </div>
                </div>
-               <div class="widget-holder widget-sm col">
+               <div class="widget-holder widget-sm col medium-block">
                   <div class="widget-bg bg-transparent text-inverse mt-2">
                      <div class="widget-body p-0">
                         <div class="-w-info media">
@@ -889,7 +889,7 @@
             .then(res => {
                if (res.status === true) {
                   console.log('Успешно создан: ', JSON.stringify(res));
-                  // window.location.href = '{{Route('AdminPage', ['page' => 'orders'])}}'
+                  window.location.href = '{{Route('AdminPage', ['page' => 'orders'])}}'
                }
             });
    }

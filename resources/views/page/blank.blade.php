@@ -1,60 +1,133 @@
 <form id="CreateOrder" enctype="multipart/form-data">
    @csrf
-   <div class="form-wrapper container ps-0" style="margin-bottom: 4rem!important;">
-      <div id="0" class="card-input d-flex justify-content-between">
-         <div id="photoInputs-0" class="order-card ms-3" style="min-width: 135px;" data-count="0">
-            <div class="label-card">
-               <label class="order-title">Фото товара:</label>
-               <p class="order-subtitle">Загрузить фото товара для заказа</p>
+   <div class="d-flex">
+      <div class="form-wrapper container ps-0 ps-2" style="background: #FFCCCC;">
+         <div id="0" class="card-input d-flex justify-content-between ms-1">
+            <div id="photoInputs-0" class="order-card ms-3" style="min-width: 135px;" data-count="0">
+               <div class="label-card">
+                  <label class="order-title">Фото товара:</label>
+                  <p class="order-subtitle">Загрузить фото товара для заказа</p>
+               </div>
+            </div>
+            <div id="urlPhotoInputs-0" class="order-card" style="min-width: 145px;">
+               <div class="label-card">
+                  <label for="ImageUrl-1" class="order-title">Ссылка на фото:</label>
+                  <p class="order-subtitle">Вставьте ссылку на фото</p>
+               </div>
+            </div>
+            <div id="urlProductInputs-0" class="order-card" style="min-width: 150px;">
+               <div class="label-card">
+                  <label for="ImageUrl-1" class="order-title">Ссылка на товар:</label>
+                  <p class="order-subtitle">Вставьте ссылку на товар</p>
+               </div>
+            </div>
+            <div class="order-card ms-3" style="min-width: 120px;">
+               <div class="label-card">
+                  <label for="count" class="order-title">Кол-во штук:</label>
+                  <p class="order-subtitle">Укажите количество штук</p>
+               </div>
+            </div>
+            <div class="order-card" style="min-width: 105px;">
+               <div class="label-card">
+                  <label for="cost" class="order-title">Цена:</label>
+                  <p class="order-subtitle">Укажите цену как на сайте</p>
+               </div>
+            </div>
+            <div class="order-card" style="min-width: 95px;">
+               <div class="label-card">
+                  <label for="color" class="order-title">Цвет:</label>
+                  <p class="order-subtitle">Укажите нужный цвет</p>
+               </div>
+            </div>
+            <div class="order-card" style="min-width: 105px;">
+               <div class="label-card">
+                  <label for="size" class="order-title">Размер:</label>
+                  <p class="order-subtitle">Укажите нужный размер</p>
+               </div>
+            </div>
+            <div class="order-card" style="min-width: 135px;">
+               <div class="label-card">
+                  <label for="model" class="order-title">Модель:</label>
+                  <p class="order-subtitle">Укажите необходимую модель</p>
+               </div>
             </div>
          </div>
-         <div id="urlPhotoInputs-0" class="order-card" style="min-width: 145px;">
-            <div class="label-card">
-               <label for="ImageUrl-1" class="order-title">Ссылка на фото:</label>
-               <p class="order-subtitle">Вставьте ссылку на фото</p>
+      </div>
+      <div class="form-wrapper container ps-0" style="background: #CCFFCC; min-width: 1499px">
+         <div id="0" class="card-input d-flex justify-content-between">
+            <div class="order-card ms-3" style="min-width: 135px;" data-count="0">
+               <div class="label-card">
+                  <label class="order-title">Кол-во шт. наличие:</label>
+               </div>
+            </div>
+            <div class="order-card" style="min-width: 105px;">
+               <div class="label-card">
+                  <label for="ImageUrl-1" class="order-title">Цена факт:</label>
+               </div>
+            </div>
+            <div id="urlProductInputs-0" class="order-card" style="min-width: 120px;">
+               <div class="label-card">
+                  <label for="ImageUrl-1" class="order-title">Комиссия %:</label>
+               </div>
+            </div>
+            <div class="order-card" style="min-width: 120px;">
+               <div class="label-card">
+                  <label for="count" class="order-title">Доставка по Китаю:</label>
+               </div>
+            </div>
+            <div class="order-card" style="min-width: 95px;">
+               <div class="label-card">
+                  <label for="cost" class="order-title">Сумма:</label>
+               </div>
+            </div>
+            <div class="order-card" style="min-width: 95px;">
+               <div class="label-card">
+                  <label for="color" class="order-title">Общий вес:</label>
+               </div>
+            </div>
+            <div class="order-card" style="min-width: 105px;">
+               <div class="label-card">
+                  <label for="size" class="order-title">Общий обьём:</label>
+               </div>
+            </div>
+            <div class="order-card" style="min-width: 135px;">
+               <div class="label-card">
+                  <label for="model" class="order-title">Примечание:</label>
+               </div>
+            </div>
+            <div class="order-card" style="min-width: 95px;">
+               <div class="label-card">
+                  <label for="model" class="order-title">Статус:</label>
+               </div>
+            </div>
+            <div class="order-card" style="min-width: 135px;">
+               <div class="label-card">
+                  <label for="model" class="order-title">Дата выкупа:</label>
+               </div>
+            </div>
+            <div class="order-card" style="min-width: 149px;">
+               <div class="label-card">
+                  <label for="model" class="order-title">Дата прихода на склад в Китае:</label>
+               </div>
             </div>
          </div>
-         <div id="urlProductInputs-0" class="order-card" style="min-width: 150px;">
-            <div class="label-card">
-               <label for="ImageUrl-1" class="order-title">Ссылка на товар:</label>
-               <p class="order-subtitle">Вставьте ссылку на товар</p>
+      </div>
+      <div class="form-wrapper container ps-0" style="background: #CCCCFF; min-width: 344px">
+         <div id="0" class="card-input d-flex justify-content-start">
+            <div class="order-card ms-3" style="min-width: 145px;" data-count="0">
+               <div class="label-card">
+                  <label class="order-title">Фото с фабрики:</label>
+               </div>
             </div>
-         </div>
-         <div class="order-card ms-3" style="min-width: 120px;">
-            <div class="label-card">
-               <label for="count" class="order-title">Кол-во штук:</label>
-               <p class="order-subtitle">Укажите количество штук</p>
+            <div class="order-card" style="min-width: 105px;">
+               <div class="label-card">
+                  <label for="ImageUrl-1" class="order-title">Фотоотчет:</label>
+               </div>
             </div>
-         </div>
-         <div class="order-card" style="min-width: 105px;">
-            <div class="label-card">
-               <label for="cost" class="order-title">Цена:</label>
-               <p class="order-subtitle">Укажите цену как на сайте</p>
-            </div>
-         </div>
-         <div class="order-card" style="min-width: 95px;">
-            <div class="label-card">
-               <label for="color" class="order-title">Цвет:</label>
-               <p class="order-subtitle">Укажите нужный цвет</p>
-            </div>
-         </div>
-         <div class="order-card" style="min-width: 105px;">
-            <div class="label-card">
-               <label for="size" class="order-title">Размер:</label>
-               <p class="order-subtitle">Укажите нужный размер</p>
-            </div>
-         </div>
-         <div class="order-card" style="min-width: 135px;">
-            <div class="label-card">
-               <label for="model" class="order-title">Модель:</label>
-               <p class="order-subtitle">Укажите необходимую модель</p>
-            </div>
-         </div>
-         <div class="order-card" style="margin-left: 24px;">
-            <div class="space"></div>
          </div>
       </div>
    </div>
+  
    <div class="mt-4 submitBtn">
       <button class="btn btn-primary">Сохранить заказ</button>
    </div>
@@ -144,7 +217,7 @@
                   <div class="input-group col-3 p-0">
                      <input id="file-input-${id}-${count}" type="file" name="${id}" class="m-0 files-input" onchange="getImageUrl(event)">
                      <div class="file-label-wrapper ms-4">
-                        <label class="file-label-mini" data-row="${id}" data-url="${data.photo}">Загрузите фото товара</label>
+                        <label class="file-label-mini" data-row="${id}" data-url="${data.photo}" data-redact="true">Загрузите фото товара</label>
                      </div>
                   </div>
             </div>
@@ -186,17 +259,30 @@
          const count = data['count'] ? data['count'] : '';
          const model = data['model'] ? data['model'] : '';
          const size = data['size'] ? data['size'] : '';
+         const availability = data['availability'] ? data['availability'] : '';
+         const priceFact = data['priceFact'] ? data['priceFact'] : '';
+         const commission = data['commission'] ? data['commission'] : '';
+         const chinaDelivery = data['chinaDelivery'] ? data['chinaDelivery'] : '';
+         const sum = data['sum'] ? data['sum'] : '';
+         const weight = data['weight'] ? data['weight'] : '';
+         const volume = data['volume'] ? data['volume'] : '';
+         const note = data['note'] ? data['note'] : '';
+         const status = data['status'] ? data['status'] : '';
+         const buyoutDate = data['buyoutDate'] ? data['buyoutDate'] : '';
+         const chinaDate = data['chinaDate'] ? data['chinaDate'] : '';
+         const PhotoFactory = data['PhotoFactory'] ? data['PhotoFactory'] : '';
+         const PhotoReport = data['PhotoReport'] ? data['PhotoReport'] : '';
 
          div.innerHTML = `
-            <div id="${countRows}" class="card-input d-flex justify-content-between">
-               <div id="photoInputs-${countRows}" class="order-card ms-3" style="min-width: 135px;" data-count="0">
+            <div id="${countRows}" class="card-input d-flex justify-content-between ms-1">
+               <div id="photoInputs-${countRows}" class="order-card ms-3" style="min-width: 135px;" data-count="${countRows - 1}">
                   <div></div>
                   <div id="filesGroup" class="mt-2 row" style="margin-top: 7.8px!important;">
                      <p class="numeration" ${countRows >= 9 ? 'style="width: 43px;"' : ""}>${countRows}</p>
                      <div class="input-group col-3">
-                        <input id="file-input-${countRows}-0" type="file" name="${countRows}" class="m-0 files-input"  onchange="getImageUrl(event)">
+                        <input id="file-input-${countRows}-0" type="file" name="${countRows}" class="m-0 files-input">
                         <div class="file-label-wrapper w-100">
-                           <label class="file-label" data-row="${countRows}" data-url="${Photo[0] ? Photo[0] : ''}">Загрузите фото товара</label>
+                           <label class="file-label" data-row="${countRows}" data-url="${Photo[countRows - 1] ? Photo[countRows - 1] : ''}" data-redact="true">Загрузите фото товара</label>
                         </div>
                      </div>
                   </div>
@@ -248,19 +334,121 @@
                   <div class="mt-2 row">
                      <div class="position-relative me-2">
                         <input type="text" name="model" class="m-0 text-order-input" value="${model}">
+                     </div>
+                  </div>
+               </div>
+               <div class="order-card" style="min-width: 135px; margin-left: 20px">
+                  <div class="mt-2 row">
+                     <div class="position-relative me-2">
+                        <input type="text" readonly name="availability" class="m-0 text-order-input" value="${availability}">
+                     </div>
+                  </div>
+               </div>
+               <div class="order-card" style="min-width: 105px;">
+                  <div class="mt-2 row">
+                     <div class="position-relative me-2">
+                        <input type="text" readonly name="priceFact" class="m-0 text-order-input" value="${priceFact}">
+                     </div>
+                  </div>
+               </div>
+               <div class="order-card" style="min-width: 120px;">
+                  <div class="mt-2 row">
+                     <div class="position-relative me-2">
+                        <input type="text" readonly name="commission" class="m-0 text-order-input" value="${commission}">
+                     </div>
+                  </div>
+               </div>
+               <div class="order-card" style="min-width: 120px;">
+                  <div class="mt-2 row">
+                     <div class="position-relative me-2">
+                        <input type="text" readonly name="chinaDelivery" class="m-0 text-order-input" value="${chinaDelivery}">
+                     </div>
+                  </div>
+               </div>
+               <div class="order-card" style="min-width: 95px;">
+                  <div class="mt-2 row">
+                     <div class="position-relative me-2">
+                        <input type="text" readonly name="sum" class="m-0 text-order-input" value="${sum}">
+                     </div>
+                  </div>
+               </div>
+               <div class="order-card" style="min-width: 95px;">
+                  <div class="mt-2 row">
+                     <div class="position-relative me-2">
+                        <input type="text" readonly name="weight" class="m-0 text-order-input" value="${weight}">
+                     </div>
+                  </div>
+               </div>
+               <div class="order-card" style="min-width: 105px;">
+                  <div class="mt-2 row">
+                     <div class="position-relative me-2">
+                        <input type="text" readonly name="volume" class="m-0 text-order-input" value="${volume}">
+                     </div>
+                  </div>
+               </div>
+               <div class="order-card" style="min-width: 135px;">
+                  <div class="mt-2 row">
+                     <div class="position-relative me-2">
+                        <input type="text" readonly name="note" class="m-0 text-order-input" value="${note}">
+                     </div>
+                  </div>
+               </div>
+               <div class="order-card" style="min-width: 95px;">
+                  <div class="mt-2 row">
+                     <div class="position-relative me-2">
+                        <input type="text" readonly name="status" class="m-0 text-order-input" value="${status}">
+                     </div>
+                  </div>
+               </div>
+               <div class="order-card" style="min-width: 135px;">
+                  <div class="mt-2 row">
+                     <div class="position-relative me-2">
+                        <input type="text" readonly name="buyoutDate" class="m-0 text-order-input" value="${buyoutDate}">
+                     </div>
+                  </div>
+               </div>
+               <div class="order-card" style="min-width: 149px;">
+                  <div class="mt-2 row">
+                     <div class="position-relative me-2">
+                        <input type="text" readonly name="chinaDate" class="m-0 text-order-input" value="${chinaDate}">
+                     </div>
+                  </div>
+               </div>
+               <div class="order-card ms-3" style="min-width: 145px;">
+                  <div class="mt-2 row">
+                     <div class="position-relative me-2">
+                        <div class="input-group col-3">
+                           <input id="file-input-${countRows}-0" type="file" name="${countRows}" class="m-0 files-input">
+                           <div class="file-label-wrapper w-100">
+                              <label class="file-label" data-row="${countRows}" data-url="${PhotoFactory[countRows - 1] ? PhotoFactory[countRows - 1] : ''}" data-redact="false">Посмотреть</label>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="order-card" style="min-width: 105px;">
+                  <div class="mt-2 row">
+                     <div class="position-relative me-2">
+                        <div class="input-group col-3">
+                           <input id="file-input-${countRows}-0" type="file" name="${countRows}" class="m-0 files-input">
+                           <div class="file-label-wrapper w-100">
+                              <label class="file-label" data-row="${countRows}" data-url="${PhotoReport[countRows - 1] ? PhotoReport[countRows - 1] : ''}" data-redact="false">Посмотреть</label>
+                           </div>
+                        </div>
                         <span id="plusBlue-${countRows}" class="plus-blue-btn"><i class="fas fa-plus"></i></span>
                         <span id="minusRed-${countRows}" class="minus-red-btn"><i class="fas fa-minus"></i></span>
                      </div>
                   </div>
                </div>
-               <div class="order-card" style="min-width: 44px;">
-                  <div class="space"></div>
-               </div>
+               <div class="order-card" style="margin-left: 24px;">
+               <div class="space"></div>
+            </div>
             </div>
          `
+         
          let countOfPhotos,
-             countOfUrls,
-             countOfProducts;
+            countOfUrls,
+            countOfProducts;
 
          const getCount = (length, total) => {
             if (length > 1) {
@@ -329,7 +517,13 @@
          });
       }
 
-      function openModal() {
+      function openModal(redact) {
+         const label = document.querySelector('.customInputLabel');
+         if (redact) {
+            label.classList.remove('hide')
+         } else {
+            label.classList.add('hide')
+         }
          myModal.show()
       }
 
@@ -337,7 +531,7 @@
          const imgLabels = document.querySelectorAll('[data-url]');
 
          imgLabels.forEach(label => {
-            label.addEventListener('click', () => openModalWithImg(label.dataset.url, label.dataset.row));
+            label.addEventListener('click', () => openModalWithImg(label.dataset.url, label.dataset.row, label.dataset.redact));
          })
          //Вставляем в тег дефолт картинку
          function pasteNoImage(imgTag) {
@@ -349,17 +543,25 @@
             imgTag.src = url;
          }
          //Открываем модалку с переданной картинкой
-         function openModalWithImg(url, id) {
+         function openModalWithImg(url, id, redact) {
             const imgTag = document.querySelector('.image img');
-
+            
             if (!url) {
                pasteNoImage(imgTag);
-               openModal();
+               if (redact === 'true') {
+                  openModal(true);
+               } else {
+                  openModal(false);
+               }
                setAttributeBySelector('#file1', 'name', id);
                return;
             }
             changeModalImg(imgTag, url);
-            openModal();
+            if (redact === 'true') {
+               openModal(true);
+            } else {
+               openModal(false);
+            }
             setAttributeBySelector('#file1', 'name', id);
          }
 
@@ -416,7 +618,18 @@
                cost = mainInput.querySelector('[name="cost"]').value,
                color = mainInput.querySelector('[name="color"]').value,
                size = mainInput.querySelector('[name="size"]').value,
-               model = mainInput.querySelector('[name="model"]').value;
+               model = mainInput.querySelector('[name="model"]').value,
+               availability = mainInput.querySelector('[name="availability"]').value,
+               priceFact = mainInput.querySelector('[name="priceFact"]').value,
+               commission = mainInput.querySelector('[name="commission"]').value,
+               chinaDelivery = mainInput.querySelector('[name="chinaDelivery"]').value,
+               sum = mainInput.querySelector('[name="sum"]').value,
+               weight = mainInput.querySelector('[name="weight"]').value,
+               volume = mainInput.querySelector('[name="volume"]').value,
+               note = mainInput.querySelector('[name="note"]').value,
+               status = mainInput.querySelector('[name="status"]').value,
+               buyoutDate = mainInput.querySelector('[name="buyoutDate"]').value,
+               chinaDate = mainInput.querySelector('[name="chinaDate"]').value;
 
          const makeData = (inputs, array, fieldName) => {
             data[fieldName] = array;
@@ -438,6 +651,18 @@
          data['color'] = color;
          data['size'] = size;
          data['model'] = model;
+
+         data['availability'] = availability;
+         data['priceFact'] = priceFact;
+         data['commission'] = commission;
+         data['chinaDelivery'] = chinaDelivery;
+         data['sum'] = sum;
+         data['weight'] = weight;
+         data['volume'] = volume;
+         data['note'] = note;
+         data['status'] = status;
+         data['buyoutDate'] = buyoutDate;
+         data['chinaDate'] = chinaDate;
          dataToServer['json'].push(data);
       }
       postData('{{Route("ReplaceOrder")}}', dataToServer)
