@@ -112,7 +112,7 @@
             </div>
          </div>
       </div>
-      <div class="form-wrapper container ps-0" style="background: #CCCCFF; min-width: 344px">
+      <div class="form-wrapper container ps-0" style="background: #CCCCFF; min-width: 347px">
          <div id="0" class="card-input d-flex justify-content-start">
             <div class="order-card ms-3" style="min-width: 145px;" data-count="0">
                <div class="label-card">
