@@ -83,6 +83,23 @@ class AdminController extends Controller
                 }
             }
         }
+        if($page == "blank"){
+            $table = order::select()->where('id', $id)->first();
+            if($table != null){
+                $json = json_decode($table->json);
+                $total_cost = 0;
+                $total_pos = 0;
+                foreach($json as $result){
+                    $total_cost += $result->cost;
+                    $total_pos++;
+                }
+                $select_user = user::select()->where('id', $table->user_id)->first();
+                $table->sum = $total_cost;
+                $table->pos = $total_pos;
+                $table->user_info = $select_user;
+            }
+            
+        }
 
         return view('admin/main')->with([
             'page' => $page,

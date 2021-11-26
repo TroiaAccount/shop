@@ -6,7 +6,7 @@
                <p>Сумма:</p>
             </div>
             <div class="col p-0">
-               <p class="text-success">24.44</p>
+               <p class="text-success">{{$table->sum}}</p>
             </div>
          </div>
          <div class="col d-flex ml-3" style="max-width: 300px;">
@@ -14,7 +14,7 @@
                <p>Статус:</p>
             </div>
             <div class="col p-0">
-               <input type="text">
+               <input type="text" value="">
             </div>
          </div>
          <div class="col d-flex ml-3" style="max-width: 150px;">
@@ -22,7 +22,7 @@
                <p>Баланс:</p>
             </div>
             <div class="col p-0">
-               <p class="text-danger">24.44</p>
+               <p class="text-danger">{{$table->user_info->balance}}</p>
             </div>
          </div>
          <div class="col d-flex ml-3" style="max-width: 300px;">
@@ -30,7 +30,7 @@
                <p>Номер телефона:</p>
             </div>
             <div class="col p-0">
-               <p>+380680828856</p>
+               <p>{{$table->user_info->login}}</p>
             </div>
          </div>
          <div class="col d-flex ml-3" style="max-width: 300px;">
@@ -38,7 +38,7 @@
                <p>Имя клиента:</p>
             </div>
             <div class="col p-0">
-               <p>Василий Петрович</p>
+               <p>{{$table->user_info->full_name}}</p>
             </div>
          </div>
       </div>
@@ -297,7 +297,7 @@
                      <p>Логин клиента - номер заказа</p>
                      <div class="d-flex">
                         <p>Количество позиций товара:</p>
-                        <input type="text">
+                        <input type="text" value="{{$table->pos}}">
                      </div>
                   </div>
                   <div class="col-6"></div>
@@ -305,7 +305,7 @@
             </div>
             <div class="d-flex align-items-center">
                <p>Сумма заказа:</p>
-               <input type="text">
+               <input type="text" value="{{$table->sum}}">
             </div>
          </div>
       </div>

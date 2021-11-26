@@ -52,6 +52,7 @@ class PageController extends Controller
                 }
             }
         }
+        
         return view('main')->with(['page' => $page, 'user_info' => $user_info, 'table' => $table, 'subpage' => $subpage]);
     }
 
