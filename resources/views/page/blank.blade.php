@@ -127,7 +127,7 @@
          </div>
       </div>
    </div>
-  
+
    <div class="mt-4 submitBtn">
       <button class="btn btn-primary">Сохранить заказ</button>
    </div>

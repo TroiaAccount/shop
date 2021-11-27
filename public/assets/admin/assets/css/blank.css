@@ -137,3 +137,13 @@
    max-width: 230px!important;
    min-width: 229px!important;
 }
+
+.bg-success {
+   background: #CCFFCC!important;
+}
+.bg-danger {
+   background: #FFCCCC!important;
+}
+.bg-primary {
+   background: #CCCCFF!important;
+}
