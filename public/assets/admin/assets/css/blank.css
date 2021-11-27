@@ -60,7 +60,7 @@
 .url-input {
    outline: none;
    border: none;
-   color: #fff;
+   color: #111;
    font-weight: 600;
 }
 
@@ -140,10 +140,26 @@
 
 .bg-success {
    background: #CCFFCC!important;
+   border-color: #CCFFCC!important;
 }
 .bg-danger {
    background: #FFCCCC!important;
+   border-color: #FFCCCC!important;
 }
 .bg-primary {
    background: #CCCCFF!important;
+   border-color: #CCCCFF!important;
+}
+.text-inverse .text-muted {
+   color: #111!important;
+}
+.btn-danger {
+   background: #FFCCCC!important;
+   border-color: #FFCCCC!important;
+   color: #111!important;
+}
+.btn-primary {
+   background: #CCCCFF!important;
+   border-color: #CCCCFF!important;
+   color: #111!important;
 }

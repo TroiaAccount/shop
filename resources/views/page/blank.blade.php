@@ -171,8 +171,8 @@
 
 <script>
    const href = window.location.href.split('/'),
-         _page_id = href[href.length - 1],
-         photosUrl = {};
+         _page_id = href[href.length - 1];
+   let activeBtn;
    let countOfMainInputs = 0;
 
    window.addEventListener('DOMContentLoaded', async () => {
@@ -189,6 +189,7 @@
       const greenPlusBtn = document.querySelector('.plus-green-btn');
 
       const greenBtnHandler = (id, data) => {
+         console.log(data);
          const photoInputs = document.querySelector(`#photoInputs-${id}`),
                urlPhotoInputs = document.querySelector(`#urlPhotoInputs-${id}`),
                urlProductInputs = document.querySelector(`#urlProductInputs-${id}`);
@@ -217,7 +218,7 @@
                   <div class="input-group col-3 p-0">
                      <input id="file-input-${id}-${count}" type="file" name="${id}" class="m-0 files-input" onchange="getImageUrl(event)">
                      <div class="file-label-wrapper ms-4">
-                        <label class="file-label-mini" data-row="${id}" data-url="${data.photo}" data-redact="true">Загрузите фото товара</label>
+                        <label class="file-label-mini" data-row="${id}" data-url="${data.photo}" data-redact="true" data-state="photosUrl">Загрузите фото товара</label>
                      </div>
                   </div>
             </div>
@@ -275,14 +276,14 @@
 
          div.innerHTML = `
             <div id="${countRows}" class="card-input d-flex justify-content-between ms-1">
-               <div id="photoInputs-${countRows}" class="order-card ms-3" style="min-width: 135px;" data-count="${countRows - 1}">
+               <div id="photoInputs-${countRows}" class="order-card ms-3" style="min-width: 135px;" data-count="0">
                   <div></div>
                   <div id="filesGroup" class="mt-2 row" style="margin-top: 7.8px!important;">
                      <p class="numeration" ${countRows >= 9 ? 'style="width: 43px;"' : ""}>${countRows}</p>
                      <div class="input-group col-3">
                         <input id="file-input-${countRows}-0" type="file" name="${countRows}" class="m-0 files-input">
                         <div class="file-label-wrapper w-100">
-                           <label class="file-label" data-row="${countRows}" data-url="${Photo[countRows - 1] ? Photo[countRows - 1] : ''}" data-redact="true">Загрузите фото товара</label>
+                           <label class="file-label" data-row="${countRows}" data-url="${Photo[0] ? Photo[0] : ''}" data-redact="true" data-state="photosUrl">Загрузите фото товара</label>
                         </div>
                      </div>
                   </div>
@@ -420,7 +421,7 @@
                         <div class="input-group col-3">
                            <input id="file-input-${countRows}-0" type="file" name="${countRows}" class="m-0 files-input">
                            <div class="file-label-wrapper w-100">
-                              <label class="file-label" data-row="${countRows}" data-url="${PhotoFactory[countRows - 1] ? PhotoFactory[countRows - 1] : ''}" data-redact="false">Посмотреть</label>
+                              <label class="file-label" data-row="${countRows}" data-url="${PhotoFactory[0] ? PhotoFactory[0] : ''}" data-redact="false" data-state="photosFactory">Посмотреть</label>
                            </div>
                         </div>
                      </div>
@@ -432,7 +433,7 @@
                         <div class="input-group col-3">
                            <input id="file-input-${countRows}-0" type="file" name="${countRows}" class="m-0 files-input">
                            <div class="file-label-wrapper w-100">
-                              <label class="file-label" data-row="${countRows}" data-url="${PhotoReport[countRows - 1] ? PhotoReport[countRows - 1] : ''}" data-redact="false">Посмотреть</label>
+                              <label class="file-label" data-row="${countRows}" data-url="${PhotoReport[0] ? PhotoReport[0] : ''}" data-redact="false" data-state="photosReport">Посмотреть</label>
                            </div>
                         </div>
                         <span id="plusBlue-${countRows}" class="plus-blue-btn"><i class="fas fa-plus"></i></span>
@@ -488,6 +489,7 @@
          formWrapper.append(row);
 
          const getSmallInputsData = (i) => {
+            i = i + 1;
             return {
                photo : data['Photo'][i] ? data['Photo'][i] : '',
                photoUrl : data['PhotoUrl'][i] ? data['PhotoUrl'][i] : '',
@@ -524,6 +526,7 @@
          } else {
             label.classList.add('hide')
          }
+         console.log(myModal);
          myModal.show()
       }
 
@@ -531,7 +534,7 @@
          const imgLabels = document.querySelectorAll('[data-url]');
 
          imgLabels.forEach(label => {
-            label.addEventListener('click', () => openModalWithImg(label.dataset.url, label.dataset.row, label.dataset.redact));
+            label.addEventListener('click', () => openModalWithImg(label, label.dataset.url, label.dataset.row, label.dataset.redact));
          })
          //Вставляем в тег дефолт картинку
          function pasteNoImage(imgTag) {
@@ -543,16 +546,16 @@
             imgTag.src = url;
          }
          //Открываем модалку с переданной картинкой
-         function openModalWithImg(url, id, redact) {
+         function openModalWithImg(btn, url, id, redact) {
             const imgTag = document.querySelector('.image img');
-            
+            activeBtn = btn;
             if (!url) {
                pasteNoImage(imgTag);
                if (redact === 'true') {
-                  openModal(true);
-               } else {
-                  openModal(false);
-               }
+                     openModal(true);
+                  } else {
+                     openModal(false);
+                  }
                setAttributeBySelector('#file1', 'name', id);
                return;
             }
@@ -569,11 +572,25 @@
 
       data.forEach((row, i) => {
          blueBtnHandler(row);
-         if (data[i].Photo) {
-            photosUrl[i] = data[i].Photo;
-         }
       })
    })
+
+   function getPhotosFromInputSelector(selector) {
+      const photos = {};
+      const inputs = document.querySelectorAll(`[data-state="${selector}"]`);
+      if (!inputs) return;
+      inputs.forEach(input => {
+         const data = input.dataset;
+         if (!data.url) return;
+         if (photos[data.row]) {
+            photos[data.row] = [...photos[data.row], data.url];
+         } else {
+            photos[data.row] = [data.url];
+         }
+      })
+      return photos;
+   }
+
    async function getImageUrl(e) {
       const file = e.target.files[0];
       const _token = document.querySelector('[name="_token"]').value;
@@ -581,12 +598,7 @@
       formData.append('image', file);
       formData.append('_token', _token);
       const res = await postFormData('{{Route("UploadOrderPhoto")}}', formData);
-      const id = e.target.getAttribute('name');
-      if (photosUrl[id]) {
-         photosUrl[id] = [...photosUrl[id], res.url];
-      } else {
-         photosUrl[id] = [res.url];
-      }
+      activeBtn.dataset.url = res.url;
       console.log('Успешно создан: ', JSON.stringify(res));
       e.target.nextElementSibling.style.backgroundColor = '#ecffc6';
       e.target.value = '';
@@ -604,7 +616,10 @@
    }
 
    async function makeOrder() {
-      const dataToServer = {id: _page_id, json: []};
+      const dataToServer = {id: _page_id, json: []},
+            photosUrl = getPhotosFromInputSelector('photosUrl'),
+            photosFactory = getPhotosFromInputSelector('photosFactory'),
+            photosReport = getPhotosFromInputSelector('photosReport');
 
       for (let i = 1; i <= countOfMainInputs; i++) {
          const data = {},

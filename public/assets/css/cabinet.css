@@ -386,7 +386,7 @@ button.change-page-btn {
   border-radius: 6px;
   margin-right: 3px;
 }
-.card-body {
+.card-body.blank-card {
   padding: 1px;
 }
 

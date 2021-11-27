@@ -26,7 +26,7 @@
          <section class="page__body body">
             <div class="container body__wrapper">
                <div class="card">
-                  <div class="card-body">
+                  <div class="card-body @if ($page == "blank" || $page == "create")blank-card @endif">
                      @if($subpage == null || $page == "blank")
                         @include('page/' . $page)
                      @else
@@ -39,7 +39,6 @@
 
       </div>
    </main>
-
    <script src="{{asset('assets/js/index.js')}}"></script>
 </body>
 </html>

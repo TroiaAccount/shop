@@ -51,11 +51,6 @@ function getParent(target) {
    return target.parentElement.parentElement.parentElement
 }
 
-function openModal() {
-   const $modal = $('.modal');
-   $modal.modal('toggle');
-}
-
 function changeTextContent(selector, content) {
    document.querySelector(selector).textContent = content;
 }
