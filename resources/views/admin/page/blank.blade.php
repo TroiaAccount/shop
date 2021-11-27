@@ -6,7 +6,7 @@
                <p>Сумма:</p>
             </div>
             <div class="col p-0">
-               <p class="text-success">{{$table->sum}}</p>
+               <p class="text-success status-number">{{$table->sum}}</p>
             </div>
          </div>
          <div class="col d-flex ml-3" style="max-width: 300px;">
@@ -22,7 +22,7 @@
                <p>Баланс:</p>
             </div>
             <div class="col p-0">
-               <p class="text-danger">{{$table->user_info->balance}}</p>
+               <p class="text-danger status-number">{{$table->user_info->balance}}</p>
             </div>
          </div>
          <div class="col d-flex ml-3" style="max-width: 300px;">
@@ -320,7 +320,7 @@
       </div>
 </section>
 
-<div class="modal modal-info fade bs-modal-md-info" tabindex="-1" role="dialog"
+<div class="modal modal-info fade bs-modal-md-info" id="myModal" tabindex="-1" role="dialog"
    aria-labelledby="myMediumModalLabel2" aria-hidden="true" style="display: none">
    <div class="modal-dialog modal-md">
       <div class="modal-content">
@@ -363,10 +363,11 @@
 <script>
    const href = window.location.href.split('/'),
          _page_id = href[href.length - 1];
+   let activeBtn;
 
    window.addEventListener('DOMContentLoaded', async () => {
       let data = await getData(_page_id);
-      data = await JSON.parse(data.data);  
+      data = await JSON.parse(data.data);
 
       const container = document.querySelector('.order__header');
       data.forEach((product, i) => {
@@ -400,7 +401,7 @@
                         <div class="widget-body p-0">
                            <div class="-w-info media">
                               <div class="media-body w-100">
-                                 <a class="btn btn-danger w-100" data-row="${i}" data-url="${product.Photo[0] ? product.Photo[0] : ''}" data-state="photosUrl">Посмотреть</a>
+                                 <a class="btn btn-danger w-100" data-row="${i}" data-url="${product.Photo[0] ? product.Photo[0] : ''}" data-state="photosUrl" data-redact="false">Посмотреть</a>
                               </div>
                            </div>
                         </div>
@@ -412,7 +413,7 @@
                            <div class="-w-info media">
                               <div class="media-body w-100">
                                  <div class="rounded-card bg-danger d-flex flex-column justify-content-between url-input-wrapper">
-                                    <input class="url-input bg-danger" type="text" name="imageUrl" value="${product.PhotoUrl[0] ? product.PhotoUrl[0] : ''}"> 
+                                    <input class="url-input bg-danger" type="text" readonly name="imageUrl" value="${product.PhotoUrl[0] ? product.PhotoUrl[0] : ''}"> 
                                  </div>
                               </div>
                            </div>
@@ -425,7 +426,7 @@
                            <div class="-w-info media">
                               <div class="media-body w-100">
                                  <div class="rounded-card bg-danger d-flex flex-column justify-content-between url-input-wrapper">
-                                    <input class="url-input bg-danger" type="text" name="url" value="${product.ProductUrl[0] ? product.ProductUrl[0] : ''}"> 
+                                    <input class="url-input bg-danger" type="text" readonly name="url" value="${product.ProductUrl[0] ? product.ProductUrl[0] : ''}"> 
                                  </div>
                               </div>
                            </div>
@@ -438,7 +439,7 @@
                            <div class="-w-info media">
                               <div class="media-body w-100">
                                  <div class="rounded-card bg-danger d-flex flex-column justify-content-between">
-                                    <input class="url-input bg-danger text-muted text-center" type="text" name="count" value="${product.count ? product.count : ''}"> 
+                                    <input class="url-input bg-danger text-muted text-center" type="text" readonly name="count" value="${product.count ? product.count : ''}"> 
                                  </div>
                               </div>
                            </div>
@@ -451,7 +452,7 @@
                         <div class="-w-info media">
                            <div class="media-body w-100">
                               <div class="rounded-card bg-danger d-flex flex-column justify-content-between">
-                                 <input class="url-input bg-danger text-muted text-center" type="text" name="cost" value="${product.cost ? product.cost : ''}"> 
+                                 <input class="url-input bg-danger text-muted text-center" type="text" readonly name="cost" value="${product.cost ? product.cost : ''}"> 
                               </div>
                            </div>
                         </div>
@@ -464,7 +465,7 @@
                         <div class="-w-info media">
                            <div class="media-body w-100">
                               <div class="rounded-card bg-danger d-flex flex-column justify-content-between">
-                                 <input class="url-input bg-danger text-muted text-center" type="text" name="color" value="${product.color ? product.color : ''}"> 
+                                 <input class="url-input bg-danger text-muted text-center" type="text" readonly name="color" value="${product.color ? product.color : ''}"> 
                               </div>
                            </div>
                         </div>
@@ -477,7 +478,7 @@
                         <div class="-w-info media">
                            <div class="media-body w-100">
                               <div class="rounded-card bg-danger d-flex flex-column justify-content-between">
-                                 <input class="url-input bg-danger text-muted text-center" type="text" name="size" value="${product.size ? product.size : ''}"> 
+                                 <input class="url-input bg-danger text-muted text-center" type="text" readonly name="size" value="${product.size ? product.size : ''}"> 
                               </div>
                            </div>
                         </div>
@@ -490,7 +491,7 @@
                         <div class="-w-info media">
                            <div class="media-body w-100">
                               <div class="rounded-card bg-danger d-flex flex-column justify-content-between">
-                                 <input class="url-input bg-danger text-muted text-center" type="text" name="model" value="${product.model ? product.model : ''}"> 
+                                 <input class="url-input bg-danger text-muted text-center" type="text" readonly name="model" value="${product.model ? product.model : ''}"> 
                               </div>
                            </div>
                         </div>
@@ -645,7 +646,7 @@
                      <div class="widget-body p-0">
                         <div class="-w-info media">
                            <div class="media-body w-100">
-                              <a class="btn btn-primary w-100" data-row="${i}" data-url="${product.PhotoFactory ? product.PhotoFactory[0] : ''}" data-state="photosFactory">Посмотреть</a>
+                              <a class="btn btn-primary w-100" data-row="${i}" data-url="${product.PhotoFactory ? product.PhotoFactory[0] : ''}" data-state="photosFactory" data-redact="true">Посмотреть</a>
                            </div>
                         </div>
                      </div>
@@ -656,7 +657,7 @@
                      <div class="widget-body p-0">
                         <div class="-w-info media">
                            <div class="media-body w-100">
-                              <a class="btn btn-primary w-100" data-row="${i}" data-url="${product.PhotoReport ? product.PhotoReport[0] : ''}" data-state="photosReport">Посмотреть</a>
+                              <a class="btn btn-primary w-100" data-row="${i}" data-url="${product.PhotoReport ? product.PhotoReport[0] : ''}" data-state="photosReport" data-redact="true">Посмотреть</a>
                            </div>
                         </div>
                      </div>
@@ -678,7 +679,7 @@
                            <div class="-w-info media">
                               <div class="media-body w-100 d-flex">
                                  <div class="rounded-card bg-danger d-flex flex-column justify-content-between url-input-wrapper text-right" style="padding: 4px 0.75rem;">
-                                    <input class="url-input bg-danger ${textClass}" name="${name}" style="font-size: 13px" type="text" value="${array[j] ? array[j] : ''}"> 
+                                    <input class="url-input bg-danger ${textClass}" readonly name="${name}" style="font-size: 13px" type="text" value="${array[j] ? array[j] : ''}"> 
                                  </div>
                               </div>
                            </div>
@@ -705,7 +706,7 @@
                            <div class="rounded-card bg-light numeration position-absolute subnumeration">
                               <p class="text-dark fw-600 m-0">${i + 1}.${j}</p>
                            </div>
-                           <a class="btn btn-danger w-75" style="font-size: 13px; padding: 5px 8px;" data-row="${i}" data-url="${product.Photo[j]}" data-state="photosUrl">Посмотреть</a>
+                           <a class="btn btn-danger w-75" style="font-size: 13px; padding: 5px 8px;" data-row="${i}" data-url="${product.Photo[j]}" data-state="photosUrl" data-redact="false">Посмотреть</a>
                         </div>
                      </div>
                   </div>
@@ -725,7 +726,7 @@
       const imgButtons = document.querySelectorAll('[data-url]');
 
       imgButtons.forEach(btn => {
-         btn.addEventListener('click', () => openModalWithImg(btn.dataset.url, btn.dataset.row, btn.dataset.state));
+         btn.addEventListener('click', () => openModalWithImg(btn, btn.dataset.url, btn.dataset.row, btn.dataset.redact));
       })
    })
 //Получаем информацию о заказе
@@ -733,29 +734,48 @@
       const body = { order_id: id };
       return await postData("{{Route('read_orders_SelectOrder')}}", body);
    }
+   function openModal(redact) {
+      const label = document.querySelector('.customInputLabel');
+      if (redact) {
+         label.classList.remove('hide')
+      } else {
+         label.classList.add('hide')
+      }
+      $('#myModal').modal('show');
+   }
 //Вставляем в тег дефолт картинку
    function pasteNoImage(imgTag) {
       imgTag.src = '{{asset('assets/admin/assets/img/no-image.png')}}';
    }
 //Вставляем в тег картинку по url
    function changeModalImg(imgTag, url) {
+      if (url == 'null') {
+         pasteNoImage(imgTag);
+         return;
+      };
       imgTag.addEventListener('error', () => pasteNoImage(imgTag));
       imgTag.src = url;
    }
 //Открываем модалку с переданной картинкой
-   function openModalWithImg(url, id, state) {
+   function openModalWithImg(btn, url, id, redact) {
       const imgTag = document.querySelector('.image img');
-      const imgInput = document.querySelector('#file1');
-      imgInput.dataset.state = state;
-
+      activeBtn = btn;
       if (!url) {
          pasteNoImage(imgTag);
-         openModal();
+         if (redact === 'true') {
+               openModal(true);
+            } else {
+               openModal(false);
+            }
          setAttributeBySelector('#file1', 'name', id);
          return;
       }
       changeModalImg(imgTag, url);
-      openModal();
+      if (redact === 'true') {
+         openModal(true);
+      } else {
+         openModal(false);
+      }
       setAttributeBySelector('#file1', 'name', id);
    }
    
@@ -765,9 +785,21 @@
    }
 
 //Постим на сервер загруженную картинку и получаем ее url
-   const photosUrl = {};
-   const photosFactory = {};
-   const photosReport = {};
+   function getPhotosFromInputSelector(selector) {
+      const photos = {};
+      const inputs = document.querySelectorAll(`[data-state="${selector}"]`);
+      if (!inputs) return;
+      inputs.forEach(input => {
+         const data = input.dataset;
+         if (!data.url) return;
+         if (photos[data.row]) {
+            photos[data.row] = [...photos[data.row], data.url];
+         } else {
+            photos[data.row] = [data.url];
+         }
+      })
+      return photos;
+   }
 
    async function getImageUrl(e) {
       const file = e.target.files[0];
@@ -776,28 +808,7 @@
       formData.append('image', file);
       formData.append('_token', _token);
       const res = await postFormData('{{Route("UploadOrderPhoto")}}', formData);
-      const id = e.target.getAttribute('name');
-      const state = e.target.dataset.state;
-      console.log(state);
-      let array;
-      switch (state) {
-         case 'photosUrl':
-            array = photosUrl;
-            break;
-         case 'photosFactory':
-            array = photosFactory;
-            break;
-         case 'photosReport':
-            array = photosReport;
-            break;
-         default:
-            break;
-      }
-      if (array[id]) {
-         array[id] = [...array[id], res.url];
-      } else {
-         array[id] = [res.url];
-      }
+      activeBtn.dataset.url = res.url;
       console.log('Успешно создан: ', JSON.stringify(res));
       e.target.nextElementSibling.style.backgroundColor = '#ecffc6';
       e.target.value = '';
@@ -805,8 +816,10 @@
 //Собираем заказ и отправляем на сервер
    function makeOrder() {
       const orderRows = document.querySelectorAll('.orderRow'),
-            dataToServer = {id: _page_id, json: []};
-
+            dataToServer = {id: _page_id, json: []},
+            photosUrl = getPhotosFromInputSelector('photosUrl'),
+            photosFactory = getPhotosFromInputSelector('photosFactory'),
+            photosReport = getPhotosFromInputSelector('photosReport');
       orderRows.forEach((order, i) => {
          const data = {},
                photo = [],

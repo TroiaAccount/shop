@@ -138,9 +138,12 @@ window.addEventListener('DOMContentLoaded', () => {
          }
       })
    }
-   
-   addActiveClass(sideLinks, '.nav-link.sn');
-   addActiveClass(headerLinks, '.nav-link.hl');
+   if (sideLinks) {
+      addActiveClass(sideLinks, '.nav-link.sn');
+   }
+   if (headerLinks) {
+      addActiveClass(headerLinks, '.nav-link.hl');
+   }
 })
 
 async function postData(url = '', body = {}) {
