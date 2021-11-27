@@ -163,3 +163,8 @@
    border-color: #CCCCFF!important;
    color: #111!important;
 }
+.status-number {
+   overflow: hidden;
+   max-width: 81px;
+   text-overflow: ellipsis;
+}

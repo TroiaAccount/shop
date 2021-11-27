@@ -6,7 +6,7 @@
                <p>Сумма:</p>
             </div>
             <div class="col p-0">
-               <p class="text-success">{{$table->sum}}</p>
+               <p class="text-success status-number">{{$table->sum}}</p>
             </div>
          </div>
          <div class="col d-flex ml-3" style="max-width: 300px;">
@@ -22,7 +22,7 @@
                <p>Баланс:</p>
             </div>
             <div class="col p-0">
-               <p class="text-danger">{{$table->user_info->balance}}</p>
+               <p class="text-danger status-number">{{$table->user_info->balance}}</p>
             </div>
          </div>
          <div class="col d-flex ml-3" style="max-width: 300px;">
