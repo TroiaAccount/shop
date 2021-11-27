@@ -12,7 +12,7 @@ use App\Models\adres;
 class AdminController extends Controller
 {
     //
-    public function Page($page, request $req, $id = null){
+    public function Page($page, request $req, $subpage = null){
         $id = $req->session()->get('id');
         $user_info = User::select()->where('id', $id)->first();
         $table = null;
@@ -84,7 +84,7 @@ class AdminController extends Controller
             }
         }
         if($page == "blank"){
-            $table = order::select()->where('id', $id)->first();
+            $table = order::select()->where('id', $subpage)->first();
             if($table != null){
                 $json = json_decode($table->json);
                 $total_cost = 0;
