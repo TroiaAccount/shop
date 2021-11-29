@@ -32,7 +32,7 @@
                      </div>
                      <!-- /.widget-heading -->
                      <div class="widget-body clearfix">
-                           <table class="table table-striped" data-toggle="datatables"
+                           <table class="table table-striped"
                               data-plugin-options='{"searching": false}'>
                               <thead>
                                  <tr>
@@ -53,8 +53,7 @@
                                                    @elseif ($result->status == 4) Обрабатывается
                                                    @endif
                                              </div>
-                                             <select class="m-b-10 form-control hide" data-placeholder="Choose"
-                                                   data-toggle="select2">
+                                             <select class="m-b-10 form-control hide" data-placeholder="Choose">
                                                    <optgroup label="Статус">
                                                       @for ($i = 1; $i <= 4; $i++)
                                                          <option value="{{ $i }}" @if ($result->status == $i)
@@ -68,8 +67,8 @@
                                                       </option>
                                  @endfor
                                  </optgroup>
-                                 </td>
                                  </select>
+                                 </td>
                                  <th class="d-flex justify-content-center">
                                        <p><i class="fas fa-pen hovered-link yellow" data-toggle="tooltip"
                                              data-placement="bottom"
@@ -225,23 +224,10 @@
       })
 
       if (!e.target.parentElement.classList.contains('redact')) {
-         const status = select.value,
-               cost = parent.querySelector('[name="cost"]').textContent,
-               commission = parent.querySelector('[name="comission"]').textContent,
-               count = parent.querySelector('[name="count"]').textContent,
-               size = parent.querySelector('[name="size"]').textContent,
-               model = parent.querySelector('[name="model"]').textContent,
-               color = parent.querySelector('[name="color"]').textContent;
+         const status = select.value;
 
          const body = {
-            id,
-            status,
-            cost,
-            commission,
-            count,
-            size,
-            model,
-            color
+            id, status
          };
          
          postData('{{ Route('write_orders_ReplaceOrder') }}', body)

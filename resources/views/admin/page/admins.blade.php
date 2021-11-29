@@ -32,7 +32,7 @@
                      </div>
                      <!-- /.widget-heading -->
                      <div class="widget-body clearfix">
-                           <table class="table table-striped" data-toggle="datatables"
+                           <table class="table table-striped"
                               data-plugin-options='{"searching": false}'>
                               <thead>
                                  <tr>

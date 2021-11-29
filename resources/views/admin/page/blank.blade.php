@@ -9,12 +9,24 @@
                <p class="text-success status-number">{{$table->sum}}</p>
             </div>
          </div>
-         <div class="col d-flex ml-3" style="max-width: 300px;">
-            <div class="col">
+         <div class="col d-flex p-0" style="max-width: 320px;">
+            <div class="col" style="max-width: 80px">
                <p>Статус:</p>
             </div>
-            <div class="col p-0">
-               <input type="text" value="">
+            <div class="col p-0" style="margin-top: -5px;">
+               <select class="m-b-10 form-control" data-placeholder="Choose" data-toggle="select">
+                  <optgroup label="Статус">
+                  @for ($i = 1; $i <= 4; $i++)
+                     <option value="{{ $i }}" @if ($table->status == $i) selected @endif>
+                        @if ($i == 1) Отправлен 
+                        @elseif ($i == 2) Прибыл 
+                        @elseif ($i == 3) Упаковывается 
+                        @elseif ($i == 4) Обрабатывается 
+                        @endif
+                     </option>
+                  @endfor
+                  </optgroup>
+               </select>
             </div>
          </div>
          <div class="col d-flex ml-3" style="max-width: 150px;">
@@ -734,7 +746,7 @@
       const body = { order_id: id };
       return await postData("{{Route('read_orders_SelectOrder')}}", body);
    }
-   function openModal(redact) {
+   function openPhotoModal(redact) {
       const label = document.querySelector('.customInputLabel');
       if (redact) {
          label.classList.remove('hide')
@@ -763,18 +775,18 @@
       if (!url) {
          pasteNoImage(imgTag);
          if (redact === 'true') {
-               openModal(true);
+            openPhotoModal(true);
             } else {
-               openModal(false);
+               openPhotoModal(false);
             }
          setAttributeBySelector('#file1', 'name', id);
          return;
       }
       changeModalImg(imgTag, url);
       if (redact === 'true') {
-         openModal(true);
+         openPhotoModal(true);
       } else {
-         openModal(false);
+         openPhotoModal(false);
       }
       setAttributeBySelector('#file1', 'name', id);
    }
