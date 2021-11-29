@@ -54,7 +54,7 @@
       </tbody>
    </table>
    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-      <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">git 
+      <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="toast-header">
           <strong class="me-auto">CNSHOP</strong>
           <small>now</small>
