@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\order;
 use App\Models\User;
 use App\Models\favorite;
+use App\Models\notification;
 
 class OrderController extends Controller
 {
@@ -131,7 +132,33 @@ class OrderController extends Controller
         if($id != null){
             $check_order = order::select()->where(['id' => $id, 'completed' => 0])->first();
             if($check_order != null){
-                $check_order->json = $json;
+                if($json != null){
+                    $check_order->json = $json;
+                }
+                if($req['status'] != null){
+                    $check_order->status = $req['status'];
+                    $status = null;
+                    switch($req['status']){
+                        case 1:
+                            $status = "Отправлен";
+                        break;
+                        case 2:
+                            $status = "Прибыл";
+                        break;
+                        case 3:
+                            $status = "Упаковывается";
+                        break;
+                        case 4:
+                            $status = "Обрабатывается";
+                        break;
+                    }
+                    notification::insert([
+                        'user_id' => $check_order->user_id,
+                        'title' => 'Изменения статуса вашего заказа(' . $check_order->number  . ')',
+                        'text' => 'Ваш заказ перешёл на следующий этап(' . $status . ')',
+                        'from_' => 'oz-com'
+                    ]);
+                }
                 $check_order->save(); 
                 $result = ['status' => true];
             }
