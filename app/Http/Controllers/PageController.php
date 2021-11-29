@@ -17,6 +17,7 @@ class PageController extends Controller
         $id = $req->session()->get('id');
         $user_info = User::select()->where('id', $id)->first();
         $table = null;
+        $listen = notification::select('id')->where(['user_id' => $id, 'listen' => 0])->count();
         if($page == "orders"){
             $order = order::select()->where('user_id', $id)->paginate(10);
             $favorites = null;
@@ -36,7 +37,6 @@ class PageController extends Controller
         }
         if($page == "history"){
             $table = notification::select()->where(['user_id' => $id])->orderby('id', 'desc')->get();
-            $listen = notification::select('id')->where(['user_id' => $id, 'listen' => 0])->count();
             $table = ['list' => $table, 'count' => $listen];
         }
         if($page == "personal-info"){
@@ -53,7 +53,7 @@ class PageController extends Controller
             }
         }
         
-        return view('main')->with(['page' => $page, 'user_info' => $user_info, 'table' => $table, 'subpage' => $subpage]);
+        return view('main')->with(['page' => $page, 'user_info' => $user_info, 'table' => $table, 'subpage' => $subpage, 'listen' => $listen]);
     }
 
     public function Auth(request $req){
