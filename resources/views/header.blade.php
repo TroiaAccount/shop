@@ -102,7 +102,7 @@
          </ul>
       </div>
    </div>
-   <div class="notificationWrapper p-2 hide">
+   <div class="notificationWrapper p-2 hide" data-count="{{$listen}}">
    </div>
 </section>
 <script>
@@ -116,11 +116,13 @@
          menu.classList.toggle('_active');
       })
 
-      const bell = document.querySelector('.fas.fa-bell');
-      bell.addEventListener('click', () => {
-         const ntfWrapper = document.querySelector('.notificationWrapper');
-         ntfWrapper.classList.toggle('show');
-         ntfWrapper.classList.toggle('hide');
-      })
+      const ntfWrapper = document.querySelector('.notificationWrapper');
+      if (ntfWrapper.dataset.count > 0) {
+         const bell = document.querySelector('.fas.fa-bell');
+         bell.addEventListener('click', () => {
+            ntfWrapper.classList.toggle('show');
+            ntfWrapper.classList.toggle('hide');
+         })
+      }
    })
 </script>

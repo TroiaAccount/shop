@@ -43,7 +43,6 @@
    <script>
       postData("{{ Route('Select') }}", {type: 2})
          .then(res => {
-            console.log(res)
             res.data.forEach(notification => {
                const div = document.createElement('div');
                const ntfWrapper = document.querySelector('.notificationWrapper');
