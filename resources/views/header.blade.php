@@ -84,8 +84,11 @@
       </div>
       <div class="header__nav">
          <ul class="nav">
-            <li class="nav-item">
+            <li class="nav-item position-relative">
                <a href="#" class="nav-link"><i class="fas fa-bell"></i></a>
+               @if ($listen > 0) 
+                  <div class="countOfNotification"></div>
+               @endif
             </li>
             <li class="nav-item">
                <a href="#" class="nav-link">Главная</a>
@@ -99,14 +102,25 @@
          </ul>
       </div>
    </div>
+   <div class="notificationWrapper p-2 hide">
+   </div>
 </section>
 <script>
-   const trigger = document.querySelector('.menu__icon'),
+   window.addEventListener('DOMContentLoaded', () => {
+      const trigger = document.querySelector('.menu__icon'),
          span = trigger.querySelector('span'),
          menu = document.querySelector('.sidenav');
 
-   trigger.addEventListener('click', () => {
-      trigger.classList.toggle('_active');
-      menu.classList.toggle('_active');
+      trigger.addEventListener('click', () => {
+         trigger.classList.toggle('_active');
+         menu.classList.toggle('_active');
+      })
+
+      const bell = document.querySelector('.fas.fa-bell');
+      bell.addEventListener('click', () => {
+         const ntfWrapper = document.querySelector('.notificationWrapper');
+         ntfWrapper.classList.toggle('show');
+         ntfWrapper.classList.toggle('hide');
+      })
    })
 </script>
