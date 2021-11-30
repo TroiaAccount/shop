@@ -37,12 +37,14 @@
 </main>
 <script>
    function redactRate() {
+      showLoader();
       const rate = document.querySelector('#rate').value;
       
       const body = {id};
 
       postData('{{ Route('write_orders_CompletedOrder') }}', body)
          .then((res) => {
+            hideLoader();
             if (res.status === true) {
                window.location.reload();
             }

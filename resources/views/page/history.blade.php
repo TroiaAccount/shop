@@ -1,3 +1,4 @@
+@csrf
 <div class="history__nav-wrapper">
     <div class="history__nav">
         <span id="allmsg" class="history__nav-toggler me-2 _active" onclick="Select(1)">Все сообщения</span>
@@ -57,19 +58,22 @@
     });
     
     $("#Listen").on("submit", function(e){
-       e.preventDefault();
-       $.ajax({
-             url: '{{Route("AllListen")}}',
-             method: 'post',
-             dataType: 'json',
-             data: $(this).serialize(),
-             success: function(data){
-                location.reload();
-             }
-       });
+        showLoader();
+        e.preventDefault();
+        $.ajax({
+                url: '{{Route("AllListen")}}',
+                method: 'post',
+                dataType: 'json',
+                data: $(this).serialize(),
+                success: function(data){
+                    hideLoader();
+                    window.location.reload();
+                }
+        });
     });
 
     function Select(type){
+        showLoader();
         let token = document.getElementsByName('_token')[0].value;
         $.ajax({
             url: '{{Route("Select")}}',
@@ -77,6 +81,7 @@
             dataType: 'json',
             data: 'type=' + type + '&_token=' + token,
             success: function(data){
+                hideLoader();
                 if(data.status == true){
                     let table = document.getElementById('table');
                     table.innerHTML = "";

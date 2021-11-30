@@ -179,6 +179,7 @@
       }
 
       function createRole(e, url) {
+         showLoader();
          const { name, orders, users, admins, roles, delivery, adress, redactBtn, createBtn } = getRoleValues();
 
          let id;
@@ -221,6 +222,7 @@
 
          postData(url, body)
                .then((res) => {
+                  hideLoader();
                   if (res.status === true) {
                      window.location.reload();
                   }
@@ -228,6 +230,7 @@
       }
 
       function redact(id) {
+         showLoader();
          const { name, orders, users, admins, roles, delivery, adress, redactBtn, createBtn } = getRoleValues();
 
          changeTextContent('#roleModalTitle', 'Редактирование Роли');
@@ -241,6 +244,7 @@
 
          postData('{{ Route('read_roles_SelectRole') }}', {id})
                .then((res) => {
+                  hideLoader();
                   if (res.status === true) {
                      const data = res.data;
                      name.value = data.name;

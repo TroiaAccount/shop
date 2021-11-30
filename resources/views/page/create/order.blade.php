@@ -300,8 +300,8 @@
    }
 
    async function makeOrder() {
-      let loaderWrapper = document.querySelector('.loader-wrapper');
-      showLoader(loaderWrapper);
+      showLoader();
+      console.log('loader');
       const dataToServer = [];
       for (let i = 0; i <= countOfMainInputs; i++) {
          const data = {},
@@ -352,12 +352,11 @@
          });
          res = await res.json();
          console.log('Успешно создан: ', JSON.stringify(res));
-         hideLoader(loaderWrapper);
+         hideLoader();
          window.location.href = '{{Route("page", ["page" => "orders"])}}'
       } catch (e) {
          console.error('Ошибка', e);
       }
-      
    }
    
 </script>

@@ -30,6 +30,7 @@
       type="text/css">
    <link href="{{ asset('assets/admin/assets/css/style.css') }}" rel="stylesheet" type="text/css">
    <link href="{{ asset('assets/admin/assets/css/admin.css') }}" rel="stylesheet" type="text/css">
+   <link href="{{ asset('assets/admin/assets/css/loader.css') }}" rel="stylesheet" type="text/css">
    @if($page == 'blank')
       <link href="{{ asset('assets/admin/assets/css/blank.css') }}" rel="stylesheet" type="text/css">
       <link href="{{ asset('assets/admin/assets/vendors/dropzone/min/dropzone.min.css') }}" rel="stylesheet" type="text/css">
@@ -288,6 +289,9 @@
          </footer>
       @endif
    </div>
+   <div class="loader-wrapper hide">
+      <div class="loader"><div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
+   </div>
    <!--/ #wrapper -->
    <!-- Scripts -->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -310,6 +314,7 @@
    <script src="{{ asset('assets/admin/assets/js/template.js') }}"></script>
    <script src="{{ asset('assets/admin/assets/js/custom.js') }}"></script>
    <script src="{{ asset('assets/admin/assets/js/app.js') }}"></script>
+   <script src="{{ asset('assets/admin/assets/js/loader.js') }}"></script>
 </body>
 
 </html>

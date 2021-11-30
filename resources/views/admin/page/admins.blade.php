@@ -121,6 +121,7 @@
 
    <script>
       function addAdmin() {
+         showLoader();
          const user = document.querySelector('#user_id').value,
                role = document.querySelector('#role_id').value;
 
@@ -131,6 +132,7 @@
          
          postData('{{ Route('write_admins_AddAdmin') }}', body)
                .then((res) => {
+                  hideLoader();
                   if (res.status === true) {
                      window.location.reload();
                   }

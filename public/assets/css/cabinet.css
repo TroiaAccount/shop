@@ -90,9 +90,11 @@ main#page {
 } */
 
 .hide {
-  display: none;
+  display: none!important;
 }
-
+.show {
+  display: block;
+}
 .bg-primary {
   background-color: #1c4583 !important;
 }
@@ -338,7 +340,7 @@ main#page {
 }
 
 .table__wrapper {
-  margin-bottom: 60px;
+  margin-bottom: 40px;
   font-size: 12px;
 }
 

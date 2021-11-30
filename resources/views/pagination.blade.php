@@ -4,10 +4,10 @@
    }
 @endphp
 @if($page != "favorites")
-   <div class="change__page-wrapper" id="pagination">
+   <div class="change__page-wrapper w-100" id="pagination">
+      <p class="text-center position-absolute" style="top: 0px; left: 25px;">Кол-во страниц</p>
       <div class="buttons-wrapper d-flex justify-content-end">
-
-      <div class="change__buttons-group">
+         <div class="change__buttons-group">
             <div class="d-flex justify-content-center">
                <a href="{{$table->previousPageUrl()}}"><button class="btn btn-outline-secondary change-page-btn" style="border-bottom-right-radius: 0px; border-top-right-radius: 0px;"><i class="fas fa-chevron-left fa-xs"></i></button></a>
                <div class="page-indicator">

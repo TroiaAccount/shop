@@ -69,6 +69,7 @@
    <script>
       $("#filter").on("submit", function(e){
          e.preventDefault();
+         showLoader();
          $.ajax({
                url: '{{Route("Filter")}}',
                method: 'post',
@@ -119,6 +120,7 @@
                   } else {
                      alert(data.error);
                   }
+                  hideLoader();
                }
          });
       });
@@ -129,10 +131,12 @@
       })
       
       function setFavorite(id) {
+         showLoader();
          const body = { order_id: id };
 
          postData('{{ Route('Favorite') }}', body)
                .then(res => {
+                  hideLoader();
                   if (res.status === true) {
                      let alertBody = document.getElementById('alertBody');
                      alertBody.innerHTML = "Вы успешно добавили заказ в избранное.";
@@ -144,10 +148,12 @@
       }
 
       function copyOrder(id) {
+         showLoader();
          const body = { order_id: id };
 
          postData('{{ Route('CopyOrder') }}', body)
                .then(res => {
+                  hideLoader();
                   if (res.status === true) {
                      alertBody.innerHTML = "Вы успешно скопировали заказ.";
                      toastList[0].show();
@@ -158,10 +164,12 @@
       }
 
       function selectOrder(id) {
+         showLoader();
          const body = { order_id: id };
 
          const promise = postData('{{ Route('SelectOrder') }}', body)
                .then(res => {
+                  hideLoader();
                   if (res.status === true) {
                      return res.data;
                   } else {

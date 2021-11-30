@@ -616,6 +616,7 @@
    }
 
    async function makeOrder() {
+      showLoader();
       const dataToServer = {id: _page_id, json: []},
             photosUrl = getPhotosFromInputSelector('photosUrl'),
             photosFactory = getPhotosFromInputSelector('photosFactory'),
@@ -682,6 +683,7 @@
       }
       postData('{{Route("ReplaceOrder")}}', dataToServer)
             .then(res => {
+               hideLoader();
                if (res.status === true) {
                   console.log('Успешно создан: ', JSON.stringify(res));
                   window.location.href = '{{Route("page", ["page" => "orders"])}}'
