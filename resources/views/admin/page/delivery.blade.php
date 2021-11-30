@@ -168,76 +168,79 @@
     }
  
     async function done(id) {
-       const data = { id: id };
-       try {
-          const res = await fetchUrl('Route("write_orders_CompletedOrder")', 'POST', {
-             'Content-type': 'application/json'
-          }, JSON.stringify(data));
-          if (res.status === 200) {
-             console.log('Завершен');
-          }
-       } catch (e) {
-          console.error('Error:', e.message);
-       }
- 
+      showLoader();
+      const data = { id: id };
+      try {
+         const res = await fetchUrl('Route("write_orders_CompletedOrder")', 'POST', {
+            'Content-type': 'application/json'
+         }, JSON.stringify(data));
+         hideLoader();
+         if (res.status === 200) {
+            console.log('Завершен');
+         }
+      } catch (e) {
+         console.error('Error:', e.message);
+      }
     }
     async function redact(e, id) {
-       const parent = e.target.parentElement.parentElement.parentElement,
-             cells = parent.querySelectorAll('[data-redact]'),
-             select = parent.querySelector('select'),
-             status = parent.querySelector('.status-select');
- 
-       e.target.parentElement.classList.toggle('redact');
-       select.classList.toggle('show');
-       select.classList.toggle('hide');
-       status.classList.toggle('show');
-       status.classList.toggle('hide');
- 
-       select.addEventListener('change', (e) => {
-          switch (e.target.value) {
-             case '1':
-                status.textContent = 'Отправлен';
-                break;
-             case '2':
-                status.textContent = 'Прибыл';
-                break;
-             case '3':
-                status.textContent = 'Упаковывается';
-                break;
-             case '4':
-                status.textContent = 'Обрабатывается';
-                break;
-             default:
-                break;
-          }
-       })
- 
-       for (const cell of cells) {
-          if (e.target.parentElement.classList.contains('redact')) {
-             cell.setAttribute('contenteditable', true);
-          } else {
-             cell.setAttribute('contenteditable', false);
-          }
-       }
-       if (!e.target.parentElement.classList.contains('redact')) {
-          const status = select.value,
-                cost = parent.querySelector('[name="cost"]').textContent,
-                commission = parent.querySelector('[name="comission"]').textContent,
-                count = parent.querySelector('[name="count"]').textContent,
-                size = parent.querySelector('[name="size"]').textContent,
-                model = parent.querySelector('[name="model"]').textContent,
-                color = parent.querySelector('[name="color"]').textContent;
- 
-          try {
-             const res = await fetchUrl('Route("write_orders_ReplaceOrder")', 'POST', {
-                'Content-type': 'application/json'
-             }, JSON.stringify({ id, status, cost, commission, count, size, model, color }));
-             if (res.status === 200) {
-                console.log('Завершен');
-             }
-          } catch (e) {
-             console.error('Error:', e.message);
-          }
-       }
-    }
- </script>
+      const parent = e.target.parentElement.parentElement.parentElement,
+            cells = parent.querySelectorAll('[data-redact]'),
+            select = parent.querySelector('select'),
+            status = parent.querySelector('.status-select');
+
+      e.target.parentElement.classList.toggle('redact');
+      select.classList.toggle('show');
+      select.classList.toggle('hide');
+      status.classList.toggle('show');
+      status.classList.toggle('hide');
+
+      select.addEventListener('change', (e) => {
+         switch (e.target.value) {
+            case '1':
+               status.textContent = 'Отправлен';
+               break;
+            case '2':
+               status.textContent = 'Прибыл';
+               break;
+            case '3':
+               status.textContent = 'Упаковывается';
+               break;
+            case '4':
+               status.textContent = 'Обрабатывается';
+               break;
+            default:
+               break;
+         }
+      })
+
+      for (const cell of cells) {
+         if (e.target.parentElement.classList.contains('redact')) {
+            cell.setAttribute('contenteditable', true);
+         } else {
+            cell.setAttribute('contenteditable', false);
+         }
+      }
+      if (!e.target.parentElement.classList.contains('redact')) {
+         showLoader();
+         const status = select.value,
+               cost = parent.querySelector('[name="cost"]').textContent,
+               commission = parent.querySelector('[name="comission"]').textContent,
+               count = parent.querySelector('[name="count"]').textContent,
+               size = parent.querySelector('[name="size"]').textContent,
+               model = parent.querySelector('[name="model"]').textContent,
+               color = parent.querySelector('[name="color"]').textContent;
+
+         try {
+            const res = await fetchUrl('Route("write_orders_ReplaceOrder")', 'POST', {
+               'Content-type': 'application/json'
+            }, JSON.stringify({ id, status, cost, commission, count, size, model, color }));
+            hideLoader();
+            if (res.status === 200) {
+               console.log('Завершен');
+            }
+         } catch (e) {
+            console.error('Error:', e.message);
+         }
+      }
+   }
+</script>

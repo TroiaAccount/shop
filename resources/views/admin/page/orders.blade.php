@@ -182,10 +182,12 @@
    }
 
    function done(id) {
+      showLoader();
       const body = {id};
 
       postData('{{ Route('write_orders_CompletedOrder') }}', body)
          .then((res) => {
+            hideLoader();
             if (res.status === true) {
                window.location.reload();
             }
@@ -224,6 +226,7 @@
       })
 
       if (!e.target.parentElement.classList.contains('redact')) {
+         showLoader();
          const status = select.value;
 
          const body = {
@@ -232,6 +235,7 @@
          
          postData('{{ Route('write_orders_ReplaceOrder') }}', body)
                .then((res) => {
+                  hideLoader();
                   if (res.status === true) {
                      window.location.reload();
                   }

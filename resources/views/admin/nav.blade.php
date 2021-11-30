@@ -8,7 +8,7 @@
                 <li @if($page == "admins") class="active" @endif><a href="{{Route('AdminPage', ['page' => 'admins'])}}">Админы</a></li>
                 <li @if($page == "roles") class="active" @endif><a href="{{Route('AdminPage', ['page' => 'roles'])}}">Роли</a></li>
                 <li @if($page == "adress") class="active" @endif><a href="{{Route('AdminPage', ['page' => 'adress'])}}">Адреса</a></li>
-                <li class="menu-item-has-children" @if($page == "delivery") class="active menu-item-has-children" @endif>
+                {{-- <li class="menu-item-has-children" @if($page == "delivery") class="active menu-item-has-children" @endif>
                     <a href="{{Route('AdminPage', ['page' => 'delivery'])}}">Доставка</a>
                     <ul class="list-unstyled sub-menu mt-0">
                         <li>
@@ -18,7 +18,7 @@
                             <a href="{{Route('AdminPage', ['page' => 'delivery'])}}">По Росии</a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
             </ul>
         </li>
         <!--<li class="menu-item-has-children "><a href="javascript:void(0);"><i class="list-icon material-icons">apps</i> <span class="hide-menu">Apps <span class="badge bg-primary">6</span></span></a>

@@ -22,7 +22,7 @@
     margin-bottom: 0;
 }
 .hide {
-    display: none;
+    display: none!important;
 }
 .show {
     display: block;

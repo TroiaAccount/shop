@@ -77,6 +77,7 @@
    <script>
       $("#filter").on("submit", function(e){
          e.preventDefault();
+         showLoader();
          $.ajax({
                url: '{{Route("Filter")}}',
                method: 'post',
@@ -121,6 +122,7 @@
                   } else {
                      alert(data.error);
                   }
+                  hideLoader();
                }
          });
       });

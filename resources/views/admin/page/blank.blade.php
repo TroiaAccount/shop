@@ -827,6 +827,7 @@
    }
 //Собираем заказ и отправляем на сервер
    function makeOrder() {
+      showLoader();
       const orderRows = document.querySelectorAll('.orderRow'),
             dataToServer = {id: _page_id, json: []},
             photosUrl = getPhotosFromInputSelector('photosUrl'),
@@ -912,6 +913,7 @@
 
       postData('{{Route("ReplaceOrder")}}', dataToServer)
             .then(res => {
+               hideLoader();
                if (res.status === true) {
                   console.log('Успешно создан: ', JSON.stringify(res));
                   window.location.href = '{{Route('AdminPage', ['page' => 'orders'])}}'

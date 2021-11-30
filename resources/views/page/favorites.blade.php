@@ -87,18 +87,20 @@
       return new bootstrap.Toast(toastEl);
    })
    function setFavorite(id) {
-        const body = { order_id: id };
-        postData('{{ Route('Favorite') }}', body)
-              .then(res => {
-                 if (res.status === true) {
-                    let alertBody = document.getElementById('alertBody');
-                    alertBody.innerHTML = "Вы успешно убрали заказ из избранных.";
-                    toastList[0].show();
-                    location.reload();
-                 } else {
-                    alert(res.error);
-                 }
-              })
-     }
+      showLoader();
+      const body = { order_id: id };
+      postData('{{ Route('Favorite') }}', body)
+            .then(res => {
+               hideLoader();
+               if (res.status === true) {
+                  let alertBody = document.getElementById('alertBody');
+                  alertBody.innerHTML = "Вы успешно убрали заказ из избранных.";
+                  toastList[0].show();
+                  location.reload();
+               } else {
+                  alert(res.error);
+               }
+            })
+   }
  </script>
  @include('pagination')

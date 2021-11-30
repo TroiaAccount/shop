@@ -88,6 +88,7 @@
 
    $('#AddAddress').on('submit', function(e) {
       e.preventDefault();
+      showLoader();
       $.ajax({
          url: '{{Route("CreateAdres")}}',
          method: 'post',
@@ -95,7 +96,8 @@
          dataType: 'json',
          success: function (response) {
             //alert('Адрес успешно добавлен')
-            //window.location.reload();
+            hideLoader();
+            window.location.reload();
             if(response.status == true){
 
             } else {

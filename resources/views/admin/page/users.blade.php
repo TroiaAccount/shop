@@ -77,6 +77,7 @@
          const parent = getParent(e.target);
 
          if (!e.target.parentElement.classList.contains('redact')) {
+            showLoader();
             const phone = parent.querySelector('[name="phone"]').textContent,
                fullName = parent.querySelector('[name="full_name"]').textContent;
 
@@ -88,6 +89,7 @@
 
             postData('{{ Route('write_users_ReplaceUser') }}', body)
                .then((res) => {
+                  hideLoader();
                   if (res.status === true) {
                      window.location.reload();
                   }

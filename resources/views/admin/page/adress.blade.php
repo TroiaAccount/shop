@@ -85,6 +85,7 @@
          editableToggler(e.target);
          const parent = getParent(e.target);
          if (!e.target.parentElement.classList.contains('redact')) {
+            showLoader();
             const fullName = parent.querySelector('[name="full_name"]').textContent,
                   phone = parent.querySelector('[name="phone"]').textContent,
                   email = parent.querySelector('[name="email"]').textContent,
@@ -102,6 +103,7 @@
 
             postData('{{Route("write_adress_ReplaceAdres")}}', body)
                   .then((res) => {
+                     hideLoader();
                      if (res.status === true) {
                         window.location.reload();
                      }
