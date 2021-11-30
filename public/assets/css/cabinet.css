@@ -637,3 +637,50 @@ button.change-page-btn {
   font-size: 20px;
   color: #6b6b6a;
 }
+
+.countOfNotification {
+  position: absolute;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background: #ffa705;
+  top: 0;
+  left: 7px;
+}
+.notificationWrapper {
+  position: absolute;
+  top: 65px;
+  right: 75px;
+  width: 360px;
+  max-height: 360px;
+  background: #f9f9f9;
+  border: 1px solid #CCCCFF;
+  border-radius: 4px;
+  overflow-y: auto;
+}
+
+@media (max-width: 698px) {
+  .notificationWrapper {
+    right: 10px;
+  }
+}
+
+.notification-msg {
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+}
+.notification-msg:not(:last-child) {
+  margin-bottom: 5px;
+}
+.msg-title {
+  font-size: 13px;
+  font-weight: 500;
+}
+.msg-from {
+  font-size: 12px;
+  font-weight: 500;
+  color: #62635a;
+}
+.msg-text {
+  font-size: 12px;
+}

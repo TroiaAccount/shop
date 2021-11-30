@@ -16,6 +16,10 @@
    text-align: center;
 }
 
+.widget-holder {
+   padding-right: 0;
+}
+
 .text-muted {
    white-space: nowrap;
    color: #2b3043b3!important;

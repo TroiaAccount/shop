@@ -144,6 +144,7 @@ window.addEventListener('DOMContentLoaded', () => {
    if (headerLinks) {
       addActiveClass(headerLinks, '.nav-link.hl');
    }
+
 })
 
 async function postData(url = '', body = {}) {

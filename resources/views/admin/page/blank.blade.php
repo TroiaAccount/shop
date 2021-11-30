@@ -386,7 +386,7 @@
          const row = document.createElement('div');
          row.classList.add('widget-list', 'row', 'orderRow');
          row.innerHTML = `
-               <div class="widget-holder widget-sm col" style="max-width: 65px;">
+               <div class="widget-holder widget-sm col" style="max-width: 50px;">
                   <div class="widget-bg bg-transparent text-inverse number mb-2">
                      <div class="widget-body p-0">
                         <div class="-w-info media">

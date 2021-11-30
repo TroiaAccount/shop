@@ -40,5 +40,23 @@
       </div>
    </main>
    <script src="{{asset('assets/js/index.js')}}"></script>
+   <script>
+      postData("{{ Route('Select') }}", {type: 2})
+         .then(res => {
+            res.data.forEach(notification => {
+               const div = document.createElement('div');
+               const ntfWrapper = document.querySelector('.notificationWrapper');
+               div.classList.add('notification-msg');
+               div.innerHTML = `
+                  <div class="d-flex justify-content-between">
+                     <div class="msg-title">Привет!</div>
+                     <div class="msg-from">admirated</div>
+                  </div>
+                  <div class="msg-text">Мы рады сообщить тебе о том что твой товар уже едет к тебе!</div>
+               `
+               ntfWrapper.append(div);
+            })
+         })
+   </script>
 </body>
 </html>
