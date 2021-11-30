@@ -6,6 +6,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/cabinet.css')}}">
+   <link rel="stylesheet" type="text/css" href="{{asset('assets/css/loader.css')}}">
    <script src="https://kit.fontawesome.com/e573f55991.js" crossorigin="anonymous"></script>
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
    <title>Cabinet</title>
@@ -39,6 +40,10 @@
 
       </div>
    </main>
+   <div class="loader-wrapper hide">
+      <div class="loader"><div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
+   </div>
+   <script src="{{asset('assets/js/loader.js')}}"></script>
    <script src="{{asset('assets/js/index.js')}}"></script>
    <script>
       postData("{{ Route('Select') }}", {type: 2})
@@ -49,10 +54,10 @@
                div.classList.add('notification-msg');
                div.innerHTML = `
                   <div class="d-flex justify-content-between">
-                     <div class="msg-title">Привет!</div>
-                     <div class="msg-from">admirated</div>
+                     <div class="msg-title">${notification.title}</div>
+                     <div class="msg-from">${notification.from_}</div>
                   </div>
-                  <div class="msg-text">Мы рады сообщить тебе о том что твой товар уже едет к тебе!</div>
+                  <div class="msg-text">${notification.text}</div>
                `
                ntfWrapper.append(div);
             })
