@@ -101,14 +101,12 @@
                         tr.innerHTML = `
                            <td>${item.number}</td>
                            <td>${status}</td>
-                           <td class="table-summ">${item.cost}</td>
-                           <td class="table-commission">${item.commission}%</td>
-                           <td>${item.status2}</td>
+                           <td>${item.status2 ? item.status2 : ''}</td>
                            <td>${item.datetime}</td>
                            <td align="right">
-                              <a onclick="redactOrder( ${item.id })" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Редактировать"><i class="far fa-edit"></i></a>
-                              <a onclick="setFavorite(${item.id })" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Добавить в избранные"><i class="far fa-heart"></i></a>
-                              <a onclick="copyOrder(${item.id })" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Копировать"><i class="far fa-copy"></i></a>
+                              <a onclick="redactOrder( ${item.id })" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Редактировать" class="hovered-link green"><i class="far fa-edit"></i></a>
+                              <a onclick="setFavorite(${item.id })" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Добавить в избранные" class="hovered-link red"><i class="far fa-heart"></i></a>
+                              <a onclick="copyOrder(${item.id })" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Копировать" class="hovered-link yellow"><i class="far fa-copy"></i></a>
                            </td>
                            <td align="center" style="background-color: #eaf5cb;"><i class="fas fa-info-circle"></i></td>
                         `;

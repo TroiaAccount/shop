@@ -47,7 +47,7 @@
             </div>
             <div class="mt-3 row">
                <div>
-                  <input type="number" name="count" class="m-0 text-order-input">
+                  <input type="number" required name="count" class="m-0 text-order-input">
                </div>
             </div>
          </div>
@@ -58,7 +58,7 @@
             </div>
             <div class="mt-3 row">
                <div>
-                  <input type="number" name="cost" step="any" class="m-0 text-order-input">
+                  <input type="number" required name="cost" step="any" class="m-0 text-order-input">
                </div>
             </div>
          </div>
@@ -217,14 +217,14 @@
             <div class="order-card ms-3" style="min-width: 120px;">
                <div class="mt-2 row">
                   <div>
-                     <input type="number" name="count" class="m-0 text-order-input">
+                     <input type="number" required name="count" class="m-0 text-order-input">
                   </div>
                </div>
             </div>
             <div class="order-card" style="min-width: 105px;">
                <div class="mt-2 row">
                   <div>
-                     <input type="number" name="cost" step="any" class="m-0 text-order-input">
+                     <input type="number" required name="cost" step="any" class="m-0 text-order-input">
                   </div>
                </div>
             </div>
@@ -320,7 +320,9 @@
          const makeData = (inputs, array, fieldName) => {
             data[fieldName] = array;
             inputs.forEach(input => {
-               data[fieldName].push(input.value);
+               if (input.value) {
+                  data[fieldName].push(input.value);
+               }
             })
          }
          if (photosUrl[i]) {
@@ -339,7 +341,14 @@
          data['color'] = color;
          data['size'] = size;
          data['model'] = model;
-         dataToServer.push(data);
+         if (data.PhotoUrl.length || data.ProductUrl.length || data.Photo.length) {
+            console.log(data.PhotoUrl.length, data.ProductUrl.length, data.Photo.length);
+            dataToServer.push(data);
+         } else {
+            alert('Добавьте хотя бы одну ссылку или фото товара');
+            hideLoader();
+            return;
+         }
       }
       try {
          let res = await fetch('{{Route("CreateOrder")}}', {
@@ -353,7 +362,7 @@
          res = await res.json();
          console.log('Успешно создан: ', JSON.stringify(res));
          hideLoader();
-         window.location.href = '{{Route("page", ["page" => "orders"])}}'
+         // window.location.href = '{{Route("page", ["page" => "orders"])}}'
       } catch (e) {
          console.error('Ошибка', e);
       }
