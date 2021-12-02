@@ -102,9 +102,8 @@
          formData.append('image', file);
          formData.append('_token', _token);
          const res = await postFormData('{{Route("UploadOrderPhoto")}}', formData);
-         document.querySelector('#balanceImg').src = res.src;
+         document.querySelector('#balanceImg').src = res.url;
          console.log('Успешно создан: ', JSON.stringify(res));
-         e.target.nextElementSibling.style.backgroundColor = '#ecffc6';
          e.target.value = '';
       }
 
