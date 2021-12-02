@@ -17,7 +17,7 @@
       }
    @endphp
    <div class="change__page-wrapper w-100" id="pagination">
-      <p class="text-center position-absolute" style="top: 0px; left: 25px;">Всего страниц: {{$allPage}}. Всего заказов: {{$table->count() * $allPage}}</p>
+      <p class="text-center position-absolute" style="top: 0px; left: 25px;">Всего страниц: {{$allPage}}. Всего заказов: {{$table->perPage() * $allPage}}</p>
 
       <div class="buttons-wrapper d-flex justify-content-end">
          <div class="change__buttons-group">
