@@ -1,15 +1,15 @@
-<div class="row text-input">
+<div class="d-flex text-input">
    <form id="filter" style="display: flex">
       @csrf
-      <div class="card-input col-4 row">
-         <label for="number" class="col-form-label col-sm-5">Номер:</label>
-         <div class="col-sm-7 p-0">
+      <div class="card-input d-flex me-3">
+         <label for="number" class="col-form-label me-2">Номер:</label>
+         <div class="p-0" style="min-width: 80px;">
             <input type="text" id="number" name="number" class="form-control">
          </div>
       </div>
-      <div class="card-input col-5 row ms-1">
-         <label for="number" class="col-form-label col-sm-4">Статус:</label>
-         <div class="col-sm-7 p-0">
+      <div class="card-input d-flex ms-1">
+         <label for="number" class="col-form-label me-2">Статус:</label>
+         <div class="p-0" style="min-width: 150px;">
             <select class="form-select" aria-label="Выбор статуса" name="status">
                <option value="" selected>Не указано</option>
                <option value="1">Отправлен</option>
@@ -19,7 +19,7 @@
             </select>
          </div>
       </div>
-      <div class="col-4">
+      <div class="ms-2">
          <button type="submit" class="btn btn-primary">Поиск</button>
       </div>
    </form>
