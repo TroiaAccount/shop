@@ -102,9 +102,13 @@
          formData.append('image', file);
          formData.append('_token', _token);
          const res = await postFormData('{{Route("UploadOrderPhoto")}}', formData);
-         document.querySelector('#balanceImg').src = res.url;
-         console.log('Успешно создан: ', JSON.stringify(res));
-         e.target.value = '';
+         if (res.status === true) {
+            document.querySelector('#balanceImg').src = res.url;
+            console.log('Успешно создан: ', JSON.stringify(res));
+            e.target.value = '';
+         } else {
+            alert('Произошла ошибка при загрузке файла');
+         }
       }
 
       async function postCheck() {
