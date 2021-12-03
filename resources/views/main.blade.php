@@ -17,6 +17,17 @@
    @endif
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
    
+   <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+      <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+         <div class="toast-header">
+            <strong class="me-auto">CNSHOP</strong>
+            <small>now</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+         </div>
+         <div class="toast-body" id="alertBody">
+         </div>
+      </div>
+   </div>
    <main id="page" @if ($page == 'blank') style="margin: 0" @endif>
       <div class="page__wrapper">
 
@@ -100,8 +111,14 @@
          document.querySelector('#balanceImg').src = e.target.result;
       })
 
+      const toastElList = [].slice.call(document.querySelectorAll('.toast'));
+      const toastList = toastElList.map(function (toastEl) {
+         return new bootstrap.Toast(toastEl);
+      })
+
       async function postCheck() {
          showLoader();
+         let alertBody = document.getElementById('alertBody');
          const file = document.querySelector('#balanceFile');
          const _token = document.querySelector('[name="_token"]').value;
          const formData = new FormData();
@@ -111,11 +128,12 @@
          hideLoader();
          if (res.status === true) {
             document.querySelector('#balanceImg').src = '';
-            setTimeout(() => alert('Ваш чек успешно отправлен и скоро будет рассмотрен администраторами'), 300);
+            alertBody.textContent = 'Ваш чек успешно отправлен и скоро будет рассмотрен администраторами';
             console.log('Успешно создан: ', JSON.stringify(res));
          } else {
-            alert(res.error);
+            alertBody.textContent = res.error;
          }
+         toastList[0].show();
       }
 
       function loadImageFile() {

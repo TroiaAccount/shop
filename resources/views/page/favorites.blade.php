@@ -82,10 +82,6 @@
    </div>
  </div>
  <script>
-   const toastElList = [].slice.call(document.querySelectorAll('.toast'));
-   const toastList = toastElList.map(function (toastEl) {
-      return new bootstrap.Toast(toastEl);
-   })
    function setFavorite(id) {
       showLoader();
       const body = { order_id: id };
