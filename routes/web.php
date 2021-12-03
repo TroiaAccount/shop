@@ -44,6 +44,7 @@ Route::middleware('MyAuth')->group(function(){ // Other route
     Route::get('/client/{page}/{subpage}', 'PageController@page')->name('Page');
     Route::post('/api/order/replace', 'OrderController@ReplaceOrder')->name('ReplaceOrder');
     Route::post('/api/order/select/info', 'OrderController@SelectOrder')->name('SelectOrder');
+    Route::post('/api/payment', 'UserController@GetPayment')->name('GetPayment');
     /* Page route end */
     Route::middleware('CheckAdmin')->group(function(){
         Route::get('/admin', function(){

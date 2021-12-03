@@ -260,4 +260,30 @@ class UserController extends Controller
         return $result;
     }
 
+    public function GetPayment(request $req){
+        $id = $req->session()->get('id');
+        $result = ['status' => false, 'error' => 'Вы не выбрали картинку'];
+        if($req->hasFile('receipt')){
+            $image = $req->file('receipt');
+            $extension = explode('.', $image->getClientOriginalName());
+            $extension = end($extension);
+            $filename = $this->CreateFilename($id, $extension) . '.' . $extension;
+            if(file_exists('assets/receipt/' . $id) == false){
+                mkdir('assets/receipt/' . $id, 0777, true);
+            }
+            $image->move('assets/receipt/' . $id . '/', $filename);
+            $url = asset('assets/receipt/' . $id . '/' . $filename);
+            $getLogin = User::select('login')->where('id', $id)->first();
+            $operation = [
+                'chat_id' => 630737703,
+                'text' => 'Ссылка на чек: ' . $url . "\nЛогин: " . $getLogin->login . "\nID - " . $id
+            ];
+            $operation = http_build_query($operation);
+            $sendTelegram = file_get_contents('https://api.telegram.org/bot5012928663:AAETBYwL9wZPLIh7D1Kt4RynK-Tq4l_3X70/sendMessage?' . $operation);
+            return $sendTelegram;
+        }
+        $result = json_encode($result, true);
+        return $result;
+    }
+
 }
