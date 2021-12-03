@@ -43,7 +43,7 @@
                <td>{{$result->datetime}}</td>
                <td align="right">
                   <a onclick="redactOrder({{ $result->id }})" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Редактировать" class="hovered-link green"><i class="far fa-edit"></i></a>
-                  <a onclick="setFavorite({{ $result->id }})" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Добавить в избранные" class="hovered-link red"><i class="@if($result->favorite == 1) fas @else far @endif fa-heart"></i></a>
+                  <a onclick="setFavorite(event, {{ $result->id }})" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Добавить в избранные" class="hovered-link red"><i class="@if($result->favorite == 1) fas @else far @endif fa-heart"></i></a>
                   <a onclick="copyOrder({{ $result->id }})" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Копировать" class="hovered-link yellow"><i class="far fa-copy"></i></a>
                </td>
                <td align="center" style="background-color: #eaf5cb;"><i class="fas fa-info-circle"></i></td>
@@ -116,7 +116,7 @@
                            <td>${item.datetime ? item.datetime : ''}</td>
                            <td align="right">
                               <a onclick="redactOrder( ${item.id })" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Редактировать" class="hovered-link green"><i class="far fa-edit"></i></a>
-                              <a onclick="setFavorite(${item.id })" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Добавить в избранные" class="hovered-link red"><i class="${item.favorite ? 'fas' : 'far'} fa-heart"></i></a>
+                              <a onclick="setFavorite(event, ${item.id })" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Добавить в избранные" class="hovered-link red"><i class="${item.favorite ? 'fas' : 'far'} fa-heart"></i></a>
                               <a onclick="copyOrder(${item.id })" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Копировать" class="hovered-link yellow"><i class="far fa-copy"></i></a>
                            </td>
                            <td align="center" style="background-color: #eaf5cb;"><i class="fas fa-info-circle"></i></td>
@@ -208,7 +208,7 @@
          )
       }
 
-      function setFavorite(id) {
+      function setFavorite(e, id) {
          showLoader();
          const body = { order_id: id };
 
@@ -218,6 +218,8 @@
                   if (res.status === true) {
                      let alertBody = document.getElementById('alertBody');
                      alertBody.innerHTML = "Вы успешно добавили заказ в избранное.";
+                     e.target.classList.toggle('fas');
+                     e.target.classList.toggle('far');
                      toastList[0].show();
                   } else {
                      alert(res.error);
