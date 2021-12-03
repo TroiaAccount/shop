@@ -67,7 +67,7 @@
    <script>
       $("#filter").on("submit", function(e){
          e.preventDefault();
-         renderTable(true, $(this).serialize());
+         renderTable($(this).serialize());
       });
 
       const toastElList = [].slice.call(document.querySelectorAll('.toast'));
@@ -75,7 +75,7 @@
          return new bootstrap.Toast(toastEl);
       })
 
-      function renderTable(firstRender, formdata, page) {
+      function renderTable(formdata, page) {
          showLoader();
          const token = document.querySelector('[name="_token"]').value;
          $.ajax({
@@ -89,6 +89,7 @@
                      table.querySelector('#table-body').remove();
                      const tbody = document.createElement(`tbody`);
                      tbody.setAttribute('id', 'table-body');
+                     console.log(res.data);
                      res.data.data.forEach(item => {
                         const tr = document.createElement('tr');
                         let status;
@@ -124,52 +125,66 @@
                         tbody.append(tr);
                      })
                      table.append(tbody);
-                     if (firstRender) {
-                        document.getElementById('pagination').remove();
-                        const tableWrapper = document.querySelector('.table__wrapper');
-                        const pagination = document.createElement('div');
-                        pagination.classList.add('change__page-wrapper', 'w-100');
-                        pagination.id = 'pagination';
-                        const buttons = [];
-                        for (let i = 1; i <= res.data.last_page; i++) {
-                           if (res.data.current_page === i) {
-                              const div = document.createElement('div');
-                              div.classList.add('page-indicator');
-                              div.innerHTML = `<button id="${res.data.current_page}" name="${res.data.current_page}" class="btn btn-outline-secondary change-page-btn" style="border-bottom-right-radius: 0px; border-top-right-radius: 0px;"><i class="fas">${i}</i></button>`;
-                              buttons.push(div);
-                           } else {
-                              const div = document.createElement('div');
-                              div.innerHTML = `<button id="${i}" name="${i}" class="btn btn-outline-secondary change-page-btn" style="border-bottom-right-radius: 0px; border-top-right-radius: 0px;"><i class="fas">${i}</i></button>`;
-                              buttons.push(div);
-                           }
-                        }
-                        pagination.innerHTML = `
-                           <div class="d-flex justify-content-between">
-                              <div style="min-width: 100px; margin-right: 10px">
-                                 <p class="text-center" style="top: 0px; left: 25px;">Всего страниц: ${res.data.last_page}. Всего заказов: ${res.data.total}</p>
-                              </div>
-                        
-                              <div class="buttons-wrapper d-flex justify-content-end">
-                                 <div class="change__buttons-group">
-                                    <div class="d-flex justify-content-center">
-                                       <button name="1" class="btn btn-outline-secondary change-page-btn prevPage" style="border-bottom-right-radius: 0px; border-top-right-radius: 0px;"><i class="fas fa-chevron-left fa-xs"></i></button>
-                                       <div id="buttonsWrapper" class="d-flex"></div>
-                                       <button name="2" class="btn btn-outline-secondary change-page-btn nextPage" style="border-bottom-left-radius: 0px; border-top-left-radius: 0px;"><i class="fas fa-chevron-right fa-xs"></i></button>
-                                    </div>
-                                 </div>
-                        
-                              </div>
-                           </div>
-                        `;
-                        tableWrapper.append(pagination);
-                        const buttonsWrapepr = tableWrapper.querySelector('#buttonsWrapper')
-                        buttons.forEach(btn => {
-                           buttonsWrapepr.append(btn);
-                        })
-                        addPagination();
-                     } else {
-
+                     document.getElementById('pagination').remove();
+                     const tableWrapper = document.querySelector('.table__wrapper');
+                     const pagination = document.createElement('div');
+                     pagination.classList.add('change__page-wrapper', 'w-100');
+                     pagination.id = 'pagination';
+                     const buttons = [];
+                     let startPage = 1;
+                     if (res.data.current_page > 5) {
+                        startPage = res.data.current_page - 5;
                      }
+                     let finalPage = startPage + 10;
+                     if (finalPage > res.data.last_page){
+                        finalPage = res.data.last_page;
+                     }
+                     for (let i = startPage; i <= finalPage; i++) {
+                        if (res.data.current_page === i) {
+                           const div = document.createElement('div');
+                           div.innerHTML = `<button id="${res.data.current_page}" name="${res.data.current_page}" class="page-indicator btn btn-outline-secondary change-page-btn" style="border-bottom-right-radius: 0px; border-top-right-radius: 0px;"><i class="fas">${i}</i></button>`;
+                           buttons.push(div);
+                        } else {
+                           const div = document.createElement('div');
+                           div.innerHTML = `<button id="${i}" name="${i}" class="btn btn-outline-secondary change-page-btn" style="border-bottom-right-radius: 0px; border-top-right-radius: 0px;"><i class="fas">${i}</i></button>`;
+                           buttons.push(div);
+                        }
+                     }
+                     let prevPage, nextPage;
+                     if (res.data.current_page === 1) {
+                        prevPage = 1;
+                     } else {
+                        prevPage = res.data.current_page - 1;
+                     }
+                     if (res.data.current_page === res.data.last_page) {
+                        nextPage = 1;
+                     } else {
+                        nextPage = res.data.current_page + 1;
+                     }
+                     pagination.innerHTML = `
+                        <div class="d-flex justify-content-between">
+                           <div style="min-width: 100px; margin-right: 10px">
+                              <p class="text-center" style="top: 0px; left: 25px;">Всего страниц: ${res.data.last_page}. Всего заказов: ${res.data.total}</p>
+                           </div>
+                     
+                           <div class="buttons-wrapper d-flex justify-content-end">
+                              <div class="change__buttons-group">
+                                 <div class="d-flex justify-content-center">
+                                    <button name="${prevPage}" class="btn btn-outline-secondary change-page-btn prevPage" style="border-bottom-right-radius: 0px; border-top-right-radius: 0px;"><i class="fas fa-chevron-left fa-xs"></i></button>
+                                    <div id="buttonsWrapper" class="d-flex"></div>
+                                    <button name="${nextPage}" class="btn btn-outline-secondary change-page-btn nextPage" style="border-bottom-left-radius: 0px; border-top-left-radius: 0px;"><i class="fas fa-chevron-right fa-xs"></i></button>
+                                 </div>
+                              </div>
+                     
+                           </div>
+                        </div>
+                     `;
+                     tableWrapper.append(pagination);
+                     const buttonsWrapepr = tableWrapper.querySelector('#buttonsWrapper')
+                     buttons.forEach(btn => {
+                        buttonsWrapepr.append(btn);
+                     })
+                     addPagination();
                   } else {
                      alert(data.error);
                   }
@@ -195,13 +210,13 @@
                   if (page !== 1) {
                      document.querySelector('.prevPage').name = page - 1;
                   }
-                  renderTable(false, data, page);
+                  renderTable(data, page);
                }
                buttons.forEach(btn => {
                   $btn = btn.closest('button');
-                  $btn.closest('div').classList.remove('page-indicator');
+                  $btn.classList.remove('page-indicator');
                   if ($btn.id == page) {
-                     $btn.closest('div').classList.add('page-indicator');
+                     $btn.classList.add('page-indicator');
                   }
                })
             })
@@ -217,7 +232,11 @@
                   hideLoader();
                   if (res.status === true) {
                      let alertBody = document.getElementById('alertBody');
-                     alertBody.innerHTML = "Вы успешно добавили заказ в избранное.";
+                     if (e.target.classList.contains('far')) {
+                        alertBody.innerHTML = "Вы успешно добавили заказ в избранное.";
+                     } else {
+                        alertBody.innerHTML = "Вы убрали заказ из избранного.";
+                     }
                      e.target.classList.toggle('fas');
                      e.target.classList.toggle('far');
                      toastList[0].show();
