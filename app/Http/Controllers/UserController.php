@@ -296,7 +296,7 @@ class UserController extends Controller
             if($getTelegramResponse->ok == false){
                 $result['error'] = $getTelegramResponse->description;
             } else {
-                $result = ['status' => true];
+                $result = ['status' => true, 'data' => $url];
             }
         }
         $result = json_encode($result, true);
