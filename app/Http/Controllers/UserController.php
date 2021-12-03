@@ -259,4 +259,5 @@ class UserController extends Controller
         $result = json_encode($result, true);
         return $result;
     }
+
 }

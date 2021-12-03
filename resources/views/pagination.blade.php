@@ -17,6 +17,7 @@
       }
    @endphp
    <div class="change__page-wrapper w-100" id="pagination">
+
       <div class="d-flex justify-content-between">
          <div style="min-width: 100px; margin-right: 10px">
             <p class="text-center" style="top: 0px; left: 25px;">Всего страниц: {{$allPage}}. Всего заказов: {{$table->count() * $allPage}}</p>
