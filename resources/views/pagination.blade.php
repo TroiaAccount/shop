@@ -30,7 +30,7 @@
                   @for($i = $startPage; $i <= $finalPage; $i++)
                      @if($table->currentPage() == $i)
                         <div class="page-indicator">
-                           <p>{{$table->currentPage()}}</p>
+                           <button id="${res.data.current_page}" class="btn btn-outline-secondary change-page-btn page-indicator" style="border-bottom-right-radius: 0px; border-top-right-radius: 0px;"><i class="fas">{{$table->currentPage()}}</i></button>
                         </div>
                      @else
                         <a href="?page={{$i}}"><button class="btn btn-outline-secondary change-page-btn" style="border-bottom-right-radius: 0px; border-top-right-radius: 0px;"><i class="fas">{{$i}}</i></button></a>

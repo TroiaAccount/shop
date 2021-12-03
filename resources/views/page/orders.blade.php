@@ -29,7 +29,6 @@
       <thead>
          <tr>
             <th scope="col">Номер</th>
-            <th scope="col">Сохранён/Оформлен</th>
             <th scope="col">Статус</th>
             <th scope="col">Дата/Время</th>
             <th scope="col">Операции</th>
@@ -41,7 +40,6 @@
             <tr>
                <td>{{$result->number}}</td>
                <td>@if($result->status == 1) Отправлен @elseif($result->status == 2) Прибыл @elseif($result->status == 3) Упаковывается @elseif($result->status == 4) Обрабатывается @endif</td>
-               <td>{{$result->status2}}</td>
                <td>{{$result->datetime}}</td>
                <td align="right">
                   <a onclick="redactOrder({{ $result->id }})" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Редактировать" class="hovered-link green"><i class="far fa-edit"></i></a>
@@ -69,66 +67,143 @@
    <script>
       $("#filter").on("submit", function(e){
          e.preventDefault();
-         showLoader();
-         $.ajax({
-               url: '{{Route("Filter")}}',
-               method: 'post',
-               dataType: 'json',
-               data: $(this).serialize(),
-               success: function(data){
-                  if(data.status == true){
-                     const table = document.querySelector('.table-bordered');
-                     table.querySelector('#table-body').remove();
-                     const tbody = document.createElement(`tbody`);
-                     tbody.setAttribute('id', 'table-body');
-                     data.data.data.forEach(item => {
-                        const tr = document.createElement('tr');
-                        console.log(item);
-                        let status;
-                        switch (item.status) {
-                           case 1: 
-                              status = 'Отправлен';
-                              break;
-                           case 2: 
-                              status = 'Прибыл';
-                              break;
-                           case 3: 
-                              status = 'Упаковывается';
-                              break;
-                           case 4: 
-                              status = 'Обрабатывается';
-                              break;   
-                        }
-                        tr.innerHTML = `
-                           <td>${item.number}</td>
-                           <td>${status}</td>
-                           <td>${item.status2 ? item.status2 : ''}</td>
-                           <td>${item.datetime}</td>
-                           <td align="right">
-                              <a onclick="redactOrder( ${item.id })" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Редактировать" class="hovered-link green"><i class="far fa-edit"></i></a>
-                              <a onclick="setFavorite(${item.id })" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Добавить в избранные" class="hovered-link red"><i class="far fa-heart"></i></a>
-                              <a onclick="copyOrder(${item.id })" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Копировать" class="hovered-link yellow"><i class="far fa-copy"></i></a>
-                           </td>
-                           <td align="center" style="background-color: #eaf5cb;"><i class="fas fa-info-circle"></i></td>
-                        `;
-                        tbody.append(tr);
-                        let pagination = document.getElementById('pagination');
-                        pagination.style.display = "none";
-                     })
-                     table.append(tbody);
-                  } else {
-                     alert(data.error);
-                  }
-                  hideLoader();
-               }
-         });
+         renderTable(true);
       });
 
       const toastElList = [].slice.call(document.querySelectorAll('.toast'));
       const toastList = toastElList.map(function (toastEl) {
          return new bootstrap.Toast(toastEl);
       })
+
+      function renderTable(firstRender, page) {
+         showLoader();
+         const token = document.querySelector('[name="_token"]').value;
+         $.ajax({
+               url: `{{Route("Filter")}}${page ? `?page=${page}` : ''}`,
+               method: 'post',
+               dataType: 'json',
+               data: `_token=${token}&${$(this).serialize()}`,
+               success: function(res){
+                  if(res.status == true){
+                     const table = document.querySelector('.table-bordered');
+                     table.querySelector('#table-body').remove();
+                     const tbody = document.createElement(`tbody`);
+                     tbody.setAttribute('id', 'table-body');
+                     res.data.data.forEach(item => {
+                        const tr = document.createElement('tr');
+                        let status;
+                        if (item.status) {
+                           switch (item.status) {
+                              case 1: 
+                                 status = 'Отправлен';
+                                 break;
+                              case 2: 
+                                 status = 'Прибыл';
+                                 break;
+                              case 3: 
+                                 status = 'Упаковывается';
+                                 break;
+                              case 4: 
+                                 status = 'Обрабатывается';
+                                 break;   
+                           }
+                        } else {
+                           status = '';
+                        }
+                        tr.innerHTML = `
+                           <td>${item.number ? item.number : ''}</td>
+                           <td>${status}</td>
+                           <td>${item.datetime ? item.datetime : ''}</td>
+                           <td align="right">
+                              <a onclick="redactOrder( ${item.id })" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Редактировать" class="hovered-link green"><i class="far fa-edit"></i></a>
+                              <a onclick="setFavorite(${item.id })" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Добавить в избранные" class="hovered-link red"><i class="${item.favorite ? 'fas' : 'far'} fa-heart"></i></a>
+                              <a onclick="copyOrder(${item.id })" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Копировать" class="hovered-link yellow"><i class="far fa-copy"></i></a>
+                           </td>
+                           <td align="center" style="background-color: #eaf5cb;"><i class="fas fa-info-circle"></i></td>
+                        `;
+                        tbody.append(tr);
+                     })
+                     table.append(tbody);
+                     if (firstRender) {
+                        document.getElementById('pagination').remove();
+                        const tableWrapper = document.querySelector('.table__wrapper');
+                        const pagination = document.createElement('div');
+                        pagination.classList.add('change__page-wrapper', 'w-100');
+                        pagination.id = 'pagination';
+                        const buttons = [];
+                        for (let i = 1; i <= res.data.last_page; i++) {
+                           if (res.data.current_page === i) {
+                              const div = document.createElement('div');
+                              div.classList.add('page-indicator');
+                              div.innerHTML = `<button id="${res.data.current_page}" name="${res.data.current_page}" class="btn btn-outline-secondary change-page-btn" style="border-bottom-right-radius: 0px; border-top-right-radius: 0px;"><i class="fas">${i}</i></button>`;
+                              buttons.push(div);
+                           } else {
+                              const div = document.createElement('div');
+                              div.innerHTML = `<button id="${i}" name="${i}" class="btn btn-outline-secondary change-page-btn" style="border-bottom-right-radius: 0px; border-top-right-radius: 0px;"><i class="fas">${i}</i></button>`;
+                              buttons.push(div);
+                           }
+                        }
+                        pagination.innerHTML = `
+                           <div class="d-flex justify-content-between">
+                              <div style="min-width: 100px; margin-right: 10px">
+                                 <p class="text-center" style="top: 0px; left: 25px;">Всего страниц: ${res.data.last_page}. Всего заказов: ${res.data.total}</p>
+                              </div>
+                        
+                              <div class="buttons-wrapper d-flex justify-content-end">
+                                 <div class="change__buttons-group">
+                                    <div class="d-flex justify-content-center">
+                                       <button name="1" class="btn btn-outline-secondary change-page-btn prevPage" style="border-bottom-right-radius: 0px; border-top-right-radius: 0px;"><i class="fas fa-chevron-left fa-xs"></i></button>
+                                       <div id="buttonsWrapper" class="d-flex"></div>
+                                       <button name="2" class="btn btn-outline-secondary change-page-btn nextPage" style="border-bottom-left-radius: 0px; border-top-left-radius: 0px;"><i class="fas fa-chevron-right fa-xs"></i></button>
+                                    </div>
+                                 </div>
+                        
+                              </div>
+                           </div>
+                        `;
+                        tableWrapper.append(pagination);
+                        const buttonsWrapepr = tableWrapper.querySelector('#buttonsWrapper')
+                        buttons.forEach(btn => {
+                           buttonsWrapepr.append(btn);
+                        })
+                        addPagination();
+                     } else {
+
+                     }
+                  } else {
+                     alert(data.error);
+                  }
+                  hideLoader();
+               }
+         });
+      }
       
+      function addPagination() {
+         const buttons = document.querySelectorAll('.change__buttons-group button');
+         buttons.forEach(btn => 
+            btn.addEventListener('click', (e) => {
+               const $target = e.target.closest('button');
+               const page = parseInt($target.name);
+               if (!$target.classList.contains('page-indicator')) {
+                  if (page !== 3) {
+                     document.querySelector('.nextPage').name = page + 1;
+                  }
+                  if (page !== 1) {
+                     document.querySelector('.prevPage').name = page - 1;
+                  }
+                  renderTable(false, page);
+               }
+               buttons.forEach(btn => {
+                  $btn = btn.closest('button');
+                  $btn.closest('div').classList.remove('page-indicator');
+                  if ($btn.id == page) {
+                     $btn.closest('div').classList.add('page-indicator');
+                  }
+               })
+            })
+         )
+      }
+
       function setFavorite(id) {
          showLoader();
          const body = { order_id: id };
@@ -185,3 +260,4 @@
    </script>
 
 @include('pagination')
+</div>

@@ -94,25 +94,33 @@
                ntfWrapper.append(div);
             })
          })
+      const fileReader = new FileReader();
    
-      async function getImageUrl(e) {
-         const file = e.target.files[0];
+      fileReader.addEventListener('load', (e) => {
+         document.querySelector('#balanceImg').src = e.target.result;
+      })
+
+      async function postCheck() {
+         showLoader();
+         const file = document.querySelector('#balanceFile');
          const _token = document.querySelector('[name="_token"]').value;
          const formData = new FormData();
-         formData.append('receipt', file);
+         formData.append('receipt', file.files[0]);
          formData.append('_token', _token);
          const res = await postFormData('{{Route("GetPayment")}}', formData);
+         hideLoader();
          if (res.status === true) {
-            document.querySelector('#balanceImg').src = res.url;
+            document.querySelector('#balanceImg').src = '';
+            setTimeout(() => alert('Ваш чек успешно отправлен и скоро будет рассмотрен администраторами'), 300);
             console.log('Успешно создан: ', JSON.stringify(res));
-            e.target.value = '';
          } else {
-            alert('Произошла ошибка при загрузке файла');
+            alert(res.error);
          }
       }
 
-      async function postCheck() {
-         
+      function loadImageFile() {
+         const file = document.querySelector('#balanceFile').files[0];
+         fileReader.readAsDataURL(file);
       }
 
       window.addEventListener('DOMContentLoaded', () => {
@@ -121,7 +129,7 @@
                input = document.querySelector('#balanceFile');
 
          plusBtn.addEventListener('click', openModal);
-         input.addEventListener('change', (e) => getImageUrl(e));
+         input.addEventListener('change', loadImageFile);
 
          function openModal() {
             const label = document.querySelector('.customInputLabel');
