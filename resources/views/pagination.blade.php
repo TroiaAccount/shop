@@ -20,7 +20,7 @@
 
       <div class="d-flex justify-content-between">
          <div style="min-width: 100px; margin-right: 10px">
-            <p class="text-center" style="top: 0px; left: 25px;">Всего страниц: {{$allPage}}. Всего заказов: {{$table->perPage() * $allPage}}</p>
+            <p class="text-center" style="top: 0px; left: 25px;">Всего страниц: {{$allPage}}. Всего заказов: {{$table->total()}}</p>
          </div>
    
          <div class="buttons-wrapper d-flex justify-content-end">
