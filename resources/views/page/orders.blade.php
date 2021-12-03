@@ -67,7 +67,8 @@
    <script>
       $("#filter").on("submit", function(e){
          e.preventDefault();
-         renderTable(true);
+         renderTable(true, $(this).serialize());
+         console.log($(this).serialize());
       });
 
       const toastElList = [].slice.call(document.querySelectorAll('.toast'));
@@ -75,14 +76,14 @@
          return new bootstrap.Toast(toastEl);
       })
 
-      function renderTable(firstRender, page) {
+      function renderTable(firstRender, formdata, page) {
          showLoader();
          const token = document.querySelector('[name="_token"]').value;
          $.ajax({
                url: `{{Route("Filter")}}${page ? `?page=${page}` : ''}`,
                method: 'post',
                dataType: 'json',
-               data: `_token=${token}&${$(this).serialize()}`,
+               data: `_token=${token}&${formdata}`,
                success: function(res){
                   if(res.status == true){
                      const table = document.querySelector('.table-bordered');
