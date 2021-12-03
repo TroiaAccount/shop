@@ -68,7 +68,6 @@
       $("#filter").on("submit", function(e){
          e.preventDefault();
          renderTable(true, $(this).serialize());
-         console.log($(this).serialize());
       });
 
       const toastElList = [].slice.call(document.querySelectorAll('.toast'));
@@ -185,6 +184,10 @@
             btn.addEventListener('click', (e) => {
                const $target = e.target.closest('button');
                const page = parseInt($target.name);
+               const number = document.querySelector('[name="number"]').value;
+               const status = document.querySelector('[name="status"]').value;
+               const data = `number=${number}&status=${status}`;
+               console.log(status, 'stat');
                if (!$target.classList.contains('page-indicator')) {
                   if (page !== 3) {
                      document.querySelector('.nextPage').name = page + 1;
@@ -192,7 +195,7 @@
                   if (page !== 1) {
                      document.querySelector('.prevPage').name = page - 1;
                   }
-                  renderTable(false, page);
+                  renderTable(false, data, page);
                }
                buttons.forEach(btn => {
                   $btn = btn.closest('button');
