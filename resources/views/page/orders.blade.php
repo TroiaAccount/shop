@@ -67,7 +67,7 @@
    <script>
       $("#filter").on("submit", function(e){
          e.preventDefault();
-         renderTable(true);
+         renderTable(true, $(this).serialize());
       });
 
       const toastElList = [].slice.call(document.querySelectorAll('.toast'));
@@ -75,14 +75,14 @@
          return new bootstrap.Toast(toastEl);
       })
 
-      function renderTable(firstRender, page) {
+      function renderTable(firstRender, formdata, page) {
          showLoader();
          const token = document.querySelector('[name="_token"]').value;
          $.ajax({
                url: `{{Route("Filter")}}${page ? `?page=${page}` : ''}`,
                method: 'post',
                dataType: 'json',
-               data: `_token=${token}&${$(this).serialize()}`,
+               data: `_token=${token}&${formdata}`,
                success: function(res){
                   if(res.status == true){
                      const table = document.querySelector('.table-bordered');
@@ -184,6 +184,10 @@
             btn.addEventListener('click', (e) => {
                const $target = e.target.closest('button');
                const page = parseInt($target.name);
+               const number = document.querySelector('[name="number"]').value;
+               const status = document.querySelector('[name="status"]').value;
+               const data = `number=${number}&status=${status}`;
+               console.log(status, 'stat');
                if (!$target.classList.contains('page-indicator')) {
                   if (page !== 3) {
                      document.querySelector('.nextPage').name = page + 1;
@@ -191,7 +195,7 @@
                   if (page !== 1) {
                      document.querySelector('.prevPage').name = page - 1;
                   }
-                  renderTable(false, page);
+                  renderTable(false, data, page);
                }
                buttons.forEach(btn => {
                   $btn = btn.closest('button');
