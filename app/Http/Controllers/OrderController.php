@@ -24,7 +24,7 @@ class OrderController extends Controller
         if($status != null){
             $operation['status'] = $status;
         }
-        $select = order::select(['id', 'status', 'completed', 'datetime'])->where($operation)->paginate(10);
+        $select = order::select(['id', 'number', 'status', 'completed', 'datetime'])->where($operation)->paginate(10);
         foreach($select as $item){
             $selectFavorite = favorite::select()->where(['order_id' => $item->id, 'user_id' => $id])->first();
             $favorite = 0;
