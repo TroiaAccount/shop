@@ -9,7 +9,7 @@
                </div>
                <div class="col-6">
                   <h3 class="profile__phone">{{$user_info->word}}</h3>
-                  <p class="profile__balance">Баланс: {{$user_info->balance}}</p>
+                  <p class="profile__balance">Баланс: {{$user_info->balance}}<i class="ms-2 fas fa-plus hovered-link-green"></i></p>
                   <a href="#" onclick="Exit()" class="profile__exit">Выход</a>
                </div>
             </div>
@@ -60,3 +60,4 @@
          <p>CNSHOP v1.0</p>
       </div>
    </div>
+   
