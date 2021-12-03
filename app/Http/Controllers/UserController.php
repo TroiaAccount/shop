@@ -260,7 +260,16 @@ class UserController extends Controller
         return $result;
     }
 
-    public function GetPayment(request $req){
+    private function CreateFilename($id, $extension){
+        $name = md5('file' . $id . 'image' . time() . rand() . 'time' . rand());
+        if(file_exists('assets/img/' . $id . '/' . $name . '.' . $extension)){
+            $name = $this->CreateFilename($id, $extension);
+        }
+
+        return $name;
+    }
+
+    public function GetPayment(request $req){//1001553684897
         $id = $req->session()->get('id');
         $result = ['status' => false, 'error' => 'Вы не выбрали картинку'];
         if($req->hasFile('receipt')){
@@ -275,12 +284,20 @@ class UserController extends Controller
             $url = asset('assets/receipt/' . $id . '/' . $filename);
             $getLogin = User::select('login')->where('id', $id)->first();
             $operation = [
-                'chat_id' => 630737703,
+                'chat_id' => -1001553684897,
                 'text' => 'Ссылка на чек: ' . $url . "\nЛогин: " . $getLogin->login . "\nID - " . $id
             ];
             $operation = http_build_query($operation);
-            $sendTelegram = file_get_contents('https://api.telegram.org/bot5012928663:AAETBYwL9wZPLIh7D1Kt4RynK-Tq4l_3X70/sendMessage?' . $operation);
-            return $sendTelegram;
+            $ch = curl_init('https://api.telegram.org/bot5012928663:AAETBYwL9wZPLIh7D1Kt4RynK-Tq4l_3X70/sendMessage?' . $operation);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            $getTelegramResponse = curl_exec($ch);
+            curl_close($ch); 
+            $getTelegramResponse = json_decode($getTelegramResponse);
+            if($getTelegramResponse->ok == false){
+                $result['error'] = $getTelegramResponse->description;
+            } else {
+                $result = ['status' => true];
+            }
         }
         $result = json_encode($result, true);
         return $result;
