@@ -99,9 +99,9 @@
          const file = e.target.files[0];
          const _token = document.querySelector('[name="_token"]').value;
          const formData = new FormData();
-         formData.append('image', file);
+         formData.append('receipt', file);
          formData.append('_token', _token);
-         const res = await postFormData('{{Route("UploadOrderPhoto")}}', formData);
+         const res = await postFormData('{{Route("GetPayment")}}', formData);
          if (res.status === true) {
             document.querySelector('#balanceImg').src = res.url;
             console.log('Успешно создан: ', JSON.stringify(res));

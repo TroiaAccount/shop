@@ -81,8 +81,9 @@
                      table.querySelector('#table-body').remove();
                      const tbody = document.createElement(`tbody`);
                      tbody.setAttribute('id', 'table-body');
-                     data.data.forEach(item => {
+                     data.data.data.forEach(item => {
                         const tr = document.createElement('tr');
+                        console.log(item);
                         let status;
                         switch (item.status) {
                            case 1: 
