@@ -29,14 +29,13 @@
                   <a href="{{$table->previousPageUrl()}}"><button class="btn btn-outline-secondary change-page-btn" style="border-bottom-right-radius: 0px; border-top-right-radius: 0px;"><i class="fas fa-chevron-left fa-xs"></i></button></a>
                   @for($i = $startPage; $i <= $finalPage; $i++)
                      @if($table->currentPage() == $i)
-                        <div class="page-indicator">
-                           <button id="${res.data.current_page}" class="btn btn-outline-secondary change-page-btn page-indicator" style="border-bottom-right-radius: 0px; border-top-right-radius: 0px;"><i class="fas">{{$table->currentPage()}}</i></button>
-                        </div>
+                        <a href="?page={{$i}}">
+                           <button class="btn btn-outline-secondary page-indicator change-page-btn" style="border-bottom-right-radius: 0px; border-top-right-radius: 0px;"><i class="fas">{{$table->currentPage()}}</i></button>
+                        </a>
                      @else
                         <a href="?page={{$i}}"><button class="btn btn-outline-secondary change-page-btn" style="border-bottom-right-radius: 0px; border-top-right-radius: 0px;"><i class="fas">{{$i}}</i></button></a>
                      @endif
                   @endfor
-   
                   <a href="{{$table->nextPageUrl()}}"><button class="btn btn-outline-secondary change-page-btn" style="border-bottom-left-radius: 0px; border-top-left-radius: 0px;"><i class="fas fa-chevron-right fa-xs"></i></button></a>
                </div>
             </div>
