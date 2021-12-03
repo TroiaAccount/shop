@@ -376,8 +376,7 @@ main#page {
   background: #3c3c3c;
  }
  
-.page-indicator > p {
-  margin-top: 6px;
+.page-indicator > button {
   text-align: center;
   color: #fefefe;
 }
