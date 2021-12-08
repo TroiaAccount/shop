@@ -1,4 +1,4 @@
-<section class="page__order order main-wrapper clerfix">
+<section class="page__order order main-wrapper clerfix pl-0">
    <div class="order__wrapper d-flex flex-column">
       <div id="client-info" class="widget-list row mt-4">
          <div class="col d-flex justify-content-start" style="max-width: 150px;">
@@ -55,9 +55,9 @@
          </div>
       </div>
       <div class="order__header container-fluid pt-1">
-         <div class="widget-list row">
+         <div id="tableHead" class="widget-list row position-relative">
             <div class="widget-holder widget-sm col" style="max-width: 65px;">
-               <div class="widget-bg bg-transparent text-inverse number mb-2" style="height: 70px;">
+               <div class="widget-bg bg-transparent text-inverse number" style="height: 70px;">
                   <div class="widget-body p-0" style="height: 70px;">
                      <div class="-w-info media">
                         <div class="media-body w-50">
@@ -67,19 +67,19 @@
                   </div>
                </div>
             </div>
-            <div class="widget-holder widget-sm col">
-                  <div class="widget-bg bg-danger text-inverse mb-2">
-                     <div class="widget-body">
-                        <div class="-w-info media">
-                           <div class="media-body w-50">
-                              <p class="text-muted mr-b-5 fw-600">Фото товара</p><span class="-title d-block"><span class=""></span></span>
-                           </div>
+            <div class="widget-holder widget-sm col position-sticky" style="margin-left: -15px">
+               <div class="widget-bg bg-primary text-inverse">
+                  <div class="widget-body">
+                     <div class="-w-info media">
+                        <div class="media-body w-50">
+                           <p class="text-muted mr-b-5 fw-600">Фото товара</p><span class="-title d-block"><span class=""></span></span>
                         </div>
                      </div>
                   </div>
+               </div>
             </div>
-            <div class="widget-holder widget-sm col">
-                  <div class="widget-bg bg-danger text-inverse mb-2">
+            <div class="widget-holder widget-sm col position-sticky" style="left: 200px">
+                  <div class="widget-bg bg-primary text-inverse">
                      <div class="widget-body">
                         <div class="-w-info media">
                            <div class="media-body w-50">
@@ -89,8 +89,8 @@
                      </div>
                   </div>
             </div>
-            <div class="widget-holder widget-sm col">
-                  <div class="widget-bg bg-danger text-inverse mb-2">
+            <div class="widget-holder widget-sm col position-sticky" style="left: 400px">
+                  <div class="widget-bg bg-primary text-inverse">
                      <div class="widget-body">
                         <div class="-w-info media">
                            <div class="media-body w-50">
@@ -102,7 +102,7 @@
             </div>
             
             <div class="widget-holder widget-sm col">
-                  <div class="widget-bg bg-danger mb-2">
+                  <div class="widget-bg bg-danger">
                      <div class="widget-body text-inverse">
                         <div class="-w-info media">
                            <div class="media-body w-50">
@@ -113,7 +113,7 @@
                   </div>
             </div>
             <div class="widget-holder widget-sm col">
-               <div class="widget-bg bg-danger mb-2">
+               <div class="widget-bg bg-danger">
                   <div class="widget-body bg-danger text-inverse">
                      <div class="-w-info media">
                         <div class="media-body w-50">
@@ -124,7 +124,7 @@
                </div>
             </div>
             <div class="widget-holder widget-sm col">
-               <div class="widget-bg bg-danger text-inverse mb-2">
+               <div class="widget-bg bg-danger text-inverse">
                   <div class="widget-body">
                      <div class="-w-info media">
                         <div class="media-body w-50">
@@ -135,7 +135,7 @@
                </div>
             </div>
             <div class="widget-holder widget-sm col">
-               <div class="widget-bg bg-danger text-inverse mb-2">
+               <div class="widget-bg bg-danger text-inverse">
                   <div class="widget-body">
                      <div class="-w-info media">
                         <div class="media-body w-50">
@@ -146,7 +146,7 @@
                </div>
             </div>
             <div class="widget-holder widget-sm col">
-               <div class="widget-bg bg-danger text-inverse mb-2">
+               <div class="widget-bg bg-danger text-inverse">
                   <div class="widget-body">
                      <div class="-w-info media">
                         <div class="media-body w-50">
@@ -157,7 +157,7 @@
                </div>
             </div>
             <div class="widget-holder widget-sm col medium-block">
-               <div class="widget-bg bg-success text-inverse mb-2">
+               <div class="widget-bg bg-success text-inverse">
                   <div class="widget-body">
                      <div class="-w-info media">
                         <div class="media-body w-50">
@@ -168,7 +168,7 @@
                </div>
             </div>
             <div class="widget-holder widget-sm col">
-               <div class="widget-bg bg-success text-inverse mb-2">
+               <div class="widget-bg bg-success text-inverse">
                   <div class="widget-body">
                      <div class="-w-info media">
                         <div class="media-body w-50">
@@ -179,7 +179,7 @@
                </div>
             </div>
             <div class="widget-holder widget-sm col">
-               <div class="widget-bg bg-success text-inverse mb-2">
+               <div class="widget-bg bg-success text-inverse">
                   <div class="widget-body">
                      <div class="-w-info media">
                         <div class="media-body w-50">
@@ -190,7 +190,7 @@
                </div>
             </div>
             <div class="widget-holder widget-sm col medium-block">
-               <div class="widget-bg bg-success text-inverse mb-2">
+               <div class="widget-bg bg-success text-inverse">
                   <div class="widget-body">
                      <div class="-w-info media">
                         <div class="media-body w-50">
@@ -201,7 +201,7 @@
                </div>
             </div>
             <div class="widget-holder widget-sm col">
-               <div class="widget-bg bg-success text-inverse mb-2">
+               <div class="widget-bg bg-success text-inverse">
                   <div class="widget-body">
                      <div class="-w-info media">
                         <div class="media-body w-50">
@@ -212,7 +212,7 @@
                </div>
             </div>
             <div class="widget-holder widget-sm col">
-               <div class="widget-bg bg-success text-inverse mb-2">
+               <div class="widget-bg bg-success text-inverse">
                   <div class="widget-body">
                      <div class="-w-info media">
                         <div class="media-body w-50">
@@ -223,7 +223,7 @@
                </div>
             </div>
             <div class="widget-holder widget-sm col">
-               <div class="widget-bg bg-success text-inverse mb-2">
+               <div class="widget-bg bg-success text-inverse">
                   <div class="widget-body">
                      <div class="-w-info media">
                         <div class="media-body w-50">
@@ -234,7 +234,7 @@
                </div>
             </div>
             <div class="widget-holder widget-sm col">
-               <div class="widget-bg bg-success text-inverse mb-2">
+               <div class="widget-bg bg-success text-inverse">
                   <div class="widget-body">
                      <div class="-w-info media">
                         <div class="media-body w-50">
@@ -245,7 +245,7 @@
                </div>
             </div>
             <div class="widget-holder widget-sm col">
-               <div class="widget-bg bg-success text-inverse mb-2">
+               <div class="widget-bg bg-success text-inverse">
                   <div class="widget-body">
                      <div class="-w-info media">
                         <div class="media-body w-50">
@@ -256,7 +256,7 @@
                </div>
             </div>
             <div class="widget-holder widget-sm col">
-               <div class="widget-bg bg-success text-inverse mb-2">
+               <div class="widget-bg bg-success text-inverse">
                   <div class="widget-body">
                      <div class="-w-info media">
                         <div class="media-body w-50">
@@ -267,7 +267,7 @@
                </div>
             </div>
             <div class="widget-holder widget-sm col long-block">
-               <div class="widget-bg bg-success text-inverse mb-2">
+               <div class="widget-bg bg-success text-inverse">
                   <div class="widget-body">
                      <div class="-w-info media">
                         <div class="media-body w-50">
@@ -278,7 +278,7 @@
                </div>
             </div>
             <div class="widget-holder widget-sm col">
-               <div class="widget-bg bg-primary text-inverse mb-2">
+               <div class="widget-bg bg-primary text-inverse">
                   <div class="widget-body">
                      <div class="-w-info media">
                         <div class="media-body w-50">
@@ -289,7 +289,7 @@
                </div>
             </div>
             <div class="widget-holder widget-sm col">
-               <div class="widget-bg bg-primary text-inverse mb-2">
+               <div class="widget-bg bg-primary text-inverse">
                   <div class="widget-body">
                      <div class="-w-info media">
                         <div class="media-body w-50">
@@ -384,10 +384,10 @@
       const container = document.querySelector('.order__header');
       data.forEach((product, i) => {
          const row = document.createElement('div');
-         row.classList.add('widget-list', 'row', 'orderRow');
+         row.classList.add('widget-list', 'row', 'orderRow', 'position-relative');
          row.innerHTML = `
                <div class="widget-holder widget-sm col" style="max-width: 50px;">
-                  <div class="widget-bg bg-transparent text-inverse number mb-2">
+                  <div class="widget-bg bg-transparent text-inverse number">
                      <div class="widget-body p-0">
                         <div class="-w-info media">
                            <div class="media-body w-50">
@@ -396,7 +396,7 @@
                         </div>
                      </div>
                   </div>
-                  <div class="widget-bg bg-transparent text-inverse mt-2">
+                  <div class="widget-bg bg-transparent text-inverse">
                      <div class="widget-body p-0">
                         <div class="-w-info media number">
                            <div class="media-body w-100">
@@ -408,37 +408,37 @@
                      </div>
                   </div>
                </div>
-               <div class="widget-holder widget-sm col" name="photo-${i + 1}">
-                     <div class="widget-bg bg-transparent text-inverse mt-2">
+               <div class="widget-holder widget-sm col position-sticky" name="photo-${i + 1}">
+                     <div class="widget-bg bg-transparent text-inverse">
                         <div class="widget-body p-0">
                            <div class="-w-info media">
                               <div class="media-body w-100">
-                                 <a class="btn btn-danger w-100" data-row="${i}" data-url="${product.Photo[0] ? product.Photo[0] : ''}" data-state="photosUrl" data-redact="false">Посмотреть</a>
+                                 <a class="btn btn-primary w-100" data-row="${i}" data-url="${product.Photo[0] ? product.Photo[0] : ''}" data-state="photosUrl" data-redact="false">Посмотреть</a>
                               </div>
                            </div>
                         </div>
                      </div>
                </div>
-               <div class="widget-holder widget-sm col" name="photoUrl-${i + 1}">
-                     <div class="widget-bg bg-transparent text-inverse mt-2">
+               <div class="widget-holder widget-sm col position-sticky" name="photoUrl-${i + 1}" style="left: 200px">
+                     <div class="widget-bg bg-transparent text-inverse">
                         <div class="widget-body p-0">
                            <div class="-w-info media">
                               <div class="media-body w-100">
-                                 <div class="rounded-card bg-danger d-flex flex-column justify-content-between url-input-wrapper">
-                                    <input class="url-input bg-danger" type="text" readonly name="imageUrl" value="${product.PhotoUrl[0] ? product.PhotoUrl[0] : ''}"> 
+                                 <div class="rounded-card bg-primary d-flex flex-column justify-content-between url-input-wrapper">
+                                    <input class="url-input bg-primary" type="text" readonly name="imageUrl" value="${product.PhotoUrl[0] ? product.PhotoUrl[0] : ''}"> 
                                  </div>
                               </div>
                            </div>
                         </div>
                      </div>
                </div>
-               <div class="widget-holder widget-sm col" name="productUrl-${i + 1}">
-                     <div class="widget-bg bg-transparent text-inverse mt-2">
+               <div class="widget-holder widget-sm col position-sticky" name="productUrl-${i + 1}" style="left: 400px">
+                     <div class="widget-bg bg-transparent text-inverse">
                         <div class="widget-body p-0">
                            <div class="-w-info media">
                               <div class="media-body w-100">
-                                 <div class="rounded-card bg-danger d-flex flex-column justify-content-between url-input-wrapper">
-                                    <input class="url-input bg-danger" type="text" readonly name="url" value="${product.ProductUrl[0] ? product.ProductUrl[0] : ''}"> 
+                                 <div class="rounded-card bg-primary d-flex flex-column justify-content-between url-input-wrapper">
+                                    <input class="url-input bg-primary" type="text" readonly name="url" value="${product.ProductUrl[0] ? product.ProductUrl[0] : ''}"> 
                                  </div>
                               </div>
                            </div>
@@ -446,7 +446,7 @@
                      </div>
                </div>
                <div class="widget-holder widget-sm col">
-                     <div class="widget-bg bg-transparent text-inverse mt-2">
+                     <div class="widget-bg bg-transparent text-inverse">
                         <div class="widget-body p-0">
                            <div class="-w-info media">
                               <div class="media-body w-100">
@@ -459,7 +459,7 @@
                      </div>
                </div>
                <div class="widget-holder widget-sm col">
-                  <div class="widget-bg bg-transparent text-inverse mt-2">
+                  <div class="widget-bg bg-transparent text-inverse">
                      <div class="widget-body p-0">
                         <div class="-w-info media">
                            <div class="media-body w-100">
@@ -472,7 +472,7 @@
                   </div>
                </div>
                <div class="widget-holder widget-sm col">
-                  <div class="widget-bg bg-transparent text-inverse mt-2">
+                  <div class="widget-bg bg-transparent text-inverse">
                      <div class="widget-body p-0">
                         <div class="-w-info media">
                            <div class="media-body w-100">
@@ -485,7 +485,7 @@
                   </div>
                </div>
                <div class="widget-holder widget-sm col">
-                  <div class="widget-bg bg-transparent text-inverse mt-2">
+                  <div class="widget-bg bg-transparent text-inverse">
                      <div class="widget-body p-0">
                         <div class="-w-info media">
                            <div class="media-body w-100">
@@ -498,7 +498,7 @@
                   </div>
                </div>
                <div class="widget-holder widget-sm col">
-                  <div class="widget-bg bg-transparent text-inverse mt-2">
+                  <div class="widget-bg bg-transparent text-inverse">
                      <div class="widget-body p-0">
                         <div class="-w-info media">
                            <div class="media-body w-100">
@@ -511,7 +511,7 @@
                   </div>
                </div>
                <div class="widget-holder widget-sm col medium-block">
-                  <div class="widget-bg bg-transparent text-inverse mt-2">
+                  <div class="widget-bg bg-transparent text-inverse">
                      <div class="widget-body p-0">
                         <div class="-w-info media">
                            <div class="media-body w-100">
@@ -524,7 +524,7 @@
                   </div>
                </div>
                <div class="widget-holder widget-sm col">
-                  <div class="widget-bg bg-transparent text-inverse mt-2">
+                  <div class="widget-bg bg-transparent text-inverse">
                      <div class="widget-body p-0">
                         <div class="-w-info media">
                            <div class="media-body w-100">
@@ -537,7 +537,7 @@
                   </div>
                </div>
                <div class="widget-holder widget-sm col">
-                  <div class="widget-bg bg-transparent text-inverse mt-2">
+                  <div class="widget-bg bg-transparent text-inverse">
                      <div class="widget-body p-0">
                         <div class="-w-info media">
                            <div class="media-body w-100">
@@ -550,7 +550,7 @@
                   </div>
                </div>
                <div class="widget-holder widget-sm col medium-block">
-                  <div class="widget-bg bg-transparent text-inverse mt-2">
+                  <div class="widget-bg bg-transparent text-inverse">
                      <div class="widget-body p-0">
                         <div class="-w-info media">
                            <div class="media-body w-100">
@@ -563,7 +563,7 @@
                   </div>
                </div>
                <div class="widget-holder widget-sm col">
-                  <div class="widget-bg bg-transparent text-inverse mt-2">
+                  <div class="widget-bg bg-transparent text-inverse">
                      <div class="widget-body p-0">
                         <div class="-w-info media">
                            <div class="media-body w-100">
@@ -576,7 +576,7 @@
                   </div>
                </div>
                <div class="widget-holder widget-sm col">
-                  <div class="widget-bg bg-transparent text-inverse mt-2">
+                  <div class="widget-bg bg-transparent text-inverse">
                      <div class="widget-body p-0">
                         <div class="-w-info media">
                            <div class="media-body w-100">
@@ -589,7 +589,7 @@
                   </div>
                </div>
                <div class="widget-holder widget-sm col">
-                  <div class="widget-bg bg-transparent text-inverse mt-2">
+                  <div class="widget-bg bg-transparent text-inverse">
                      <div class="widget-body p-0">
                         <div class="-w-info media">
                            <div class="media-body w-100">
@@ -602,7 +602,7 @@
                   </div>
                </div>
                <div class="widget-holder widget-sm col">
-                  <div class="widget-bg bg-transparent text-inverse mt-2">
+                  <div class="widget-bg bg-transparent text-inverse">
                      <div class="widget-body p-0">
                         <div class="-w-info media">
                            <div class="media-body w-100">
@@ -615,7 +615,7 @@
                   </div>
                </div>
                <div class="widget-holder widget-sm col">
-                  <div class="widget-bg bg-transparent text-inverse mt-2">
+                  <div class="widget-bg bg-transparent text-inverse">
                      <div class="widget-body p-0">
                         <div class="-w-info media">
                            <div class="media-body w-100">
@@ -628,7 +628,7 @@
                   </div>
                </div>
                <div class="widget-holder widget-sm col">
-                  <div class="widget-bg bg-transparent text-inverse mt-2">
+                  <div class="widget-bg bg-transparent text-inverse">
                      <div class="widget-body p-0">
                         <div class="-w-info media">
                            <div class="media-body w-100">
@@ -641,7 +641,7 @@
                   </div>
                </div>
                <div class="widget-holder widget-sm col long-block">
-                  <div class="widget-bg bg-transparent text-inverse mt-2">
+                  <div class="widget-bg bg-transparent text-inverse">
                      <div class="widget-body p-0">
                         <div class="-w-info media">
                            <div class="media-body w-100">
@@ -654,7 +654,7 @@
                   </div>
                </div>
                <div class="widget-holder widget-sm col">
-                  <div class="widget-bg bg-transparent text-inverse mt-2">
+                  <div class="widget-bg bg-transparent text-inverse">
                      <div class="widget-body p-0">
                         <div class="-w-info media">
                            <div class="media-body w-100">
@@ -665,7 +665,7 @@
                   </div>
                </div>
                <div class="widget-holder widget-sm col">
-                  <div class="widget-bg bg-transparent text-inverse mt-2">
+                  <div class="widget-bg bg-transparent text-inverse">
                      <div class="widget-body p-0">
                         <div class="-w-info media">
                            <div class="media-body w-100">
@@ -686,12 +686,12 @@
                   const widget = document.createElement('div');
                   widget.classList.add('widget-bg', 'bg-transparent', 'text-inverse', 'mt-2');
                   widget.innerHTML = `
-                     <div class="widget-bg bg-transparent text-inverse mt-2 w-75">
+                     <div class="widget-bg bg-transparent text-inverse w-75">
                         <div class="widget-body p-0">
                            <div class="-w-info media">
                               <div class="media-body w-100 d-flex">
-                                 <div class="rounded-card bg-danger d-flex flex-column justify-content-between url-input-wrapper text-right" style="padding: 4px 0.75rem;">
-                                    <input class="url-input bg-danger ${textClass}" readonly name="${name}" style="font-size: 13px" type="text" value="${array[j] ? array[j] : ''}"> 
+                                 <div class="rounded-card bg-primary d-flex flex-column justify-content-between url-input-wrapper text-right" style="padding: 4px 0.75rem;">
+                                    <input class="url-input bg-primary ${textClass}" readonly name="${name}" style="font-size: 13px" type="text" value="${array[j] ? array[j] : ''}"> 
                                  </div>
                               </div>
                            </div>
@@ -718,7 +718,7 @@
                            <div class="rounded-card bg-light numeration position-absolute subnumeration">
                               <p class="text-dark fw-600 m-0">${i + 1}.${j}</p>
                            </div>
-                           <a class="btn btn-danger w-75" style="font-size: 13px; padding: 5px 8px;" data-row="${i}" data-url="${product.Photo[j]}" data-state="photosUrl" data-redact="false">Посмотреть</a>
+                           <a class="btn btn-primary w-75" style="font-size: 13px; padding: 5px 8px;" data-row="${i}" data-url="${product.Photo[j]}" data-state="photosUrl" data-redact="false">Посмотреть</a>
                         </div>
                      </div>
                   </div>
