@@ -135,6 +135,12 @@
                            <div class="col-3"><input type="checkbox"></div>
                            <div class="col-3"><input type="checkbox"></div>
                         </div>
+                        <div class="row blank">
+                           <div class="col-3 text-left">Бланк:</div>
+                           <div class="col-3"><input type="checkbox"></div>
+                           <div class="col-3"><input type="checkbox"></div>
+                           <div class="col-3"><input type="checkbox"></div>
+                        </div>
                      </div>
                      <a onclick="createRole(null, '{{ Route('write_roles_CreateRole') }}')" id="createBtn" class="btn btn-block btn-outline-success btn-rounded ripple hovered-btn dark">Добавить роль</a>
                      <a onclick="createRole(event, '{{ Route('write_roles_ReplaceRole') }}')" id="redactBtn" class="btn btn-block btn-outline-success btn-rounded ripple hide hovered-btn dark" data-id>Сохранить</a>
@@ -172,15 +178,16 @@
                roles = document.querySelector('.roles'),
                delivery = document.querySelector('.delivery'),
                adress = document.querySelector('.adress'),
+               blank = document.querySelector('.blank'),
                createBtn = document.querySelector('#createBtn'),
                redactBtn = document.querySelector('#redactBtn');
          
-         return { name, orders, users, admins, roles, delivery, adress, createBtn, redactBtn };
+         return { name, orders, users, admins, roles, delivery, adress, blank, createBtn, redactBtn };
       }
 
       function createRole(e, url) {
          showLoader();
-         const { name, orders, users, admins, roles, delivery, adress, redactBtn, createBtn } = getRoleValues();
+         const { name, orders, users, admins, roles, delivery, adress, blank, redactBtn, createBtn } = getRoleValues();
 
          let id;
          if (e) {
@@ -212,7 +219,8 @@
                adress: getRights(adress),
                orders: getRights(orders),
                roles: getRights(roles),
-               delivery: getRights(delivery)
+               delivery: getRights(delivery),
+               blank: getRights(blank),
             }
          }
 
@@ -231,7 +239,7 @@
 
       function redact(id) {
          showLoader();
-         const { name, orders, users, admins, roles, delivery, adress, redactBtn, createBtn } = getRoleValues();
+         const { name, orders, users, admins, roles, delivery, adress, blank, redactBtn, createBtn } = getRoleValues();
 
          changeTextContent('#roleModalTitle', 'Редактирование Роли');
          openModal()
@@ -263,6 +271,7 @@
                      setRights(roles, data.right.roles);
                      setRights(delivery, data.right.delivery);
                      setRights(adress, data.right.adress);
+                     setRights(blank, data.right.blank);
                   }
                });
       }

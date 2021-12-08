@@ -58,7 +58,7 @@
 }
 
 .url-input-wrapper {
-   padding: 5px 0.75rem;
+   padding: 6px 0.75rem;
 }
 
 .url-input {
@@ -171,4 +171,31 @@
    overflow: hidden;
    max-width: 81px;
    text-overflow: ellipsis;
+}
+#tableHead .widget-holder{
+   margin-bottom: 5px;
+}
+.position-sticky {
+   position: sticky;
+   left: 0;
+   z-index: 1000;
+}
+a[data-url] {
+   padding: 7px 0.75rem;
+}
+nav.navbar {
+   z-index: 9999!important;
+}
+.orderRow {
+   min-width: 5000px;
+}
+#tableHead {
+   min-width: 5000px;
+}
+.widget-holder {
+   margin-bottom: 15px;
+}
+.position-sticky .bg-primary, .position-sticky .btn-primary{
+   background-color: #FFCC33!important;
+   border-color: #FFCC33!important;
 }
