@@ -184,7 +184,7 @@ a[data-url] {
    padding: 7px 0.75rem;
 }
 nav.navbar {
-   z-index: 9999!important;
+   z-index: 999!important;
 }
 .orderRow {
    min-width: 5000px;
