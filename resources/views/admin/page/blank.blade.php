@@ -90,7 +90,7 @@
                      </div>
                   </div>
             </div>
-            <div class="widget-holder widget-sm col position-sticky" style="left: 450px">
+            <div class="widget-holder widget-sm col position-sticky" style="left: 452px">
                   <div class="widget-bg bg-primary text-inverse">
                      <div class="widget-body">
                         <div class="-w-info media">
@@ -434,7 +434,7 @@
                         </div>
                      </div>
                </div>
-               <div class="widget-holder widget-sm col position-sticky" name="productUrl-${i + 1}" style="left: 450px; margin-left: -2px;">
+               <div class="widget-holder widget-sm col position-sticky" name="productUrl-${i + 1}" style="left: 452px;">
                      <div class="widget-bg bg-transparent text-inverse">
                         <div class="widget-body p-0">
                            <div class="-w-info media">
