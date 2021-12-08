@@ -14,7 +14,7 @@
                <p>Статус:</p>
             </div>
             <div class="col p-0" style="margin-top: -5px;">
-               <select class="m-b-10 form-control" data-placeholder="Choose" data-toggle="select">
+               <select id="orderStatus" class="m-b-10 form-control" data-placeholder="Choose" data-toggle="select">
                   <optgroup label="Статус">
                   @for ($i = 1; $i <= 4; $i++)
                      <option value="{{ $i }}" @if ($table->status == $i) selected @endif>
@@ -739,6 +739,22 @@
 
       imgButtons.forEach(btn => {
          btn.addEventListener('click', () => openModalWithImg(btn, btn.dataset.url, btn.dataset.row, btn.dataset.redact));
+      })
+
+      const statusInput = document.querySelector('#orderStatus');
+      statusInput.addEventListener('change', () => {
+         showLoader();
+         const body = {
+            id: _page_id, status: statusInput.value
+         };
+         
+         postData('{{ Route('write_orders_ReplaceOrder') }}', body)
+               .then((res) => {
+                  hideLoader();
+                  if (res.status === true) {
+                     console.log('Статус изменен');
+                  }
+               });
       })
    })
 //Получаем информацию о заказе
