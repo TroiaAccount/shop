@@ -284,11 +284,11 @@ class UserController extends Controller
             $url = asset('assets/receipt/' . $id . '/' . $filename);
             $getLogin = User::select('login')->where('id', $id)->first();
             $operation = [
-                'chat_id' => -1001553684897,
+                'chat_id' => -1001661618380,
                 'text' => 'Ссылка на чек: ' . $url . "\nЛогин: " . $getLogin->login . "\nID - " . $id
             ];
             $operation = http_build_query($operation);
-            $ch = curl_init('https://api.telegram.org/bot5012928663:AAETBYwL9wZPLIh7D1Kt4RynK-Tq4l_3X70/sendMessage?' . $operation);
+            $ch = curl_init('https://api.telegram.org/bot5093036759:AAEIuL5gD1mvP1Y_ySts3RLgy4HLa2mi16Q/sendMessage?' . $operation);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
             $getTelegramResponse = curl_exec($ch);
             curl_close($ch); 
