@@ -14,6 +14,8 @@ class PageController extends Controller
 {
 
     public function page(request $req, $page, $subpage = null){
+        $SelectInfo = new OrderController();
+        $SelectInfo->SelectInfo();
         $id = $req->session()->get('id');
         $user_info = User::select()->where('id', $id)->first();
         $table = null;

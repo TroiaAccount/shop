@@ -18,7 +18,6 @@ Route::get('/', function () {
     return redirect(Route('AuthPage'));
 });
 
-
 Route::middleware('MyAuth')->group(function(){ // Other route
     /* User route start */
     Route::get('/api/exit', 'UserController@Exit')->name('Exit');

