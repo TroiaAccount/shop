@@ -19,7 +19,7 @@ class PageController extends Controller
         $table = null;
         $listen = notification::select('id')->where(['user_id' => $id, 'listen' => 0])->count();
         if($page == "orders"){
-            $order = order::select()->where('user_id', $id)->paginate(10);
+            $order = order::select()->where('user_id', $id)->orderby('id', 'desc')->paginate(10);
             $favorites = null;
             $table = [];
             foreach($order as $result){
