@@ -178,13 +178,13 @@
 .position-sticky {
    position: sticky;
    left: 0;
-   z-index: 1000;
+   z-index: 10;
 }
 a[data-url] {
    padding: 7px 0.75rem;
 }
 nav.navbar {
-   z-index: 9999!important;
+   z-index: 999!important;
 }
 .orderRow {
    min-width: 5000px;
@@ -198,4 +198,15 @@ nav.navbar {
 .position-sticky .bg-primary, .position-sticky .btn-primary{
    background-color: #FFCC33!important;
    border-color: #FFCC33!important;
+}
+.numBtn {
+   padding: 7px 0.75rem;
+}
+.layer {
+   position: absolute;
+   width: 680px;
+   height: 100%;
+   border: 1px solid #2b3043;
+   background-color: #2b3043;
+   margin-left: -30px;
 }

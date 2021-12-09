@@ -56,7 +56,8 @@
       </div>
       <div class="order__header container-fluid pt-1">
          <div id="tableHead" class="widget-list row position-relative">
-            <div class="widget-holder widget-sm col" style="max-width: 65px;">
+            <div class="widget-holder widget-sm col position-sticky" style="max-width: 65px;">
+               <div class="layer"></div>
                <div class="widget-bg bg-transparent text-inverse number" style="height: 70px;">
                   <div class="widget-body p-0" style="height: 70px;">
                      <div class="-w-info media">
@@ -67,7 +68,7 @@
                   </div>
                </div>
             </div>
-            <div class="widget-holder widget-sm col position-sticky" style="margin-left: -15px">
+            <div class="widget-holder widget-sm col position-sticky" style="margin-left: -65px; left:50px;">
                <div class="widget-bg bg-primary text-inverse">
                   <div class="widget-body">
                      <div class="-w-info media">
@@ -78,7 +79,7 @@
                   </div>
                </div>
             </div>
-            <div class="widget-holder widget-sm col position-sticky" style="left: 200px">
+            <div class="widget-holder widget-sm col position-sticky" style="left: 250px">
                   <div class="widget-bg bg-primary text-inverse">
                      <div class="widget-body">
                         <div class="-w-info media">
@@ -89,7 +90,7 @@
                      </div>
                   </div>
             </div>
-            <div class="widget-holder widget-sm col position-sticky" style="left: 400px">
+            <div class="widget-holder widget-sm col position-sticky" style="left: 452px">
                   <div class="widget-bg bg-primary text-inverse">
                      <div class="widget-body">
                         <div class="-w-info media">
@@ -101,7 +102,7 @@
                   </div>
             </div>
             
-            <div class="widget-holder widget-sm col">
+            <div class="widget-holder widget-sm col" style="margin-left: 50px">
                   <div class="widget-bg bg-danger">
                      <div class="widget-body text-inverse">
                         <div class="-w-info media">
@@ -309,7 +310,7 @@
                      <p>Логин клиента - номер заказа</p>
                      <div class="d-flex">
                         <p>Количество позиций товара:</p>
-                        <input type="text" value="{{$table->pos}}">
+                        <input type="text" value="{{$table->pos}}" class="bg-success text-dark">
                      </div>
                   </div>
                   <div class="col-6"></div>
@@ -317,7 +318,7 @@
             </div>
             <div class="d-flex align-items-center">
                <p>Сумма заказа:</p>
-               <input type="text" value="{{$table->sum}}">
+               <input type="text" value="{{$table->sum}}" class="bg-success text-dark">
             </div>
          </div>
       </div>
@@ -386,7 +387,8 @@
          const row = document.createElement('div');
          row.classList.add('widget-list', 'row', 'orderRow', 'position-relative');
          row.innerHTML = `
-               <div class="widget-holder widget-sm col" style="max-width: 50px;">
+               <div class="widget-holder widget-sm col position-sticky" style="max-width: 50px;">
+                  <div class="layer"></div>
                   <div class="widget-bg bg-transparent text-inverse number">
                      <div class="widget-body p-0">
                         <div class="-w-info media">
@@ -400,7 +402,7 @@
                      <div class="widget-body p-0">
                         <div class="-w-info media number">
                            <div class="media-body w-100">
-                              <div class="rounded-card bg-light">
+                              <div class="rounded-card bg-light numBtn">
                                  <p class="text-dark fw-600 m-0">${i + 1}</p>
                               </div>
                            </div>
@@ -408,7 +410,7 @@
                      </div>
                   </div>
                </div>
-               <div class="widget-holder widget-sm col position-sticky" name="photo-${i + 1}">
+               <div class="widget-holder widget-sm col position-sticky" name="photo-${i + 1}" style="left: 50px">
                      <div class="widget-bg bg-transparent text-inverse">
                         <div class="widget-body p-0">
                            <div class="-w-info media">
@@ -419,7 +421,7 @@
                         </div>
                      </div>
                </div>
-               <div class="widget-holder widget-sm col position-sticky" name="photoUrl-${i + 1}" style="left: 200px">
+               <div class="widget-holder widget-sm col position-sticky" name="photoUrl-${i + 1}" style="left: 250px">
                      <div class="widget-bg bg-transparent text-inverse">
                         <div class="widget-body p-0">
                            <div class="-w-info media">
@@ -432,7 +434,7 @@
                         </div>
                      </div>
                </div>
-               <div class="widget-holder widget-sm col position-sticky" name="productUrl-${i + 1}" style="left: 400px">
+               <div class="widget-holder widget-sm col position-sticky" name="productUrl-${i + 1}" style="left: 452px;">
                      <div class="widget-bg bg-transparent text-inverse">
                         <div class="widget-body p-0">
                            <div class="-w-info media">
