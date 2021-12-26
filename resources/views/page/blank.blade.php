@@ -112,7 +112,7 @@
             </div>
          </div>
       </div>
-      <div class="form-wrapper container ps-0" style="background: #CCCCFF; min-width: 347px">
+      <div class="form-wrapper container ps-0" style="background: #CCCCFF; min-width:516px">
          <div id="0" class="card-input d-flex justify-content-start">
             <div class="order-card ms-3" style="min-width: 145px;" data-count="0">
                <div class="label-card">
@@ -122,6 +122,11 @@
             <div class="order-card" style="min-width: 105px;">
                <div class="label-card">
                   <label for="ImageUrl-1" class="order-title">Фотоотчет:</label>
+               </div>
+            </div>
+            <div class="order-card" style="min-width: 125px; margin-left: 38px;">
+               <div class="label-card">
+                  <label for="ImageUrl-1" class="order-title">Примечание:</label>
                </div>
             </div>
          </div>
@@ -172,8 +177,10 @@
 <script>
    const href = window.location.href.split('/'),
          _page_id = href[href.length - 1];
-   let activeBtn;
-   let countOfMainInputs = 0;
+   let activeBtn,
+      countOfMainInputs = 0,
+      checkedItems = {},
+      infoState = {};
 
    window.addEventListener('DOMContentLoaded', async () => {
       var myModal = new bootstrap.Modal(document.getElementById('myModal'))
@@ -188,8 +195,7 @@
 
       const greenPlusBtn = document.querySelector('.plus-green-btn');
 
-      const greenBtnHandler = (id, data) => {
-         console.log(data);
+      const greenBtnHandler = (id, data, closed) => {
          const photoInputs = document.querySelector(`#photoInputs-${id}`),
                urlPhotoInputs = document.querySelector(`#urlPhotoInputs-${id}`),
                urlProductInputs = document.querySelector(`#urlProductInputs-${id}`);
@@ -212,13 +218,17 @@
             color: #dc3545;
          `
 
+         if (!closed) {
+            closed = ['undefined'];
+         }
+
          file.innerHTML = `
             <div id="filesGroup" class="mt-2 rowms-2" style="margin-top: 7.8px!important;">
                   <p class="subnumeration ms-2" style="${style}">${id}.${count}</p>
                   <div class="input-group col-3 p-0">
                      <input id="file-input-${id}-${count}" type="file" name="${id}" class="m-0 files-input" onchange="getImageUrl(event)">
                      <div class="file-label-wrapper ms-4">
-                        <label class="file-label-mini" data-row="${id}" data-url="${data.photo}" data-redact="true" data-state="photosUrl">Загрузите фото товара</label>
+                        <label class="file-label-mini ${closed[count] === 'true' ? 'redline' : ''}" data-row="${id}" data-url="${data.photo}" data-redact="true" data-state="photosUrl">Загрузите фото товара</label>
                      </div>
                   </div>
             </div>
@@ -273,6 +283,35 @@
          const chinaDate = data['chinaDate'] ? data['chinaDate'] : '';
          const PhotoFactory = data['PhotoFactory'] ? data['PhotoFactory'] : '';
          const PhotoReport = data['PhotoReport'] ? data['PhotoReport'] : '';
+         const checkedItem = data['checkedItem'];
+         const info = data['info'];
+
+         if (info) {
+            infoState[countRows] = info;
+         } else {
+            infoState[countRows] = '';
+         }
+
+         if (checkedItem === undefined) {
+            checkedItems[countRows] = 'undefined';
+         } else {
+            checkedItems[countRows] = checkedItem;
+         }
+         let closed,
+            closedLength;
+         if (data.PhotoUrl && data.ProductUrl) {
+            closedLength = data.PhotoUrl.length > data.ProductUrl.length 
+               ? data.PhotoUrl.length 
+               : data.ProductUrl.length;
+            closed = new Array(closedLength).fill('true');
+            if (data.checkedItem === 'undefined') {
+               closed = closed.map(item => item = 'undefined');
+            } else if (data.checkedItem !== 'false') {
+               closed[data.checkedItem] = 'false';
+            }
+         } else {
+            closed = new Array(closedLength).fill('undefined');
+         }
 
          div.innerHTML = `
             <div id="${countRows}" class="card-input d-flex justify-content-between ms-1">
@@ -283,7 +322,7 @@
                      <div class="input-group col-3">
                         <input id="file-input-${countRows}-0" type="file" name="${countRows}" class="m-0 files-input">
                         <div class="file-label-wrapper w-100">
-                           <label class="file-label" data-row="${countRows}" data-url="${Photo[0] ? Photo[0] : ''}" data-redact="true" data-state="photosUrl">Загрузите фото товара</label>
+                           <label class="file-label ${closed[0] === 'true' ? 'redline' : ''}" data-row="${countRows}" data-url="${Photo[0] ? Photo[0] : ''}" data-redact="true" data-state="photosUrl">Загрузите фото товара</label>
                         </div>
                      </div>
                   </div>
@@ -441,8 +480,13 @@
                      </div>
                   </div>
                </div>
-               <div class="order-card" style="margin-left: 24px;">
-               <div class="space"></div>
+               <div class="order-card" style="min-width: 105px;margin-left: 96px;">
+                  <div class="mt-2 row">
+                     <div class="position-relative me-2">
+                        <i onclick="checkWarning(event)" class="fas fa-exclamation ${info ? 'text-purple' : ''}" aria-hidden="true" data-row="${countRows}"></i>
+                     </div>
+                  </div>
+               </div>
             </div>
             </div>
          `
@@ -465,8 +509,7 @@
          countOfProducts = getCount(ProductUrl.length, countOfProducts);
          
          const countOfGreenRows = Math.max(countOfPhotos, countOfUrls, countOfProducts);
-
-         return {div, countOfGreenRows};
+         return {div, countOfGreenRows, closed};
       }
 
       const bluePlusBtn = document.querySelector('#plusBlue-0');
@@ -477,11 +520,13 @@
          const countOfRows = countOfMainInputs;
 
          let row,
-             countOfGreen
+            countOfGreen,
+            closedGreen;
          if (data) {
-            const {div, countOfGreenRows} = rowInnerHtml(countOfRows, data);
+            const {div, countOfGreenRows, closed} = rowInnerHtml(countOfRows, data);
             row = div;
             countOfGreen = countOfGreenRows;
+            closedGreen = closed;
          } else {
             const {div} = rowInnerHtml(countOfRows);
             row = div;
@@ -499,7 +544,7 @@
 
          for (let i = 0; i < countOfGreen; i++) {
             const data = getSmallInputsData(i)
-            greenBtnHandler(countOfRows, data);
+            greenBtnHandler(countOfRows, data, closedGreen);
          }
          
          const greenPlusBtn = document.querySelector(`#plusGreen-${countOfRows}`),
@@ -526,7 +571,6 @@
          } else {
             label.classList.add('hide')
          }
-         console.log(myModal);
          myModal.show()
       }
 
@@ -589,6 +633,18 @@
          }
       })
       return photos;
+   }
+
+   function checkWarning(e) {
+      if (e.target.classList.contains('text-purple')) {
+         const confirmed = confirm(infoState[e.target.dataset.row] + '\nНажмите "ОК" для подтверждения\nНажмите "Отмена" для отклонения позиции');
+         if (!confirmed) {
+            checkedItems[e.target.dataset.row] = 'false';
+            infoState[e.target.dataset.row] = '';
+            e.target.classList.remove('text-purple');
+         }
+         console.log(checkedItems);
+      }
    }
 
    async function getImageUrl(e) {
@@ -679,6 +735,8 @@
          data['status'] = status;
          data['buyoutDate'] = buyoutDate;
          data['chinaDate'] = chinaDate;
+         data['checkedItem'] = checkedItems[i];
+         data['info'] = infoState[i];
          dataToServer['json'].push(data);
       }
       postData('{{Route("ReplaceOrder")}}', dataToServer)

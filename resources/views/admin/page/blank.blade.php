@@ -300,6 +300,17 @@
                   </div>
                </div>
             </div>
+            <div class="widget-holder widget-sm col">
+               <div class="widget-bg bg-primary text-inverse">
+                  <div class="widget-body">
+                     <div class="-w-info media">
+                        <div class="media-body w-50">
+                           <p class="text-muted mr-b-5 fw-600">Действия</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
          </div>
       </div>
       <div class="order__body container-fluid mt-2">
@@ -376,7 +387,8 @@
 <script>
    const href = window.location.href.split('/'),
          _page_id = href[href.length - 1];
-   let activeBtn;
+   let activeBtn,
+   infoState = {};
 
    window.addEventListener('DOMContentLoaded', async () => {
       let data = await getData(_page_id);
@@ -385,6 +397,20 @@
       const container = document.querySelector('.order__header');
       data.forEach((product, i) => {
          const row = document.createElement('div');
+         const closedLength = product.PhotoUrl.length > product.ProductUrl.length 
+               ? product.PhotoUrl.length 
+               : product.ProductUrl.length;
+         let closed = new Array(closedLength).fill('true');
+         if (product.checkedItem === 'undefined') {
+            closed = closed.map(item => item = 'undefined');
+         } else if (product.checkedItem !== false) {
+            closed[product.checkedItem] = 'false';
+         }
+         if (product.info) {
+            infoState[i] = product.info;
+         } else {
+            infoState[i] = '';
+         }
          row.classList.add('widget-list', 'row', 'orderRow', 'position-relative');
          row.innerHTML = `
                <div class="widget-holder widget-sm col position-sticky" style="max-width: 50px;">
@@ -544,7 +570,7 @@
                         <div class="-w-info media">
                            <div class="media-body w-100">
                               <div class="rounded-card bg-success d-flex flex-column justify-content-between">
-                                 <input class="url-input bg-success text-muted text-center" type="text" name="commission" value="${product.commission ? product.commission : ''}"> 
+                                 <input class="url-input bg-success text-muted text-center" readonly type="text" name="commission" value="${product.commission ? product.commission : ''}"> 
                               </div>
                            </div>
                         </div>
@@ -570,7 +596,7 @@
                         <div class="-w-info media">
                            <div class="media-body w-100">
                               <div class="rounded-card bg-success d-flex flex-column justify-content-between">
-                                 <input class="url-input bg-success text-muted text-center" type="text" name="sum" value="${product.sum ? product.sum : ''}"> 
+                                 <input class="url-input bg-success text-muted text-center" readonly type="text" name="sum" value="${product.sum ? product.sum : ''}"> 
                               </div>
                            </div>
                         </div>
@@ -677,6 +703,25 @@
                      </div>
                   </div>
                </div>
+               <div class="widget-holder widget-sm col" name="action-${i + 1}">
+                     <div class="widget-bg bg-transparent text-inverse ${closed[0] === 'true' ? 'redline' : ''}" data-row="${i}" data-item="0" data-closed="${closed[0]}">
+                        <div class="widget-body p-0">
+                           <div class="-w-info media">
+                              <div class="media-body w-100 d-flex justify-content-between align-items-center" style="height: 39px;">
+                                 <div class="order-action">
+                                    <a onclick="checkItem(event)"><i class="fas fa-check text-success"></i></a>
+                                 </div>
+                                 <div class="order-action">
+                                    <a onclick="closeItem(event)"><i class="fas fa-times text-danger"></i></a>
+                                 </div>
+                                 <div class="order-action">
+                                    <a onclick="addInfo(event)"><i class="fas fa-exclamation text-warning" data-order="${i}"></i></a>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+               </div>
          `;
 
          container.append(row);
@@ -726,6 +771,33 @@
                   </div>
                `
                photoWrapper.append(widget);
+            }
+         }
+
+         if (closedLength > 1) {
+            const actionWrapper = document.querySelector(`[name="action-${i + 1}"]`);
+            for (let j = 1; j < closedLength; j++) {
+               const widget = document.createElement('div');
+               widget.classList.add('widget-bg', 'bg-transparent', 'text-inverse');
+               widget.style.marginTop = '4px';
+               widget.dataset.row = i;
+               widget.dataset.item = j;
+               widget.dataset.closed = closed[j];
+               if (closed[j] !== 'false' && closed[j] !== 'undefined') {
+                  widget.classList.add('redline');
+               }
+               widget.innerHTML = `
+               <div class="widget-body p-0">
+                           <div class="-w-info media">
+                              <div class="media-body w-100 d-flex justify-content-between align-items-center" style="height: 39px;">
+                                 <div class="order-action">
+                                    <a onclick="checkItem(event)"><i class="fas fa-check text-success"></i></a>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+               `
+               actionWrapper.append(widget);
             }
          }
 
@@ -843,6 +915,32 @@
       e.target.nextElementSibling.style.backgroundColor = '#ecffc6';
       e.target.value = '';
    }
+
+   function checkItem(e) {
+      const actionWrapper = e.target.closest('.widget-bg.bg-transparent.text-inverse');
+      actionWrapper.classList.remove('redline');
+      $.each($(actionWrapper).siblings(), function (i, v) {
+         v.classList.add('redline');
+         v.dataset.closed = 'true';
+      })
+      actionWrapper.dataset.closed = 'false';
+   }
+
+   function closeItem(e) {
+      const actionWrapper = e.target.closest('.widget-bg.bg-transparent.text-inverse');
+      actionWrapper.classList.add('redline');
+      $.each($(actionWrapper).siblings(), function (i, v) {
+         v.classList.add('redline');
+         v.dataset.closed = 'true';
+      })
+      actionWrapper.dataset.closed = 'true';
+   }
+
+   function addInfo(e) {
+      const info = prompt('Введите примечание');
+      infoState[e.target.dataset.order] = info;
+   }
+
 //Собираем заказ и отправляем на сервер
    function makeOrder() {
       showLoader();
@@ -879,6 +977,25 @@
                chinaDate = order.querySelector('[name="chinaDate"]').value;
 
 
+         const closed = order.querySelector('.widget-bg.bg-transparent.text-inverse[data-closed="false"]'),
+               undef = order.querySelector('.widget-bg.bg-transparent.text-inverse[data-closed="undefined"]');
+         let checkedItem;
+         if (closed) {
+            checkedItem = closed.dataset.item;
+         } else if (undef) {
+            checkedItem = 'undefined';
+         } else {
+            checkedItem = 'false';
+         }
+
+         let info;
+         if (infoState[i]) {
+            info = infoState[i];
+         } else {
+            info = '';
+         }
+
+         console.log(checkedItem, order);
          const makeData = (inputs, array, fieldName) => {
             data[fieldName] = array;
             inputs.forEach(input => {
@@ -926,6 +1043,8 @@
          data['status'] = status;
          data['buyoutDate'] = buyoutDate;
          data['chinaDate'] = chinaDate;
+         data['checkedItem'] = checkedItem;
+         data['info'] = info;
          dataToServer['json'].push(data);
       })
 

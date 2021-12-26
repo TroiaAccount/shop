@@ -341,6 +341,7 @@
          data['color'] = color;
          data['size'] = size;
          data['model'] = model;
+         data['checkedItem'] = 'undefined';
          if (data.PhotoUrl.length || data.ProductUrl.length || data.Photo.length) {
             console.log(data.PhotoUrl.length, data.ProductUrl.length, data.Photo.length);
             dataToServer.push(data);

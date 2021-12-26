@@ -701,3 +701,30 @@ button.change-page-btn {
 .msg-text {
   font-size: 12px;
 }
+.form-wrapper > div:last-child {
+  margin-bottom: 50px;
+}
+.redline::after {
+  content: "";
+  position: absolute;
+  top: 11px;
+  left: 0;
+  z-index: 1;
+  height: 2px;
+  width: 2950px;
+  background-color: red;
+  border-radius: 1px;
+  pointer-events: none;
+}
+.file-label-mini.redline::after {
+  width: 450px;
+  top: 13px;
+}
+.blank-card .fas {
+  position: relative;
+  z-index: 2;
+}
+.text-purple {
+  color: #8a00ff;
+  cursor: pointer;
+}

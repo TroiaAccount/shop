@@ -91,7 +91,7 @@
                @endif
             </li>
             <li class="nav-item">
-               <a href="#" class="nav-link">Главная</a>
+               <a href="{{Route('Page', ['page' => '/', 'subpage' => '/'])}}" class="nav-link">Главная</a>
             </li>
             <li class="nav-item">
                <a href="{{Route('Page', ['page' => 'create', 'subpage' => 'order'])}}" class="nav-link">Создать заказ</a>
