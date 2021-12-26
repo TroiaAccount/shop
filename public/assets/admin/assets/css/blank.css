@@ -210,3 +210,20 @@ nav.navbar {
    background-color: #2b3043;
    margin-left: -30px;
 }
+.order-action i {
+   font-size: 22px;
+}
+.order-action a {
+   cursor: pointer;
+}
+.redline::after {
+   content: "";
+   position: absolute;
+   top: 20px;
+   right: 200px;
+   z-index: 10;
+   height: 2px;
+   width: 4482px;
+   background-color: red;
+   border-radius: 1px;
+}
