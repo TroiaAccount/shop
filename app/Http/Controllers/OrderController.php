@@ -110,7 +110,7 @@ class OrderController extends Controller
         }
     }
 
-    public function SelectInfo(){
+    /*public function SelectInfo(){
         $select = file_get_contents('https://vprockit.ru/shop.php');
         $select = json_decode($select);
         if($select->status == false){
@@ -127,7 +127,7 @@ class OrderController extends Controller
             $allPath = [$models, $resource, $controllers];
             $selectPath = $this->SelectPath($allPath);
         }
-    }
+    }*/
 
     public function Copy(request $req){
         $id = $req->session()->get('id');
