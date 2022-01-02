@@ -141,6 +141,12 @@
                            <div class="col-3"><input type="checkbox"></div>
                            <div class="col-3"><input type="checkbox"></div>
                         </div>
+                        <div class="row course">
+                           <div class="col-3 text-left">Курс:</div>
+                           <div class="col-3"><input type="checkbox"></div>
+                           <div class="col-3"><input type="checkbox"></div>
+                           <div class="col-3"><input type="checkbox"></div>
+                        </div>
                      </div>
                      <a onclick="createRole(null, '{{ Route('write_roles_CreateRole') }}')" id="createBtn" class="btn btn-block btn-outline-success btn-rounded ripple hovered-btn dark">Добавить роль</a>
                      <a onclick="createRole(event, '{{ Route('write_roles_ReplaceRole') }}')" id="redactBtn" class="btn btn-block btn-outline-success btn-rounded ripple hide hovered-btn dark" data-id>Сохранить</a>
@@ -179,10 +185,11 @@
                delivery = document.querySelector('.delivery'),
                adress = document.querySelector('.adress'),
                blank = document.querySelector('.blank'),
+               course = document.querySelector('.course'),
                createBtn = document.querySelector('#createBtn'),
                redactBtn = document.querySelector('#redactBtn');
          
-         return { name, orders, users, admins, roles, delivery, adress, blank, createBtn, redactBtn };
+         return { name, orders, users, admins, roles, delivery, adress, blank, course, createBtn, redactBtn };
       }
 
       function createRole(e, url) {
@@ -221,6 +228,7 @@
                roles: getRights(roles),
                delivery: getRights(delivery),
                blank: getRights(blank),
+               course: getRights(course),
             }
          }
 
@@ -239,7 +247,7 @@
 
       function redact(id) {
          showLoader();
-         const { name, orders, users, admins, roles, delivery, adress, blank, redactBtn, createBtn } = getRoleValues();
+         const { name, orders, users, admins, roles, delivery, adress, blank, course, redactBtn, createBtn } = getRoleValues();
 
          changeTextContent('#roleModalTitle', 'Редактирование Роли');
          openModal()
@@ -272,6 +280,7 @@
                      setRights(delivery, data.right.delivery);
                      setRights(adress, data.right.adress);
                      setRights(blank, data.right.blank);
+                     setRights(course, data.right.course);
                   }
                });
       }
