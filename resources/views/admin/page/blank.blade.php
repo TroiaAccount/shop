@@ -329,7 +329,7 @@
             </div>
             <div class="d-flex align-items-center">
                <p>Сумма заказа:</p>
-               <input type="text" value="{{$table->sum}}" class="bg-success text-dark">
+               <input id="sumOrderInput" type="text" value="" readonly class="bg-success text-dark">
             </div>
          </div>
       </div>
@@ -386,9 +386,11 @@
 
 <script>
    const href = window.location.href.split('/'),
-         _page_id = href[href.length - 1];
+         _page_id = href[href.length - 1],
+         comission = 0.03;
    let activeBtn,
-   infoState = {};
+   infoState = {},
+   orderSum = 0;
 
    window.addEventListener('DOMContentLoaded', async () => {
       let data = await getData(_page_id);
@@ -411,6 +413,15 @@
          } else {
             infoState[i] = '';
          }
+         let sum = 0;
+      
+         if (product.count && product.cost && product.chinaDelivery) {
+            console.log(product.count, product.cost, product.chinaDelivery, comission);
+            sum = (parseFloat(product.count) * parseFloat(product.cost) * comission + parseFloat(product.chinaDelivery)).toFixed(2);
+         }
+
+         orderSum += parseFloat(sum);
+
          row.classList.add('widget-list', 'row', 'orderRow', 'position-relative');
          row.innerHTML = `
                <div class="widget-holder widget-sm col position-sticky" style="max-width: 50px;">
@@ -570,7 +581,7 @@
                         <div class="-w-info media">
                            <div class="media-body w-100">
                               <div class="rounded-card bg-success d-flex flex-column justify-content-between">
-                                 <input class="url-input bg-success text-muted text-center" readonly type="text" name="commission" value="${product.commission ? product.commission : ''}"> 
+                                 <input class="url-input bg-success text-muted text-center" readonly type="text" name="commission" value="${comission*100}%"> 
                               </div>
                            </div>
                         </div>
@@ -596,7 +607,7 @@
                         <div class="-w-info media">
                            <div class="media-body w-100">
                               <div class="rounded-card bg-success d-flex flex-column justify-content-between">
-                                 <input class="url-input bg-success text-muted text-center" readonly type="text" name="sum" value="${product.sum ? product.sum : ''}"> 
+                                 <input class="url-input bg-success text-muted text-center" readonly type="text" name="sum" value="${sum ? sum : ''}"> 
                               </div>
                            </div>
                         </div>
@@ -802,6 +813,8 @@
          }
 
       })
+
+      document.querySelector('#sumOrderInput').value = orderSum;
       //При клике на инпут выделяется текст   
       const inputs = document.querySelectorAll('input');
       inputs.forEach(input => {
@@ -966,9 +979,7 @@
                //green
                availability = order.querySelector('[name="availability"]').value,
                priceFact = order.querySelector('[name="priceFact"]').value,
-               commission = order.querySelector('[name="commission"]').value,
                chinaDelivery = order.querySelector('[name="chinaDelivery"]').value,
-               sum = order.querySelector('[name="sum"]').value,
                weight = order.querySelector('[name="weight"]').value,
                volume = order.querySelector('[name="volume"]').value,
                note = order.querySelector('[name="note"]').value,
@@ -1034,9 +1045,7 @@
          //green
          data['availability'] = availability;
          data['priceFact'] = priceFact;
-         data['commission'] = commission;
          data['chinaDelivery'] = chinaDelivery;
-         data['sum'] = sum;
          data['weight'] = weight;
          data['volume'] = volume;
          data['note'] = note;

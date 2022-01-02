@@ -176,11 +176,13 @@
 
 <script>
    const href = window.location.href.split('/'),
-         _page_id = href[href.length - 1];
+         _page_id = href[href.length - 1],
+         commission = 0.05;
    let activeBtn,
       countOfMainInputs = 0,
       checkedItems = {},
-      infoState = {};
+      infoState = {},
+      orderSum = 0;
 
    window.addEventListener('DOMContentLoaded', async () => {
       var myModal = new bootstrap.Modal(document.getElementById('myModal'))
@@ -272,9 +274,7 @@
          const size = data['size'] ? data['size'] : '';
          const availability = data['availability'] ? data['availability'] : '';
          const priceFact = data['priceFact'] ? data['priceFact'] : '';
-         const commission = data['commission'] ? data['commission'] : '';
          const chinaDelivery = data['chinaDelivery'] ? data['chinaDelivery'] : '';
-         const sum = data['sum'] ? data['sum'] : '';
          const weight = data['weight'] ? data['weight'] : '';
          const volume = data['volume'] ? data['volume'] : '';
          const note = data['note'] ? data['note'] : '';
@@ -285,6 +285,13 @@
          const PhotoReport = data['PhotoReport'] ? data['PhotoReport'] : '';
          const checkedItem = data['checkedItem'];
          const info = data['info'];
+         let sum = 0;
+
+         if (count && cost && chinaDelivery) {
+            sum = (parseFloat(count) * parseFloat(cost) * commission + parseFloat(chinaDelivery)).toFixed(2);
+         }
+
+         orderSum += parseFloat(sum);
 
          if (info) {
             infoState[countRows] = info;
@@ -394,7 +401,7 @@
                <div class="order-card" style="min-width: 120px;">
                   <div class="mt-2 row">
                      <div class="position-relative me-2">
-                        <input type="text" readonly name="commission" class="m-0 text-order-input" value="${commission}">
+                        <input type="text" readonly name="commission" class="m-0 text-order-input" value="${commission * 100}%">
                      </div>
                   </div>
                </div>
@@ -408,7 +415,7 @@
                <div class="order-card" style="min-width: 95px;">
                   <div class="mt-2 row">
                      <div class="position-relative me-2">
-                        <input type="text" readonly name="sum" class="m-0 text-order-input" value="${sum}">
+                        <input type="text" readonly name="sum" class="m-0 text-order-input" readonly value="${sum}">
                      </div>
                   </div>
                </div>
@@ -693,9 +700,7 @@
                model = mainInput.querySelector('[name="model"]').value,
                availability = mainInput.querySelector('[name="availability"]').value,
                priceFact = mainInput.querySelector('[name="priceFact"]').value,
-               commission = mainInput.querySelector('[name="commission"]').value,
                chinaDelivery = mainInput.querySelector('[name="chinaDelivery"]').value,
-               sum = mainInput.querySelector('[name="sum"]').value,
                weight = mainInput.querySelector('[name="weight"]').value,
                volume = mainInput.querySelector('[name="volume"]').value,
                note = mainInput.querySelector('[name="note"]').value,
@@ -726,9 +731,7 @@
 
          data['availability'] = availability;
          data['priceFact'] = priceFact;
-         data['commission'] = commission;
          data['chinaDelivery'] = chinaDelivery;
-         data['sum'] = sum;
          data['weight'] = weight;
          data['volume'] = volume;
          data['note'] = note;
