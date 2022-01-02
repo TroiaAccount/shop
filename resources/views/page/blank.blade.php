@@ -177,7 +177,9 @@
 <script>
    const href = window.location.href.split('/'),
          _page_id = href[href.length - 1],
-         commission = 0.05;
+         commission = 0.05,
+         COURSE = parseFloat('{{$course->user_cost}}') ? parseFloat('{{$course->user_cost}}') : 0;
+
    let activeBtn,
       countOfMainInputs = 0,
       checkedItems = {},
@@ -286,9 +288,8 @@
          const checkedItem = data['checkedItem'];
          const info = data['info'];
          let sum = 0;
-
          if (count && cost && chinaDelivery) {
-            sum = (parseFloat(count) * parseFloat(cost) * commission + parseFloat(chinaDelivery)).toFixed(2);
+            sum = (parseFloat(count) * parseFloat(cost) * commission * COURSE + parseFloat(chinaDelivery)).toFixed(2);
          }
 
          orderSum += parseFloat(sum);

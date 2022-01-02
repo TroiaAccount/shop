@@ -387,7 +387,8 @@
 <script>
    const href = window.location.href.split('/'),
          _page_id = href[href.length - 1],
-         comission = 0.03;
+         comission = 0.03,
+         COURSE = parseFloat('{{$course->cost}}') ? parseFloat('{{$course->cost}}') : 0;
    let activeBtn,
    infoState = {},
    orderSum = 0;
@@ -417,7 +418,7 @@
       
          if (product.count && product.cost && product.chinaDelivery) {
             console.log(product.count, product.cost, product.chinaDelivery, comission);
-            sum = (parseFloat(product.count) * parseFloat(product.cost) * comission + parseFloat(product.chinaDelivery)).toFixed(2);
+            sum = (parseFloat(product.count) * parseFloat(product.cost) * comission  * COURSE + parseFloat(product.chinaDelivery)).toFixed(2);
          }
 
          orderSum += parseFloat(sum);
