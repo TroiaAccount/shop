@@ -25,7 +25,8 @@
     <div class="container-fluid">
         <div class="widget-list row">
             <div>
-                <p>Курс юань <input type="text" name="course" id="course" value="{{$table->cost}}"></p>
+                <p>Курс юань у менеджера<input type="text" name="course" id="course" value="{{$table->cost}}"></p>
+                <p>Курс юань у клиента<input type="text" name="user_course" id="user_course" value="{{$table->user_cost}}"></p>
                 <button onclick="ChangeCourse()">Сохранить</button>
             </div>
         </div>
@@ -37,8 +38,8 @@
     function ChangeCourse() {
       showLoader();
       const course = document.getElementById('course').value;
-      
-      const body = {course};
+      const user_course = document.getElementById('user_course').value;
+      const body = {cost: course, user_course: user_course};
 
       postData('{{ Route("write_course_ChangeCourse") }}', body)
          .then((res) => {

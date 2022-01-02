@@ -9,6 +9,7 @@ use App\Models\delivery;
 use App\Models\notification;
 use App\Models\adres;
 use App\Models\favorite;
+use App\Models\course;
 
 class PageController extends Controller
 {
@@ -18,6 +19,7 @@ class PageController extends Controller
         $user_info = User::select()->where('id', $id)->first();
         $table = null;
         $listen = notification::select('id')->where(['user_id' => $id, 'listen' => 0])->count();
+        $course = course::first(); 
         if($page == "orders"){
             $order = order::select()->where('user_id', $id)->orderby('id', 'desc')->paginate(10);
             $favorites = null;
@@ -53,7 +55,7 @@ class PageController extends Controller
             }
         }
         
-        return view('main')->with(['page' => $page, 'user_info' => $user_info, 'table' => $table, 'subpage' => $subpage, 'listen' => $listen]);
+        return view('main')->with(['page' => $page, 'course' => $course, 'user_info' => $user_info, 'table' => $table, 'subpage' => $subpage, 'listen' => $listen]);
     }
 
     public function Auth(request $req){

@@ -17,6 +17,7 @@ class AdminController extends Controller
         $id = $req->session()->get('id');
         $user_info = User::select()->where('id', $id)->first();
         $table = null;
+        $course = course::first();
         if($page == "main"){
             $select_order = order::select()->where('completed', 0)->orderby('id', 'desc')->get();
             $table['DeliveryCount'] = count($select_order);
@@ -108,7 +109,8 @@ class AdminController extends Controller
         return view('admin/main')->with([
             'page' => $page,
             'user_info' => $user_info,
-            'table' => $table
+            'table' => $table,
+            'course' => $course
         ]);
         
     }
