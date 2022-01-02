@@ -194,7 +194,7 @@
 
       function createRole(e, url) {
          showLoader();
-         const { name, orders, users, admins, roles, delivery, adress, blank, redactBtn, createBtn } = getRoleValues();
+         const { name, orders, users, admins, roles, delivery, adress, blank, course, redactBtn, createBtn } = getRoleValues();
 
          let id;
          if (e) {
