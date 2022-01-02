@@ -65,6 +65,7 @@ Route::middleware('MyAuth')->group(function(){ // Other route
             Route::post('/admin/roles/replace', 'RoleController@ReplaceRole')->name('write_roles_ReplaceRole');
             Route::post('/admin/adress/delete', 'AdresController@DeleteAdres')->name('delete_adress_DeleteAdres');
             Route::post('/admin/adress/replace', 'AdresController@ReplaceAdres')->name('write_adress_ReplaceAdres');
+            Route::post('/admin/change/course', 'CourseController@UpdateCourse')->name('write_course_ChangeCourse');
         });
         Route::get('/api/check', 'RoleController@CreateRole');
     });

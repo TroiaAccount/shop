@@ -8,6 +8,7 @@ Use App\Models\delivery;
 Use App\Models\order;
 Use App\Models\role;
 use App\Models\adres;
+use App\Models\course;
 
 class AdminController extends Controller
 {
@@ -99,6 +100,9 @@ class AdminController extends Controller
                 $table->user_info = $select_user;
             }
             
+        }
+        if($page == "course"){
+            $table = course::first();
         }
 
         return view('admin/main')->with([

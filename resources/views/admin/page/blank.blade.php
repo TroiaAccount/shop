@@ -318,7 +318,7 @@
             <div>
                <div class="row">
                   <div class="col-6 d-flex flex-column justify-content-between">
-                     <p>Логин клиента - номер заказа</p>
+                     <p>Логин клиента - {{$table->user_info->login}}</p>
                      <div class="d-flex">
                         <p>Количество позиций товара:</p>
                         <input type="text" value="{{$table->pos}}" class="bg-success text-dark">

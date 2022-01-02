@@ -12,7 +12,7 @@ class CourseController extends Controller
         $course = addslashes($req['course']);
         $result = ['status' => false, 'error' => 'Вы не заполнили все поля'];
         if($course != null){
-            course::update(['cost' => $course]);
+            course::where('id', 1)->update(['cost' => $course]);
             $result = ['status' => true];
         }
         $result = json_encode($result, true);
