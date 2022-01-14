@@ -288,8 +288,9 @@
          const checkedItem = data['checkedItem'];
          const info = data['info'];
          let sum = 0;
-         if (count && cost && chinaDelivery) {
-            sum = (parseFloat(count) * parseFloat(cost) * commission * COURSE + parseFloat(chinaDelivery)).toFixed(2);
+         if (availability && priceFact && chinaDelivery) {
+            const productComission = parseFloat(availability) * parseFloat(priceFact) * commission;
+            sum = (( ( parseFloat(availability) * parseFloat(priceFact) + productComission ) + parseFloat(chinaDelivery) ) * COURSE ).toFixed(2);
          }
 
          orderSum += parseFloat(sum);

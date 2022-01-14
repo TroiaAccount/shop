@@ -387,7 +387,7 @@
 <script>
    const href = window.location.href.split('/'),
          _page_id = href[href.length - 1],
-         comission = 0.03,
+         commission = 0.03,
          COURSE = parseFloat('{{$course->cost}}') ? parseFloat('{{$course->cost}}') : 0;
    let activeBtn,
    infoState = {},
@@ -416,9 +416,9 @@
          }
          let sum = 0;
       
-         if (product.count && product.cost && product.chinaDelivery) {
-            console.log(product.count, product.cost, product.chinaDelivery, comission);
-            sum = (parseFloat(product.count) * parseFloat(product.cost) * comission  * COURSE + parseFloat(product.chinaDelivery)).toFixed(2);
+         if (product.availability && product.priceFact && product.chinaDelivery) {
+            const productComission = parseFloat(product.availability) * parseFloat(product.priceFact) * commission;
+            sum = (( ( parseFloat(product.availability) * parseFloat(product.priceFact) + productComission ) + parseFloat(product.chinaDelivery) ) * COURSE ).toFixed(2);
          }
 
          orderSum += parseFloat(sum);
@@ -582,7 +582,7 @@
                         <div class="-w-info media">
                            <div class="media-body w-100">
                               <div class="rounded-card bg-success d-flex flex-column justify-content-between">
-                                 <input class="url-input bg-success text-muted text-center" readonly type="text" name="commission" value="${comission*100}%"> 
+                                 <input class="url-input bg-success text-muted text-center" readonly type="text" name="commission" value="${commission*100}%"> 
                               </div>
                            </div>
                         </div>
