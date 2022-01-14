@@ -42,7 +42,7 @@
                <p>Номер телефона:</p>
             </div>
             <div class="col p-0">
-               <p>{{$table->user_info->login}}</p>
+               <p>{{$table->user_info->word}}</p>
             </div>
          </div>
          <div class="col d-flex ml-3" style="max-width: 300px;">
