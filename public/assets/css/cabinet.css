@@ -602,6 +602,14 @@ button.change-page-btn {
   bottom: 30px;
 }
 
+.submitBtn p {
+  white-space: nowrap;
+}
+
+.submitBtn input {
+  width: 100px;
+}
+
 .minus-red-btn {
   position: absolute;
   top: 0;
