@@ -133,7 +133,11 @@
       </div>
    </div>
 
-   <div class="mt-4 submitBtn">
+   <div class="mt-4 submitBtn d-flex">
+      <div class="d-flex me-3 align-items-center">
+         <p class="me-2">Сумма заказа:</p>
+         <input id="sumOrderInput" type="text" value="" readonly class="m-0 text-order-input">
+      </div>
       <button class="btn btn-primary">Сохранить заказ</button>
    </div>
 </form>
@@ -626,6 +630,8 @@
       data.forEach((row, i) => {
          blueBtnHandler(row);
       })
+
+      document.querySelector('#sumOrderInput').value = orderSum;
    })
 
    function getPhotosFromInputSelector(selector) {
