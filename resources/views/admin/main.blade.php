@@ -52,7 +52,7 @@
          <div class="container-fluid px-0 align-items-stretch">
                <!-- Logo Area -->
                <div class="navbar-header">
-                  <a href="/" class="navbar-brand">
+                  <a href="{{Route('AdminPage', ['page' => 'main'])}}" class="navbar-brand">
                      <img class="logo-expand" alt="" src="{{ asset('assets/admin/assets/img/logo-dark.png') }}">
                      <img class="logo-collapse" alt=""
                            src="{{ asset('assets/admin/assets/img/logo-collapse.png') }}">
