@@ -45,9 +45,11 @@ class ChechAdminRights
             }
         }
         if($status == false){
-            $result = ['status' => false, 'error' => "You don't have enough rights"];
-            $result = json_encode($result, true);
-            return response($result, 200)->header('Content-Type', "json");
+            if($page == "main"){
+                return redirect(Route('AuthPage'));
+            } else {
+                return redirect(Route('AdminPage', ['page' => 'main']));
+            }
         }
         return $next($req);
     }
