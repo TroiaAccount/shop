@@ -29,11 +29,10 @@
                             break;
                         }
                     @endphp
-                    @if($key != "blank" && $result->read == 1)
+                    @if($key != "blank" && $result->read == 1 && $key != "delivery")
                         <li @if($page == "{{$key}}") class="active" @endif><a href="{{Route('AdminPage', ['page' => $key])}}">{{$name}}</a></li>
                     @endif
                 @endforeach
-                
             </ul>
         </li>
         <!--<li class="menu-item-has-children "><a href="javascript:void(0);"><i class="list-icon material-icons">apps</i> <span class="hide-menu">Apps <span class="badge bg-primary">6</span></span></a>
