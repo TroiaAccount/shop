@@ -56,8 +56,5 @@
             </li> --}}
          </ul>
       </nav>
-      <div class="sidenav__version text-center">
-         <p>CNSHOP v1.0</p>
-      </div>
    </div>
    

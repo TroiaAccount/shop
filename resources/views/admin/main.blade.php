@@ -279,15 +279,6 @@
       </div>
       <!-- /.content-wrapper -->
       <!-- FOOTER -->
-      @if($page != 'blank')
-         <footer class="footer bg-primary text-inverse text-center">
-            <div class="container-fluid"><span class="fs-13 heading-font-family">Copyright @ 2017. All rights reserved
-                     <a class="fw-800" href="https://kinetic.dharansh.in">WiseOwl Admin</a> by <a
-                        class="fw-800" href="https://themeforest.net/user/unifato">Unifato</a></span>
-            </div>
-            <!-- /.container-fluid -->
-         </footer>
-      @endif
    </div>
    <div class="loader-wrapper hide">
       <div class="loader"><div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
