@@ -31,14 +31,14 @@ class ChechAdminRights
             if($selectRole != null){
                 $rights = json_decode($selectRole->rights, true);
                 if($page != null){
-                    if(isset($rights['page']['read']) == true && $rights[$page]['read'] == 1){
+                    if($rights[$page]['read'] == 1){
                         $status = true;
                     }
                 } else {
                     $route = explode("_", $routes);
                     $page = $route[1];
                     $right = $route[0];
-                    if(isset($rights[$page][$right]) == true && $rights[$page][$right] == 1){
+                    if($rights[$page][$right] == 1){
                         $status = true;
                     }
                 }
