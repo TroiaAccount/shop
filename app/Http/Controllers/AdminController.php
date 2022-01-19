@@ -18,6 +18,8 @@ class AdminController extends Controller
         $user_info = User::select()->where('id', $id)->first();
         $table = null;
         $course = course::first();
+        $menu = role::where('id', $user_info->role)->first();
+        $menu = json_decode($menu->rights);
         if($page == "main"){
             $select_order = order::select()->where('completed', 0)->orderby('id', 'desc')->get();
             $table['DeliveryCount'] = count($select_order);
@@ -110,7 +112,8 @@ class AdminController extends Controller
             'page' => $page,
             'user_info' => $user_info,
             'table' => $table,
-            'course' => $course
+            'course' => $course,
+            'menu' => $menu
         ]);
         
     }

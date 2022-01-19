@@ -52,7 +52,7 @@
          <div class="container-fluid px-0 align-items-stretch">
                <!-- Logo Area -->
                <div class="navbar-header">
-                  <a href="index.html" class="navbar-brand">
+                  <a href="{{Route('AdminPage', ['page' => 'main'])}}" class="navbar-brand">
                      <img class="logo-expand" alt="" src="{{ asset('assets/admin/assets/img/logo-dark.png') }}">
                      <img class="logo-collapse" alt=""
                            src="{{ asset('assets/admin/assets/img/logo-collapse.png') }}">
@@ -279,15 +279,6 @@
       </div>
       <!-- /.content-wrapper -->
       <!-- FOOTER -->
-      @if($page != 'blank')
-         <footer class="footer bg-primary text-inverse text-center">
-            <div class="container-fluid"><span class="fs-13 heading-font-family">Copyright @ 2017. All rights reserved
-                     <a class="fw-800" href="https://kinetic.dharansh.in">WiseOwl Admin</a> by <a
-                        class="fw-800" href="https://themeforest.net/user/unifato">Unifato</a></span>
-            </div>
-            <!-- /.container-fluid -->
-         </footer>
-      @endif
    </div>
    <div class="loader-wrapper hide">
       <div class="loader"><div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>

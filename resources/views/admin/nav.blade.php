@@ -2,23 +2,37 @@
     <ul class="nav in side-menu">
         <li class="menu-item-has-children active"><a href="index.html"><i class="list-icon material-icons">home</i> <span class="hide-menu">Страницы</span></a>
             <ul class="list-unstyled sub-menu">
-                <li @if($page == "main") class="active" @endif><a href="{{Route('AdminPage', ['page' => 'main'])}}">Главная</a></li>
-                <li @if($page == "orders") class="active" @endif><a href="{{Route('AdminPage', ['page' => 'orders'])}}">Заказы</a></li>
-                <li @if($page == "users") class="active" @endif><a href="{{Route('AdminPage', ['page' => 'users'])}}">Пользователи</a></li>
-                <li @if($page == "admins") class="active" @endif><a href="{{Route('AdminPage', ['page' => 'admins'])}}">Админы</a></li>
-                <li @if($page == "roles") class="active" @endif><a href="{{Route('AdminPage', ['page' => 'roles'])}}">Роли</a></li>
-                <li @if($page == "adress") class="active" @endif><a href="{{Route('AdminPage', ['page' => 'adress'])}}">Адреса</a></li>
-                {{-- <li class="menu-item-has-children" @if($page == "delivery") class="active menu-item-has-children" @endif>
-                    <a href="{{Route('AdminPage', ['page' => 'delivery'])}}">Доставка</a>
-                    <ul class="list-unstyled sub-menu mt-0">
-                        <li>
-                            <a href="{{Route('AdminPage', ['page' => 'delivery'])}}">До Москвы</a>
-                        </li>
-                        <li>
-                            <a href="{{Route('AdminPage', ['page' => 'delivery'])}}">По Росии</a>
-                        </li>
-                    </ul>
-                </li> --}}
+                @foreach($menu as $key => $result)
+                    @php
+                        $name = null;
+                        switch($key){
+                            case "main":
+                                $name = "Главная";
+                            break;
+                            case "roles":
+                                $name = "Роли";
+                            break;
+                            case "users":
+                                $name = "Пользователи";
+                            break;
+                            case "admins":
+                                $name = "Админы";
+                            break;
+                            case "adress":
+                                $name = "Адреса";
+                            break;
+                            case "course":
+                                $name = "Курсы";
+                            break;
+                            case "orders":
+                                $name = "Заказы";
+                            break;
+                        }
+                    @endphp
+                    @if($key != "blank" && $result->read == 1 && $key != "delivery")
+                        <li @if($page == "{{$key}}") class="active" @endif><a href="{{Route('AdminPage', ['page' => $key])}}">{{$name}}</a></li>
+                    @endif
+                @endforeach
             </ul>
         </li>
         <!--<li class="menu-item-has-children "><a href="javascript:void(0);"><i class="list-icon material-icons">apps</i> <span class="hide-menu">Apps <span class="badge bg-primary">6</span></span></a>
