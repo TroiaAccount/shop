@@ -748,6 +748,7 @@
          data['chinaDate'] = chinaDate;
          data['checkedItem'] = checkedItems[i];
          data['info'] = infoState[i];
+         data['lastChange'] = `${ new Date().toLocaleDateString() } / ${ new Date().toLocaleTimeString() }`;
          dataToServer['json'].push(data);
       }
       postData('{{Route("ReplaceOrder")}}', dataToServer)
