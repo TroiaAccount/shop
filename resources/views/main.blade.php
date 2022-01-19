@@ -146,8 +146,10 @@
                plusBtn = document.querySelector('.hovered-link-green'),
                input = document.querySelector('#balanceFile');
 
-         plusBtn.addEventListener('click', openModal);
-         input.addEventListener('change', loadImageFile);
+         if (plusBtn && input && myModal) {
+            plusBtn.addEventListener('click', openModal);
+            input.addEventListener('change', loadImageFile);
+         }
 
          function openModal() {
             const label = document.querySelector('.customInputLabel');
