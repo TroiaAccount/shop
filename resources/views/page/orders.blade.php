@@ -40,7 +40,7 @@
             <tr>
                <td>{{$result->number}}</td>
                <td>@if($result->status == 1) Отправлен @elseif($result->status == 2) Прибыл @elseif($result->status == 3) Упаковывается @elseif($result->status == 4) Обрабатывается @endif</td>
-               <td>{{$result->datetime}}</td>
+               <td>{{ json_decode($result->json)[0]->lastChange }}</td>
                <td align="right">
                   <a onclick="redactOrder({{ $result->id }})" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Редактировать" class="hovered-link green"><i class="far fa-edit"></i></a>
                   <a onclick="setFavorite(event, {{ $result->id }})" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Добавить в избранные" class="hovered-link red"><i class="@if($result->favorite == 1) fas @else far @endif fa-heart"></i></a>

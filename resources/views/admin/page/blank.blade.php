@@ -1055,6 +1055,7 @@
          data['chinaDate'] = chinaDate;
          data['checkedItem'] = checkedItem;
          data['info'] = info;
+         data['lastChange'] = `${ new Date().toLocaleDateString() } / ${ new Date().toLocaleTimeString() }`;
          dataToServer['json'].push(data);
       })
 
