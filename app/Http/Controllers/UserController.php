@@ -11,7 +11,7 @@ use App\Models\code;
 class UserController extends Controller
 {
 
-    private $ApiKey = "jEIEiHb6TwOmBt0rd3ANsXqRT";
+    private $ApiKey = "dtmb8bSVQtTByWHYowBmuL2EtHzMHKeI";
     
     public function Register(request $req){
         $login = addslashes($req['login']);
