@@ -12,7 +12,7 @@ class UserController extends Controller
 {
 
     private $ApiKey = "dtmb8bSVQtTByWHYowBmuL2EtHzMHKeI";
-    
+
     public function Register(request $req){
         $login = addslashes($req['login']);
         $password = addslashes($req['password']);
@@ -29,11 +29,12 @@ class UserController extends Controller
                 User::insert([
                     'login' => $login,
                     'password' => $password,
-                    'word' => $word
+                    'word' => $word,
+                    'agree' => 1
                 ]);
                 $check_user = User::select()->where('login', $login)->first();
-                $code = $this->CreateCode($check_user->id); 
-                
+                $code = $this->CreateCode($check_user->id);
+
                 code::where('user_id', $check_user->id)->delete();
                 code::insert([
                     'user_id' => $check_user->id,
@@ -97,7 +98,7 @@ class UserController extends Controller
         foreach($words as $word){
             $temp = "";
             foreach($word_array as $temp_word){
-                $temp .= $temp_word; 
+                $temp .= $temp_word;
             }
             $temp .= $word . $login;
             $check = User::select()->where('word', $temp)->first();
@@ -291,7 +292,7 @@ class UserController extends Controller
             $ch = curl_init('https://api.telegram.org/bot5093036759:AAEIuL5gD1mvP1Y_ySts3RLgy4HLa2mi16Q/sendMessage?' . $operation);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
             $getTelegramResponse = curl_exec($ch);
-            curl_close($ch); 
+            curl_close($ch);
             $getTelegramResponse = json_decode($getTelegramResponse);
             if($getTelegramResponse->ok == false){
                 $result['error'] = $getTelegramResponse->description;
