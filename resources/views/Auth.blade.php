@@ -37,7 +37,7 @@
             <div class="material-button alt-2"><span class="shape"></span></div>
             <form id="Register">
                @csrf
-              
+
                <div class="title">REGISTER</div>
                <div class="input">
                   <label for="regname">Телефон</label>
@@ -90,7 +90,7 @@
          $("#Auth").on("submit", function(e){
             e.preventDefault();
             $.ajax({
-                  url: '{{Route("Auth")}}', 
+                  url: '{{Route("Auth")}}',
                   method: 'post',
                   dataType: 'json',
                   data: $(this).serialize(),
@@ -125,6 +125,7 @@
                         let login = document.getElementById('login');
                         let LoginAuth = document.getElementById('regname');
                         login.value = LoginAuth.value;
+                        location = "{{Route('page', ['page' => 'orders'])}}";
                      } else {
                         alert(data.error);
                      }
